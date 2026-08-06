@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win Internet Konek Customer Portal</title>
+    
+    <!-- PWA META TAGS -->
+    <meta name="theme-color" content="#032252">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WinKonek">
+    
+    <!-- GOOGLE FONTS (Poster Typography Matching) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #010e28;
+            --card-bg: #032252;
+            --card-glass: rgba(3, 34, 82, 0.85);
+            --primary-blue: #0056cc;
+            --accent-cyan: #00e5ff;
+            --accent-yellow: #ffe800;
+            --text-white: #ffffff;
+            --text-muted: #a3c2f0;
+            --border-glow: rgba(0, 229, 255, 0.3);
+            --border-radius: 16px;
+            --font-head: 'Teko', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; font-family: var(--font-body); }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 50% 0%, #083b8a 0%, #010e28 70%);
+            color: var(--text-white);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        input, textarea, select { user-select: text !important; }
+
+        .portal-container { 
+            width: 100%; 
+            max-width: 720px; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* BRANDING HEADER */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-glass);
+            padding: 16px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px var(--border-glow);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-glow);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 14px; }
+
+        .brand-logo {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #ffffff;
+            padding: 2px;
+            box-shadow: 0 0 12px var(--accent-cyan);
+        }
+
+        .portal-title { 
+            margin: 0; 
+            font-family: var(--font-head);
+            font-size: 2rem; 
+            color: var(--text-white); 
+            line-height: 1;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .portal-title span { color: var(--accent-cyan); }
+        .portal-subtitle { margin: 2px 0 0 0; font-size: 0.75rem; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+
+        .status-badge {
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+        }
+
+        .pulse-dot {
+            height: 8px; width: 8px;
+            background-color: var(--accent-cyan);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 229, 255, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+        }
+
+        /* HERO LANDING BANNER */
+        .hero-banner {
+            background: linear-gradient(135deg, #021a42 0%, #053b8c 100%);
+            border: 2px solid var(--accent-cyan);
+            color: #ffffff;
+            padding: 24px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 229, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::after {
+            content: "";
+            position: absolute;
+            right: -30px;
+            bottom: -30px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+
+        .banner-tag {
+            background: var(--accent-yellow);
+            color: #000;
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            transform: skewX(-10deg);
+            margin-bottom: 8px;
+        }
+
+        .hero-title { 
+            font-family: var(--font-head);
+            font-size: 3rem; 
+            font-weight: 700; 
+            margin: 0; 
+            line-height: 0.9;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(0,229,255,0.5);
+            text-transform: uppercase;
+        }
+
+        .hero-title span { color: var(--accent-cyan); }
+
+        .hero-text { font-size: 0.85rem; color: var(--text-muted); margin: 10px 0 16px 0; line-height: 1.4; }
+
+        .quick-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .action-chip {
+            background: rgba(0, 229, 255, 0.15);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-chip:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        /* POSTER PROMO HIGHLIGHTS GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            background: var(--card-glass);
+            padding: 12px 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .feature-title { font-size: 0.75rem; font-weight: 700; color: var(--accent-yellow); text-transform: uppercase; }
+        .feature-desc { font-size: 0.7rem; color: var(--text-muted); }
+
+        /* TABS NAVIGATION */
+        .tab-navigation {
+            display: flex;
+            gap: 6px;
+            background: rgba(1, 14, 40, 0.8);
+            padding: 6px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 14px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-blue);
+            color: var(--text-white);
+            box-shadow: 0 0 15px rgba(0, 86, 204, 0.6);
+            border: 1px solid var(--accent-cyan);
+        }
+
+        .content-card {
+            background: var(--card-glass);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: 0px 18px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-glow);
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; color: var(--text-muted); }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            background: rgba(1, 14, 40, 0.6);
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #0056cc 0%, #00a2ff 100%);
+            color: #fff;
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 162, 255, 0.4);
+            transition: all 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
+        }
+
+        /* PLAN CARDS GRID (POSTER PRICING DESIGN) */
+        .plan-cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .poster-plan-card {
+            background: #ffffff;
+            color: #000000;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid #0056cc;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .poster-plan-card.selected {
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 15px var(--accent-yellow);
+            background: #f0f7ff;
+        }
+
+        .plan-mbps { font-family: var(--font-head); font-size: 2.2rem; font-weight: 700; line-height: 1; color: #010e28; }
+        .plan-badge { background: #0056cc; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
+        .plan-price { font-family: var(--font-head); font-size: 2rem; color: #010e28; font-weight: 700; line-height: 1; }
+        .plan-price sub { font-size: 1rem; }
+        .plan-desc { font-size: 0.65rem; color: #555; margin-top: 4px; font-weight: 600; }
+
+        /* FAQ & HOTLINE */
+        .faq-section { margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .faq-item { margin-bottom: 10px; border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 8px; overflow: hidden; }
+        .faq-question {
+            width: 100%; text-align: left; background: rgba(1, 14, 40, 0.5); border: none; padding: 12px 15px;
+            font-weight: 700; font-size: 0.85rem; color: var(--text-white); cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-answer { display: none; padding: 12px 15px; font-size: 0.85rem; color: var(--text-muted); background: rgba(3, 34, 82, 0.9); border-top: 1px solid rgba(255,255,255,0.1); }
+
+        .hotline-bar { display: flex; gap: 10px; margin-top: 20px; }
+        .hotline-btn {
+            flex: 1; text-align: center; padding: 12px; border-radius: 8px;
+            font-weight: bold; font-size: 0.85rem; text-decoration: none; color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .floating-messenger {
+            position: fixed; bottom: 20px; right: 20px; width: 56px; height: 56px;
+            background-color: #0084FF; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; box-shadow: 0 4px 20px rgba(0,132,255,0.5); z-index: 9999;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); z-index: 10000; justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-card {
+            background: var(--card-bg); border: 2px solid var(--accent-cyan); padding: 24px; border-radius: 16px; max-width: 450px; width: 100%;
+            box-shadow: 0 0 30px rgba(0,229,255,0.3); text-align: center; color: #fff;
+        }
+
+        /* FOOTER STYLES */
+        .portal-footer {
+            margin-top: 30px;
+            padding: 20px 10px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 229, 255, 0.2);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            width: 100%;
+        }
+
+        .portal-footer p {
+            margin: 4px 0;
+        }
+
+        .portal-footer .dev-name {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .plan-cards-container { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.2rem; }
+        }
+    
+/* ===== Premium Animated Background ===== */
+#bgCanvas{
+position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;
+}
+.toast-container{position:fixed;top:20px;right:20px;z-index:20000}
+.toast{min-width:280px;margin-bottom:10px;padding:14px 18px;border-radius:14px;
+backdrop-filter:blur(12px);background:rgba(20,30,60,.75);color:#fff;
+border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 30px rgba(0,0,0,.35);
+transform:translateX(120%);opacity:0;transition:.35s}
+.toast.show{transform:translateX(0);opacity:1}
+.toast.success{border-left:5px solid #28c76f}
+.toast.error{border-left:5px solid #ea5455}
+.toast.info{border-left:5px solid #00cfe8}
+
+</style>
+</head>
+<body>
+<canvas id='bgCanvas'></canvas>
+<div class='toast-container' id='toastContainer'></div>
+
+<div class="portal-container">
+
+    <!-- BRANDING HEADER WITH LOGO -->
+    <div class="brand-header">
+        <div class="logo-area">
+            <img src="logo.svg" onerror="this.src='https://via.placeholder.com/52/032252/00e5ff?text=FIBER'" alt="Logo" class="brand-logo">
+            <div>
+                <h1 class="portal-title">WIN INTERNET <span>KONEK</span></h1>
+                <p class="portal-subtitle">CUSTOMER SERVICE</p>
+            </div>
+        </div>
+        <div class="status-badge">
+            <span class="pulse-dot"></span> 24/7 Active
+        </div>
+    </div>
+
+    <!-- HERO LANDING BANNER (Poster Copywriting) -->
+    <div class="hero-banner">
+        <span class="banner-tag">UPGRADED PLANS AHEAD!</span>
+        <h2 class="hero-title">FASTER. STRONGER. <span>BETTER INTERNET!</span></h2>
+    </div>
+
+    <!-- PROMO HIGHLIGHTS GRID -->
+    <div class="features-grid">
+        <div class="feature-item">
+            <div class="feature-icon">🏠</div>
+            <div>
+                <div class="feature-title">Free Installation</div>
+                <div class="feature-desc">No hidden fees!</div>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">♾️</div>
+            <div>
+                <div class="feature-title">Unlimited Fiber</div>
+                <div class="feature-desc">No data cap. No throttling.</div>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📡</div>
+            <div>
+                <div class="feature-title">Worry-Free</div>
+                <div class="feature-desc">Stable & reliable 24/7</div>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">✔️</div>
+            <div>
+                <div class="feature-title">No Lock-In</div>
+                <div class="feature-desc">Flexibility you deserve</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-navigation">
+        <button class="tab-btn active" onclick="switchTab('tab-search', this)">🔍 Status</button>
+        <button class="tab-btn" onclick="switchTab('tab-pay', this)">💳 Pay Bill</button>
+        <button class="tab-btn" onclick="switchTab('tab-apply', this)">📝 New Apply</button>
+        <button class="tab-btn" onclick="switchTab('tab-support', this)">🛠️ Support</button>
+    </div>
+
+    <div class="content-card">
+
+        <!-- TAB 1: SEARCH STATUS -->
+        <div id="tab-search" class="tab-content active">
+            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">Check Billing & Due Date</h3>
+            <div class="form-group">
+                <label>Pangalan o Contact Number</label>
+                <input type="text" id="searchQuery" class="form-control" placeholder="Hal: Juan Dela Cruz o 09703442358">
+            </div>
+            <button class="btn-submit" onclick="searchAccount()">MAG-SEARCH</button>
+
+            <div id="searchResult" style="display:none; margin-top:20px; padding:15px; background:rgba(1,14,40,0.8); border: 1px solid var(--accent-cyan); border-radius:8px;">
+                <p><strong>Account Name:</strong> <span id="resName"></span></p>
+                <p><strong>Plan:</strong> <span id="resPlan"></span></p>
+                <p><strong>Status:</strong> <span id="resStatus"></span></p>
+                <p><strong>Due Date:</strong> <span id="resDueDate"></span></p>
+                <div id="dueDateBadge" style="padding:6px 12px; border-radius:20px; font-weight:bold; font-size:0.85rem; display:inline-block;"></div>
+            </div>
+        </div>
+
+        <!-- TAB 2: PAY BILL / RENEWAL -->
+        <div id="tab-pay" class="tab-content">
+            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">Pay Monthly Bill via GCash</h3>
+            <div style="text-align:center; background:rgba(255,255,255,0.05); padding:12px; border-radius:8px; margin-bottom:15px; border: 1px dashed var(--accent-cyan);">
+                <img src="gcash.png" onerror="this.src='https://via.placeholder.com/150/007cff/ffffff?text=GCash+QR'" alt="GCash QR" style="max-width:150px; border-radius:8px;">
+                <p style="font-size:0.8rem; margin:5px 0 0 0; color:var(--text-muted);">I-scan ang QR Code at i-copy ang GCash Reference No.</p>
+            </div>
+
+            <form id="renewForm" onsubmit="triggerModal(event, 'pay')">
+                <div class="form-group">
+                    <label>Pangalan o Contact Number *</label>
+                    <input type="text" id="renewQuery" class="form-control" required placeholder="Pangalan sa account">
+                </div>
+                <div class="form-group">
+                    <label>GCash Reference Number *</label>
+                    <input type="text" id="renewGcashRef" class="form-control" required placeholder="Hal: 100234567890">
+                </div>
+                <button type="submit" class="btn-submit">ISUBMIT ANG BAYAD</button>
+            </form>
+        </div>
+
+        <!-- TAB 3: NEW APPLICATION (POSTER PLANS) -->
+        <div id="tab-apply" class="tab-content">
+            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">New Fiber Application</h3>
+            <form id="registerForm" onsubmit="triggerModal(event, 'register')">
+                <div class="form-group">
+                    <label>Buong Pangalan *</label>
+                    <input type="text" id="regName" class="form-control" required placeholder="Juan Dela Cruz">
+                </div>
+                <div class="form-group">
+                    <label>Contact Number *</label>
+                    <input type="tel" id="regContact" class="form-control" required placeholder="09703442358">
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="regEmail" class="form-control" required placeholder="junadelacruz@gmail.com">
+                </div>
+                
+                <label style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; color: var(--text-muted);">Piliin ang Upgraded Plan *</label>
+                <div class="plan-cards-container">
+                    <div class="poster-plan-card" onclick="selectPlanCard(this, '50 Mbps - ₱699/mo')">
+                        <span class="plan-badge">UPGRADED PLAN</span>
+                        <div class="plan-mbps">50 Mbps</div>
+                        <div class="plan-price">₱699<sub>/mo</sub></div>
+                    </div>
+                    <div class="poster-plan-card selected" onclick="selectPlanCard(this, '100 Mbps - ₱999/mo')">
+                        <span class="plan-badge">UPGRADED PLAN</span>
+                        <div class="plan-mbps">100 Mbps</div>
+                        <div class="plan-price">₱999<sub>/mo</sub></div>
+                    </div>
+                </div>
+                <input type="hidden" id="selectedPlan" value="100 Mbps - ₱999/mo">
+
+                <div class="form-group">
+                    <label>Kumpletong Address *</label>
+                    <textarea id="regAddress" class="form-control" rows="2" required placeholder="House No., Street, Barangay, Antipolo"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">ISUBMIT ANG APPLICATION</button>
+            </form>
+        </div>
+
+        <!-- TAB 4: TECH SUPPORT -->
+        <div id="tab-support" class="tab-content">
+            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: #ff4d4d;">Report Connection Issue</h3>
+            <form id="supportForm" onsubmit="triggerModal(event, 'support')">
+                <div class="form-group">
+                    <label>Pangalan *</label>
+                    <input type="text" id="ticketName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Contact Number *</label>
+                    <input type="tel" id="ticketContact" class="form-control" required placeholder="09703442358">
+                </div>
+                <div class="form-group">
+                    <label>Uri ng Isyu *</label>
+                    <select id="issueType" class="form-control" required>
+                        <option value="">-- Piliin ang Isyu --</option>
+                        <option value="No Internet / Red LOS Light">Walang Internet / Pulang ilaw (LOS)</option>
+                        <option value="Slow Connection">Mabagal na Internet</option>
+                        <option value="Billing / Payment Query">Katanungan sa Billing</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Karagdagang Detalye</label>
+                    <textarea id="ticketDetails" class="form-control" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn-submit" style="background: linear-gradient(90deg, #cc0000 0%, #ff4d4d 100%);">ISUBMIT ANG TICKET</button>
+            </form>
+        </div>
+
+        <!-- FAQ ACCORDION SECTION -->
+        <div class="faq-section">
+            <h4 style="margin: 0 0 12px 0; color: var(--accent-yellow);">MGA KARANIWANG TANONG (FAQ)</h4>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Kailan mag-a-reflect ang ibinayad ko? <span>+</span></button>
+                <div class="faq-answer">Mabilisang ina-verify ng aming Admin ang GCash Reference Number sa loob ng 15-30 minuto. Awtomatikong mag-e-extend ang inyong Due Date at makatatanggap din kayo ng email confirmation.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Ano ang gagawin kapag Pulang Ilaw (LOS) ang router? <span>+</span></button>
+                <div class="faq-answer">Subukang i-unplug ang router sa saksakan nang 30 segundo at isaksak ulit. Kapag pula pa rin ang ilaw, pumunta sa "Support" tab at mag-submit ng Report Ticket.</div>
+            </div>
+        </div>
+
+        <!-- EMERGENCY HOTLINE BAR (Poster Contacts) -->
+        <div class="hotline-bar">
+            <a href="tel:09703442358" class="hotline-btn" style="background: #00a2ff;">📞 0997-648-6861</a>
+            <a href="mailto:winalincastrern@gmail.com" class="hotline-btn" style="background: #032252;">✉️ Email Support</a>
+        </div>
+
+    </div>
+
+    <!-- FOOTER SECTION (INSIDE PORTAL CONTAINER FOR PROPER ALIGNMENT) -->
+    <footer class="portal-footer">
+        <p>© <span id="currentYear"></span> Win Internet Konek. All Rights Reserved.</p>
+        <p>Developed & Managed by <span class="dev-name">Erwin R. Alincastre</span></p>
+    </footer>
+
+</div> <!-- END OF PORTAL CONTAINER -->
+
+<!-- CONFIRMATION POPUP MODAL -->
+<div id="confirmModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 style="margin-top:0; font-family: var(--font-head); font-size: 2rem; color: var(--accent-cyan);">KUMPIRMAHIN ANG DETALYE</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted);">Siguraduhing tama ang lahat ng inyong impormasyon bago magpatuloy.</p>
+        <div id="modalSummary" style="text-align:left; background:rgba(1,14,40,0.8); border: 1px solid var(--accent-cyan); padding:12px; border-radius:8px; font-size:0.85rem; margin-bottom:15px;"></div>
+        <div style="display:flex; gap:10px;">
+            <button onclick="closeModal()" style="flex:1; padding:10px; border:1px solid #ccc; background:transparent; color:#fff; border-radius:8px; cursor:pointer;">I-CANCEL</button>
+            <button id="modalConfirmBtn" style="flex:1; padding:10px; border:none; background:var(--accent-cyan); color:#000; font-weight:bold; border-radius:8px; cursor:pointer;">ISUBMIT</button>
+        </div>
+    </div>
+</div>
+
+<!-- FLOATING MESSENGER -->
+<a href="https://m.me/YOUR_FACEBOOK_PAGE_USERNAME" target="_blank" class="floating-messenger" title="Chat on Messenger">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.909 1.458 5.513 3.738 7.211V22l3.393-1.862c.925.257 1.907.395 2.869.395 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.09 12.395l-2.556-2.73-4.992 2.73 5.491-5.83 2.62 2.73 4.928-2.73-5.491 5.83z"/>
+    </svg>
+</a>
+
+<!-- RIGHT CLICK & INSPECT ELEMENT PROTECTION -->
+<script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
+            e.preventDefault(); return false;
+        }
+    });
+</script>
+
+<script>
+    // Awtomatikong i-update ang Taon sa Footer
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJDcULVvwrvi3FiIcUb0qpwlHprODimdf7Z7Sg-ulzcguomXVm32ZAt7CF3mXeuTorKA/exec";
+    let pendingAction = null;
+
+    function switchTab(tabId, element) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        element.classList.add('active');
+    }
+
+    function selectPlanCard(card, planValue) {
+        document.querySelectorAll('.poster-plan-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        document.getElementById('selectedPlan').value = planValue;
+    }
+
+    function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const isOpen = answer.style.display === 'block';
+        answer.style.display = isOpen ? 'none' : 'block';
+        btn.querySelector('span').innerText = isOpen ? '+' : '−';
+    }
+
+    function triggerModal(e, type) {
+        e.preventDefault();
+        pendingAction = type;
+        let summaryHtml = "";
+
+        if(type === 'pay') {
+            summaryHtml = `<b>Account:</b> ${document.getElementById('renewQuery').value}<br><b>GCash Ref:</b> ${document.getElementById('renewGcashRef').value}`;
+        } else if(type === 'register') {
+            summaryHtml = `<b>Name:</b> ${document.getElementById('regName').value}<br><b>Contact:</b> ${document.getElementById('regContact').value}<br><b>Plan:</b> ${document.getElementById('selectedPlan').value}`;
+        } else if(type === 'support') {
+            summaryHtml = `<b>Name:</b> ${document.getElementById('ticketName').value}<br><b>Issue:</b> ${document.getElementById('issueType').value}`;
+        }
+
+        document.getElementById('modalSummary').innerHTML = summaryHtml;
+        document.getElementById('confirmModal').style.display = 'flex';
+    }
+
+    function closeModal() { document.getElementById('confirmModal').style.display = 'none'; }
+
+    document.getElementById('modalConfirmBtn').addEventListener('click', function() {
+        closeModal();
+        if(pendingAction === 'pay') executePay();
+        if(pendingAction === 'register') executeRegister();
+        if(pendingAction === 'support') executeSupport();
+    });
+
+    function executePay() {
+        const payload = { action: "renew_payment", query: document.getElementById('renewQuery').value, gcashRef: document.getElementById('renewGcashRef').value };
+        sendData(payload, 'renewForm', "✅ Naisumite na ang inyong bayad!");
+    }
+
+    function executeRegister() {
+        const payload = { action: "register", fullName: document.getElementById('regName').value, contactNo: document.getElementById('regContact').value, email: document.getElementById('regEmail').value, selectedPlan: document.getElementById('selectedPlan').value, address: document.getElementById('regAddress').value };
+        sendData(payload, 'registerForm', "✅ Naisumite na ang inyong Application!");
+    }
+
+    function executeSupport() {
+        const payload = { action: "ticket", name: document.getElementById('ticketName').value, contact: document.getElementById('ticketContact').value, issue: document.getElementById('issueType').value, details: document.getElementById('ticketDetails').value };
+        sendData(payload, 'supportForm', "✅ Naisumite na ang Support Ticket!");
+    }
+
+    function sendData(payload, formId, successMsg) {
+        fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(() => { showToast(successMsg,"success"); document.getElementById(formId).reset(); });
+    }
+
+    function searchAccount() {
+        const query = document.getElementById('searchQuery').value.trim();
+        if(!query) return showToast("Maglagay ng Pangalan o Contact Number.","error");
+        
+        fetch(`${GOOGLE_SCRIPT_URL}?action=search&query=${encodeURIComponent(query)}`)
+        .then(res => res.json())
+        .then(data => {
+            const resArea = document.getElementById('searchResult');
+            if(data && data.found) {
+                document.getElementById('resName').innerText = data.name;
+                document.getElementById('resPlan').innerText = data.plan;
+                document.getElementById('resStatus').innerText = data.status;
+                document.getElementById('resDueDate').innerText = data.dueDate;
+                resArea.style.display = "block";
+            } else { 
+                showToast("Walang nahanap na record para sa: "+query,"error"); 
+                resArea.style.display = "none"; 
+            }
+        })
+        .catch(err => {
+            showToast("Hindi makakonek sa server.","error");
+        });
+    }
+
+function showToast(message,type='info'){
+ const c=document.getElementById('toastContainer');
+ const t=document.createElement('div');
+ t.className='toast '+type;
+ t.textContent=message;
+ c.appendChild(t);
+ requestAnimationFrame(()=>t.classList.add('show'));
+ setTimeout(()=>t.classList.remove('show'),3200);
+ setTimeout(()=>t.remove(),3600);
+}
+(function(){
+const cv=document.getElementById('bgCanvas'),ctx=cv.getContext('2d');
+let w,h,p=[];
+function rs(){w=cv.width=innerWidth;h=cv.height=innerHeight}
+addEventListener('resize',rs);rs();
+for(let i=0;i<70;i++)p.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1});
+function a(){
+ctx.clearRect(0,0,w,h);
+for(let i=0;i<p.length;i++){
+ let A=p[i];A.x+=A.vx;A.y+=A.vy;
+ if(A.x<0||A.x>w)A.vx*=-1;
+ if(A.y<0||A.y>h)A.vy*=-1;
+ ctx.beginPath();ctx.arc(A.x,A.y,A.r,0,6.28);ctx.fillStyle='rgba(0,229,255,.8)';ctx.fill();
+ for(let j=i+1;j<p.length;j++){
+  let B=p[j],d=Math.hypot(A.x-B.x,A.y-B.y);
+  if(d<120){ctx.strokeStyle='rgba(0,229,255,'+(1-d/120)*0.18+')';ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}
+ }
+}
+requestAnimationFrame(a)}
+a();
+})();
+
+</script>
+
+</body>
+</html>

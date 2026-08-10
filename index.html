@@ -1,22 +1,18 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="tl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win Internet Konek Customer Portal</title>
-    
-    <!-- PWA META TAGS -->
-    <meta name="theme-color" content="#032252">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="WinKonek">
-    
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Teko:wght@600;700&display=swap" rel="stylesheet">
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Win Internet Konek Customer Portal</title>
+<!-- PWA META TAGS -->
+<meta content="#032252" name="theme-color"/>
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700&amp;family=Teko:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<style>
         :root {
             --bg-dark: #010e28;
             --card-bg: #032252;
@@ -340,10 +336,32 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
 
-        .floating-messenger {
-            position: fixed; bottom: 20px; right: 20px; width: 56px; height: 56px;
-            background-color: #0084FF; border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; box-shadow: 0 4px 20px rgba(0,132,255,0.5); z-index: 9999;
+                .floating-messenger {
+            position: fixed;
+            inset: auto 20px 20px auto;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0084FF;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0,132,255,0.5);
+            z-index: 2147483647;
+            pointer-events: auto;
+            touch-action: manipulation;
+            text-decoration: none;
+        }
+        .floating-messenger svg {
+            display: block;
+            pointer-events: none;
+        }
+        @media (max-width: 600px) {
+            .floating-messenger {
+                inset: auto 14px 14px auto;
+                width: 54px;
+                height: 54px;
+            }
         }
 
         /* MODAL */
@@ -842,368 +860,997 @@
             font-size:.64rem;
         }
 
-    </style>
+    
+        /* =====================================================
+           SPRINT 17 — SUPPORT QUICK ACTION
+           ===================================================== */
+        .support-action-panel{
+            margin-top:12px;
+            padding:14px;
+            border-radius:15px;
+            border:1px solid rgba(0,229,255,.20);
+            background:rgba(1,14,40,.76);
+        }
+        .support-action-title{
+            font-size:.82rem;
+            font-weight:900;
+            color:var(--accent-cyan);
+        }
+        .support-action-message{
+            margin-top:4px;
+            color:var(--text-muted);
+            font-size:.74rem;
+            line-height:1.4;
+        }
+        .support-action-btn{
+            width:100%;
+            margin-top:10px;
+            padding:10px 12px;
+            border:1px solid rgba(0,229,255,.35);
+            border-radius:11px;
+            background:rgba(0,229,255,.08);
+            color:var(--accent-cyan);
+            font-weight:900;
+            cursor:pointer;
+        }
+        .support-action-btn:hover{background:rgba(0,229,255,.15)}
+
+    
+        /* =====================================================
+           SPRINT 19 — PAYMENT HISTORY FILTER
+           ===================================================== */
+        .history-filter-bar{
+            display:flex;
+            gap:6px;
+            margin-top:10px;
+            flex-wrap:wrap;
+        }
+        .history-filter-btn{
+            flex:1;
+            min-width:70px;
+            padding:7px 8px;
+            border-radius:9px;
+            border:1px solid rgba(255,255,255,.10);
+            background:rgba(255,255,255,.045);
+            color:var(--text-muted);
+            font-size:.62rem;
+            font-weight:900;
+            cursor:pointer;
+        }
+        .history-filter-btn.active{
+            color:var(--accent-cyan);
+            border-color:rgba(0,229,255,.35);
+            background:rgba(0,229,255,.10);
+        }
+        .history-filter-btn:hover{
+            background:rgba(0,229,255,.08);
+        }
+
+    
+        /* =====================================================
+           SPRINT 20 — PAYMENT SUMMARY
+           ===================================================== */
+        .payment-summary-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:7px;
+            margin-top:10px;
+        }
+        .payment-summary-item{
+            padding:9px 7px;
+            border-radius:11px;
+            background:rgba(255,255,255,.045);
+            border:1px solid rgba(255,255,255,.06);
+            text-align:center;
+        }
+        .payment-summary-number{
+            display:block;
+            margin-top:3px;
+            font-size:.88rem;
+            font-weight:900;
+        }
+        .payment-summary-label{
+            display:block;
+            margin-top:2px;
+            color:var(--text-muted);
+            font-size:.58rem;
+            font-weight:800;
+        }
+        .payment-total-box{
+            margin-top:8px;
+            padding:10px;
+            border-radius:11px;
+            background:rgba(0,229,255,.06);
+            border:1px solid rgba(0,229,255,.16);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+            font-size:.72rem;
+        }
+        .payment-total-box strong{
+            color:var(--accent-yellow);
+            font-size:.9rem;
+        }
+        @media(max-width:480px){
+            .payment-summary-grid{grid-template-columns:repeat(3,1fr)}
+            .payment-summary-item{padding:8px 3px}
+        }
+
+    
+        /* =====================================================
+           SPRINT 21 — LAST PAYMENT DETAILS
+           ===================================================== */
+        .last-payment-card{
+            margin-top:10px;
+            padding:12px;
+            border-radius:13px;
+            background:rgba(255,255,255,.035);
+            border:1px solid rgba(255,255,255,.07);
+        }
+        .last-payment-title{
+            font-size:.70rem;
+            font-weight:900;
+            color:var(--accent-cyan);
+            letter-spacing:.4px;
+        }
+        .last-payment-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:8px;
+            margin-top:9px;
+        }
+        .last-payment-item{
+            padding:8px;
+            border-radius:9px;
+            background:rgba(255,255,255,.04);
+        }
+        .last-payment-item .mini-label{
+            font-size:.56rem;
+        }
+        .last-payment-item strong{
+            display:block;
+            margin-top:3px;
+            font-size:.75rem;
+            overflow-wrap:anywhere;
+        }
+        @media(max-width:480px){
+            .last-payment-grid{grid-template-columns:1fr}
+        }
+
+    
+        /* =====================================================
+           SPRINT 22 — ACCOUNT SUMMARY PRINT
+           ===================================================== */
+        .account-print-action{
+            margin-top:12px;
+            padding:12px 14px;
+            border-radius:14px;
+            background:rgba(255,255,255,.035);
+            border:1px solid rgba(255,255,255,.07);
+        }
+        .account-print-title{
+            font-size:.78rem;
+            font-weight:900;
+            color:var(--accent-cyan);
+        }
+        .account-print-message{
+            margin-top:3px;
+            color:var(--text-muted);
+            font-size:.70rem;
+            line-height:1.35;
+        }
+        .account-print-btn{
+            width:100%;
+            margin-top:9px;
+            padding:10px 12px;
+            border-radius:10px;
+            border:1px solid rgba(0,229,255,.32);
+            background:rgba(0,229,255,.08);
+            color:var(--accent-cyan);
+            font-weight:900;
+            cursor:pointer;
+        }
+        .account-print-btn:hover{background:rgba(0,229,255,.15)}
+
+        #accountPrintSheetV22{
+            display:none;
+        }
+
+        @media print{
+            body > *:not(#accountPrintSheetV22){
+                display:none !important;
+            }
+            #accountPrintSheetV22{
+                display:block !important;
+                position:static !important;
+                width:100% !important;
+                padding:24px !important;
+                box-sizing:border-box !important;
+                color:#111 !important;
+                background:#fff !important;
+                font-family:Arial,sans-serif !important;
+            }
+            .print-header-v22{
+                text-align:center;
+                border-bottom:2px solid #111;
+                padding-bottom:12px;
+                margin-bottom:18px;
+            }
+            .print-header-v22 h1{
+                margin:0;
+                font-size:22px;
+            }
+            .print-header-v22 p{
+                margin:4px 0 0;
+                color:#555;
+                font-size:12px;
+            }
+            .print-section-v22{
+                margin-top:16px;
+            }
+            .print-section-v22 h2{
+                margin:0 0 8px;
+                font-size:14px;
+                border-bottom:1px solid #bbb;
+                padding-bottom:5px;
+            }
+            .print-row-v22{
+                display:flex;
+                justify-content:space-between;
+                gap:20px;
+                padding:6px 0;
+                font-size:12px;
+                border-bottom:1px solid #eee;
+            }
+            .print-row-v22 strong{text-align:right}
+            .print-footer-v22{
+                margin-top:24px;
+                padding-top:10px;
+                border-top:1px solid #bbb;
+                text-align:center;
+                color:#666;
+                font-size:10px;
+            }
+        }
+
+    
+        /* =====================================================
+
+           ===================================================== */
+        .quick-guide-panel{
+            margin-top:12px;
+            padding:14px;
+            border-radius:15px;
+            background:rgba(1,14,40,.76);
+            border:1px solid rgba(0,229,255,.18);
+        }
+        .quick-guide-title{
+            font-size:.82rem;
+            font-weight:900;
+            color:var(--accent-cyan);
+        }
+        .quick-guide-subtitle{
+            margin-top:3px;
+            color:var(--text-muted);
+            font-size:.70rem;
+        }
+        .quick-guide-list{
+            display:flex;
+            flex-direction:column;
+            gap:7px;
+            margin-top:10px;
+        }
+        .quick-guide-item{
+            display:flex;
+            align-items:flex-start;
+            gap:9px;
+            padding:9px;
+            border-radius:10px;
+            background:rgba(255,255,255,.04);
+        }
+        .quick-guide-icon{
+            width:27px;
+            height:27px;
+            min-width:27px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:50%;
+            background:rgba(0,229,255,.09);
+            border:1px solid rgba(0,229,255,.18);
+            font-size:.76rem;
+        }
+        .quick-guide-item strong{
+            display:block;
+            font-size:.70rem;
+        }
+        .quick-guide-item span{
+            display:block;
+            margin-top:2px;
+            color:var(--text-muted);
+            font-size:.65rem;
+            line-height:1.35;
+        }
+
+    
+        /* =====================================================
+
+           ===================================================== */
+        .copy-account-panel{
+            margin-top:12px;
+            padding:13px;
+            border-radius:14px;
+            background:rgba(1,14,40,.76);
+            border:1px solid rgba(0,229,255,.18);
+        }
+        .copy-account-title{
+            font-size:.80rem;
+            font-weight:900;
+            color:var(--accent-cyan);
+        }
+        .copy-account-subtitle{
+            margin-top:3px;
+            color:var(--text-muted);
+            font-size:.68rem;
+        }
+        .copy-account-btn{
+            width:100%;
+            margin-top:9px;
+            padding:10px 12px;
+            border-radius:10px;
+            border:1px solid rgba(0,229,255,.32);
+            background:rgba(0,229,255,.08);
+            color:var(--accent-cyan);
+            font-weight:900;
+            cursor:pointer;
+        }
+        .copy-account-btn:hover{background:rgba(0,229,255,.15)}
+
+    
+        /* =====================================================
+           SPRINT 25 — PAYMENT HISTORY SEARCH
+           ===================================================== */
+        .history-search-wrap{
+            margin-top:9px;
+            position:relative;
+        }
+        .history-search-input{
+            width:100%;
+            box-sizing:border-box;
+            padding:10px 11px 10px 34px;
+            border-radius:10px;
+            border:1px solid rgba(255,255,255,.10);
+            background:rgba(255,255,255,.045);
+            color:inherit;
+            outline:none;
+            font-size:.72rem;
+        }
+        .history-search-input:focus{
+            border-color:rgba(0,229,255,.38);
+            box-shadow:0 0 0 2px rgba(0,229,255,.07);
+        }
+        .history-search-icon{
+            position:absolute;
+            left:11px;
+            top:50%;
+            transform:translateY(-50%);
+            color:var(--text-muted);
+            font-size:.78rem;
+            pointer-events:none;
+        }
+
+    
+        /* SPRINT 26 — PRINT PAYMENT HISTORY */
+        .payment-print-action{margin-top:9px}
+        .payment-print-btn{
+            width:100%;padding:9px 11px;border-radius:10px;
+            border:1px solid rgba(0,229,255,.30);
+            background:rgba(0,229,255,.07);color:var(--accent-cyan);
+            font-size:.68rem;font-weight:900;cursor:pointer
+        }
+        .payment-print-btn:hover{background:rgba(0,229,255,.14)}
+        #paymentPrintSheetV26{display:none}
+        @media print{
+            body > *:not(#paymentPrintSheetV26){display:none!important}
+            #paymentPrintSheetV26{
+                display:block!important;color:#111!important;background:#fff!important;
+                padding:24px!important;font-family:Arial,sans-serif!important
+            }
+            .payment-print-header-v26{text-align:center;border-bottom:2px solid #111;padding-bottom:12px;margin-bottom:18px}
+            .payment-print-header-v26 h1{margin:0;font-size:21px}
+            .payment-print-header-v26 p{margin:4px 0 0;color:#555;font-size:12px}
+            .payment-print-account-v26{margin-bottom:16px;font-size:12px}
+            .payment-print-table-v26{width:100%;border-collapse:collapse;font-size:11px}
+            .payment-print-table-v26 th,.payment-print-table-v26 td{padding:7px;border:1px solid #ccc;text-align:left}
+            .payment-print-table-v26 th{background:#f2f2f2}
+            .payment-print-footer-v26{margin-top:18px;padding-top:9px;border-top:1px solid #bbb;text-align:center;color:#666;font-size:10px}
+        }
+
+    
+        /* =====================================================
+           SPRINT 35 — MOBILE / PWA INSTALL UI
+           ===================================================== */
+        .pwa-install-card{
+            display:none;
+            position:fixed;
+            left:12px;
+            right:12px;
+            bottom:12px;
+            z-index:25000;
+            padding:13px 14px;
+            border-radius:16px;
+            background:rgba(4,18,45,.96);
+            border:1px solid rgba(0,229,255,.28);
+            box-shadow:0 16px 40px rgba(0,0,0,.35);
+            backdrop-filter:blur(12px);
+        }
+        .pwa-install-title{
+            font-size:.82rem;
+            font-weight:900;
+            color:var(--accent-cyan);
+        }
+        .pwa-install-message{
+            margin-top:3px;
+            color:var(--text-muted);
+            font-size:.69rem;
+            line-height:1.35;
+        }
+        .pwa-install-actions{
+            display:flex;
+            gap:7px;
+            margin-top:9px;
+        }
+        .pwa-install-actions button{
+            flex:1;
+            padding:9px 10px;
+            border-radius:10px;
+            font-weight:900;
+            cursor:pointer;
+        }
+        .pwa-install-btn{
+            border:1px solid rgba(0,229,255,.35);
+            background:rgba(0,229,255,.10);
+            color:var(--accent-cyan);
+        }
+        .pwa-close-btn{
+            border:1px solid rgba(255,255,255,.10);
+            background:rgba(255,255,255,.05);
+            color:var(--text-muted);
+        }
+
+    
+        /* ADMIN ACCESS — isolated UI */
+        .admin-header-btn-v3{
+            position:fixed!important;top:14px!important;right:14px!important;
+            z-index:25001!important;pointer-events:auto!important;
+            padding:7px 9px;border-radius:9px;
+            border:1px solid rgba(255,255,255,.10);
+            background:rgba(255,255,255,.045);
+            color:var(--text-muted);font-size:.60rem;font-weight:900;
+            cursor:pointer;
+        }
+        .admin-overlay-v3{
+            display:none;position:fixed;inset:0;z-index:30000;
+            background:rgba(0,0,0,.72);align-items:center;justify-content:center;padding:18px;
+        }
+        .admin-card-v3{
+            width:100%;max-width:370px;padding:20px;border-radius:18px;
+            background:#07142d;border:1px solid rgba(0,229,255,.24);
+            box-shadow:0 20px 60px rgba(0,0,0,.45);
+        }
+        .admin-field-v3{
+            width:100%;box-sizing:border-box;margin-top:11px;padding:11px 12px;
+            border-radius:10px;border:1px solid rgba(255,255,255,.10);
+            background:rgba(255,255,255,.045);color:inherit;outline:none;
+        }
+
+    
+        /* ADMIN DASHBOARD V1 — isolated from client portal */
+        .admin-dash-overlay-v1{
+            display:none;position:fixed;inset:0;z-index:31000;
+            background:rgba(0,0,0,.80);padding:14px;overflow:auto;
+        }
+        .admin-dash-card-v1{
+            width:min(980px,100%);margin:0 auto;min-height:calc(100vh - 28px);
+            box-sizing:border-box;padding:18px;border-radius:18px;
+            background:#07142d;border:1px solid rgba(0,229,255,.22);
+            box-shadow:0 25px 80px rgba(0,0,0,.55);
+        }
+        .admin-dash-head-v1{
+            display:flex;justify-content:space-between;align-items:center;gap:10px;
+            border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:12px;
+        }
+        .admin-dash-title-v1{font-weight:900;color:var(--accent-cyan);font-size:1rem}
+        .admin-dash-sub-v1{color:var(--text-muted);font-size:.62rem;margin-top:3px}
+        .admin-dash-close-v1{
+            border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);
+            color:var(--text-muted);padding:8px 10px;border-radius:9px;cursor:pointer;
+        }
+        .subscriber-overview-v1{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:8px;
+            margin-top:10px;
+        }
+        .subscriber-overview-item{
+            padding:13px 12px;
+            border-radius:11px;
+            background:rgba(255,255,255,.035);
+            border:1px solid rgba(255,255,255,.07);
+            min-width:0;
+        }
+        .subscriber-overview-item strong{
+            display:block;
+            margin-top:5px;
+            font-size:.82rem;
+            line-height:1.25;
+            word-break:break-word;
+        }
+        @media(max-width:600px){
+            .subscriber-overview-v1{grid-template-columns:1fr;}
+        }
+        .admin-top-actions-v1{
+            display:flex;align-items:center;gap:7px;flex-shrink:0;
+        }
+        .admin-logout-top-v1{
+            border:1px solid rgba(255,90,90,.30);
+            background:rgba(255,70,70,.10);
+            color:#ff8585;
+            padding:8px 11px;
+            border-radius:9px;
+            cursor:pointer;
+            font-size:.64rem;
+            font-weight:900;
+            letter-spacing:.2px;
+        }
+        .admin-logout-top-v1:hover{
+            background:rgba(255,70,70,.18);
+            border-color:rgba(255,90,90,.50);
+        }
+        .admin-stat-grid-v1{
+            display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px;
+        }
+        .admin-stat-v1{
+            padding:10px;border-radius:12px;background:rgba(255,255,255,.04);
+            border:1px solid rgba(255,255,255,.07);
+        }
+        .admin-stat-v1 small{display:block;color:var(--text-muted);font-size:.58rem}
+        .admin-stat-v1 strong{display:block;margin-top:4px;font-size:1rem}
+        .admin-search-v1{
+            display:flex;gap:8px;margin-top:14px;
+        }
+        .admin-search-v1 input{
+            flex:1;min-width:0;padding:11px 12px;border-radius:10px;
+            border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045);
+            color:inherit;outline:none;
+        }
+        .admin-btn-v1{
+            border:1px solid rgba(0,229,255,.25);background:rgba(0,229,255,.08);
+            color:var(--accent-cyan);font-weight:900;padding:10px 13px;border-radius:10px;cursor:pointer;
+        }
+        .admin-editor-v1{
+            display:none;margin-top:14px;padding:14px;border-radius:14px;
+            border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);
+        }
+        .admin-form-grid-v1{
+            display:grid;grid-template-columns:repeat(2,1fr);gap:9px;
+        }
+        .admin-field-wrap-v1 label{
+            display:block;color:var(--text-muted);font-size:.60rem;margin-bottom:4px;
+        }
+        .admin-field-wrap-v1 input,.admin-field-wrap-v1 select,.admin-field-wrap-v1 textarea{
+            width:100%;box-sizing:border-box;padding:9px 10px;border-radius:9px;
+            border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045);
+            color:inherit;outline:none;font-size:.75rem;
+        }
+        .admin-field-wrap-v1 textarea{min-height:70px;resize:vertical}
+        .admin-actions-v1{display:flex;gap:8px;margin-top:12px}
+        .admin-save-v1{
+            flex:1;border:1px solid rgba(0,255,150,.25);background:rgba(0,255,150,.08);
+            color:#62ffb0;font-weight:900;padding:10px;border-radius:10px;cursor:pointer;
+        }
+        .admin-refresh-v1{
+            border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05);
+            color:var(--text-muted);font-weight:900;padding:10px;border-radius:10px;cursor:pointer;
+        }
+        .admin-msg-v1{margin-top:9px;font-size:.65rem;color:var(--text-muted);text-align:center}
+        @media(max-width:700px){
+            .admin-stat-grid-v1{grid-template-columns:repeat(2,1fr)}
+            .admin-form-grid-v1{grid-template-columns:1fr}
+            .admin-search-v1{flex-direction:column}
+        }
+
+    
+/* Hide lower duplicate account summary while preserving DOM IDs
+   required by the existing Google Apps Script/client logic. */
+.account-summary-grid.lower-account-summary-hidden {
+    display:none !important;
+}
+
+</style>
+<!-- SPRINT 35 — PWA META -->
 </head>
 <body>
-<canvas id='bgCanvas'></canvas>
-<div class='toast-container' id='toastContainer'></div>
-
+<button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
+<canvas id="bgCanvas"></canvas>
+<div class="toast-container" id="toastContainer"></div>
 <div class="portal-container">
-
-    <!-- BRANDING HEADER -->
-    <div class="brand-header">
-        <div class="logo-area">
-            <img src="logo.svg" onerror="this.src='https://via.placeholder.com/52/032252/00e5ff?text=FIBER'" alt="Logo" class="brand-logo">
-            <div>
-                <h1 class="portal-title">WIN INTERNET <span>KONEK</span></h1>
-                <p class="portal-subtitle">CUSTOMER SERVICE</p>
-            </div>
+<!-- BRANDING HEADER -->
+<div class="brand-header">
+<div class="logo-area">
+<img alt="Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/52/032252/00e5ff?text=FIBER'" src="logo.svg"/>
+<div>
+<h1 class="portal-title">WIN INTERNET <span>KONEK</span></h1>
+<p class="portal-subtitle">CUSTOMER SERVICE</p>
+</div>
+</div>
+<div class="status-badge">
+<span class="pulse-dot"></span> 24/7 Active
         </div>
-        <div class="status-badge">
-            <span class="pulse-dot"></span> 24/7 Active
-        </div>
-    </div>
-
-    <!-- HERO LANDING BANNER -->
-    <div class="hero-banner">
-        <span class="banner-tag">UPGRADED PLANS AHEAD!</span>
-        <h2 class="hero-title">FASTER. STRONGER. <span>BETTER INTERNET!</span></h2>
-    </div>
-
-    <!-- PROMO HIGHLIGHTS GRID -->
-    <div class="features-grid">
-        <div class="feature-item">
-            <div class="feature-icon">🏠</div>
-            <div>
-                <div class="feature-title">Free Installation</div>
-                <div class="feature-desc">No hidden fees!</div>
-            </div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">♾️</div>
-            <div>
-                <div class="feature-title">Unlimited Fiber</div>
-                <div class="feature-desc">No data cap. No throttling.</div>
-            </div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">📡</div>
-            <div>
-                <div class="feature-title">Worry-Free</div>
-                <div class="feature-desc">Stable & reliable 24/7</div>
-            </div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">✔️</div>
-            <div>
-                <div class="feature-title">No Lock-In</div>
-                <div class="feature-desc">Flexibility you deserve</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TABS -->
-    <div class="tab-navigation">
-        <button class="tab-btn active" onclick="switchTab('tab-search', this)">🔍 Check Status & Pay</button>
-        <button class="tab-btn" onclick="switchTab('tab-apply', this)">📝 Apply Now!</button>
-        <button class="tab-btn" onclick="switchTab('tab-support', this)">🛠️ Support</button>
-    </div>
-
-    <div class="content-card">
-
-        <!-- TAB 1: SEARCH STATUS & INTEGRATED PAY BILL -->
-        <div id="tab-search" class="tab-content active">
-            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">Check Status & Pay Bill</h3>
-            <div class="form-group">
-                <label>Pangalan o Contact Number</label>
-                <input type="text" id="searchQuery" class="form-control" placeholder="Hal: Juan Dela Cruz o 09703442358">
-            </div>
-            <button class="btn-submit" onclick="searchAccount()">MAG-SEARCH</button>
-
-            <!-- RESULT CONTAINER / CLIENT DASHBOARD V2 -->
-            <div class="account-overview-label" style="display:none;" id="accountOverviewLabel">ACCOUNT OVERVIEW</div>
-            
-            <!-- SPRINT 14 — CLIENT NOTIFICATION -->
-            <div id="clientNotification" class="client-notification">
-                <div class="client-notification-inner">
-                    <div id="clientNotificationIcon" class="client-notification-icon">i</div>
-                    <div>
-                        <div id="clientNotificationTitle" class="client-notification-title">ACCOUNT UPDATE</div>
-                        <div id="clientNotificationMessage" class="client-notification-message">—</div>
-                    </div>
-                </div>
-            </div>
-
-            
-            <!-- SPRINT 15 — REFRESH ACCOUNT STATUS -->
-            <div id="accountRefreshBar" class="account-refresh-bar">
-                <div class="account-refresh-info">
-                    <strong style="color:var(--text-white);">ACCOUNT STATUS</strong><br>
-                    <span id="accountLastUpdated">Not yet refreshed</span>
-                </div>
-                <button id="accountRefreshBtn" class="account-refresh-btn" onclick="refreshAccountV15()">
+</div>
+<!-- HERO LANDING BANNER -->
+<div class="hero-banner">
+<span class="banner-tag">UPGRADED PLANS AHEAD!</span>
+<h2 class="hero-title">FASTER. STRONGER. <span>BETTER INTERNET!</span></h2>
+</div>
+<!-- PROMO HIGHLIGHTS GRID -->
+<div class="features-grid">
+<div class="feature-item">
+<div class="feature-icon">🏠</div>
+<div>
+<div class="feature-title">Free Installation</div>
+<div class="feature-desc">No hidden fees!</div>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-icon">♾️</div>
+<div>
+<div class="feature-title">Unlimited Fiber</div>
+<div class="feature-desc">No data cap. No throttling.</div>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-icon">📡</div>
+<div>
+<div class="feature-title">Worry-Free</div>
+<div class="feature-desc">Stable &amp; reliable 24/7</div>
+</div>
+</div>
+<div class="feature-item">
+<div class="feature-icon">✔️</div>
+<div>
+<div class="feature-title">No Lock-In</div>
+<div class="feature-desc">Flexibility you deserve</div>
+</div>
+</div>
+</div>
+<!-- TABS -->
+<div class="tab-navigation">
+<button class="tab-btn active" onclick="switchTab('tab-search', this)">🔍 Check Status &amp; Pay</button>
+<button class="tab-btn" onclick="switchTab('tab-apply', this)">📝 Apply Now!</button>
+<button class="tab-btn" onclick="switchTab('tab-support', this)">🛠️ Support</button>
+</div>
+<div class="content-card">
+<!-- TAB 1: SEARCH STATUS & INTEGRATED PAY BILL -->
+<div class="tab-content active" id="tab-search">
+<h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">Check Status &amp; Pay Bill</h3>
+<div class="form-group">
+<label>Pangalan o Contact Number</label>
+<input class="form-control" id="searchQuery" placeholder="Hal: Juan Dela Cruz o 09703442358" type="text"/>
+</div>
+<button class="btn-submit" onclick="searchAccount()">MAG-SEARCH</button>
+<!-- RESULT CONTAINER / CLIENT DASHBOARD V2 -->
+<div class="account-overview-label" id="accountOverviewLabel" style="display:none;">ACCOUNT OVERVIEW</div>
+<!-- SPRINT 14 — CLIENT NOTIFICATION -->
+<div class="client-notification" id="clientNotification">
+<div class="client-notification-inner">
+<div class="client-notification-icon" id="clientNotificationIcon">i</div>
+<div>
+<div class="client-notification-title" id="clientNotificationTitle">ACCOUNT UPDATE</div>
+<div class="client-notification-message" id="clientNotificationMessage">—</div>
+</div>
+</div>
+</div>
+<!-- SPRINT 15 — REFRESH ACCOUNT STATUS -->
+<div class="account-refresh-bar" id="accountRefreshBar">
+<div class="account-refresh-info">
+<strong style="color:var(--text-white);">ACCOUNT STATUS</strong><br/>
+<span id="accountLastUpdated">Not yet refreshed</span>
+</div>
+<button class="account-refresh-btn" id="accountRefreshBtn" onclick="refreshAccountV15()">
                     ↻ REFRESH
                 </button>
-            </div>
+</div>
+<div class="client-status-result" id="searchResult" style="display:none;">
+<div class="status-hero">
+<div class="status-kicker">SUBSCRIBER ACCOUNT</div>
+<div class="status-main">
+<div class="status-icon" id="statusIcon">✓</div>
+<div class="status-copy">
+<div class="status-title" id="statusTitle">—</div>
+<div class="status-message" id="statusMessage">—</div>
+</div>
+</div>
+<div class="account-id-card">
+<div class="mini-label">ACCOUNT ID</div>
+<div class="account-id-value" id="resAccountId">—</div>
+</div>
+<div class="subscriber-overview-v1">
+<div class="subscriber-overview-item">
+<div class="mini-label">ACCOUNT NAME</div>
+<strong id="resNameTop">—</strong>
+</div>
+<div class="subscriber-overview-item">
+<div class="mini-label">PLAN</div>
+<strong id="resPlanTop">—</strong>
+</div>
+<div class="subscriber-overview-item">
+<div class="mini-label">MONTHLY BILL</div>
+<strong id="resAmountTop">—</strong>
+</div>
+</div>
+<div class="due-card">
+<div class="mini-label">NEXT PAYMENT DUE</div>
+<div class="due-date-value" id="resDueDate">—</div>
+<div class="due-countdown" id="dueCountdown">—</div>
+<div class="status-badge" id="dueDateBadge"></div>
+</div>
+</div>
+<div class="payment-history-card">
+<div class="payment-history-header">
+<div>
+<div class="mini-label">PAYMENT HISTORY</div>
+<div class="payment-history-subtitle">Your recent GCash payments</div>
+</div>
+<div class="history-count" id="paymentHistoryCount">0</div>
+</div>
+<div class="payment-summary-grid" id="paymentSummaryV20">
+<div class="payment-summary-item">
+<span class="payment-summary-number" id="paymentVerifiedCount">0</span>
+<span class="payment-summary-label">VERIFIED</span>
+</div>
+<div class="payment-summary-item">
+<span class="payment-summary-number" id="paymentPendingCount">0</span>
+<span class="payment-summary-label">PENDING</span>
+</div>
+<div class="payment-summary-item">
+<span class="payment-summary-number" id="paymentRejectedCount">0</span>
+<span class="payment-summary-label">REJECTED</span>
+</div>
+</div>
+<div class="payment-total-box">
+<span>TOTAL VERIFIED PAYMENTS</span>
+<strong id="paymentVerifiedTotal">₱0.00</strong>
+</div>
+<div class="last-payment-card" id="lastPaymentCardV21">
+<div class="last-payment-title">LAST PAYMENT</div>
+<div class="last-payment-grid">
+<div class="last-payment-item">
+<div class="mini-label">STATUS</div>
+<strong id="lastPaymentStatus">—</strong>
+</div>
+<div class="last-payment-item">
+<div class="mini-label">AMOUNT</div>
+<strong id="lastPaymentAmount">—</strong>
+</div>
+<div class="last-payment-item">
+<div class="mini-label">GCASH REFERENCE</div>
+<strong id="lastPaymentReference">—</strong>
+</div>
+<div class="last-payment-item">
+<div class="mini-label">PAYMENT RECORDS</div>
+<strong id="lastPaymentRecords">0</strong>
+</div>
+</div>
+</div>
 
-            <div id="searchResult" class="client-status-result" style="display:none;">
-                <div class="status-hero">
-                    <div class="status-kicker">SUBSCRIBER ACCOUNT</div>
-                    <div class="status-main">
-                        <div id="statusIcon" class="status-icon">✓</div>
-                        <div class="status-copy">
-                            <div id="statusTitle" class="status-title">—</div>
-                            <div id="statusMessage" class="status-message">—</div>
-                        </div>
-                    </div>
 
-                    <div class="account-id-card">
-                        <div class="mini-label">ACCOUNT ID</div>
-                        <div id="resAccountId" class="account-id-value">—</div>
-                    </div>
 
-                    <div class="due-card">
-                        <div class="mini-label">NEXT PAYMENT DUE</div>
-                        <div id="resDueDate" class="due-date-value">—</div>
-                        <div id="dueCountdown" class="due-countdown">—</div>
-                        <div id="dueDateBadge" class="status-badge"></div>
-                    </div>
-                </div>
-
-                <div class="payment-history-card">
-                    <div class="payment-history-header">
-                        <div>
-                            <div class="mini-label">PAYMENT HISTORY</div>
-                            <div class="payment-history-subtitle">Your recent GCash payments</div>
-                        </div>
-                        <div id="paymentHistoryCount" class="history-count">0</div>
-                    </div>
-                    <div id="paymentHistoryList" class="payment-history-list">
-                        <div class="history-empty">No payment records yet.</div>
-                    </div>
-                </div>
-
-                <div class="account-summary-grid">
-                    <div class="summary-card">
-                        <div class="mini-label">ACCOUNT NAME</div>
-                        <strong id="resName">—</strong>
-                    </div>
-                    <div class="summary-card">
-                        <div class="mini-label">PLAN</div>
-                        <strong id="resPlan">—</strong>
-                    </div>
-                    <div class="summary-card">
-                        <div class="mini-label">MONTHLY BILL</div>
-                        <strong id="resAmount">—</strong>
-                    </div>
-                </div>
-
-                
-                <!-- SPRINT 16 — SMART PAY BILL ACTION -->
-                <div id="paymentActionPanel" class="payment-action-panel">
-                    <div id="paymentActionTitle" class="payment-action-title">PAYMENT ACTION</div>
-                    <div id="paymentActionMessage" class="payment-action-message">—</div>
-                    <button id="paymentActionBtn" class="payment-action-btn" onclick="focusPayBillV16()">
+<div class="payment-history-list" id="paymentHistoryList">
+<div class="history-empty">No payment records yet.</div>
+</div>
+</div>
+<div class="account-summary-grid lower-account-summary-hidden">
+<div class="summary-card">
+<div class="mini-label">ACCOUNT NAME</div>
+<strong id="resName">—</strong>
+</div>
+<div class="summary-card">
+<div class="mini-label">PLAN</div>
+<strong id="resPlan">—</strong>
+</div>
+<div class="summary-card">
+<div class="mini-label">MONTHLY BILL</div>
+<strong id="resAmount">—</strong>
+</div>
+</div>
+<!-- SPRINT 16 — SMART PAY BILL ACTION -->
+<div class="payment-action-panel" id="paymentActionPanel">
+<div class="payment-action-title" id="paymentActionTitle">PAYMENT ACTION</div>
+<div class="payment-action-message" id="paymentActionMessage">—</div>
+<button class="payment-action-btn" id="paymentActionBtn" onclick="focusPayBillV16()">
                         PAY BILL NOW
                     </button>
-                    <div id="paymentActionNote" class="payment-action-note"></div>
-                </div>
-
-                <!-- PAY BILL FORM INSIDE SEARCH RESULT -->
-                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(0, 229, 255, 0.3);">
-                    <h4 style="margin-top:0; color: var(--accent-cyan); font-family: var(--font-head); font-size: 1.4rem;">MAG-BAYAD GAMIT ANG GCASH</h4>
-                    
-                    <div style="text-align:center; background:rgba(255,255,255,0.05); padding:12px; border-radius:8px; margin-bottom:15px; border: 1px dashed var(--accent-cyan);">
-                        <img src="gcash.png" onerror="this.src='https://via.placeholder.com/150/007cff/ffffff?text=GCash+QR'" alt="GCash QR" style="max-width:150px; border-radius:8px;">
-                        <p style="font-size:0.8rem; margin:5px 0 0 0; color:var(--text-muted);">I-scan ang QR Code at i-copy ang GCash Reference No.</p>
-                    </div>
-
-                    <form id="renewForm" onsubmit="triggerModal(event, 'pay')">
-                        <input type="hidden" id="renewQuery">
-                        <div class="form-group">
-                            <label>GCash Reference Number *</label>
-                            <input type="text" id="renewGcashRef" class="form-control" required placeholder="Hal: 100234567890">
-                        </div>
-                        <button type="submit" class="btn-submit" style="font-size: 1.2rem; padding: 10px;">ISUBMIT ANG BAYAD</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 2: NEW APPLICATION -->
-        <div id="tab-apply" class="tab-content">
-            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">New Fiber Application</h3>
-            <form id="registerForm" onsubmit="triggerModal(event, 'register')">
-                <div class="form-group">
-                    <label>Buong Pangalan *</label>
-                    <input type="text" id="regName" class="form-control" required placeholder="Juan Dela Cruz">
-                </div>
-                <div class="form-group">
-                    <label>Contact Number *</label>
-                    <input type="tel" id="regContact" class="form-control" required placeholder="09703442358">
-                </div>
-                <div class="form-group">
-                    <label>Email Address *</label>
-                    <input type="email" id="regEmail" class="form-control" required placeholder="junadelacruz@gmail.com">
-                </div>
-                
-                <label style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; color: var(--text-muted);">Piliin ang Upgraded Plan *</label>
-                <div class="plan-cards-container">
-                    <div class="poster-plan-card" onclick="selectPlanCard(this, '50 Mbps - ₱699/mo')">
-                        <span class="plan-badge">UPGRADED PLAN</span>
-                        <div class="plan-mbps">50 Mbps</div>
-                        <div class="plan-price">₱699<sub>/mo</sub></div>
-                    </div>
-                    <div class="poster-plan-card selected" onclick="selectPlanCard(this, '100 Mbps - ₱999/mo')">
-                        <span class="plan-badge">UPGRADED PLAN</span>
-                        <div class="plan-mbps">100 Mbps</div>
-                        <div class="plan-price">₱999<sub>/mo</sub></div>
-                    </div>
-                </div>
-                <input type="hidden" id="selectedPlan" value="100 Mbps - ₱999/mo">
-
-                <div class="form-group">
-                    <label>Kumpletong Address *</label>
-                    <textarea id="regAddress" class="form-control" rows="2" required placeholder="House No., Street, Barangay, Antipolo"></textarea>
-                </div>
-                <button type="submit" class="btn-submit">ISUBMIT ANG APPLICATION</button>
-            </form>
-        </div>
-
-        <!-- TAB 3: TECH SUPPORT -->
-        <div id="tab-support" class="tab-content">
-            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: #ff4d4d;">Report Connection Issue</h3>
-            <form id="supportForm" onsubmit="triggerModal(event, 'support')">
-                <div class="form-group">
-                    <label>Pangalan *</label>
-                    <input type="text" id="ticketName" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Contact Number *</label>
-                    <input type="tel" id="ticketContact" class="form-control" required placeholder="09703442358">
-                </div>
-                <div class="form-group">
-                    <label>Uri ng Isyu *</label>
-                    <select id="issueType" class="form-control" required>
-                        <option value="">-- Piliin ang Isyu --</option>
-                        <option value="No Internet / Red LOS Light">Walang Internet / Pulang ilaw (LOS)</option>
-                        <option value="Slow Connection">Mabagal na Internet</option>
-                        <option value="Billing / Payment Query">Katanungan sa Billing</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Karagdagang Detalye</label>
-                    <textarea id="ticketDetails" class="form-control" rows="2"></textarea>
-                </div>
-                <button type="submit" class="btn-submit" style="background: linear-gradient(90deg, #cc0000 0%, #ff4d4d 100%);">ISUBMIT ANG TICKET</button>
-            </form>
-        </div>
-
-        <!-- FAQ ACCORDION SECTION -->
-        <div class="faq-section">
-            <h4 style="margin: 0 0 12px 0; color: var(--accent-yellow);">MGA KARANIWANG TANONG (FAQ)</h4>
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Kailan mag-a-reflect ang ibinayad ko? <span>+</span></button>
-                <div class="faq-answer">Mabilisang ina-verify ng aming Admin ang GCash Reference Number sa loob ng 15-30 minuto. Awtomatikong mag-e-extend ang inyong Due Date at makatatanggap din kayo ng email confirmation.</div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">Ano ang gagawin kapag Pulang Ilaw (LOS) ang router? <span>+</span></button>
-                <div class="faq-answer">Subukang i-unplug ang router sa saksakan nang 30 segundo at isaksak ulit. Kapag pula pa rin ang ilaw, pumunta sa "Support" tab at mag-submit ng Report Ticket.</div>
-            </div>
-        </div>
-
-        <!-- EMERGENCY HOTLINE BAR -->
-        <div class="hotline-bar">
-            <a href="tel:09703442358" class="hotline-btn" style="background: #00a2ff;">📞 0997-648-6861</a>
-            <a href="mailto:winalincastrern@gmail.com" class="hotline-btn" style="background: #032252;">✉️ Email Support</a>
-        </div>
-
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="portal-footer">
-        <p>© <span id="currentYear"></span> Win Internet Konek. All Rights Reserved.</p>
-        <p>Developed & Managed by <span class="dev-name">Erwin R. Alincastre</span></p>
-    </footer>
-
+<div class="payment-action-note" id="paymentActionNote"></div>
 </div>
 
 
+
+<!-- PAY BILL FORM INSIDE SEARCH RESULT -->
+<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(0, 229, 255, 0.3);">
+<h4 style="margin-top:0; color: var(--accent-cyan); font-family: var(--font-head); font-size: 1.4rem;">MAG-BAYAD GAMIT ANG GCASH</h4>
+<div style="text-align:center; background:rgba(255,255,255,0.05); padding:12px; border-radius:8px; margin-bottom:15px; border: 1px dashed var(--accent-cyan);">
+<img alt="GCash QR" onerror="this.src='https://via.placeholder.com/150/007cff/ffffff?text=GCash+QR'" src="gcash.png" style="max-width:150px; border-radius:8px;"/>
+<p style="font-size:0.8rem; margin:5px 0 0 0; color:var(--text-muted);">I-scan ang QR Code at i-copy ang GCash Reference No.</p>
+</div>
+<form id="renewForm" onsubmit="triggerModal(event, 'pay')">
+<input id="renewQuery" type="hidden"/>
+<div class="form-group">
+<label>GCash Reference Number *</label>
+<input class="form-control" id="renewGcashRef" placeholder="Hal: 100234567890" required="" type="text"/>
+</div>
+<button class="btn-submit" style="font-size: 1.2rem; padding: 10px;" type="submit">ISUBMIT ANG BAYAD</button>
+</form>
+</div>
+</div>
+</div>
+<!-- TAB 2: NEW APPLICATION -->
+<div class="tab-content" id="tab-apply">
+<h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">New Fiber Application</h3>
+<form id="registerForm" onsubmit="triggerModal(event, 'register')">
+<div class="form-group">
+<label>Buong Pangalan *</label>
+<input class="form-control" id="regName" placeholder="Juan Dela Cruz" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>Contact Number *</label>
+<input class="form-control" id="regContact" placeholder="09703442358" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label>Email Address *</label>
+<input class="form-control" id="regEmail" placeholder="junadelacruz@gmail.com" required="" type="email"/>
+</div>
+<label style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; color: var(--text-muted);">Piliin ang Upgraded Plan *</label>
+<div class="plan-cards-container">
+<div class="poster-plan-card" onclick="selectPlanCard(this, '50 Mbps - ₱699/mo')">
+<span class="plan-badge">UPGRADED PLAN</span>
+<div class="plan-mbps">50 Mbps</div>
+<div class="plan-price">₱699<sub>/mo</sub></div>
+</div>
+<div class="poster-plan-card selected" onclick="selectPlanCard(this, '100 Mbps - ₱999/mo')">
+<span class="plan-badge">UPGRADED PLAN</span>
+<div class="plan-mbps">100 Mbps</div>
+<div class="plan-price">₱999<sub>/mo</sub></div>
+</div>
+</div>
+<input id="selectedPlan" type="hidden" value="100 Mbps - ₱999/mo"/>
+<div class="form-group">
+<label>Kumpletong Address *</label>
+<textarea class="form-control" id="regAddress" placeholder="House No., Street, Barangay, Antipolo" required="" rows="2"></textarea>
+</div>
+<button class="btn-submit" type="submit">ISUBMIT ANG APPLICATION</button>
+</form>
+</div>
+<!-- TAB 3: TECH SUPPORT -->
+<div class="tab-content" id="tab-support">
+<h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: #ff4d4d;">Report Connection Issue</h3>
+<form id="supportForm" onsubmit="triggerModal(event, 'support')">
+<div class="form-group">
+<label>Pangalan *</label>
+<input class="form-control" id="ticketName" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>Contact Number *</label>
+<input class="form-control" id="ticketContact" placeholder="09703442358" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label>Uri ng Isyu *</label>
+<select class="form-control" id="issueType" required="">
+<option value="">-- Piliin ang Isyu --</option>
+<option value="No Internet / Red LOS Light">Walang Internet / Pulang ilaw (LOS)</option>
+<option value="Slow Connection">Mabagal na Internet</option>
+<option value="Billing / Payment Query">Katanungan sa Billing</option>
+</select>
+</div>
+<div class="form-group">
+<label>Karagdagang Detalye</label>
+<textarea class="form-control" id="ticketDetails" rows="2"></textarea>
+</div>
+<button class="btn-submit" style="background: linear-gradient(90deg, #cc0000 0%, #ff4d4d 100%);" type="submit">ISUBMIT ANG TICKET</button>
+</form>
+</div>
+<!-- FAQ ACCORDION SECTION -->
+<div class="faq-section">
+<h4 style="margin: 0 0 12px 0; color: var(--accent-yellow);">MGA KARANIWANG TANONG (FAQ)</h4>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Kailan mag-a-reflect ang ibinayad ko? <span>+</span></button>
+<div class="faq-answer">Mabilisang ina-verify ng aming Admin ang GCash Reference Number sa loob ng 15-30 minuto. Awtomatikong mag-e-extend ang inyong Due Date at makatatanggap din kayo ng email confirmation.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Ano ang gagawin kapag Pulang Ilaw (LOS) ang router? <span>+</span></button>
+<div class="faq-answer">Subukang i-unplug ang router sa saksakan nang 30 segundo at isaksak ulit. Kapag pula pa rin ang ilaw, pumunta sa "Support" tab at mag-submit ng Report Ticket.</div>
+</div>
+</div>
+<!-- EMERGENCY HOTLINE BAR -->
+<div class="hotline-bar">
+<a class="hotline-btn" href="tel:09703442358" style="background: #00a2ff;">📞 0997-648-6861</a>
+<a class="hotline-btn" href="mailto:winalincastrern@gmail.com" style="background: #032252;">✉️ Email Support</a>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="portal-footer">
+<p>© <span id="currentYear"></span> Win Internet Konek. All Rights Reserved.</p>
+<p>Developed &amp; Managed by <span class="dev-name">Erwin R. Alincastre</span></p>
+</footer>
+</div>
 <!-- SPRINT 13 — PAYMENT RECEIPT MODAL -->
-<div id="receiptOverlay" class="receipt-overlay">
-    <div class="receipt-card">
-        <div class="receipt-brand">WIN INTERNET KONEK</div>
-        <div class="receipt-subtitle">PAYMENT RECEIPT</div>
-        <hr class="receipt-divider">
-
-        <div class="receipt-paid">✓ PAYMENT VERIFIED</div>
-
-        <div class="receipt-row">
-            <span>Account ID</span>
-            <strong id="receiptAccountId">—</strong>
-        </div>
-        <div class="receipt-row">
-            <span>Account Name</span>
-            <strong id="receiptName">—</strong>
-        </div>
-        <div class="receipt-row">
-            <span>Plan</span>
-            <strong id="receiptPlan">—</strong>
-        </div>
-        <div class="receipt-row">
-            <span>GCash Reference</span>
-            <strong id="receiptReference">—</strong>
-        </div>
-        <div class="receipt-row">
-            <span>Amount Paid</span>
-            <strong id="receiptAmount">—</strong>
-        </div>
-        <div class="receipt-row">
-            <span>Verification Status</span>
-            <strong id="receiptStatus">—</strong>
-        </div>
-        <div class="receipt-row">
-            <span>New Due Date</span>
-            <strong id="receiptDueDate">—</strong>
-        </div>
-        <div class="receipt-row">
-            <span>Receipt Generated</span>
-            <strong id="receiptGenerated">—</strong>
-        </div>
-
-        <hr class="receipt-divider">
-
-        <div style="text-align:center;color:#666;font-size:.68rem;line-height:1.4;">
+<div class="receipt-overlay" id="receiptOverlay">
+<div class="receipt-card">
+<div class="receipt-brand">WIN INTERNET KONEK</div>
+<div class="receipt-subtitle">PAYMENT RECEIPT</div>
+<hr class="receipt-divider"/>
+<div class="receipt-paid">✓ PAYMENT VERIFIED</div>
+<div class="receipt-row">
+<span>Account ID</span>
+<strong id="receiptAccountId">—</strong>
+</div>
+<div class="receipt-row">
+<span>Account Name</span>
+<strong id="receiptName">—</strong>
+</div>
+<div class="receipt-row">
+<span>Plan</span>
+<strong id="receiptPlan">—</strong>
+</div>
+<div class="receipt-row">
+<span>GCash Reference</span>
+<strong id="receiptReference">—</strong>
+</div>
+<div class="receipt-row">
+<span>Amount Paid</span>
+<strong id="receiptAmount">—</strong>
+</div>
+<div class="receipt-row">
+<span>Verification Status</span>
+<strong id="receiptStatus">—</strong>
+</div>
+<div class="receipt-row">
+<span>New Due Date</span>
+<strong id="receiptDueDate">—</strong>
+</div>
+<div class="receipt-row">
+<span>Receipt Generated</span>
+<strong id="receiptGenerated">—</strong>
+</div>
+<hr class="receipt-divider"/>
+<div style="text-align:center;color:#666;font-size:.68rem;line-height:1.4;">
             Keep this receipt for your records.
         </div>
-
-        <div class="receipt-actions">
-            <button class="receipt-close" onclick="closeReceiptV13()">CLOSE</button>
-            <button class="receipt-print" onclick="window.print()">PRINT RECEIPT</button>
-        </div>
-    </div>
+<div class="receipt-actions">
+<button class="receipt-close" onclick="closeReceiptV13()">CLOSE</button>
+<button class="receipt-print" onclick="window.print()">PRINT RECEIPT</button>
 </div>
-
+</div>
+</div>
 <!-- CONFIRMATION POPUP MODAL -->
-<div id="confirmModal" class="modal-overlay">
-    <div class="modal-card">
-        <h3 style="margin-top:0; font-family: var(--font-head); font-size: 2rem; color: var(--accent-cyan);">KUMPIRMAHIN ANG DETALYE</h3>
-        <p style="font-size:0.85rem; color:var(--text-muted);">Siguraduhing tama ang lahat ng inyong impormasyon bago magpatuloy.</p>
-        <div id="modalSummary" style="text-align:left; background:rgba(1,14,40,0.8); border: 1px solid var(--accent-cyan); padding:12px; border-radius:8px; font-size:0.85rem; margin-bottom:15px;"></div>
-        <div style="display:flex; gap:10px;">
-            <button onclick="closeModal()" style="flex:1; padding:10px; border:1px solid #ccc; background:transparent; color:#fff; border-radius:8px; cursor:pointer;">I-CANCEL</button>
-            <button id="modalConfirmBtn" style="flex:1; padding:10px; border:none; background:var(--accent-cyan); color:#000; font-weight:bold; border-radius:8px; cursor:pointer;">ISUBMIT</button>
-        </div>
-    </div>
+<div class="modal-overlay" id="confirmModal">
+<div class="modal-card">
+<h3 style="margin-top:0; font-family: var(--font-head); font-size: 2rem; color: var(--accent-cyan);">KUMPIRMAHIN ANG DETALYE</h3>
+<p style="font-size:0.85rem; color:var(--text-muted);">Siguraduhing tama ang lahat ng inyong impormasyon bago magpatuloy.</p>
+<div id="modalSummary" style="text-align:left; background:rgba(1,14,40,0.8); border: 1px solid var(--accent-cyan); padding:12px; border-radius:8px; font-size:0.85rem; margin-bottom:15px;"></div>
+<div style="display:flex; gap:10px;">
+<button onclick="closeModal()" style="flex:1; padding:10px; border:1px solid #ccc; background:transparent; color:#fff; border-radius:8px; cursor:pointer;">I-CANCEL</button>
+<button id="modalConfirmBtn" style="flex:1; padding:10px; border:none; background:var(--accent-cyan); color:#000; font-weight:bold; border-radius:8px; cursor:pointer;">ISUBMIT</button>
 </div>
-
+</div>
+</div>
 <!-- FLOATING MESSENGER -->
-<a href="https://m.me/YOUR_FACEBOOK_PAGE_USERNAME" target="_blank" class="floating-messenger" title="Chat on Messenger">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-        <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.909 1.458 5.513 3.738 7.211V22l3.393-1.862c.925.257 1.907.395 2.869.395 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.09 12.395l-2.556-2.73-4.992 2.73 5.491-5.83 2.62 2.73 4.928-2.73-5.491 5.83z"/>
-    </svg>
+<a class="floating-messenger" href="https://m.me/YOUR_FACEBOOK_PAGE_USERNAME" target="_blank" title="Chat on Messenger">
+<svg fill="white" height="28" viewbox="0 0 24 24" width="28">
+<path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.909 1.458 5.513 3.738 7.211V22l3.393-1.862c.925.257 1.907.395 2.869.395 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.09 12.395l-2.556-2.73-4.992 2.73 5.491-5.83 2.62 2.73 4.928-2.73-5.491 5.83z"></path>
+</svg>
 </a>
-
 <!-- PROTECTION SCRIPT -->
 <script>
     document.addEventListener('contextmenu', e => e.preventDefault());
@@ -1213,11 +1860,10 @@
         }
     });
 </script>
-
 <script>
     document.getElementById('currentYear').innerText = new Date().getFullYear();
 
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxz7FOChRV0VFhaPFfSCtQZdowYByxUwwTb6aBZ3OxfwbLpmg_COJ4eNQR-QOwOulQ9LQ/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbweMZSJJFMtILU_RrG-MRuYm7fPSKyJlhRt2JfN0obUGw9disV0Lc-D2BbxLE5u27d4HQ/exec";
     let pendingAction = null;
 
     function switchTab(tabId, element) {
@@ -1454,6 +2100,400 @@
                     }, 450);
                 }
 
+
+                function openSupportV17() {
+                    // Reuse the portal's existing Support section if present.
+                    const support = document.getElementById('support');
+                    if (support) {
+                        support.scrollIntoView({
+                            behavior:'smooth',
+                            block:'start'
+                        });
+                        return;
+                    }
+
+                    // Fallback: locate a support section by common IDs/classes.
+                    const candidates = document.querySelectorAll(
+                        '[id*="support" i], [class*="support" i]'
+                    );
+
+                    if (candidates.length) {
+                        candidates[0].scrollIntoView({
+                            behavior:'smooth',
+                            block:'start'
+                        });
+                        return;
+                    }
+
+                    if (typeof showToast === 'function') {
+                        showToast("Paki-check ang Support section ng portal.", "info");
+                    } else {
+                        alert("Paki-check ang Support section ng portal.");
+                    }
+                }
+
+
+                function filterPaymentHistoryV19(filter) {
+                    const list = document.getElementById('paymentHistoryList');
+                    const count = document.getElementById('paymentHistoryCount');
+                    const buttons = document.querySelectorAll('#paymentHistoryFilters .history-filter-btn');
+                    const state = window.__winKonekV13 || {};
+                    const payments = Array.isArray(state.payments) ? state.payments : [];
+
+                    buttons.forEach(function(btn){
+                        btn.classList.toggle('active', btn.dataset.filter === filter);
+                    });
+
+                    const filtered = payments.filter(function(payment){
+                        if (filter === 'ALL') return true;
+                        const status = String(payment.status || 'PENDING').toUpperCase().trim();
+                        if (filter === 'VERIFIED') {
+                            return status === 'VERIFIED' || status === 'PAID' || status === 'APPROVED';
+                        }
+                        return status === filter;
+                    });
+
+                    count.innerText = filtered.length;
+
+                    if (!filtered.length) {
+                        list.innerHTML = '<div class="history-empty">No ' +
+                            filter.toLowerCase() + ' payment records.</div>';
+                        return;
+                    }
+
+                    list.innerHTML = filtered.map(function(payment) {
+                        const status = String(payment.status || 'PENDING').toUpperCase().trim();
+                        let color = '#ffcc00';
+                        let bg = 'rgba(255,204,0,.14)';
+
+                        if (status === 'VERIFIED' || status === 'PAID' || status === 'APPROVED') {
+                            color = '#28c76f';
+                            bg = 'rgba(40,199,111,.14)';
+                        } else if (status === 'REJECTED') {
+                            color = '#ea5455';
+                            bg = 'rgba(234,84,85,.14)';
+                        }
+
+                        const reference = payment.reference || 'No reference';
+                        const amount = payment.amount !== '' && payment.amount != null
+                            ? '₱' + Number(payment.amount).toLocaleString('en-PH', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                              })
+                            : '—';
+
+                        return `
+                            <div class="history-row">
+                                <div class="history-ref">
+                                    <span style="display:block;color:var(--text-muted);font-size:.58rem;letter-spacing:.6px;">GCASH REFERENCE</span>
+                                    ${reference}
+                                </div>
+                                <div class="history-amount">${amount}</div>
+                                <div class="history-status"
+                                     style="color:${color};background:${bg};border:1px solid ${color}55;">
+                                    ${status}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+
+                function updatePaymentSummaryV20() {
+                    const state = window.__winKonekV13 || {};
+                    const payments = Array.isArray(state.payments) ? state.payments : [];
+
+                    let verified = 0;
+                    let pending = 0;
+                    let rejected = 0;
+                    let verifiedTotal = 0;
+
+                    payments.forEach(function(payment){
+                        const status = String(payment.status || 'PENDING').toUpperCase().trim();
+                        const amount = Number(payment.amount);
+
+                        if (status === 'VERIFIED' || status === 'PAID' || status === 'APPROVED') {
+                            verified++;
+                            if (!isNaN(amount)) verifiedTotal += amount;
+                        } else if (status === 'REJECTED') {
+                            rejected++;
+                        } else {
+                            pending++;
+                        }
+                    });
+
+                    const set = function(id, value){
+                        const el = document.getElementById(id);
+                        if (el) el.innerText = value;
+                    };
+
+                    set('paymentVerifiedCount', verified);
+                    set('paymentPendingCount', pending);
+                    set('paymentRejectedCount', rejected);
+                    set('paymentVerifiedTotal',
+                        '₱' + verifiedTotal.toLocaleString('en-PH', {
+                            minimumFractionDigits:2,
+                            maximumFractionDigits:2
+                        })
+                    );
+                }
+
+
+                function updateLastPaymentV21() {
+                    const state = window.__winKonekV13 || {};
+                    const payments = Array.isArray(state.payments) ? state.payments : [];
+
+                    const set = function(id, value){
+                        const el = document.getElementById(id);
+                        if (el) el.innerText = value;
+                    };
+
+                    set('lastPaymentRecords', payments.length);
+
+                    if (!payments.length) {
+                        set('lastPaymentStatus', 'No payment');
+                        set('lastPaymentAmount', '—');
+                        set('lastPaymentReference', '—');
+                        return;
+                    }
+
+                    const payment = payments[0];
+                    const status = String(payment.status || 'PENDING').toUpperCase().trim();
+                    const amountNumber = Number(payment.amount);
+
+                    set('lastPaymentStatus', status);
+                    set(
+                        'lastPaymentAmount',
+                        payment.amount !== '' && payment.amount != null && !isNaN(amountNumber)
+                            ? '₱' + amountNumber.toLocaleString('en-PH', {
+                                minimumFractionDigits:2,
+                                maximumFractionDigits:2
+                              })
+                            : '—'
+                    );
+                    set('lastPaymentReference', payment.reference || 'No reference');
+                }
+
+
+                function printAccountSummaryV22() {
+                    const text = function(id, fallback='—') {
+                        const el = document.getElementById(id);
+                        return el ? (el.innerText || '').trim() || fallback : fallback;
+                    };
+
+                    const copy = function(targetId, sourceId) {
+                        const target = document.getElementById(targetId);
+                        const source = document.getElementById(sourceId);
+                        if (target) target.innerText = source ? (source.innerText || '—').trim() || '—' : '—';
+                    };
+
+                    copy('printAccountIdV22', 'resAccountId');
+                    copy('printNameV22', 'resName');
+                    copy('printPlanV22', 'resPlan');
+                    copy('printBillV22', 'resBill');
+                    copy('printStatusV22', 'resStatus');
+                    copy('printDueDateV22', 'resDueDate');
+                    copy('printCountdownV22', 'dueCountdown');
+
+                    copy('printLastStatusV22', 'lastPaymentStatus');
+                    copy('printLastAmountV22', 'lastPaymentAmount');
+                    copy('printLastRefV22', 'lastPaymentReference');
+                    copy('printPaymentRecordsV22', 'lastPaymentRecords');
+
+                    copy('printVerifiedCountV22', 'paymentVerifiedCount');
+                    copy('printPendingCountV22', 'paymentPendingCount');
+                    copy('printRejectedCountV22', 'paymentRejectedCount');
+                    copy('printVerifiedTotalV22', 'paymentVerifiedTotal');
+
+                    window.print();
+                }
+
+
+                function copyAccountDetailsV24() {
+                    const getText = function(id, fallback='N/A') {
+                        const el = document.getElementById(id);
+                        return el ? ((el.innerText || '').trim() || fallback) : fallback;
+                    };
+
+                    const details =
+                        'WIN INTERNET KONEK ACCOUNT DETAILS\n\n' +
+                        'Account ID: ' + getText('resAccountId') + '\n' +
+                        'Name: ' + getText('resName') + '\n' +
+                        'Plan: ' + getText('resPlan') + '\n' +
+                        'Monthly Bill: ' + getText('resBill') + '\n' +
+                        'Status: ' + getText('resStatus') + '\n' +
+                        'Due Date: ' + getText('resDueDate');
+
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(details).then(function(){
+                            if (typeof showToast === 'function') {
+                                showToast('Account details copied.', 'success');
+                            } else {
+                                alert('Account details copied.');
+                            }
+                        }).catch(function(){
+                            window.prompt('Copy account details:', details);
+                        });
+                    } else {
+                        window.prompt('Copy account details:', details);
+                    }
+                }
+
+
+                function searchPaymentHistoryV25(term) {
+                    const list = document.getElementById('paymentHistoryList');
+                    const count = document.getElementById('paymentHistoryCount');
+                    const state = window.__winKonekV13 || {};
+                    const payments = Array.isArray(state.payments) ? state.payments : [];
+                    const query = String(term || '').toLowerCase().trim();
+
+                    const filtered = payments.filter(function(payment){
+                        if (!query) return true;
+
+                        const reference = String(payment.reference || '').toLowerCase();
+                        const status = String(payment.status || '').toLowerCase();
+                        const amount = String(payment.amount || '').toLowerCase();
+
+                        return reference.indexOf(query) !== -1 ||
+                               status.indexOf(query) !== -1 ||
+                               amount.indexOf(query) !== -1;
+                    });
+
+                    if (count) count.innerText = filtered.length;
+
+                    if (!filtered.length) {
+                        if (list) {
+                            list.innerHTML =
+                                '<div class="history-empty">No matching payment records.</div>';
+                        }
+                        return;
+                    }
+
+                    if (list) {
+                        list.innerHTML = filtered.map(function(payment) {
+                            const status = String(payment.status || 'PENDING').toUpperCase().trim();
+                            let color = '#ffcc00';
+                            let bg = 'rgba(255,204,0,.14)';
+
+                            if (status === 'VERIFIED' || status === 'PAID' || status === 'APPROVED') {
+                                color = '#28c76f';
+                                bg = 'rgba(40,199,111,.14)';
+                            } else if (status === 'REJECTED') {
+                                color = '#ea5455';
+                                bg = 'rgba(234,84,85,.14)';
+                            }
+
+                            const reference = payment.reference || 'No reference';
+                            const numericAmount = Number(payment.amount);
+                            const amount = payment.amount !== '' && payment.amount != null && !isNaN(numericAmount)
+                                ? '₱' + numericAmount.toLocaleString('en-PH', {
+                                    minimumFractionDigits:2,
+                                    maximumFractionDigits:2
+                                  })
+                                : '—';
+
+                            return `
+                                <div class="history-row">
+                                    <div class="history-ref">
+                                        <span style="display:block;color:var(--text-muted);font-size:.58rem;letter-spacing:.6px;">GCASH REFERENCE</span>
+                                        ${reference}
+                                    </div>
+                                    <div class="history-amount">${amount}</div>
+                                    <div class="history-status"
+                                         style="color:${color};background:${bg};border:1px solid ${color}55;">
+                                        ${status}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    }
+                }
+
+
+                function printPaymentHistoryV26() {
+                    const state = window.__winKonekV13 || {};
+                    const payments = Array.isArray(state.payments) ? state.payments : [];
+                    const accountIdEl = document.getElementById('printPaymentAccountIdV26');
+                    const nameEl = document.getElementById('printPaymentNameV26');
+                    const rowsEl = document.getElementById('printPaymentRowsV26');
+
+                    if (accountIdEl) accountIdEl.innerText =
+                        document.getElementById('resAccountId')?.innerText || 'N/A';
+                    if (nameEl) nameEl.innerText =
+                        document.getElementById('resName')?.innerText || 'N/A';
+                    if (!rowsEl) return;
+
+                    rowsEl.innerHTML = payments.length ? payments.map(function(payment){
+                        const n = Number(payment.amount);
+                        const amount = payment.amount !== '' && payment.amount != null && !isNaN(n)
+                            ? '₱' + n.toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2})
+                            : '—';
+                        return '<tr><td>' + (payment.reference || 'No reference') +
+                               '</td><td>' + amount +
+                               '</td><td>' + String(payment.status || 'PENDING').toUpperCase() +
+                               '</td></tr>';
+                    }).join('') : '<tr><td colspan="3">No payment records.</td></tr>';
+
+                    window.print();
+                }
+
+
+                /* =====================================================
+                   SPRINT 35 — PWA
+                   ===================================================== */
+                let deferredPwaPromptV35 = null;
+
+                function showPwaInstallV35() {
+                    const card = document.getElementById('pwaInstallCardV35');
+                    if (card) card.style.display = 'block';
+                }
+
+                function closePwaBannerV35() {
+                    const card = document.getElementById('pwaInstallCardV35');
+                    if (card) card.style.display = 'none';
+                }
+
+                async function installPwaV35() {
+                    if (!deferredPwaPromptV35) {
+                        closePwaBannerV35();
+                        if (typeof showToast === 'function') {
+                            showToast('Sa browser menu, piliin ang Install app / Add to Home Screen.', 'info');
+                        }
+                        return;
+                    }
+
+                    deferredPwaPromptV35.prompt();
+                    await deferredPwaPromptV35.userChoice;
+                    deferredPwaPromptV35 = null;
+                    closePwaBannerV35();
+                }
+
+                window.addEventListener('beforeinstallprompt', function(event) {
+                    event.preventDefault();
+                    deferredPwaPromptV35 = event;
+                    showPwaInstallV35();
+                });
+
+                window.addEventListener('appinstalled', function() {
+                    deferredPwaPromptV35 = null;
+                    closePwaBannerV35();
+                    if (typeof showToast === 'function') {
+                        showToast('WinKonek installed successfully.', 'success');
+                    }
+                });
+
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', function() {
+                        navigator.serviceWorker.register('./sw.js')
+                            .then(function() {
+                                console.log('WinKonek PWA service worker ready.');
+                            })
+                            .catch(function(error) {
+                                console.warn('PWA service worker registration failed:', error);
+                            });
+                    });
+                }
+
 function searchAccount(silentRefresh = false) {
         const query = document.getElementById('searchQuery').value.trim();
         if(!query) return showToast("Maglagay ng Pangalan o Contact Number.","error");
@@ -1559,6 +2599,8 @@ function searchAccount(silentRefresh = false) {
                                 : [];
 
                             window.__winKonekV13.payments = payments;
+                            updateLastPaymentV21();
+                            updatePaymentSummaryV20();
                             count.innerText = payments.length;
 
                             if (!payments.length) {
@@ -1620,7 +2662,24 @@ function searchAccount(silentRefresh = false) {
 document.getElementById('resName').innerText = data.name || 'N/A';
                 document.getElementById('resPlan').innerText = data.plan || 'N/A';
                 document.getElementById('resAmount').innerText = data.amount ? '₱' + Number(data.amount).toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : 'N/A';
-                document.getElementById('resAccountId').innerText = data.accountId || 'N/A';
+
+                // Subscriber Account Overview
+                const topName = document.getElementById('resNameTop');
+                const topPlan = document.getElementById('resPlanTop');
+                const topAmount = document.getElementById('resAmountTop');
+                if (topName) topName.innerText = data.name || 'N/A';
+                if (topPlan) topPlan.innerText = data.plan || 'N/A';
+                if (topAmount) {
+                    topAmount.innerText = data.amount
+                        ? '₱' + Number(data.amount).toLocaleString('en-PH', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        })
+                        : 'N/A';
+                }
+
+                document.getElementById('resAccountId').innerText =
+                    (data.accountId && String(data.accountId).trim()) ? data.accountId : 'N/A';
                 document.getElementById('resDueDate').innerText = data.dueDate || 'N/A';
                 loadPaymentHistoryV12(data.name);
 
@@ -1832,6 +2891,392 @@ document.getElementById('resName').innerText = data.name || 'N/A';
         }
         a();
     })();
+</script>
+<!-- SPRINT 22 — PRINTABLE ACCOUNT SUMMARY -->
+<div id="accountPrintSheetV22">
+<div class="print-header-v22">
+<h1>WIN INTERNET KONEK</h1>
+<p>Subscriber Account Summary</p>
+</div>
+<div class="print-section-v22">
+<h2>ACCOUNT DETAILS</h2>
+<div class="print-row-v22"><span>Account ID</span><strong id="printAccountIdV22">—</strong></div>
+<div class="print-row-v22"><span>Name</span><strong id="printNameV22">—</strong></div>
+<div class="print-row-v22"><span>Plan</span><strong id="printPlanV22">—</strong></div>
+<div class="print-row-v22"><span>Monthly Bill</span><strong id="printBillV22">—</strong></div>
+<div class="print-row-v22"><span>Status</span><strong id="printStatusV22">—</strong></div>
+<div class="print-row-v22"><span>Due Date</span><strong id="printDueDateV22">—</strong></div>
+<div class="print-row-v22"><span>Countdown</span><strong id="printCountdownV22">—</strong></div>
+</div>
+<div class="print-section-v22">
+<h2>LAST PAYMENT</h2>
+<div class="print-row-v22"><span>Status</span><strong id="printLastStatusV22">—</strong></div>
+<div class="print-row-v22"><span>Amount</span><strong id="printLastAmountV22">—</strong></div>
+<div class="print-row-v22"><span>GCash Reference</span><strong id="printLastRefV22">—</strong></div>
+<div class="print-row-v22"><span>Total Payment Records</span><strong id="printPaymentRecordsV22">—</strong></div>
+</div>
+<div class="print-section-v22">
+<h2>PAYMENT SUMMARY</h2>
+<div class="print-row-v22"><span>Verified Payments</span><strong id="printVerifiedCountV22">—</strong></div>
+<div class="print-row-v22"><span>Pending Payments</span><strong id="printPendingCountV22">—</strong></div>
+<div class="print-row-v22"><span>Rejected Payments</span><strong id="printRejectedCountV22">—</strong></div>
+<div class="print-row-v22"><span>Total Verified Payments</span><strong id="printVerifiedTotalV22">—</strong></div>
+</div>
+<div class="print-footer-v22">
+            Generated from the Win Internet Konek Subscriber Portal.
+        </div>
+</div>
+<div id="paymentPrintSheetV26">
+<div class="payment-print-header-v26">
+<h1>WIN INTERNET KONEK</h1>
+<p>Subscriber Payment History</p>
+</div>
+<div class="payment-print-account-v26">
+<strong>Account ID:</strong> <span id="printPaymentAccountIdV26">—</span><br/>
+<strong>Name:</strong> <span id="printPaymentNameV26">—</span>
+</div>
+<table class="payment-print-table-v26">
+<thead><tr><th>GCash Reference</th><th>Amount</th><th>Status</th></tr></thead>
+<tbody id="printPaymentRowsV26"></tbody>
+</table>
+<div class="payment-print-footer-v26">
+            Generated from the Win Internet Konek Subscriber Portal.
+        </div>
+</div>
+<div class="admin-overlay-v3" id="adminOverlayV3">
+<div class="admin-card-v3">
+<div style="text-align:center;font-weight:900;color:var(--accent-cyan)">🔐 ADMIN ACCESS</div>
+<div style="text-align:center;margin-top:4px;color:var(--text-muted);font-size:.67rem">Authorized administrator only</div>
+<input autocomplete="username" class="admin-field-v3" id="adminUserV3" placeholder="Admin Username" type="text"/>
+<input autocomplete="current-password" class="admin-field-v3" id="adminPassV3" placeholder="Admin Password" type="password"/>
+<div style="display:flex;gap:7px;margin-top:12px">
+<button id="adminCloseV3" style="flex:1;padding:10px;border-radius:10px" type="button">CLOSE</button>
+<button id="adminLoginV3" style="flex:1;padding:10px;border-radius:10px" type="button">LOGIN</button>
+</div>
+<div id="adminMsgV3" style="margin-top:10px;text-align:center;color:var(--text-muted);font-size:.62rem">
+                Login is verified by Google Apps Script.
+            </div>
+</div>
+</div>
+<script>
+(function(){
+    const ADMIN_URL_V3 = "https://script.google.com/macros/s/AKfycbwKjOsgohDQWmI0rNblf4dRfrtTXHMgQhIIfqiXhAH49HGUmDqO1Siu5Id5ti0DcMuD1g/exec";
+
+    function adminMsgV3(text, error){
+        const el = document.getElementById("adminMsgV3");
+        if(el){
+            el.textContent = text;
+            el.style.color = error ? "#ea5455" : "var(--text-muted)";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+        const overlay = document.getElementById("adminOverlayV3");
+
+        document.getElementById("adminHeaderV3")?.addEventListener("click", function(){
+            overlay.style.display = "flex";
+        });
+
+        document.getElementById("adminCloseV3")?.addEventListener("click", function(){
+            overlay.style.display = "none";
+        });
+
+        document.getElementById("adminLoginV3")?.addEventListener("click", async function(){
+            const username = document.getElementById("adminUserV3").value.trim();
+            const password = document.getElementById("adminPassV3").value;
+
+            if(!username || !password){
+                adminMsgV3("Ilagay ang username at password.", true);
+                return;
+            }
+
+            adminMsgV3("Verifying...", false);
+
+            try{
+                const response = await fetch(ADMIN_URL_V3, {
+                    method:"POST",
+                    headers:{"Content-Type":"text/plain;charset=utf-8"},
+                    body:JSON.stringify({
+                        action:"adminLogin",
+                        username:username,
+                        password:password
+                    })
+                });
+
+                const result = await response.json();
+
+                if(result && result.success){
+                    sessionStorage.setItem("winkonek_admin_token_v2", result.token || "");
+                    adminMsgV3("Admin login successful.", false);
+                    overlay.style.display = "none";
+                    if (typeof window.openAdminDashboardV1 === "function") {
+                        window.openAdminDashboardV1();
+                    }
+                }else{
+                    adminMsgV3((result && result.error) || "Invalid username or password.", true);
+                }
+            }catch(error){
+                console.error("Admin login:", error);
+                adminMsgV3("Hindi maka-connect sa Admin server.", true);
+            }
+        });
+    });
+})();
+</script>
+<div class="admin-dash-overlay-v1" id="adminDashV1">
+<div class="admin-dash-card-v1">
+<div class="admin-dash-head-v1">
+<div>
+<div class="admin-dash-title-v1">⚙️ ADMIN DASHBOARD</div>
+<div class="admin-dash-sub-v1">Subscriber management — Google Sheets connected</div>
+</div>
+<div class="admin-top-actions-v1">
+<button class="admin-logout-top-v1" id="adminLogoutV1" type="button">↪ LOGOUT</button>
+<button class="admin-dash-close-v1" id="adminDashCloseV1" type="button">CLOSE</button>
+</div>
+</div>
+<div class="admin-stat-grid-v1">
+<div class="admin-stat-v1"><small>Total Subscribers</small><strong id="admTotalV1">—</strong></div>
+<div class="admin-stat-v1"><small>Active</small><strong id="admActiveV1">—</strong></div>
+<div class="admin-stat-v1"><small>Due Soon</small><strong id="admDueSoonV1">—</strong></div>
+<div class="admin-stat-v1"><small>Overdue</small><strong id="admOverdueV1">—</strong></div>
+</div>
+<div class="admin-search-v1">
+<input id="adminSubscriberQueryV1" placeholder="Search Account ID, name, or contact number" type="text"/>
+<button class="admin-btn-v1" id="adminSubscriberSearchV1" type="button">🔎 SEARCH</button>
+</div>
+<div class="admin-editor-v1" id="adminEditorV1">
+<div style="font-weight:900;color:var(--accent-cyan);margin-bottom:10px">
+            EDIT SUBSCRIBER — <span id="adminEditingIdV1"></span>
+</div>
+<div class="admin-form-grid-v1">
+<div class="admin-field-wrap-v1">
+<label>NAME</label><input id="admNameV1"/>
+</div>
+<div class="admin-field-wrap-v1">
+<label>CONTACT NUMBER</label><input id="admContactV1"/>
+</div>
+<div class="admin-field-wrap-v1">
+<label>EMAIL</label><input id="admEmailV1"/>
+</div>
+<div class="admin-field-wrap-v1">
+<label>PLAN / SPEED</label><input id="admPlanV1"/>
+</div>
+<div class="admin-field-wrap-v1">
+<label>ADDRESS</label><textarea id="admAddressV1"></textarea>
+</div>
+<div class="admin-field-wrap-v1">
+<label>REMARKS</label><textarea id="admRemarksV1"></textarea>
+</div>
+<div class="admin-field-wrap-v1">
+<label>STATUS</label>
+<select id="admStatusV1">
+<option value="APPROVED">APPROVED</option>
+<option value="PAID">PAID</option>
+<option value="PENDING">PENDING</option>
+<option value="OVERDUE">OVERDUE</option>
+<option value="SUSPENDED">SUSPENDED</option>
+<option value="PENDING PAYMENT">PENDING PAYMENT</option>
+</select>
+</div>
+<div class="admin-field-wrap-v1">
+<label>DUE DATE</label><input id="admDueDateV1" type="date"/>
+</div>
+</div>
+<div class="admin-actions-v1">
+<button class="admin-save-v1" id="adminSaveV1" type="button">💾 SAVE CHANGES</button>
+<button class="admin-refresh-v1" id="adminRefreshV1" type="button">↻ CLEAR</button>
+</div>
+<div class="admin-msg-v1" id="adminEditorMsgV1"></div>
+</div>
+<div class="admin-msg-v1" id="adminDashMsgV1"></div>
+</div>
+</div>
+<script>
+(function(){
+  const ADMIN_URL_DASH_V1 = "https://script.google.com/macros/s/AKfycbwKjOsgohDQWmI0rNblf4dRfrtTXHMgQhIIfqiXhAH49HGUmDqO1Siu5Id5ti0DcMuD1g/exec";
+
+  function adminTokenV1(){
+    return sessionStorage.getItem('winkonek_admin_token_v2') || '';
+  }
+
+  function dashMsgV1(text, error){
+    const el=document.getElementById('adminDashMsgV1');
+    if(el){ el.textContent=text; el.style.color=error?'#ea5455':'var(--text-muted)'; }
+  }
+
+  function editorMsgV1(text, error){
+    const el=document.getElementById('adminEditorMsgV1');
+    if(el){ el.textContent=text; el.style.color=error?'#ea5455':'#62ffb0'; }
+  }
+
+  window.openAdminDashboardV1 = function(){
+    const token=adminTokenV1();
+    if(!token){
+      if(typeof openAdminLoginV36==='function') openAdminLoginV36();
+      return;
+    }
+    document.getElementById('adminDashV1').style.display='block';
+    loadAdminStatsV1();
+  };
+
+  async function loadAdminStatsV1(){
+    dashMsgV1('Loading dashboard...',false);
+    try{
+      const u=ADMIN_URL_DASH_V1+'?action=adminDashboard&key='+encodeURIComponent(adminTokenV1());
+      const r=await fetch(u);
+      const d=await r.json();
+      if(!d.success){
+        dashMsgV1(d.error||'Unauthorized. Please login again.',true);
+        return;
+      }
+      document.getElementById('admTotalV1').textContent=d.subscribers.total;
+      document.getElementById('admActiveV1').textContent=d.subscribers.active;
+      document.getElementById('admDueSoonV1').textContent=d.subscribers.dueSoon;
+      document.getElementById('admOverdueV1').textContent=d.subscribers.overdue;
+      dashMsgV1('Dashboard updated.',false);
+    }catch(e){
+      console.error(e);
+      dashMsgV1('Hindi maka-connect sa Admin Dashboard.',true);
+    }
+  }
+
+  function setDateV1(value){
+    const el=document.getElementById('admDueDateV1');
+    if(!el){return;}
+    const s=String(value||'');
+    const m=s.match(/(\\d{4})[-/](\\d{1,2})[-/](\\d{1,2})/);
+    if(m){
+      el.value=m[1]+'-'+String(m[2]).padStart(2,'0')+'-'+String(m[3]).padStart(2,'0');
+      return;
+    }
+    el.value='';
+  }
+
+  function clearEditorV1(){
+    document.getElementById('adminEditorV1').style.display='none';
+    document.getElementById('adminSubscriberQueryV1').value='';
+    document.getElementById('adminEditingIdV1').textContent='';
+    editorMsgV1('',false);
+  }
+
+  async function searchAdminSubscriberV1(){
+    const q=document.getElementById('adminSubscriberQueryV1').value.trim();
+    if(!q){dashMsgV1('Ilagay ang Account ID, name, o contact number.',true);return;}
+    dashMsgV1('Searching subscriber...',false);
+    try{
+      const u=ADMIN_URL_DASH_V1+'?action=adminSubscriber&key='+encodeURIComponent(adminTokenV1())+'&query='+encodeURIComponent(q);
+      const r=await fetch(u);
+      const d=await r.json();
+      if(!d.success){
+        dashMsgV1(d.error||'Subscriber not found.',true);
+        return;
+      }
+      const s=d.subscriber;
+      document.getElementById('adminEditorV1').style.display='block';
+      document.getElementById('adminEditingIdV1').textContent=s.accountId||'N/A';
+      document.getElementById('admNameV1').value=s.name||'';
+      document.getElementById('admContactV1').value=s.contact||'';
+      document.getElementById('admEmailV1').value=s.email||'';
+      document.getElementById('admPlanV1').value=s.plan||'';
+      document.getElementById('admAddressV1').value=s.address||'';
+      document.getElementById('admRemarksV1').value=s.remarks||'';
+      document.getElementById('admStatusV1').value=s.status||'PENDING';
+      setDateV1(s.dueDate);
+      editorMsgV1('Subscriber loaded. You can edit the fields.',false);
+      dashMsgV1('Subscriber found.',false);
+    }catch(e){
+      console.error(e);
+      dashMsgV1('Hindi maka-connect sa subscriber search.',true);
+    }
+  }
+
+  async function saveAdminSubscriberV1(){
+    const accountId=document.getElementById('adminEditingIdV1').textContent.trim();
+    if(!accountId){editorMsgV1('Walang selected subscriber.',true);return;}
+    editorMsgV1('Saving changes...',false);
+    try{
+      const payload={
+        action:'adminUpdateSubscriber',
+        key:adminTokenV1(),
+        accountId:accountId,
+        fields:{
+          name:document.getElementById('admNameV1').value,
+          contact:document.getElementById('admContactV1').value,
+          email:document.getElementById('admEmailV1').value,
+          plan:document.getElementById('admPlanV1').value,
+          address:document.getElementById('admAddressV1').value,
+          remarks:document.getElementById('admRemarksV1').value,
+          status:document.getElementById('admStatusV1').value,
+          dueDate:document.getElementById('admDueDateV1').value
+        }
+      };
+      const r=await fetch(ADMIN_URL_DASH_V1,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)
+      });
+      const d=await r.json();
+      if(!d.success){editorMsgV1(d.error||'Save failed.',true);return;}
+      editorMsgV1('✅ Changes saved successfully.',false);
+      loadAdminStatsV1();
+    }catch(e){
+      console.error(e);
+      editorMsgV1('Hindi maka-save sa Google Sheet.',true);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('adminDashCloseV1')?.addEventListener('click',function(){
+      document.getElementById('adminDashV1').style.display='none';
+    });
+
+    document.getElementById('adminLogoutV1')?.addEventListener('click',function(){
+      sessionStorage.removeItem('winkonek_admin_token_v2');
+      document.getElementById('adminDashV1').style.display='none';
+      if(typeof closeAdminLoginV36 === 'function') closeAdminLoginV36();
+      if(typeof showToast === 'function'){
+        showToast('Admin logged out successfully.', 'success');
+      }
+    });
+    document.getElementById('adminSubscriberSearchV1')?.addEventListener('click',searchAdminSubscriberV1);
+    document.getElementById('adminSaveV1')?.addEventListener('click',saveAdminSubscriberV1);
+    document.getElementById('adminRefreshV1')?.addEventListener('click',clearEditorV1);
+    document.getElementById('adminSubscriberQueryV1')?.addEventListener('keydown',function(e){
+      if(e.key==='Enter') searchAdminSubscriberV1();
+    });
+  });
+})();
+</script>
+
+<script>
+(function () {
+    function forceFloatingMessenger() {
+        var messenger = document.querySelector('.floating-messenger');
+        if (!messenger) return;
+
+        // Detach it from any transformed/scrolling parent.
+        if (messenger.parentElement !== document.body) {
+            document.body.appendChild(messenger);
+        }
+
+        messenger.style.setProperty('position', 'fixed', 'important');
+        messenger.style.setProperty('right', '20px', 'important');
+        messenger.style.setProperty('bottom', '20px', 'important');
+        messenger.style.setProperty('left', 'auto', 'important');
+        messenger.style.setProperty('top', 'auto', 'important');
+        messenger.style.setProperty('z-index', '2147483647', 'important');
+        messenger.style.setProperty('display', 'flex', 'important');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', forceFloatingMessenger);
+    } else {
+        forceFloatingMessenger();
+    }
+
+    window.addEventListener('load', forceFloatingMessenger);
+})();
 </script>
 
 </body>

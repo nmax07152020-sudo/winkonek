@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="WinKonek">
     
-    <!-- GOOGLE FONTS (Poster Typography Matching) -->
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Teko:wght@600;700&display=swap" rel="stylesheet">
@@ -173,29 +173,7 @@
 
         .hero-title span { color: var(--accent-cyan); }
 
-        .hero-text { font-size: 0.85rem; color: var(--text-muted); margin: 10px 0 16px 0; line-height: 1.4; }
-
-        .quick-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-
-        .action-chip {
-            background: rgba(0, 229, 255, 0.15);
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .action-chip:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            box-shadow: 0 0 15px var(--accent-cyan);
-        }
-
-        /* POSTER PROMO HIGHLIGHTS GRID */
+        /* PROMO HIGHLIGHTS GRID */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -314,7 +292,7 @@
             box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
         }
 
-        /* PLAN CARDS GRID (POSTER PRICING DESIGN) */
+        /* PLAN CARDS GRID */
         .plan-cards-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -344,7 +322,6 @@
         .plan-badge { background: #0056cc; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
         .plan-price { font-family: var(--font-head); font-size: 2rem; color: #010e28; font-weight: 700; line-height: 1; }
         .plan-price sub { font-size: 1rem; }
-        .plan-desc { font-size: 0.65rem; color: #555; margin-top: 4px; font-weight: 600; }
 
         /* FAQ & HOTLINE */
         .faq-section { margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
@@ -379,7 +356,7 @@
             box-shadow: 0 0 30px rgba(0,229,255,0.3); text-align: center; color: #fff;
         }
 
-        /* FOOTER STYLES */
+        /* FOOTER */
         .portal-footer {
             margin-top: 30px;
             padding: 20px 10px;
@@ -390,14 +367,8 @@
             width: 100%;
         }
 
-        .portal-footer p {
-            margin: 4px 0;
-        }
-
-        .portal-footer .dev-name {
-            color: var(--accent-cyan);
-            font-weight: 700;
-        }
+        .portal-footer p { margin: 4px 0; }
+        .portal-footer .dev-name { color: var(--accent-cyan); font-weight: 700; }
 
         @media (max-width: 480px) {
             .features-grid { grid-template-columns: 1fr; }
@@ -405,21 +376,473 @@
             .hero-title { font-size: 2.2rem; }
         }
     
-/* ===== Premium Animated Background ===== */
-#bgCanvas{
-position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;
-}
-.toast-container{position:fixed;top:20px;right:20px;z-index:20000}
-.toast{min-width:280px;margin-bottom:10px;padding:14px 18px;border-radius:14px;
-backdrop-filter:blur(12px);background:rgba(20,30,60,.75);color:#fff;
-border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 30px rgba(0,0,0,.35);
-transform:translateX(120%);opacity:0;transition:.35s}
-.toast.show{transform:translateX(0);opacity:1}
-.toast.success{border-left:5px solid #28c76f}
-.toast.error{border-left:5px solid #ea5455}
-.toast.info{border-left:5px solid #00cfe8}
+        /* Animated Background & Toasts */
+        #bgCanvas{ position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none; }
+        .toast-container{position:fixed;top:20px;right:20px;z-index:20000}
+        .toast{min-width:280px;margin-bottom:10px;padding:14px 18px;border-radius:14px;
+        backdrop-filter:blur(12px);background:rgba(20,30,60,.75);color:#fff;
+        border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 30px rgba(0,0,0,.35);
+        transform:translateX(120%);opacity:0;transition:.35s}
+        .toast.show{transform:translateX(0);opacity:1}
+        .toast.success{border-left:5px solid #28c76f}
+        .toast.error{border-left:5px solid #ea5455}
+        .toast.info{border-left:5px solid #00cfe8}
+    
+        /* =====================================================
+           WIN INTERNET KONEK — CLIENT DASHBOARD V2
+           ===================================================== */
+        .client-status-result{
+            margin-top:20px;
+            padding:0;
+            background:transparent;
+            border:0;
+            border-radius:18px;
+        }
+        .status-hero{
+            padding:20px;
+            border-radius:20px;
+            border:1px solid rgba(0,229,255,.25);
+            background:linear-gradient(145deg,rgba(3,34,82,.98),rgba(1,14,40,.97));
+            box-shadow:0 16px 38px rgba(0,0,0,.24);
+        }
+        .status-kicker{
+            color:var(--text-muted);
+            font-size:.68rem;
+            font-weight:900;
+            letter-spacing:1.5px;
+        }
+        .status-main{
+            display:flex;
+            align-items:center;
+            gap:14px;
+            margin-top:10px;
+        }
+        .status-icon{
+            width:56px;
+            height:56px;
+            min-width:56px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:1.35rem;
+            font-weight:900;
+            color:#28c76f;
+            background:rgba(40,199,111,.15);
+            border:1px solid rgba(40,199,111,.4);
+        }
+        .status-copy{flex:1}
+        .status-title{
+            font-size:1.5rem;
+            font-weight:900;
+            line-height:1.1;
+            letter-spacing:.3px;
+        }
+        .status-message{
+            margin-top:5px;
+            color:var(--text-muted);
+            font-size:.84rem;
+            line-height:1.4;
+        }
+        .account-id-card,
+        .due-card{
+            margin-top:15px;
+            padding:14px 15px;
+            border-radius:14px;
+            background:rgba(255,255,255,.055);
+            border:1px solid rgba(255,255,255,.08);
+        }
+        .due-card{
+            border:1px dashed rgba(0,229,255,.28);
+        }
+        .mini-label{
+            color:var(--text-muted);
+            font-size:.64rem;
+            font-weight:900;
+            letter-spacing:1px;
+        }
+        .account-id-value{
+            margin-top:5px;
+            font-size:1.15rem;
+            font-weight:900;
+            letter-spacing:1px;
+            color:var(--accent-cyan);
+        }
+        .due-date-value{
+            margin-top:5px;
+            font-size:1.4rem;
+            font-weight:900;
+            color:var(--accent-yellow);
+        }
+        .status-badge{
+            display:inline-block;
+            margin-top:8px;
+            padding:6px 11px;
+            border-radius:20px;
+            font-size:.69rem;
+            font-weight:900;
+        }
+        .account-summary-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+            margin-top:10px;
+        }
+        .summary-card{
+            padding:14px;
+            border-radius:14px;
+            background:rgba(1,14,40,.8);
+            border:1px solid rgba(255,255,255,.08);
+        }
+        .summary-card strong{
+            display:block;
+            margin-top:5px;
+            font-size:.98rem;
+        }
+        @media(max-width:480px){
+            .account-summary-grid{grid-template-columns:1fr}
+            .status-title{font-size:1.3rem}
+            .due-date-value{font-size:1.25rem}
+        }
 
-</style>
+    
+        .account-overview-label{
+            margin:0 0 8px 2px;
+            color:var(--text-muted);
+            font-size:.68rem;
+            font-weight:900;
+            letter-spacing:1.4px;
+        }
+        .summary-card strong{
+            overflow-wrap:anywhere;
+        }
+
+    
+        .due-countdown{
+            margin-top:6px;
+            font-size:.82rem;
+            font-weight:900;
+            color:var(--text-muted);
+        }
+
+    
+        .payment-history-card{
+            margin-top:12px;
+            padding:15px;
+            border-radius:16px;
+            background:rgba(1,14,40,.82);
+            border:1px solid rgba(255,255,255,.08);
+        }
+        .payment-history-header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:10px;
+        }
+        .payment-history-subtitle{
+            margin-top:4px;
+            color:var(--text-muted);
+            font-size:.76rem;
+        }
+        .history-count{
+            min-width:30px;
+            height:30px;
+            padding:0 8px;
+            border-radius:15px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:rgba(0,229,255,.12);
+            border:1px solid rgba(0,229,255,.28);
+            color:var(--accent-cyan);
+            font-weight:900;
+            font-size:.78rem;
+        }
+        .payment-history-list{
+            margin-top:11px;
+            display:flex;
+            flex-direction:column;
+            gap:8px;
+        }
+        .history-row{
+            display:grid;
+            grid-template-columns:1.1fr .8fr auto;
+            gap:8px;
+            align-items:center;
+            padding:11px 10px;
+            border-radius:11px;
+            background:rgba(255,255,255,.045);
+            border:1px solid rgba(255,255,255,.06);
+        }
+        .history-ref{
+            min-width:0;
+            overflow-wrap:anywhere;
+            font-size:.77rem;
+            font-weight:800;
+        }
+        .history-amount{
+            font-size:.8rem;
+            font-weight:900;
+            color:var(--accent-yellow);
+            text-align:right;
+        }
+        .history-status{
+            justify-self:end;
+            padding:5px 8px;
+            border-radius:14px;
+            font-size:.62rem;
+            font-weight:900;
+            white-space:nowrap;
+        }
+        .history-empty{
+            padding:14px 8px;
+            text-align:center;
+            color:var(--text-muted);
+            font-size:.78rem;
+        }
+        @media(max-width:480px){
+            .history-row{
+                grid-template-columns:1fr auto;
+            }
+            .history-status{
+                grid-column:2;
+                grid-row:1;
+            }
+            .history-amount{
+                grid-column:1;
+                text-align:left;
+            }
+        }
+
+    
+        /* =====================================================
+           SPRINT 13 — CLIENT PAYMENT RECEIPT
+           ===================================================== */
+        .receipt-btn{
+            margin-top:7px;
+            padding:5px 8px;
+            border-radius:9px;
+            border:1px solid rgba(0,229,255,.35);
+            background:rgba(0,229,255,.08);
+            color:var(--accent-cyan);
+            font-size:.62rem;
+            font-weight:900;
+            cursor:pointer;
+        }
+        .receipt-btn:hover{background:rgba(0,229,255,.16)}
+        .receipt-overlay{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.72);
+            z-index:30000;
+            display:none;
+            align-items:center;
+            justify-content:center;
+            padding:18px;
+        }
+        .receipt-card{
+            width:100%;
+            max-width:430px;
+            background:#fff;
+            color:#111;
+            border-radius:16px;
+            padding:22px;
+            box-shadow:0 20px 60px rgba(0,0,0,.45);
+        }
+        .receipt-brand{
+            text-align:center;
+            font-weight:900;
+            letter-spacing:1px;
+            font-size:1.15rem;
+        }
+        .receipt-subtitle{
+            text-align:center;
+            color:#666;
+            font-size:.72rem;
+            margin-top:3px;
+        }
+        .receipt-divider{
+            border:0;
+            border-top:1px dashed #bbb;
+            margin:16px 0;
+        }
+        .receipt-row{
+            display:flex;
+            justify-content:space-between;
+            gap:15px;
+            padding:7px 0;
+            font-size:.82rem;
+        }
+        .receipt-row span:first-child{color:#666}
+        .receipt-row strong{text-align:right;overflow-wrap:anywhere}
+        .receipt-paid{
+            margin:14px 0;
+            padding:10px;
+            text-align:center;
+            border-radius:10px;
+            background:#eaf9ef;
+            color:#198754;
+            border:1px solid #b9e7c7;
+            font-weight:900;
+            font-size:.85rem;
+        }
+        .receipt-actions{
+            display:flex;
+            gap:8px;
+            margin-top:15px;
+        }
+        .receipt-actions button{
+            flex:1;
+            padding:10px;
+            border-radius:10px;
+            font-weight:900;
+            cursor:pointer;
+        }
+        .receipt-close{border:1px solid #ccc;background:#f5f5f5;color:#333}
+        .receipt-print{border:1px solid #007cff;background:#007cff;color:#fff}
+        @media print{
+            body *{visibility:hidden !important}
+            #receiptOverlay,#receiptOverlay *{visibility:visible !important}
+            #receiptOverlay{
+                display:flex !important;
+                position:static !important;
+                background:#fff !important;
+                padding:0 !important;
+            }
+            .receipt-actions{display:none !important}
+            .receipt-card{
+                box-shadow:none !important;
+                max-width:100% !important;
+                border-radius:0 !important;
+            }
+        }
+
+    
+        /* =====================================================
+           SPRINT 14 — CLIENT NOTIFICATION BANNER
+           ===================================================== */
+        .client-notification{
+            display:none;
+            margin:0 0 12px 0;
+            padding:13px 15px;
+            border-radius:14px;
+            border:1px solid rgba(0,229,255,.28);
+            background:rgba(0,229,255,.08);
+            box-shadow:0 8px 22px rgba(0,0,0,.16);
+        }
+        .client-notification-inner{
+            display:flex;
+            align-items:flex-start;
+            gap:11px;
+        }
+        .client-notification-icon{
+            width:34px;
+            height:34px;
+            min-width:34px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:900;
+            background:rgba(0,229,255,.12);
+            color:var(--accent-cyan);
+            border:1px solid rgba(0,229,255,.25);
+        }
+        .client-notification-title{
+            font-size:.82rem;
+            font-weight:900;
+            letter-spacing:.3px;
+        }
+        .client-notification-message{
+            margin-top:3px;
+            color:var(--text-muted);
+            font-size:.75rem;
+            line-height:1.4;
+        }
+
+    
+        /* =====================================================
+           SPRINT 15 — REFRESH ACCOUNT STATUS
+           ===================================================== */
+        .account-refresh-bar{
+            display:none;
+            margin:0 0 12px 0;
+            padding:10px 12px;
+            border-radius:13px;
+            background:rgba(1,14,40,.72);
+            border:1px solid rgba(255,255,255,.08);
+            align-items:center;
+            justify-content:space-between;
+            gap:10px;
+        }
+        .account-refresh-info{
+            color:var(--text-muted);
+            font-size:.68rem;
+            line-height:1.35;
+        }
+        .account-refresh-btn{
+            border:1px solid rgba(0,229,255,.35);
+            background:rgba(0,229,255,.08);
+            color:var(--accent-cyan);
+            border-radius:10px;
+            padding:8px 11px;
+            font-size:.68rem;
+            font-weight:900;
+            cursor:pointer;
+            white-space:nowrap;
+        }
+        .account-refresh-btn:hover{
+            background:rgba(0,229,255,.15);
+        }
+        .account-refresh-btn:disabled{
+            opacity:.6;
+            cursor:wait;
+        }
+
+    
+        /* =====================================================
+           SPRINT 16 — SMART PAY BILL ACTION
+           ===================================================== */
+        .payment-action-panel{
+            display:none;
+            margin-top:12px;
+            padding:14px;
+            border-radius:15px;
+            border:1px solid rgba(0,229,255,.22);
+            background:rgba(1,14,40,.78);
+        }
+        .payment-action-title{
+            font-size:.82rem;
+            font-weight:900;
+            color:var(--accent-cyan);
+        }
+        .payment-action-message{
+            margin-top:4px;
+            color:var(--text-muted);
+            font-size:.74rem;
+            line-height:1.4;
+        }
+        .payment-action-btn{
+            width:100%;
+            margin-top:10px;
+            padding:10px 12px;
+            border:0;
+            border-radius:11px;
+            background:linear-gradient(90deg,#007cff,#00cfe8);
+            color:#fff;
+            font-weight:900;
+            cursor:pointer;
+        }
+        .payment-action-btn:hover{filter:brightness(1.08)}
+        .payment-action-btn:disabled{opacity:.55;cursor:not-allowed}
+        .payment-action-note{
+            margin-top:7px;
+            text-align:center;
+            color:var(--text-muted);
+            font-size:.64rem;
+        }
+
+    </style>
 </head>
 <body>
 <canvas id='bgCanvas'></canvas>
@@ -427,7 +850,7 @@ transform:translateX(120%);opacity:0;transition:.35s}
 
 <div class="portal-container">
 
-    <!-- BRANDING HEADER WITH LOGO -->
+    <!-- BRANDING HEADER -->
     <div class="brand-header">
         <div class="logo-area">
             <img src="logo.svg" onerror="this.src='https://via.placeholder.com/52/032252/00e5ff?text=FIBER'" alt="Logo" class="brand-logo">
@@ -441,7 +864,7 @@ transform:translateX(120%);opacity:0;transition:.35s}
         </div>
     </div>
 
-    <!-- HERO LANDING BANNER (Poster Copywriting) -->
+    <!-- HERO LANDING BANNER -->
     <div class="hero-banner">
         <span class="banner-tag">UPGRADED PLANS AHEAD!</span>
         <h2 class="hero-title">FASTER. STRONGER. <span>BETTER INTERNET!</span></h2>
@@ -481,54 +904,133 @@ transform:translateX(120%);opacity:0;transition:.35s}
 
     <!-- TABS -->
     <div class="tab-navigation">
-        <button class="tab-btn active" onclick="switchTab('tab-search', this)">🔍 Status</button>
-        <button class="tab-btn" onclick="switchTab('tab-pay', this)">💳 Pay Bill</button>
-        <button class="tab-btn" onclick="switchTab('tab-apply', this)">📝 New Apply</button>
+        <button class="tab-btn active" onclick="switchTab('tab-search', this)">🔍 Check Status & Pay</button>
+        <button class="tab-btn" onclick="switchTab('tab-apply', this)">📝 Apply Now!</button>
         <button class="tab-btn" onclick="switchTab('tab-support', this)">🛠️ Support</button>
     </div>
 
     <div class="content-card">
 
-        <!-- TAB 1: SEARCH STATUS -->
+        <!-- TAB 1: SEARCH STATUS & INTEGRATED PAY BILL -->
         <div id="tab-search" class="tab-content active">
-            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">Check Billing & Due Date</h3>
+            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">Check Status & Pay Bill</h3>
             <div class="form-group">
                 <label>Pangalan o Contact Number</label>
                 <input type="text" id="searchQuery" class="form-control" placeholder="Hal: Juan Dela Cruz o 09703442358">
             </div>
             <button class="btn-submit" onclick="searchAccount()">MAG-SEARCH</button>
 
-            <div id="searchResult" style="display:none; margin-top:20px; padding:15px; background:rgba(1,14,40,0.8); border: 1px solid var(--accent-cyan); border-radius:8px;">
-                <p><strong>Account Name:</strong> <span id="resName"></span></p>
-                <p><strong>Plan:</strong> <span id="resPlan"></span></p>
-                <p><strong>Status:</strong> <span id="resStatus"></span></p>
-                <p><strong>Due Date:</strong> <span id="resDueDate"></span></p>
-                <div id="dueDateBadge" style="padding:6px 12px; border-radius:20px; font-weight:bold; font-size:0.85rem; display:inline-block;"></div>
+            <!-- RESULT CONTAINER / CLIENT DASHBOARD V2 -->
+            <div class="account-overview-label" style="display:none;" id="accountOverviewLabel">ACCOUNT OVERVIEW</div>
+            
+            <!-- SPRINT 14 — CLIENT NOTIFICATION -->
+            <div id="clientNotification" class="client-notification">
+                <div class="client-notification-inner">
+                    <div id="clientNotificationIcon" class="client-notification-icon">i</div>
+                    <div>
+                        <div id="clientNotificationTitle" class="client-notification-title">ACCOUNT UPDATE</div>
+                        <div id="clientNotificationMessage" class="client-notification-message">—</div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- SPRINT 15 — REFRESH ACCOUNT STATUS -->
+            <div id="accountRefreshBar" class="account-refresh-bar">
+                <div class="account-refresh-info">
+                    <strong style="color:var(--text-white);">ACCOUNT STATUS</strong><br>
+                    <span id="accountLastUpdated">Not yet refreshed</span>
+                </div>
+                <button id="accountRefreshBtn" class="account-refresh-btn" onclick="refreshAccountV15()">
+                    ↻ REFRESH
+                </button>
+            </div>
+
+            <div id="searchResult" class="client-status-result" style="display:none;">
+                <div class="status-hero">
+                    <div class="status-kicker">SUBSCRIBER ACCOUNT</div>
+                    <div class="status-main">
+                        <div id="statusIcon" class="status-icon">✓</div>
+                        <div class="status-copy">
+                            <div id="statusTitle" class="status-title">—</div>
+                            <div id="statusMessage" class="status-message">—</div>
+                        </div>
+                    </div>
+
+                    <div class="account-id-card">
+                        <div class="mini-label">ACCOUNT ID</div>
+                        <div id="resAccountId" class="account-id-value">—</div>
+                    </div>
+
+                    <div class="due-card">
+                        <div class="mini-label">NEXT PAYMENT DUE</div>
+                        <div id="resDueDate" class="due-date-value">—</div>
+                        <div id="dueCountdown" class="due-countdown">—</div>
+                        <div id="dueDateBadge" class="status-badge"></div>
+                    </div>
+                </div>
+
+                <div class="payment-history-card">
+                    <div class="payment-history-header">
+                        <div>
+                            <div class="mini-label">PAYMENT HISTORY</div>
+                            <div class="payment-history-subtitle">Your recent GCash payments</div>
+                        </div>
+                        <div id="paymentHistoryCount" class="history-count">0</div>
+                    </div>
+                    <div id="paymentHistoryList" class="payment-history-list">
+                        <div class="history-empty">No payment records yet.</div>
+                    </div>
+                </div>
+
+                <div class="account-summary-grid">
+                    <div class="summary-card">
+                        <div class="mini-label">ACCOUNT NAME</div>
+                        <strong id="resName">—</strong>
+                    </div>
+                    <div class="summary-card">
+                        <div class="mini-label">PLAN</div>
+                        <strong id="resPlan">—</strong>
+                    </div>
+                    <div class="summary-card">
+                        <div class="mini-label">MONTHLY BILL</div>
+                        <strong id="resAmount">—</strong>
+                    </div>
+                </div>
+
+                
+                <!-- SPRINT 16 — SMART PAY BILL ACTION -->
+                <div id="paymentActionPanel" class="payment-action-panel">
+                    <div id="paymentActionTitle" class="payment-action-title">PAYMENT ACTION</div>
+                    <div id="paymentActionMessage" class="payment-action-message">—</div>
+                    <button id="paymentActionBtn" class="payment-action-btn" onclick="focusPayBillV16()">
+                        PAY BILL NOW
+                    </button>
+                    <div id="paymentActionNote" class="payment-action-note"></div>
+                </div>
+
+                <!-- PAY BILL FORM INSIDE SEARCH RESULT -->
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(0, 229, 255, 0.3);">
+                    <h4 style="margin-top:0; color: var(--accent-cyan); font-family: var(--font-head); font-size: 1.4rem;">MAG-BAYAD GAMIT ANG GCASH</h4>
+                    
+                    <div style="text-align:center; background:rgba(255,255,255,0.05); padding:12px; border-radius:8px; margin-bottom:15px; border: 1px dashed var(--accent-cyan);">
+                        <img src="gcash.png" onerror="this.src='https://via.placeholder.com/150/007cff/ffffff?text=GCash+QR'" alt="GCash QR" style="max-width:150px; border-radius:8px;">
+                        <p style="font-size:0.8rem; margin:5px 0 0 0; color:var(--text-muted);">I-scan ang QR Code at i-copy ang GCash Reference No.</p>
+                    </div>
+
+                    <form id="renewForm" onsubmit="triggerModal(event, 'pay')">
+                        <input type="hidden" id="renewQuery">
+                        <div class="form-group">
+                            <label>GCash Reference Number *</label>
+                            <input type="text" id="renewGcashRef" class="form-control" required placeholder="Hal: 100234567890">
+                        </div>
+                        <button type="submit" class="btn-submit" style="font-size: 1.2rem; padding: 10px;">ISUBMIT ANG BAYAD</button>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <!-- TAB 2: PAY BILL / RENEWAL -->
-        <div id="tab-pay" class="tab-content">
-            <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">Pay Monthly Bill via GCash</h3>
-            <div style="text-align:center; background:rgba(255,255,255,0.05); padding:12px; border-radius:8px; margin-bottom:15px; border: 1px dashed var(--accent-cyan);">
-                <img src="gcash.png" onerror="this.src='https://via.placeholder.com/150/007cff/ffffff?text=GCash+QR'" alt="GCash QR" style="max-width:150px; border-radius:8px;">
-                <p style="font-size:0.8rem; margin:5px 0 0 0; color:var(--text-muted);">I-scan ang QR Code at i-copy ang GCash Reference No.</p>
-            </div>
-
-            <form id="renewForm" onsubmit="triggerModal(event, 'pay')">
-                <div class="form-group">
-                    <label>Pangalan o Contact Number *</label>
-                    <input type="text" id="renewQuery" class="form-control" required placeholder="Pangalan sa account">
-                </div>
-                <div class="form-group">
-                    <label>GCash Reference Number *</label>
-                    <input type="text" id="renewGcashRef" class="form-control" required placeholder="Hal: 100234567890">
-                </div>
-                <button type="submit" class="btn-submit">ISUBMIT ANG BAYAD</button>
-            </form>
-        </div>
-
-        <!-- TAB 3: NEW APPLICATION (POSTER PLANS) -->
+        <!-- TAB 2: NEW APPLICATION -->
         <div id="tab-apply" class="tab-content">
             <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: var(--accent-cyan);">New Fiber Application</h3>
             <form id="registerForm" onsubmit="triggerModal(event, 'register')">
@@ -568,7 +1070,7 @@ transform:translateX(120%);opacity:0;transition:.35s}
             </form>
         </div>
 
-        <!-- TAB 4: TECH SUPPORT -->
+        <!-- TAB 3: TECH SUPPORT -->
         <div id="tab-support" class="tab-content">
             <h3 style="margin-top:0; font-family: var(--font-head); font-size: 1.8rem; color: #ff4d4d;">Report Connection Issue</h3>
             <form id="supportForm" onsubmit="triggerModal(event, 'support')">
@@ -610,7 +1112,7 @@ transform:translateX(120%);opacity:0;transition:.35s}
             </div>
         </div>
 
-        <!-- EMERGENCY HOTLINE BAR (Poster Contacts) -->
+        <!-- EMERGENCY HOTLINE BAR -->
         <div class="hotline-bar">
             <a href="tel:09703442358" class="hotline-btn" style="background: #00a2ff;">📞 0997-648-6861</a>
             <a href="mailto:winalincastrern@gmail.com" class="hotline-btn" style="background: #032252;">✉️ Email Support</a>
@@ -618,13 +1120,69 @@ transform:translateX(120%);opacity:0;transition:.35s}
 
     </div>
 
-    <!-- FOOTER SECTION (INSIDE PORTAL CONTAINER FOR PROPER ALIGNMENT) -->
+    <!-- FOOTER -->
     <footer class="portal-footer">
         <p>© <span id="currentYear"></span> Win Internet Konek. All Rights Reserved.</p>
         <p>Developed & Managed by <span class="dev-name">Erwin R. Alincastre</span></p>
     </footer>
 
-</div> <!-- END OF PORTAL CONTAINER -->
+</div>
+
+
+<!-- SPRINT 13 — PAYMENT RECEIPT MODAL -->
+<div id="receiptOverlay" class="receipt-overlay">
+    <div class="receipt-card">
+        <div class="receipt-brand">WIN INTERNET KONEK</div>
+        <div class="receipt-subtitle">PAYMENT RECEIPT</div>
+        <hr class="receipt-divider">
+
+        <div class="receipt-paid">✓ PAYMENT VERIFIED</div>
+
+        <div class="receipt-row">
+            <span>Account ID</span>
+            <strong id="receiptAccountId">—</strong>
+        </div>
+        <div class="receipt-row">
+            <span>Account Name</span>
+            <strong id="receiptName">—</strong>
+        </div>
+        <div class="receipt-row">
+            <span>Plan</span>
+            <strong id="receiptPlan">—</strong>
+        </div>
+        <div class="receipt-row">
+            <span>GCash Reference</span>
+            <strong id="receiptReference">—</strong>
+        </div>
+        <div class="receipt-row">
+            <span>Amount Paid</span>
+            <strong id="receiptAmount">—</strong>
+        </div>
+        <div class="receipt-row">
+            <span>Verification Status</span>
+            <strong id="receiptStatus">—</strong>
+        </div>
+        <div class="receipt-row">
+            <span>New Due Date</span>
+            <strong id="receiptDueDate">—</strong>
+        </div>
+        <div class="receipt-row">
+            <span>Receipt Generated</span>
+            <strong id="receiptGenerated">—</strong>
+        </div>
+
+        <hr class="receipt-divider">
+
+        <div style="text-align:center;color:#666;font-size:.68rem;line-height:1.4;">
+            Keep this receipt for your records.
+        </div>
+
+        <div class="receipt-actions">
+            <button class="receipt-close" onclick="closeReceiptV13()">CLOSE</button>
+            <button class="receipt-print" onclick="window.print()">PRINT RECEIPT</button>
+        </div>
+    </div>
+</div>
 
 <!-- CONFIRMATION POPUP MODAL -->
 <div id="confirmModal" class="modal-overlay">
@@ -646,7 +1204,7 @@ transform:translateX(120%);opacity:0;transition:.35s}
     </svg>
 </a>
 
-<!-- RIGHT CLICK & INSPECT ELEMENT PROTECTION -->
+<!-- PROTECTION SCRIPT -->
 <script>
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('keydown', e => {
@@ -657,10 +1215,9 @@ transform:translateX(120%);opacity:0;transition:.35s}
 </script>
 
 <script>
-    // Awtomatikong i-update ang Taon sa Footer
     document.getElementById('currentYear').innerText = new Date().getFullYear();
 
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJDcULVvwrvi3FiIcUb0qpwlHprODimdf7Z7Sg-ulzcguomXVm32ZAt7CF3mXeuTorKA/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxz7FOChRV0VFhaPFfSCtQZdowYByxUwwTb6aBZ3OxfwbLpmg_COJ4eNQR-QOwOulQ9LQ/exec";
     let pendingAction = null;
 
     function switchTab(tabId, element) {
@@ -726,10 +1283,178 @@ transform:translateX(120%);opacity:0;transition:.35s}
 
     function sendData(payload, formId, successMsg) {
         fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-        .then(() => { showToast(successMsg,"success"); document.getElementById(formId).reset(); });
+        .then(() => { 
+            showToast(successMsg,"success"); 
+            document.getElementById(formId).reset(); 
+        });
     }
 
-    function searchAccount() {
+    
+                function openReceiptV13(index) {
+                    const state = window.__winKonekV13 || {};
+                    const payment = (state.payments || [])[index];
+                    const account = state.account || {};
+
+                    if (!payment) return;
+
+                    const status = String(payment.status || 'VERIFIED').toUpperCase().trim();
+
+                    document.getElementById('receiptAccountId').innerText = account.accountId || 'N/A';
+                    document.getElementById('receiptName').innerText = account.name || 'N/A';
+                    document.getElementById('receiptPlan').innerText = account.plan || 'N/A';
+                    document.getElementById('receiptReference').innerText = payment.reference || 'N/A';
+
+                    const numericAmount = Number(payment.amount);
+                    document.getElementById('receiptAmount').innerText =
+                        payment.amount !== '' && payment.amount != null && !isNaN(numericAmount)
+                        ? '₱' + numericAmount.toLocaleString('en-PH', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                          })
+                        : 'N/A';
+
+                    document.getElementById('receiptStatus').innerText = status;
+                    document.getElementById('receiptDueDate').innerText = account.dueDate || 'N/A';
+                    document.getElementById('receiptGenerated').innerText =
+                        new Date().toLocaleString('en-PH', {
+                            year:'numeric',
+                            month:'long',
+                            day:'numeric',
+                            hour:'numeric',
+                            minute:'2-digit'
+                        });
+
+                    document.getElementById('receiptOverlay').style.display = 'flex';
+                }
+
+                function closeReceiptV13() {
+                    document.getElementById('receiptOverlay').style.display = 'none';
+                }
+
+
+                function refreshAccountV15() {
+                    const btn = document.getElementById('accountRefreshBtn');
+                    const info = document.getElementById('accountLastUpdated');
+                    const query = document.getElementById('searchQuery').value.trim();
+
+                    if (!query) {
+                        showToast("Maglagay muna ng Pangalan o Contact Number.", "error");
+                        return;
+                    }
+
+                    if (btn) {
+                        btn.disabled = true;
+                        btn.innerText = '↻ CHECKING...';
+                    }
+                    if (info) info.innerText = 'Checking latest account status...';
+
+                    fetch(`${GOOGLE_SCRIPT_URL}?action=search&query=${encodeURIComponent(query)}&refresh=${Date.now()}`)
+                        .then(res => {
+                            if (!res.ok) throw new Error('Server response error');
+                            return res.json();
+                        })
+                        .then(data => {
+                            if (data && data.found) {
+                                // Reuse the existing search renderer so every
+                                // current Sprint 14 feature is refreshed too.
+                                searchAccount(true);
+
+                                setTimeout(function(){
+                                    const now = new Date();
+                                    if (info) {
+                                        info.innerText = 'Last updated: ' + now.toLocaleTimeString('en-PH', {
+                                            hour:'numeric',
+                                            minute:'2-digit',
+                                            second:'2-digit'
+                                        });
+                                    }
+                                }, 450);
+                            } else {
+                                if (info) info.innerText = 'Account not found.';
+                                showToast("Account not found.", "error");
+                            }
+                        })
+                        .catch(function(){
+                            if (info) info.innerText = 'Unable to refresh. Please try again.';
+                            showToast("Hindi ma-refresh ang account. Pakisubukan muli.", "error");
+                        })
+                        .finally(function(){
+                            if (btn) {
+                                btn.disabled = false;
+                                btn.innerText = '↻ REFRESH';
+                            }
+                        });
+                }
+
+
+                function updatePaymentActionV16(statusRaw) {
+                    const panel = document.getElementById('paymentActionPanel');
+                    const title = document.getElementById('paymentActionTitle');
+                    const message = document.getElementById('paymentActionMessage');
+                    const btn = document.getElementById('paymentActionBtn');
+                    const note = document.getElementById('paymentActionNote');
+
+                    if (!panel || !title || !message || !btn || !note) return;
+
+                    const status = String(statusRaw || 'PENDING').toUpperCase().trim();
+
+                    panel.style.display = 'block';
+
+                    if (status === 'PENDING' || status === 'PENDING PAYMENT' || status === 'PENDING (RENEWAL)') {
+                        title.innerText = 'PAYMENT VERIFICATION IN PROGRESS';
+                        message.innerText = 'May pending payment verification. Hindi muna kailangan magsumite ulit ng payment.';
+                        btn.style.display = 'none';
+                        note.innerText = 'I-refresh ang account para makita ang latest status.';
+                        return;
+                    }
+
+                    btn.style.display = 'block';
+
+                    if (status === 'OVERDUE') {
+                        title.innerText = 'PAYMENT REQUIRED';
+                        message.innerText = 'Overdue na ang account. Maaari kang mag-submit ng payment gamit ang GCash.';
+                        note.innerText = 'Ilagay ang bagong GCash Reference Number sa payment form.';
+                    } else if (status === 'DUE SOON') {
+                        title.innerText = 'PAYMENT DUE SOON';
+                        message.innerText = 'Malapit na ang iyong due date. Maaari ka nang magbayad nang maaga.';
+                        note.innerText = 'Optional ang advance payment.';
+                    } else if (status === 'SUSPENDED') {
+                        title.innerText = 'SERVICE SUSPENDED';
+                        message.innerText = 'Kailangan munang ma-settle ang payment. Maaari kang magsumite ng payment below.';
+                        note.innerText = 'Pagkatapos ma-verify, magre-refresh ang account status.';
+                    } else if (status === 'PAID' || status === 'ACTIVE') {
+                        title.innerText = 'ACCOUNT ACTIVE';
+                        message.innerText = 'Wala kang kailangang bayaran ngayon. Maaari kang magbayad nang maaga kung nais mo.';
+                        note.innerText = 'Optional ang advance payment.';
+                    } else if (status === 'APPROVED') {
+                        title.innerText = 'PAYMENT APPROVED';
+                        message.innerText = 'Na-approve na ang payment. I-refresh para makita ang latest account update.';
+                        btn.style.display = 'none';
+                        note.innerText = 'Hintayin ang account sync bago magsumite ulit.';
+                    } else {
+                        title.innerText = 'PAY YOUR BILL';
+                        message.innerText = 'Maaari kang magsumite ng GCash payment.';
+                        note.innerText = '';
+                    }
+                }
+
+                function focusPayBillV16() {
+                    const form = document.getElementById('renewForm');
+                    const ref = document.getElementById('renewGcashRef');
+
+                    if (!form) return;
+
+                    form.scrollIntoView({
+                        behavior:'smooth',
+                        block:'center'
+                    });
+
+                    setTimeout(function(){
+                        if (ref) ref.focus();
+                    }, 450);
+                }
+
+function searchAccount(silentRefresh = false) {
         const query = document.getElementById('searchQuery').value.trim();
         if(!query) return showToast("Maglagay ng Pangalan o Contact Number.","error");
         
@@ -738,10 +1463,331 @@ transform:translateX(120%);opacity:0;transition:.35s}
         .then(data => {
             const resArea = document.getElementById('searchResult');
             if(data && data.found) {
-                document.getElementById('resName').innerText = data.name;
-                document.getElementById('resPlan').innerText = data.plan;
-                document.getElementById('resStatus').innerText = data.status;
-                document.getElementById('resDueDate').innerText = data.dueDate;
+                const refreshBar = document.getElementById('accountRefreshBar');
+                if (refreshBar) refreshBar.style.display = 'flex';
+                const refreshInfo = document.getElementById('accountLastUpdated');
+                if (refreshInfo && !silentRefresh) {
+                    refreshInfo.innerText = 'Last updated: ' + new Date().toLocaleTimeString('en-PH', {
+                        hour:'numeric',
+                        minute:'2-digit',
+                        second:'2-digit'
+                    });
+                }
+
+                
+                function updateDueCountdownV11(dueDateText, statusRaw) {
+                    const el = document.getElementById('dueCountdown');
+                    if (!el) return;
+
+                    const raw = String(dueDateText || '').trim();
+                    const status = String(statusRaw || '').toUpperCase().trim();
+
+                    if (!raw || raw === 'N/A') {
+                        el.innerText = 'No due date available';
+                        return;
+                    }
+
+                    const due = new Date(raw);
+
+                    if (isNaN(due.getTime())) {
+                        el.innerText = 'Due date unavailable';
+                        return;
+                    }
+
+                    // Compare calendar dates, not exact time, so the
+                    // displayed number of days is intuitive for clients.
+                    const today = new Date();
+                    today.setHours(0,0,0,0);
+
+                    const target = new Date(due);
+                    target.setHours(0,0,0,0);
+
+                    const diffDays = Math.round(
+                        (target.getTime() - today.getTime()) / 86400000
+                    );
+
+                    if (diffDays < 0) {
+                        const overdue = Math.abs(diffDays);
+                        el.innerText =
+                            overdue === 1
+                            ? '🔴 1 day overdue'
+                            : '🔴 ' + overdue + ' days overdue';
+                        el.style.color = '#ea5455';
+                    } else if (diffDays === 0) {
+                        el.innerText = '🟠 Due today';
+                        el.style.color = '#ff9f43';
+                    } else if (diffDays <= 3) {
+                        el.innerText =
+                            '🟠 Due in ' + diffDays +
+                            (diffDays === 1 ? ' day' : ' days');
+                        el.style.color = '#ff9f43';
+                    } else if (diffDays <= 7) {
+                        el.innerText =
+                            '🟡 Due in ' + diffDays + ' days';
+                        el.style.color = '#ffcc00';
+                    } else {
+                        el.innerText =
+                            '🟢 ' + diffDays + ' days left';
+                        el.style.color = '#28c76f';
+                    }
+                }
+
+
+                function loadPaymentHistoryV12(clientName) {
+                    const list = document.getElementById('paymentHistoryList');
+                    const count = document.getElementById('paymentHistoryCount');
+
+                    if (!list || !count) return;
+
+                    list.innerHTML = '<div class="history-empty">Loading payment history...</div>';
+                    count.innerText = '…';
+
+                    fetch(GOOGLE_SCRIPT_URL + '?action=paymentHistory&name=' + encodeURIComponent(clientName))
+                        .then(response => response.json())
+                        .then(historyData => {
+                            window.__winKonekV13 = window.__winKonekV13 || {};
+                            window.__winKonekV13.payments = [];
+                            window.__winKonekV13.account = {
+                                accountId: document.getElementById('resAccountId').innerText,
+                                name: document.getElementById('resName').innerText,
+                                plan: document.getElementById('resPlan').innerText,
+                                dueDate: document.getElementById('resDueDate').innerText
+                            };
+
+                            const payments = Array.isArray(historyData.payments)
+                                ? historyData.payments
+                                : [];
+
+                            window.__winKonekV13.payments = payments;
+                            count.innerText = payments.length;
+
+                            if (!payments.length) {
+                                list.innerHTML =
+                                    '<div class="history-empty">No payment records yet.</div>';
+                                return;
+                            }
+
+                            list.innerHTML = payments.map(function(payment) {
+                                const status = String(payment.status || 'PENDING').toUpperCase().trim();
+                                let color = '#ffcc00';
+                                let bg = 'rgba(255,204,0,.14)';
+
+                                if (status === 'VERIFIED' || status === 'PAID' || status === 'APPROVED') {
+                                    color = '#28c76f';
+                                    bg = 'rgba(40,199,111,.14)';
+                                } else if (status === 'REJECTED') {
+                                    color = '#ea5455';
+                                    bg = 'rgba(234,84,85,.14)';
+                                }
+
+                                const reference = payment.reference || 'No reference';
+                                const amount = payment.amount !== '' && payment.amount != null
+                                    ? '₱' + Number(payment.amount).toLocaleString('en-PH', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                      })
+                                    : '—';
+
+                                const canReceipt = (
+                                    status === 'VERIFIED' ||
+                                    status === 'PAID' ||
+                                    status === 'APPROVED'
+                                );
+
+                                return `
+                                    <div class="history-row">
+                                        <div class="history-ref">
+                                            <span style="display:block;color:var(--text-muted);font-size:.58rem;letter-spacing:.6px;">GCASH REFERENCE</span>
+                                            ${reference}
+                                            ${canReceipt ? `<button class="receipt-btn" onclick="openReceiptV13(${payments.indexOf(payment)})">VIEW RECEIPT</button>` : ''}
+                                        </div>
+                                        <div class="history-amount">${amount}</div>
+                                        <div class="history-status"
+                                             style="color:${color};background:${bg};border:1px solid ${color}55;">
+                                            ${status}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('');
+                        })
+                        .catch(function() {
+                            count.innerText = '0';
+                            list.innerHTML =
+                                '<div class="history-empty">Unable to load payment history.</div>';
+                        });
+                }
+
+document.getElementById('resName').innerText = data.name || 'N/A';
+                document.getElementById('resPlan').innerText = data.plan || 'N/A';
+                document.getElementById('resAmount').innerText = data.amount ? '₱' + Number(data.amount).toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : 'N/A';
+                document.getElementById('resAccountId').innerText = data.accountId || 'N/A';
+                document.getElementById('resDueDate').innerText = data.dueDate || 'N/A';
+                loadPaymentHistoryV12(data.name);
+
+                const statusRaw = String(data.status || 'PENDING').toUpperCase().trim();
+                updatePaymentActionV16(statusRaw);
+                updateDueCountdownV11(data.dueDate, statusRaw);
+                
+                function updateClientNotificationV14(statusRaw, dueDateText) {
+                    const box = document.getElementById('clientNotification');
+                    const icon = document.getElementById('clientNotificationIcon');
+                    const title = document.getElementById('clientNotificationTitle');
+                    const message = document.getElementById('clientNotificationMessage');
+
+                    if (!box || !icon || !title || !message) return;
+
+                    const status = String(statusRaw || 'PENDING').toUpperCase().trim();
+
+                    let info = {
+                        icon:'i',
+                        title:'ACCOUNT UPDATE',
+                        message:'Please check your account details.',
+                        color:'#00cfe8',
+                        bg:'rgba(0,229,255,.08)',
+                        border:'rgba(0,229,255,.28)'
+                    };
+
+                    if (status === 'PAID' || status === 'ACTIVE') {
+                        info = {
+                            icon:'✓',
+                            title:'ACCOUNT ACTIVE',
+                            message:'Your internet account is active. Thank you for your payment.',
+                            color:'#28c76f',
+                            bg:'rgba(40,199,111,.10)',
+                            border:'rgba(40,199,111,.30)'
+                        };
+                    } else if (status === 'APPROVED') {
+                        info = {
+                            icon:'✓',
+                            title:'PAYMENT APPROVED',
+                            message:'Your payment has been approved and your account is being updated.',
+                            color:'#00cfe8',
+                            bg:'rgba(0,207,232,.10)',
+                            border:'rgba(0,207,232,.30)'
+                        };
+                    } else if (status === 'PENDING' || status === 'PENDING PAYMENT' || status === 'PENDING (RENEWAL)') {
+                        info = {
+                            icon:'…',
+                            title:'PAYMENT VERIFICATION',
+                            message:'Your payment is currently being verified by our Admin.',
+                            color:'#ffcc00',
+                            bg:'rgba(255,204,0,.10)',
+                            border:'rgba(255,204,0,.30)'
+                        };
+                    } else if (status === 'DUE SOON') {
+                        info = {
+                            icon:'!',
+                            title:'PAYMENT DUE SOON',
+                            message:'Your next payment due date is approaching.',
+                            color:'#ffcc00',
+                            bg:'rgba(255,204,0,.10)',
+                            border:'rgba(255,204,0,.30)'
+                        };
+                    } else if (status === 'OVERDUE') {
+                        info = {
+                            icon:'!',
+                            title:'PAYMENT OVERDUE',
+                            message:'Please settle your overdue payment to keep your service active.',
+                            color:'#ff9f43',
+                            bg:'rgba(255,159,67,.11)',
+                            border:'rgba(255,159,67,.30)'
+                        };
+                    } else if (status === 'SUSPENDED') {
+                        info = {
+                            icon:'!',
+                            title:'SERVICE SUSPENDED',
+                            message:'Your service is currently suspended. Please contact support.',
+                            color:'#ea5455',
+                            bg:'rgba(234,84,85,.10)',
+                            border:'rgba(234,84,85,.30)'
+                        };
+                    }
+
+                    box.style.display = 'block';
+                    box.style.background = info.bg;
+                    box.style.borderColor = info.border;
+                    icon.innerText = info.icon;
+                    icon.style.color = info.color;
+                    icon.style.background = info.bg;
+                    icon.style.borderColor = info.border;
+                    title.innerText = info.title;
+                    title.style.color = info.color;
+                    message.innerText = info.message;
+                }
+
+
+                const statusInfoMap = {
+                    'PAID': {
+                        title:'PAID',
+                        message:'Your account is active. Thank you for your payment.',
+                        icon:'✓', color:'#28c76f', bg:'rgba(40,199,111,.16)',
+                        border:'rgba(40,199,111,.4)', badge:'ACCOUNT ACTIVE'
+                    },
+                    'APPROVED': {
+                        title:'PAYMENT APPROVED',
+                        message:'Your payment has been approved.',
+                        icon:'✓', color:'#00cfe8', bg:'rgba(0,207,232,.16)',
+                        border:'rgba(0,207,232,.4)', badge:'PAYMENT APPROVED'
+                    },
+                    'PENDING': {
+                        title:'PAYMENT PENDING',
+                        message:'Your payment is currently being verified.',
+                        icon:'…', color:'#ffcc00', bg:'rgba(255,204,0,.14)',
+                        border:'rgba(255,204,0,.4)', badge:'VERIFICATION IN PROGRESS'
+                    },
+                    'OVERDUE': {
+                        title:'PAYMENT REQUIRED',
+                        message:'Your account has an overdue payment.',
+                        icon:'!', color:'#ff9f43', bg:'rgba(255,159,67,.15)',
+                        border:'rgba(255,159,67,.4)', badge:'OVERDUE'
+                    },
+                    'SUSPENDED': {
+                        title:'SERVICE SUSPENDED',
+                        message:'Your internet service is currently suspended.',
+                        icon:'!', color:'#ea5455', bg:'rgba(234,84,85,.15)',
+                        border:'rgba(234,84,85,.4)', badge:'SERVICE SUSPENDED'
+                    },
+                    'DUE SOON': {
+                        title:'DUE SOON',
+                        message:'Your payment due date is approaching.',
+                        icon:'!', color:'#ffcc00', bg:'rgba(255,204,0,.14)',
+                        border:'rgba(255,204,0,.4)', badge:'PAYMENT DUE SOON'
+                    },
+                    'ACTIVE': {
+                        title:'ACTIVE',
+                        message:'Your account is active.',
+                        icon:'✓', color:'#28c76f', bg:'rgba(40,199,111,.16)',
+                        border:'rgba(40,199,111,.4)', badge:'ACCOUNT ACTIVE'
+                    }
+                };
+
+                updateClientNotificationV14(statusRaw, data.dueDate);
+
+                const statusInfo = statusInfoMap[statusRaw] || {
+                    title: statusRaw || 'PENDING',
+                    message:'Please check your account details.',
+                    icon:'●', color:'#00cfe8', bg:'rgba(0,207,232,.14)',
+                    border:'rgba(0,207,232,.4)', badge:'ACCOUNT STATUS'
+                };
+
+                document.getElementById('statusTitle').innerText = statusInfo.title;
+                document.getElementById('statusMessage').innerText = statusInfo.message;
+
+                const statusIcon = document.getElementById('statusIcon');
+                statusIcon.innerText = statusInfo.icon;
+                statusIcon.style.color = statusInfo.color;
+                statusIcon.style.background = statusInfo.bg;
+                statusIcon.style.borderColor = statusInfo.border;
+
+                const dueDateBadge = document.getElementById('dueDateBadge');
+                dueDateBadge.innerText = statusInfo.badge;
+                dueDateBadge.style.background = statusInfo.bg;
+                dueDateBadge.style.color = statusInfo.color;
+                dueDateBadge.style.border = '1px solid ' + statusInfo.border;
+                
+                // Set the hidden input value for renewal payment
+                document.getElementById('renewQuery').value = data.name;
+                
                 resArea.style.display = "block";
             } else { 
                 showToast("Walang nahanap na record para sa: "+query,"error"); 
@@ -753,38 +1799,39 @@ transform:translateX(120%);opacity:0;transition:.35s}
         });
     }
 
-function showToast(message,type='info'){
- const c=document.getElementById('toastContainer');
- const t=document.createElement('div');
- t.className='toast '+type;
- t.textContent=message;
- c.appendChild(t);
- requestAnimationFrame(()=>t.classList.add('show'));
- setTimeout(()=>t.classList.remove('show'),3200);
- setTimeout(()=>t.remove(),3600);
-}
-(function(){
-const cv=document.getElementById('bgCanvas'),ctx=cv.getContext('2d');
-let w,h,p=[];
-function rs(){w=cv.width=innerWidth;h=cv.height=innerHeight}
-addEventListener('resize',rs);rs();
-for(let i=0;i<70;i++)p.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1});
-function a(){
-ctx.clearRect(0,0,w,h);
-for(let i=0;i<p.length;i++){
- let A=p[i];A.x+=A.vx;A.y+=A.vy;
- if(A.x<0||A.x>w)A.vx*=-1;
- if(A.y<0||A.y>h)A.vy*=-1;
- ctx.beginPath();ctx.arc(A.x,A.y,A.r,0,6.28);ctx.fillStyle='rgba(0,229,255,.8)';ctx.fill();
- for(let j=i+1;j<p.length;j++){
-  let B=p[j],d=Math.hypot(A.x-B.x,A.y-B.y);
-  if(d<120){ctx.strokeStyle='rgba(0,229,255,'+(1-d/120)*0.18+')';ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}
- }
-}
-requestAnimationFrame(a)}
-a();
-})();
+    function showToast(message,type='info'){
+        const c=document.getElementById('toastContainer');
+        const t=document.createElement('div');
+        t.className='toast '+type;
+        t.textContent=message;
+        c.appendChild(t);
+        requestAnimationFrame(()=>t.classList.add('show'));
+        setTimeout(()=>t.classList.remove('show'),3200);
+        setTimeout(()=>t.remove(),3600);
+    }
 
+    (function(){
+        const cv=document.getElementById('bgCanvas'),ctx=cv.getContext('2d');
+        let w,h,p=[];
+        function rs(){w=cv.width=innerWidth;h=cv.height=innerHeight}
+        addEventListener('resize',rs);rs();
+        for(let i=0;i<70;i++)p.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1});
+        function a(){
+            ctx.clearRect(0,0,w,h);
+            for(let i=0;i<p.length;i++){
+                let A=p[i];A.x+=A.vx;A.y+=A.vy;
+                if(A.x<0||A.x>w)A.vx*=-1;
+                if(A.y<0||A.y>h)A.vy*=-1;
+                ctx.beginPath();ctx.arc(A.x,A.y,A.r,0,6.28);ctx.fillStyle='rgba(0,229,255,.8)';ctx.fill();
+                for(let j=i+1;j<p.length;j++){
+                    let B=p[j],d=Math.hypot(A.x-B.x,A.y-B.y);
+                    if(d<120){ctx.strokeStyle='rgba(0,229,255,'+(1-d/120)*0.18+')';ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}
+                }
+            }
+            requestAnimationFrame(a)
+        }
+        a();
+    })();
 </script>
 
 </body>

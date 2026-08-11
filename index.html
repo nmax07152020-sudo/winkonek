@@ -1468,6 +1468,58 @@
     display:none !important;
 }
 
+
+/* Fix: PPPoE tab is a separate full-screen admin section, not part of home page */
+#mikrotikTabV1{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:99999 !important;
+  overflow:auto !important;
+  background:var(--bg,#08111f) !important;
+  box-sizing:border-box !important;
+}
+
+
+body.mikrotik-open-v1{overflow:hidden !important;}
+
+/* PPPoE Clients table — frontend-only preview */
+.mikrotik-table-card-v1{margin-top:14px;padding:15px;border:1px solid rgba(255,255,255,.07);border-radius:13px;background:rgba(255,255,255,.025)}
+.mikrotik-table-head-v1{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.mikrotik-table-search-v1{margin-bottom:11px}
+.mikrotik-table-search-v1 input{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid rgba(255,255,255,.10);border-radius:9px;background:rgba(255,255,255,.035);color:inherit;outline:none}
+.mikrotik-table-search-v1 input:focus{border-color:rgba(0,229,255,.45)}
+.mikrotik-table-wrap-v1{width:100%;overflow-x:auto}
+.mikrotik-table-v1{width:100%;min-width:850px;border-collapse:collapse}
+.mikrotik-table-v1 th{padding:10px 9px;text-align:left;font-size:.64rem;letter-spacing:.04em;color:#8498ba;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}
+.mikrotik-table-v1 td{padding:11px 9px;font-size:.72rem;color:#d9e5fa;border-bottom:1px solid rgba(255,255,255,.055);white-space:nowrap}
+.mikrotik-table-v1 tbody tr:hover{background:rgba(255,255,255,.025)}
+.mikrotik-table-v1 td:nth-child(2){font-weight:800}
+.mikrotik-table-v1 button{padding:6px 9px;border:1px solid rgba(255,255,255,.08);border-radius:7px;background:rgba(255,255,255,.04);color:inherit;opacity:.45;cursor:not-allowed;font-size:.62rem;font-weight:800}
+.mikrotik-table-status-v1{display:inline-flex;align-items:center;padding:4px 7px;border-radius:7px;font-size:.61rem;font-weight:900}
+.mikrotik-table-status-v1.notsynced{color:#ffd966;background:rgba(255,193,7,.09);border:1px solid rgba(255,193,7,.23)}
+.mikrotik-table-empty-v1{padding:20px;text-align:center;opacity:.55;font-size:.75rem}
+
+
+/* Compact PPPoE dashboard/table layout */
+.mikrotik-tab-page-v1 .mikrotik-stat-grid-v1{margin-bottom:10px}
+.mikrotik-tab-page-v1 .mikrotik-table-card-v1{margin-top:10px;padding:12px}
+.mikrotik-tab-page-v1 .mikrotik-table-head-v1{margin-bottom:9px}
+.mikrotik-tab-page-v1 .mikrotik-table-search-v1{margin-bottom:8px}
+.mikrotik-tab-page-v1 .mikrotik-table-v1 th{padding:8px 8px}
+.mikrotik-tab-page-v1 .mikrotik-table-v1 td{padding:9px 8px}
+.mikrotik-tab-page-v1 .mikrotik-preview-banner-v1{margin:9px 0 10px;padding:9px 11px}
+
+
+/* PPPoE clients are part of the same MikroTik Admin Dashboard card */
+.mikrotik-admin-card-v1 > .mikrotik-table-card-v1{
+  margin-top:12px;
+  border-color:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.018);
+}
+.mikrotik-admin-card-v1 > .mikrotik-table-card-v1 .mikrotik-table-head-v1{
+  padding-bottom:2px;
+}
+
 </style>
 <!-- SPRINT 35 — PWA META -->
 </head>
@@ -3030,6 +3082,8 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <div class="admin-dash-sub-v1">Subscriber management</div>
 </div>
 <div class="admin-top-actions-v1">
+<button class="mikrotik-tab-btn-v1" type="button" onclick="openMikrotikTabV1()">🌐 PPPoE / MikroTik</button>
+
 <button class="admin-logout-top-v1" id="adminLogoutV1" type="button">↪ LOGOUT</button>
 <button class="admin-dash-close-v1" id="adminDashCloseV1" type="button">CLOSE</button>
 </div>
@@ -3366,6 +3420,238 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     }
 
     window.addEventListener('load', forceFloatingMessenger);
+})();
+</script>
+
+
+
+<section id="mikrotikTabV1" class="mikrotik-tab-page-v1" hidden>
+  <div class="admin-dash-card-v1 mikrotik-admin-card-v1">
+
+    <div class="admin-dash-head-v1">
+      <div>
+        <div class="admin-dash-title-v1">🌐 PPPOE / MIKROTIK</div>
+        <div class="admin-dash-sub-v1">Network management</div>
+      </div>
+      <div class="admin-top-actions-v1">
+        <button class="admin-dash-close-v1" type="button" onclick="closeMikrotikTabV1()">← BACK TO DASHBOARD</button>
+      </div>
+    </div>
+
+    <div class="mikrotik-preview-banner-v1">
+      <div>
+        <strong>PREVIEW MODE</strong>
+        <span>MikroTik is not connected yet. This section is for layout testing only.</span>
+      </div>
+      <span class="mikrotik-status-pill-v1">NOT SYNCED</span>
+    </div>
+
+    <div class="admin-stat-grid-v1 mikrotik-stat-grid-v1">
+      <div class="admin-stat-v1">
+        <small>PPPoE Clients</small>
+        <strong>—</strong>
+      </div>
+      <div class="admin-stat-v1">
+        <small>Online</small>
+        <strong>—</strong>
+      </div>
+      <div class="admin-stat-v1">
+        <small>Offline</small>
+        <strong>—</strong>
+      </div>
+      <div class="admin-stat-v1">
+        <small>Suspended</small>
+        <strong>—</strong>
+      </div>
+    </div>
+
+    
+
+    <div class="mikrotik-table-card-v1">
+      <div class="mikrotik-table-head-v1">
+        <div>
+          <div class="admin-dash-title-v1" style="font-size:1rem">PPPOE CLIENTS</div>
+          <div class="admin-dash-sub-v1">Subscriber connection list</div>
+        </div>
+        <button type="button" class="admin-btn-v1 mikrotik-refresh-demo-v1" onclick="refreshMikrotikDemoV1()">↻ REFRESH</button>
+      </div>
+
+      <div class="mikrotik-table-search-v1">
+        <input id="mikrotikDemoSearchV1" type="text"
+               placeholder="Search Account ID, subscriber, or PPPoE username"
+               oninput="filterMikrotikDemoV1()">
+      </div>
+
+      <div class="mikrotik-table-wrap-v1">
+        <table class="mikrotik-table-v1">
+          <thead>
+            <tr>
+              <th>ACCOUNT ID</th>
+              <th>SUBSCRIBER</th>
+              <th>PPPOE USERNAME</th>
+              <th>PLAN</th>
+              <th>SPEED</th>
+              <th>STATUS</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="mikrotikDemoBodyV1">
+            <tr data-pppoe-row="WIK-001">
+              <td>WIK-001</td>
+              <td><input class="pppoe-edit-field-v1" data-field="subscriber" value="Juan Dela Cruz" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="username" value="juan001" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="plan" value="50 Mbps" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="speed" value="50M" disabled></td>
+              <td><span class="mikrotik-table-status-v1 notsynced">⚪ NOT SYNCED</span></td>
+              <td><button type="button" class="pppoe-edit-btn-v1" onclick="togglePppoeEditV1(this)">✏️ EDIT</button><button type="button" class="pppoe-save-btn-v1" onclick="savePppoeEditV1(this)" hidden>💾 SAVE</button></td>
+            </tr>
+            <tr data-pppoe-row="WIK-002">
+              <td>WIK-002</td>
+              <td><input class="pppoe-edit-field-v1" data-field="subscriber" value="Pedro Santos" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="username" value="pedro002" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="plan" value="25 Mbps" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="speed" value="25M" disabled></td>
+              <td><span class="mikrotik-table-status-v1 notsynced">⚪ NOT SYNCED</span></td>
+              <td><button type="button" class="pppoe-edit-btn-v1" onclick="togglePppoeEditV1(this)">✏️ EDIT</button><button type="button" class="pppoe-save-btn-v1" onclick="savePppoeEditV1(this)" hidden>💾 SAVE</button></td>
+            </tr>
+            <tr data-pppoe-row="WIK-003">
+              <td>WIK-003</td>
+              <td><input class="pppoe-edit-field-v1" data-field="subscriber" value="Maria Cruz" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="username" value="maria003" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="plan" value="50 Mbps" disabled></td>
+              <td><input class="pppoe-edit-field-v1" data-field="speed" value="50M" disabled></td>
+              <td><span class="mikrotik-table-status-v1 notsynced">⚪ NOT SYNCED</span></td>
+              <td><button type="button" class="pppoe-edit-btn-v1" onclick="togglePppoeEditV1(this)">✏️ EDIT</button><button type="button" class="pppoe-save-btn-v1" onclick="savePppoeEditV1(this)" hidden>💾 SAVE</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="mikrotikDemoEmptyV1" class="mikrotik-table-empty-v1" hidden>No PPPoE client found.</div>
+      <div class="mikrotik-preview-note-v1">Preview only — MikroTik connection will be added later.</div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+function openMikrotikTabV1(){
+  var page=document.getElementById('mikrotikTabV1');
+  var adminOverlay=document.getElementById('adminOverlayV3');
+  if(!page)return;
+
+  /* Keep the existing admin dashboard state intact; temporarily hide
+     the entire admin overlay so its cards cannot appear underneath. */
+  if(adminOverlay){
+    adminOverlay.dataset.mikrotikHidden='1';
+    adminOverlay.style.display='none';
+  }
+
+  page.hidden=false;
+  page.style.display='block';
+  document.body.classList.add('mikrotik-open-v1');
+  window.scrollTo(0,0);
+}
+
+function closeMikrotikTabV1(){
+  var page=document.getElementById('mikrotikTabV1');
+  var adminOverlay=document.getElementById('adminOverlayV3');
+
+  if(page){
+    page.hidden=true;
+    page.style.display='none';
+  }
+
+  if(adminOverlay){
+    adminOverlay.style.display='';
+    delete adminOverlay.dataset.mikrotikHidden;
+  }
+
+  document.body.classList.remove('mikrotik-open-v1');
+  window.scrollTo(0,0);
+}
+</script>
+
+
+<script>
+function filterMikrotikDemoV1(){
+  var input=document.getElementById('mikrotikDemoSearchV1');
+  var q=(input ? input.value : '').trim().toLowerCase();
+  var rows=document.querySelectorAll('#mikrotikDemoBodyV1 tr');
+  var shown=0;
+  rows.forEach(function(row){
+    var match=!q || row.textContent.toLowerCase().includes(q);
+    row.style.display=match?'':'none';
+    if(match) shown++;
+  });
+  var empty=document.getElementById('mikrotikDemoEmptyV1');
+  if(empty) empty.hidden=shown!==0;
+}
+function refreshMikrotikDemoV1(){
+  var input=document.getElementById('mikrotikDemoSearchV1');
+  if(input) input.value='';
+  filterMikrotikDemoV1();
+}
+</script>
+
+
+<script>
+(function(){
+  function pppoeStorageKeyV1(id){ return 'winkonek_pppoe_preview_' + id; }
+
+  function loadPppoePreviewEditsV1(){
+    document.querySelectorAll('#mikrotikDemoBodyV1 tr[data-pppoe-row]').forEach(function(row){
+      var id=row.getAttribute('data-pppoe-row');
+      try{
+        var saved=JSON.parse(localStorage.getItem(pppoeStorageKeyV1(id)) || 'null');
+        if(!saved) return;
+        row.querySelectorAll('.pppoe-edit-field-v1').forEach(function(input){
+          var field=input.getAttribute('data-field');
+          if(saved[field] !== undefined) input.value=saved[field];
+        });
+      }catch(e){}
+    });
+  }
+
+  window.togglePppoeEditV1=function(btn){
+    var row=btn.closest('tr');
+    if(!row) return;
+    var inputs=row.querySelectorAll('.pppoe-edit-field-v1');
+    var save=row.querySelector('.pppoe-save-btn-v1');
+    inputs.forEach(function(input){ input.disabled=false; });
+    btn.hidden=true;
+    if(save) save.hidden=false;
+    if(inputs.length) inputs[0].focus();
+  };
+
+  window.savePppoeEditV1=function(btn){
+    var row=btn.closest('tr');
+    if(!row) return;
+    var id=row.getAttribute('data-pppoe-row');
+    var data={};
+    row.querySelectorAll('.pppoe-edit-field-v1').forEach(function(input){
+      data[input.getAttribute('data-field')]=input.value.trim();
+      input.disabled=true;
+    });
+
+    try{
+      localStorage.setItem(pppoeStorageKeyV1(id), JSON.stringify(data));
+    }catch(e){}
+
+    var edit=row.querySelector('.pppoe-edit-btn-v1');
+    if(edit) edit.hidden=false;
+    btn.hidden=true;
+
+    var status=row.querySelector('.mikrotik-table-status-v1');
+    if(status){
+      status.textContent='⚪ SAVED LOCALLY';
+      status.classList.remove('notsynced');
+      status.classList.add('pppoe-saved-v1');
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded',loadPppoePreviewEditsV1);
 })();
 </script>
 

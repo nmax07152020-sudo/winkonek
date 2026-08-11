@@ -1522,6 +1522,30 @@ body.mikrotik-open-v1{overflow:hidden !important;}
 
 </style>
 <!-- SPRINT 35 — PWA META -->
+<style>
+
+/* ADMIN STATUS DROPDOWN — visibility fix only */
+#admStatusV1 {
+    background: #07142d !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(0,229,255,.35) !important;
+    color-scheme: dark;
+}
+#admStatusV1 option {
+    background: #07142d !important;
+    color: #ffffff !important;
+}
+#admStatusV1 option:checked {
+    background: #0056cc !important;
+    color: #ffffff !important;
+}
+#admStatusV1:focus {
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 10px rgba(0,229,255,.25) !important;
+    outline: none !important;
+}
+
+</style>
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>

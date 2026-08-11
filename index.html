@@ -1846,7 +1846,7 @@
 </div>
 </div>
 <!-- FLOATING MESSENGER -->
-<a class="floating-messenger" href="https://m.me/YOUR_FACEBOOK_PAGE_USERNAME" target="_blank" title="Chat on Messenger">
+<a class="floating-messenger" href="https://www.facebook.com/erwin.alincastre.2024" target="_blank" title="Chat on Messenger">
 <svg fill="white" height="28" viewbox="0 0 24 24" width="28">
 <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.909 1.458 5.513 3.738 7.211V22l3.393-1.862c.925.257 1.907.395 2.869.395 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.09 12.395l-2.556-2.73-4.992 2.73 5.491-5.83 2.62 2.73 4.928-2.73-5.491 5.83z"></path>
 </svg>
@@ -1863,7 +1863,7 @@
 <script>
     document.getElementById('currentYear').innerText = new Date().getFullYear();
 
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbweMZSJJFMtILU_RrG-MRuYm7fPSKyJlhRt2JfN0obUGw9disV0Lc-D2BbxLE5u27d4HQ/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzlS3NR9slOlJwsy_pNghVfARNHt8T-U5d7pY9z8w60W0R6IhKQfFpmLpYBtyxGwkcnLw/exec";
     let pendingAction = null;
 
     function switchTab(tabId, element) {
@@ -2959,7 +2959,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 </div>
 <script>
 (function(){
-    const ADMIN_URL_V3 = "https://script.google.com/macros/s/AKfycbwKjOsgohDQWmI0rNblf4dRfrtTXHMgQhIIfqiXhAH49HGUmDqO1Siu5Id5ti0DcMuD1g/exec";
+    const ADMIN_URL_V3 = "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec";
 
     function adminMsgV3(text, error){
         const el = document.getElementById("adminMsgV3");
@@ -3039,6 +3039,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <div class="admin-stat-v1"><small>Active</small><strong id="admActiveV1">—</strong></div>
 <div class="admin-stat-v1"><small>Due Soon</small><strong id="admDueSoonV1">—</strong></div>
 <div class="admin-stat-v1"><small>Overdue</small><strong id="admOverdueV1">—</strong></div>
+<div class="admin-stat-v1"><small>GCash Collected This Month</small><strong id="admGcashTotalV1">₱0.00</strong></div>
 </div>
 <div class="admin-search-v1">
 <input id="adminSubscriberQueryV1" placeholder="Search Account ID, name, or contact number" type="text"/>
@@ -3082,6 +3083,19 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <label>DUE DATE</label><input id="admDueDateV1" type="date"/>
 </div>
 </div>
+<div id="adminPaymentBoxV1" style="margin-top:14px;padding:14px;border:1px solid rgba(0,229,255,.22);border-radius:12px;background:rgba(0,0,0,.16);display:none;">
+<div style="font-weight:900;color:var(--accent-cyan);margin-bottom:10px">💳 GCASH PAYMENT</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.72rem;">
+<div><span style="color:var(--text-muted);display:block;font-size:.58rem">REFERENCE</span><strong id="admPaymentRefV1">—</strong></div>
+<div><span style="color:var(--text-muted);display:block;font-size:.58rem">AMOUNT</span><strong id="admPaymentAmountV1">—</strong></div>
+<div><span style="color:var(--text-muted);display:block;font-size:.58rem">STATUS</span><strong id="admPaymentStatusV1">—</strong></div>
+<div><span style="color:var(--text-muted);display:block;font-size:.58rem">PAYMENT ROW</span><strong id="admPaymentRowV1">—</strong></div>
+</div>
+<div style="display:flex;gap:8px;margin-top:12px;">
+<button id="admVerifyPaymentV1" type="button" style="flex:1;padding:10px;border:0;border-radius:10px;background:#28c76f;color:#07130d;font-weight:900;cursor:pointer;">✓ VERIFY PAYMENT</button>
+<button id="admRejectPaymentV1" type="button" style="flex:1;padding:10px;border:0;border-radius:10px;background:#ea5455;color:#fff;font-weight:900;cursor:pointer;">✕ REJECT</button>
+</div>
+</div>
 <div class="admin-actions-v1">
 <button class="admin-save-v1" id="adminSaveV1" type="button">💾 SAVE CHANGES</button>
 <button class="admin-refresh-v1" id="adminRefreshV1" type="button">↻ CLEAR</button>
@@ -3093,7 +3107,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 </div>
 <script>
 (function(){
-  const ADMIN_URL_DASH_V1 = "https://script.google.com/macros/s/AKfycbwKjOsgohDQWmI0rNblf4dRfrtTXHMgQhIIfqiXhAH49HGUmDqO1Siu5Id5ti0DcMuD1g/exec";
+  const ADMIN_URL_DASH_V1 = "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec";
 
   function adminTokenV1(){
     return sessionStorage.getItem('winkonek_admin_token_v2') || '';
@@ -3133,6 +3147,20 @@ document.getElementById('resName').innerText = data.name || 'N/A';
       document.getElementById('admActiveV1').textContent=d.subscribers.active;
       document.getElementById('admDueSoonV1').textContent=d.subscribers.dueSoon;
       document.getElementById('admOverdueV1').textContent=d.subscribers.overdue;
+
+      const monthlyGcash = Number(
+        d.payments && d.payments.verifiedThisMonthTotal != null
+          ? d.payments.verifiedThisMonthTotal
+          : 0
+      );
+
+      document.getElementById('admGcashTotalV1').textContent =
+        '₱' + (Number.isFinite(monthlyGcash) ? monthlyGcash : 0)
+          .toLocaleString('en-PH',{
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+          });
+
       dashMsgV1('Dashboard updated.',false);
     }catch(e){
       console.error(e);
@@ -3155,23 +3183,64 @@ document.getElementById('resName').innerText = data.name || 'N/A';
   function clearEditorV1(){
     document.getElementById('adminEditorV1').style.display='none';
     document.getElementById('adminSubscriberQueryV1').value='';
+    resetPaymentBoxV1();
     document.getElementById('adminEditingIdV1').textContent='';
     editorMsgV1('',false);
+  }
+
+  let currentPaymentRowV1 = null;
+  let currentPaymentNameV1 = '';
+
+  function resetPaymentBoxV1(){
+    currentPaymentRowV1 = null;
+    currentPaymentNameV1 = '';
+    const box=document.getElementById('adminPaymentBoxV1');
+    if(box) box.style.display='none';
+    const set=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
+    set('admPaymentRefV1','—'); set('admPaymentAmountV1','—'); set('admPaymentStatusV1','—'); set('admPaymentRowV1','—');
+  }
+
+  async function loadAdminPaymentForNameV1(name){
+    resetPaymentBoxV1();
+    if(!name) return;
+    try{
+      const u=ADMIN_URL_DASH_V1+'?action=adminPayments&key='+encodeURIComponent(adminTokenV1())+'&refresh='+Date.now();
+      const r=await fetch(u);
+      const d=await r.json();
+      if(!d || !d.success || !Array.isArray(d.payments)) return;
+      const matches=d.payments.filter(p=>String(p.name||'').trim().toLowerCase()===String(name).trim().toLowerCase());
+      if(!matches.length) return;
+      const p=matches[0];
+      currentPaymentRowV1=p.row; currentPaymentNameV1=p.name||name;
+      const box=document.getElementById('adminPaymentBoxV1'); if(box) box.style.display='block';
+      document.getElementById('admPaymentRefV1').textContent=p.reference||'—';
+      const n=Number(p.amount);
+      document.getElementById('admPaymentAmountV1').textContent=(p.amount!=='' && p.amount!=null && !isNaN(n))?'₱'+n.toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+      document.getElementById('admPaymentStatusV1').textContent=String(p.status||'Pending').toUpperCase();
+      document.getElementById('admPaymentRowV1').textContent=p.row||'—';
+      if(String(p.status||'').toUpperCase()!=='PENDING'){
+        document.getElementById('admVerifyPaymentV1').style.display='none';
+        document.getElementById('admRejectPaymentV1').style.display='none';
+      }
+    }catch(e){ console.warn('Admin payment lookup:',e); }
   }
 
   async function searchAdminSubscriberV1(){
     const q=document.getElementById('adminSubscriberQueryV1').value.trim();
     if(!q){dashMsgV1('Ilagay ang Account ID, name, o contact number.',true);return;}
     dashMsgV1('Searching subscriber...',false);
+    resetPaymentBoxV1();
     try{
-      const u=ADMIN_URL_DASH_V1+'?action=adminSubscriber&key='+encodeURIComponent(adminTokenV1())+'&query='+encodeURIComponent(q);
+      // IMPORTANT: use the existing working PAYMENT SERVER for subscriber lookup.
+      // This keeps the working client/payment connection unchanged.
+      const u=GOOGLE_SCRIPT_URL+'?action=search&query='+encodeURIComponent(q)+'&refresh='+Date.now();
       const r=await fetch(u);
       const d=await r.json();
-      if(!d.success){
-        dashMsgV1(d.error||'Subscriber not found.',true);
+      if(!d || !d.found){
+        dashMsgV1('Subscriber not found.',true);
         return;
       }
-      const s=d.subscriber;
+      const s=d;
       document.getElementById('adminEditorV1').style.display='block';
       document.getElementById('adminEditingIdV1').textContent=s.accountId||'N/A';
       document.getElementById('admNameV1').value=s.name||'';
@@ -3179,15 +3248,35 @@ document.getElementById('resName').innerText = data.name || 'N/A';
       document.getElementById('admEmailV1').value=s.email||'';
       document.getElementById('admPlanV1').value=s.plan||'';
       document.getElementById('admAddressV1').value=s.address||'';
-      document.getElementById('admRemarksV1').value=s.remarks||'';
+      document.getElementById('admRemarksV1').value='';
       document.getElementById('admStatusV1').value=s.status||'PENDING';
       setDateV1(s.dueDate);
-      editorMsgV1('Subscriber loaded. You can edit the fields.',false);
+      editorMsgV1('Subscriber loaded from the working payment server.',false);
       dashMsgV1('Subscriber found.',false);
+      await loadAdminPaymentForNameV1(s.name||'');
     }catch(e){
       console.error(e);
-      dashMsgV1('Hindi maka-connect sa subscriber search.',true);
+      dashMsgV1('Hindi maka-connect sa payment server.',true);
     }
+  }
+
+  async function processAdminPaymentV1(decision){
+    if(!currentPaymentRowV1){ editorMsgV1('Walang pending GCash payment para sa client.',true); return; }
+    const btn=decision==='VERIFY'?document.getElementById('admVerifyPaymentV1'):document.getElementById('admRejectPaymentV1');
+    if(btn) btn.disabled=true;
+    editorMsgV1(decision==='VERIFY'?'Verifying GCash payment...':'Rejecting GCash payment...',false);
+    try{
+      const payload={action:'adminPaymentAction',key:adminTokenV1(),paymentRow:currentPaymentRowV1,decision:decision};
+      const r=await fetch(ADMIN_URL_DASH_V1,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+      const d=await r.json();
+      if(!d || !d.success){ editorMsgV1((d&&d.error)||'Payment action failed.',true); return; }
+      editorMsgV1(decision==='VERIFY'?'✅ Payment verified. Subscriber set to PAID and due date updated.':'Payment rejected.',false);
+      await searchAdminSubscriberV1();
+      loadAdminStatsV1();
+    }catch(e){
+      console.error(e);
+      editorMsgV1('Hindi maka-process ng GCash payment.',true);
+    }finally{ if(btn) btn.disabled=false; }
   }
 
   async function saveAdminSubscriberV1(){
@@ -3241,6 +3330,8 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     document.getElementById('adminSubscriberSearchV1')?.addEventListener('click',searchAdminSubscriberV1);
     document.getElementById('adminSaveV1')?.addEventListener('click',saveAdminSubscriberV1);
     document.getElementById('adminRefreshV1')?.addEventListener('click',clearEditorV1);
+    document.getElementById('admVerifyPaymentV1')?.addEventListener('click',function(){processAdminPaymentV1('VERIFY');});
+    document.getElementById('admRejectPaymentV1')?.addEventListener('click',function(){processAdminPaymentV1('REJECT');});
     document.getElementById('adminSubscriberQueryV1')?.addEventListener('keydown',function(e){
       if(e.key==='Enter') searchAdminSubscriberV1();
     });

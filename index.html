@@ -3406,6 +3406,91 @@ body.mikrotik-open-v1 #adminDashV1{
 #ispFooterTextV9{margin-top:4px}
 </style>
 
+
+<style id="dashboardBrandingV9_2Style">
+#adminDashV1 .admin-panel-v1#adminPanelDashboardBrandingV9_2{padding:16px!important}
+.dashboard-branding-head-v9_2{
+  display:flex;align-items:center;gap:12px;padding:15px 17px;margin-bottom:12px;
+  border:1px solid rgba(154,174,189,.13);border-radius:14px;
+  background:linear-gradient(145deg,rgba(17,31,45,.96),rgba(10,22,35,.92));
+}
+.dashboard-branding-title-v9_2{color:#e6eef5;font-size:.82rem;font-weight:900;letter-spacing:.04em}
+.dashboard-branding-sub-v9_2{margin-top:4px;color:#8195a5;font-size:.59rem;line-height:1.45}
+.dashboard-branding-grid-v9_2{
+  display:grid;grid-template-columns:1fr 1fr;gap:11px;padding:15px;
+  border:1px solid rgba(154,174,189,.13);border-radius:14px;background:#111f2d;
+}
+.branding-field-v9_2 label{
+  display:block;margin-bottom:5px;color:#718797;font-size:.54rem;font-weight:900;letter-spacing:.06em
+}
+.branding-field-v9_2 input[type="text"]{
+  width:100%;box-sizing:border-box;min-height:38px;padding:9px 10px;
+  border:1px solid rgba(154,174,189,.15);border-radius:7px;background:#0c1824;color:#e6eef5;outline:none
+}
+.branding-field-v9_2 input[type="color"]{
+  width:46px;height:38px;padding:2px;border:1px solid rgba(154,174,189,.15);
+  border-radius:7px;background:#0c1824;cursor:pointer
+}
+.branding-color-row-v9_2{display:flex;gap:7px;align-items:center}
+.branding-color-row-v9_2 input[type="text"]{flex:1}
+.branding-wide-v9_2{grid-column:1/-1}
+.branding-field-v9_2 small{display:block;margin-top:5px;color:#718797;font-size:.5rem}
+.dashboard-branding-preview-v9_2{
+  position:relative;overflow:hidden;margin-top:12px;padding:18px;border-radius:14px;
+  background:#07142d;border:1px solid #00e5ff;color:#e6eef5;
+}
+.branding-preview-title-v9_2{font-size:.9rem;font-weight:900;color:#00e5ff}
+.branding-preview-sub-v9_2{margin-top:4px;color:#8195a5;font-size:.59rem}
+.branding-preview-dot-v9_2{
+  position:absolute;right:18px;top:18px;width:10px;height:10px;border-radius:50%;
+  background:#00e5ff;box-shadow:0 0 14px #00e5ff
+}
+.dashboard-branding-actions-v9_2{display:flex;justify-content:flex-end;gap:7px;margin-top:12px}
+.dashboard-branding-actions-v9_2 button{
+  border:1px solid rgba(56,191,216,.22);border-radius:7px;background:#162b3b;color:#cce8ef;
+  font-size:.59rem;font-weight:900;cursor:pointer;padding:9px 12px
+}
+.dashboard-branding-actions-v9_2 button:last-child{background:#173846}
+.dashboard-branding-actions-v9_2 button:hover{background:#1a3446}
+.dashboard-branding-msg-v9_2{min-height:18px;margin-top:7px;text-align:right;color:#8195a5;font-size:.59rem;font-weight:700}
+@media(max-width:760px){
+  .dashboard-branding-grid-v9_2{grid-template-columns:1fr}
+  .branding-wide-v9_2{grid-column:1}
+  .dashboard-branding-actions-v9_2{flex-direction:column}
+  .dashboard-branding-actions-v9_2 button{width:100%}
+}
+</style>
+
+
+<style id="dashboardBrandingV9_2VisualOverrides">
+#adminDashV1{
+  --wk-dashboard-primary-v9-2:#07142d;
+  --wk-dashboard-secondary-v9-2:#111f2d;
+  --wk-dashboard-accent-v9-2:#00e5ff;
+}
+#adminDashV1 .admin-dash-card-v1{
+  background:var(--wk-dashboard-primary-v9-2)!important;
+}
+#adminDashV1 .admin-dash-title-v1{
+  color:var(--wk-dashboard-accent-v9-2)!important;
+}
+#adminDashV1 .admin-tab-btn-v1.active{
+  background:var(--wk-dashboard-secondary-v9-2)!important;
+  border-color:color-mix(in srgb,var(--wk-dashboard-accent-v9-2) 35%,transparent)!important;
+}
+#adminDashV1 .admin-panel-v1,
+#adminDashV1 .admin-stat-v1{
+  background:var(--wk-dashboard-secondary-v9-2)!important;
+}
+#adminDashV1 .admin-stat-v1{
+  border-color:color-mix(in srgb,var(--wk-dashboard-accent-v9-2) 12%,transparent)!important;
+}
+#adminDashV1 .admin-tab-btn-v1.active{
+  color:#fff!important;
+  box-shadow:inset 0 -2px 0 var(--wk-dashboard-accent-v9-2);
+}
+</style>
+
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
@@ -5039,6 +5124,8 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <button type="button" class="admin-tab-btn-v1" id="adminMikrotikTabBtnV1" data-admin-tab="mikrotik">🌐 PPPOE / MIKROTIK</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="plans">⚙️ PLAN MANAGEMENT</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="company-settings">🏢 ISP SETTINGS</button>
+<button type="button" class="admin-tab-btn-v1" data-admin-tab="dashboard-branding">🎨 DASHBOARD BRANDING</button>
+
 
 
 </div>
@@ -5306,6 +5393,61 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     <button type="button" id="ispSettingsSaveV9">💾 SAVE SETTINGS</button>
   </div>
   <div class="company-settings-msg-v9" id="ispSettingsMsgV9"></div>
+</div>
+
+
+<div class="admin-panel-v1" id="adminPanelDashboardBrandingV9_2">
+  <div class="dashboard-branding-head-v9_2">
+    <div>
+      <div class="dashboard-branding-title-v9_2">🎨 DASHBOARD BRANDING</div>
+      <div class="dashboard-branding-sub-v9_2">Customize the Admin Dashboard title and color accents. Settings are saved with your ISP Company Settings.</div>
+    </div>
+  </div>
+
+  <div class="dashboard-branding-grid-v9_2">
+    <div class="branding-field-v9_2 branding-wide-v9_2">
+      <label>DASHBOARD TITLE</label>
+      <input id="dashboardTitleV9_2" type="text" placeholder="ISP BILLING DASHBOARD">
+    </div>
+
+    <div class="branding-field-v9_2">
+      <label>PRIMARY COLOR</label>
+      <div class="branding-color-row-v9_2">
+        <input id="dashboardPrimaryColorV9_2" type="color" value="#07142d">
+        <input id="dashboardPrimaryTextV9_2" type="text" value="#07142d" maxlength="7">
+      </div>
+    </div>
+
+    <div class="branding-field-v9_2">
+      <label>SECONDARY COLOR</label>
+      <div class="branding-color-row-v9_2">
+        <input id="dashboardSecondaryColorV9_2" type="color" value="#111f2d">
+        <input id="dashboardSecondaryTextV9_2" type="text" value="#111f2d" maxlength="7">
+      </div>
+    </div>
+
+    <div class="branding-field-v9_2 branding-wide-v9_2">
+      <label>ACCENT COLOR</label>
+      <div class="branding-color-row-v9_2">
+        <input id="dashboardAccentColorV9_2" type="color" value="#00e5ff">
+        <input id="dashboardAccentTextV9_2" type="text" value="#00e5ff" maxlength="7">
+      </div>
+      <small>Used for the dashboard title, highlights, borders and selected navigation accents.</small>
+    </div>
+  </div>
+
+  <div class="dashboard-branding-preview-v9_2" id="dashboardBrandingPreviewV9_2">
+    <div class="branding-preview-title-v9_2" id="dashboardBrandingPreviewTitleV9_2">ISP BILLING DASHBOARD</div>
+    <div class="branding-preview-sub-v9_2">Subscriber management</div>
+    <div class="branding-preview-dot-v9_2"></div>
+  </div>
+
+  <div class="dashboard-branding-actions-v9_2">
+    <button type="button" id="dashboardBrandingResetV9_2">↺ DEFAULT</button>
+    <button type="button" id="dashboardBrandingReloadV9_2">↻ RELOAD</button>
+    <button type="button" id="dashboardBrandingSaveV9_2">💾 SAVE BRANDING</button>
+  </div>
+  <div class="dashboard-branding-msg-v9_2" id="dashboardBrandingMsgV9_2"></div>
 </div>
 
 <div class="admin-msg-v1" id="adminDashMsgV1"></div>
@@ -5862,6 +6004,7 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminPanelPaymentsV1')?.classList.toggle('active',tab==='payments');
     document.getElementById('adminPanelPlansV8')?.classList.toggle('active',tab==='plans');
     document.getElementById('adminPanelCompanySettingsV9')?.classList.toggle('active',tab==='company-settings');
+    document.getElementById('adminPanelDashboardBrandingV9_2')?.classList.toggle('active',tab==='dashboard-branding');
     if(tab==='tickets')loadAdminTicketsV1();
     if(tab==='payments')loadAdminPaymentsV1();
     if(tab==='plans')loadPlansV8();
@@ -7427,6 +7570,180 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   }else{
     loadISPBrandingV9();
   }
+})();
+</script>
+
+
+<script>
+(function(){
+  const DASHBOARD_BRANDING_URL_V9_2 =
+    "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec";
+
+  const DEFAULT_BRANDING_V9_2={
+    dashboardTitle:"ISP BILLING DASHBOARD",
+    dashboardPrimaryColor:"#07142d",
+    dashboardSecondaryColor:"#111f2d",
+    dashboardAccentColor:"#00e5ff"
+  };
+
+  function brandingTokenV9_2(){
+    return sessionStorage.getItem('winkonek_admin_token_v2') || '';
+  }
+  function brandingMsgV9_2(text,error){
+    var el=document.getElementById('dashboardBrandingMsgV9_2');
+    if(!el)return;
+    el.textContent=text||'';
+    el.style.color=error?'#e56570':'#3ccb83';
+  }
+  function validHexV9_2(v,fallback){
+    v=String(v||'').trim();
+    return /^#[0-9a-fA-F]{6}$/.test(v)?v:fallback;
+  }
+  function setBrandingFormV9_2(s){
+    s=s||{};
+    var vals={
+      dashboardTitle:String(s.dashboardTitle||DEFAULT_BRANDING_V9_2.dashboardTitle),
+      dashboardPrimaryColor:validHexV9_2(s.dashboardPrimaryColor,DEFAULT_BRANDING_V9_2.dashboardPrimaryColor),
+      dashboardSecondaryColor:validHexV9_2(s.dashboardSecondaryColor,DEFAULT_BRANDING_V9_2.dashboardSecondaryColor),
+      dashboardAccentColor:validHexV9_2(s.dashboardAccentColor,DEFAULT_BRANDING_V9_2.dashboardAccentColor)
+    };
+    document.getElementById('dashboardTitleV9_2').value=vals.dashboardTitle;
+    document.getElementById('dashboardPrimaryColorV9_2').value=vals.dashboardPrimaryColor;
+    document.getElementById('dashboardPrimaryTextV9_2').value=vals.dashboardPrimaryColor;
+    document.getElementById('dashboardSecondaryColorV9_2').value=vals.dashboardSecondaryColor;
+    document.getElementById('dashboardSecondaryTextV9_2').value=vals.dashboardSecondaryColor;
+    document.getElementById('dashboardAccentColorV9_2').value=vals.dashboardAccentColor;
+    document.getElementById('dashboardAccentTextV9_2').value=vals.dashboardAccentColor;
+    applyDashboardBrandingV9_2(vals);
+  }
+
+  function currentBrandingV9_2(){
+    return {
+      dashboardTitle:document.getElementById('dashboardTitleV9_2').value.trim() || DEFAULT_BRANDING_V9_2.dashboardTitle,
+      dashboardPrimaryColor:validHexV9_2(document.getElementById('dashboardPrimaryTextV9_2').value,DEFAULT_BRANDING_V9_2.dashboardPrimaryColor),
+      dashboardSecondaryColor:validHexV9_2(document.getElementById('dashboardSecondaryTextV9_2').value,DEFAULT_BRANDING_V9_2.dashboardSecondaryColor),
+      dashboardAccentColor:validHexV9_2(document.getElementById('dashboardAccentTextV9_2').value,DEFAULT_BRANDING_V9_2.dashboardAccentColor)
+    };
+  }
+
+  function applyDashboardBrandingV9_2(s){
+    s=s||DEFAULT_BRANDING_V9_2;
+    var primary=validHexV9_2(s.dashboardPrimaryColor,DEFAULT_BRANDING_V9_2.dashboardPrimaryColor);
+    var secondary=validHexV9_2(s.dashboardSecondaryColor,DEFAULT_BRANDING_V9_2.dashboardSecondaryColor);
+    var accent=validHexV9_2(s.dashboardAccentColor,DEFAULT_BRANDING_V9_2.dashboardAccentColor);
+    var title=String(s.dashboardTitle||DEFAULT_BRANDING_V9_2.dashboardTitle);
+
+    document.documentElement.style.setProperty('--wk-dashboard-primary-v9-2',primary);
+    document.documentElement.style.setProperty('--wk-dashboard-secondary-v9-2',secondary);
+    document.documentElement.style.setProperty('--wk-dashboard-accent-v9-2',accent);
+
+    var root=document.getElementById('adminDashV1');
+    if(root){
+      root.style.setProperty('--wk-dashboard-primary-v9-2',primary);
+      root.style.setProperty('--wk-dashboard-secondary-v9-2',secondary);
+      root.style.setProperty('--wk-dashboard-accent-v9-2',accent);
+    }
+
+    var titleEl=document.querySelector('#adminDashV1 .admin-dash-title-v1');
+    if(titleEl) titleEl.textContent='⚙️ '+title;
+
+    var previewTitle=document.getElementById('dashboardBrandingPreviewTitleV9_2');
+    if(previewTitle)previewTitle.textContent=title;
+    var preview=document.getElementById('dashboardBrandingPreviewV9_2');
+    if(preview){
+      preview.style.background=secondary;
+      preview.style.borderColor=accent;
+    }
+    var dot=document.querySelector('.branding-preview-dot-v9_2');
+    if(dot){dot.style.background=accent;dot.style.boxShadow='0 0 14px '+accent}
+    if(previewTitle)previewTitle.style.color=accent;
+  }
+
+  async function loadDashboardBrandingV9_2(){
+    brandingMsgV9_2('Loading branding...',false);
+    try{
+      var r=await fetch(DASHBOARD_BRANDING_URL_V9_2+
+        '?action=publicCompanySettings&refresh='+Date.now(),{cache:'no-store'});
+      var d=await r.json();
+      if(!d||d.success!==true)throw new Error((d&&d.error)||'Unable to load branding.');
+      setBrandingFormV9_2(d.settings||{});
+      brandingMsgV9_2('Branding loaded.',false);
+    }catch(e){
+      console.error('Dashboard Branding V9.2:',e);
+      setBrandingFormV9_2(DEFAULT_BRANDING_V9_2);
+      brandingMsgV9_2('Hindi maka-connect sa Dashboard Branding.',true);
+    }
+  }
+
+  async function saveDashboardBrandingV9_2(){
+    var settings=currentBrandingV9_2();
+    var btn=document.getElementById('dashboardBrandingSaveV9_2');
+    btn.disabled=true;btn.textContent='SAVING...';
+    brandingMsgV9_2('Saving dashboard branding...',false);
+
+    try{
+      var r=await fetch(DASHBOARD_BRANDING_URL_V9_2,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({
+          action:'adminCompanySettings',
+          key:brandingTokenV9_2(),
+          settings:settings
+        })
+      });
+      var d=await r.json();
+      if(!d||d.success!==true){
+        brandingMsgV9_2((d&&d.error)||'Unable to save branding.',true);
+        return;
+      }
+      setBrandingFormV9_2(d.settings||settings);
+      brandingMsgV9_2('Dashboard Branding saved successfully.',false);
+    }catch(e){
+      console.error('Save Dashboard Branding V9.2:',e);
+      brandingMsgV9_2('Hindi maka-connect sa Dashboard Branding server.',true);
+    }finally{
+      btn.disabled=false;btn.textContent='💾 SAVE BRANDING';
+    }
+  }
+
+  function resetDashboardBrandingV9_2(){
+    setBrandingFormV9_2(DEFAULT_BRANDING_V9_2);
+    brandingMsgV9_2('Preview reset. Click SAVE BRANDING to keep it.',false);
+  }
+
+  function bindColorV9_2(colorId,textId){
+    var c=document.getElementById(colorId), t=document.getElementById(textId);
+    if(!c||!t)return;
+    c.addEventListener('input',function(){
+      t.value=c.value;
+      applyDashboardBrandingV9_2(currentBrandingV9_2());
+    });
+    t.addEventListener('input',function(){
+      var v=validHexV9_2(t.value,c.value);
+      if(/^#[0-9a-fA-F]{6}$/.test(t.value.trim())){
+        c.value=t.value.trim();
+        applyDashboardBrandingV9_2(currentBrandingV9_2());
+      }
+    });
+  }
+
+  function initDashboardBrandingV9_2(){
+    var save=document.getElementById('dashboardBrandingSaveV9_2');
+    var reload=document.getElementById('dashboardBrandingReloadV9_2');
+    var reset=document.getElementById('dashboardBrandingResetV9_2');
+    if(save&&!save.dataset.boundV92){save.dataset.boundV92='1';save.addEventListener('click',saveDashboardBrandingV9_2)}
+    if(reload&&!reload.dataset.boundV92){reload.dataset.boundV92='1';reload.addEventListener('click',loadDashboardBrandingV9_2)}
+    if(reset&&!reset.dataset.boundV92){reset.dataset.boundV92='1';reset.addEventListener('click',resetDashboardBrandingV9_2)}
+    bindColorV9_2('dashboardPrimaryColorV9_2','dashboardPrimaryTextV9_2');
+    bindColorV9_2('dashboardSecondaryColorV9_2','dashboardSecondaryTextV9_2');
+    bindColorV9_2('dashboardAccentColorV9_2','dashboardAccentTextV9_2');
+    loadDashboardBrandingV9_2();
+  }
+
+  window.loadDashboardBrandingV9_2=loadDashboardBrandingV9_2;
+  window.applyDashboardBrandingV9_2=applyDashboardBrandingV9_2;
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initDashboardBrandingV9_2);
+  else initDashboardBrandingV9_2();
 })();
 </script>
 

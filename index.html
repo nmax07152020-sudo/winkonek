@@ -3122,6 +3122,170 @@ body.mikrotik-open-v1 #adminDashV1{
 }
 </style>
 
+
+<style id="planManagementV8Style">
+#adminDashV1 .admin-panel-v1#adminPanelPlansV8{padding:16px!important}
+.plan-management-head-v8{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:15px 17px;margin-bottom:12px;
+  border:1px solid rgba(154,174,189,.13);border-radius:14px;
+  background:linear-gradient(145deg,rgba(17,31,45,.96),rgba(10,22,35,.92));
+}
+.plan-management-title-v8{color:#e6eef5;font-size:.82rem;font-weight:900;letter-spacing:.04em}
+.plan-management-sub-v8{margin-top:4px;color:#8195a5;font-size:.59rem}
+.plan-add-btn-v8,.plan-editor-actions-v8 button,.plan-action-v8{
+  border:1px solid rgba(56,191,216,.22);border-radius:7px;
+  background:#162b3b;color:#cce8ef;font-size:.59rem;font-weight:900;
+  cursor:pointer;padding:8px 10px;
+}
+.plan-add-btn-v8:hover,.plan-editor-actions-v8 button:hover,.plan-action-v8:hover{
+  background:#1a3446;border-color:rgba(56,191,216,.38)
+}
+.plan-editor-v8{
+  display:grid;grid-template-columns:1fr 1fr 1fr auto;
+  gap:10px;align-items:end;padding:14px;margin-bottom:12px;
+  border:1px solid rgba(154,174,189,.13);border-radius:12px;background:#111f2d;
+}
+.plan-editor-v8[hidden]{display:none!important}
+.plan-field-v8 label{display:block;margin-bottom:5px;color:#718797;font-size:.54rem;font-weight:900;letter-spacing:.06em}
+.plan-field-v8 input{
+  width:100%;box-sizing:border-box;min-height:37px;padding:8px 9px;
+  border:1px solid rgba(154,174,189,.15);border-radius:7px;
+  background:#0c1824;color:#e6eef5;outline:none;
+}
+.plan-field-v8 input:focus{border-color:rgba(56,191,216,.45)}
+.plan-editor-actions-v8{display:flex;gap:6px}
+.plan-editor-actions-v8 button{min-height:37px;white-space:nowrap}
+.plan-editor-actions-v8 button:last-child{background:#173846}
+.plan-msg-v8{grid-column:1/-1;min-height:15px;color:#9aaebd;font-size:.59rem}
+.plan-table-wrap-v8{
+  overflow:auto;border:1px solid rgba(154,174,189,.13);border-radius:14px;background:#111f2d
+}
+.plan-table-v8{width:100%;border-collapse:collapse;min-width:650px}
+.plan-table-v8 th{
+  padding:11px;text-align:left;background:#0d1925;color:#718797;
+  font-size:.55rem;letter-spacing:.05em
+}
+.plan-table-v8 td{
+  padding:11px;border-top:1px solid rgba(154,174,189,.065);
+  color:#d3e0e8;font-size:.62rem
+}
+.plan-table-v8 tbody tr:hover td{background:#142b38}
+.plan-name-v8{font-weight:900;color:#e6eef5}
+.plan-amount-v8{font-weight:900;color:#3ccb83}
+.plan-status-v8{
+  display:inline-block;padding:4px 7px;border-radius:20px;
+  font-size:.52rem;font-weight:900
+}
+.plan-status-active-v8{color:#3ccb83;background:rgba(60,203,131,.09)}
+.plan-status-inactive-v8{color:#9aaebd;background:rgba(154,174,189,.08)}
+.plan-actions-v8{display:flex;gap:5px;flex-wrap:wrap}
+.plan-action-edit-v8{color:#cce8ef}
+.plan-action-toggle-v8{color:#e7b84b}
+.plan-empty-v8{padding:24px!important;text-align:center;color:#8195a5!important}
+@media(max-width:760px){
+  .plan-management-head-v8{align-items:flex-start;flex-direction:column}
+  .plan-editor-v8{grid-template-columns:1fr}
+  .plan-editor-actions-v8{grid-column:1}
+  .plan-add-btn-v8{width:100%}
+}
+</style>
+
+
+<style id="dynamicApplicationPlansV8Style">
+.plan-loading-v8{
+  grid-column:1/-1;
+  min-height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  border:2px dashed rgba(0,86,204,.28);
+  border-radius:12px;
+  color:#64748b;
+  background:#f8fbff;
+  font-weight:700;
+  font-size:.82rem;
+  text-align:center;
+}
+.plan-error-v8{
+  grid-column:1/-1;
+  min-height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  border:2px dashed rgba(220,70,70,.25);
+  border-radius:12px;
+  color:#b42318;
+  background:#fff7f7;
+  font-weight:700;
+  font-size:.82rem;
+  text-align:center;
+}
+.plan-empty-v8{
+  grid-column:1/-1;
+  min-height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  border:2px dashed rgba(100,116,139,.25);
+  border-radius:12px;
+  color:#64748b;
+  background:#f8fafc;
+  font-weight:700;
+  font-size:.82rem;
+  text-align:center;
+}
+.poster-plan-card.dynamic-plan-v8{
+  min-height:112px;
+}
+.poster-plan-card.dynamic-plan-v8 .plan-name-v8{
+  display:block;
+  margin-bottom:3px;
+  color:#0056cc;
+  font-size:.72rem;
+  font-weight:800;
+}
+.poster-plan-card.dynamic-plan-v8 .plan-mbps{
+  font-size:1.9rem;
+}
+.poster-plan-card.dynamic-plan-v8 .plan-price{
+  margin-top:6px;
+}
+</style>
+
+
+<style id="applicationPlanDropdownV8Style">
+.plan-dropdown-v8-wrap{
+  width:100%;
+  margin-bottom:12px;
+}
+.plan-dropdown-v8{
+  width:100%;
+  min-height:48px;
+  padding:11px 42px 11px 13px;
+  border:1px solid rgba(0,86,204,.22);
+  border-radius:9px;
+  background:#fff;
+  color:#172033;
+  font-size:.92rem;
+  font-weight:700;
+  cursor:pointer;
+  outline:none;
+}
+.plan-dropdown-v8:focus{
+  border-color:#0056cc;
+  box-shadow:0 0 0 3px rgba(0,86,204,.08);
+}
+.plan-dropdown-v8 option{
+  background:#fff;
+  color:#172033;
+  font-weight:600;
+}
+</style>
+
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
@@ -3364,19 +3528,12 @@ body.mikrotik-open-v1 #adminDashV1{
 <input class="form-control" id="regEmail" placeholder="junadelacruz@gmail.com" required="" type="email"/>
 </div>
 <label style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; color: var(--text-muted);">Piliin ang Upgraded Plan *</label>
-<div class="plan-cards-container">
-<div class="poster-plan-card" onclick="selectPlanCard(this, '50 Mbps - ₱699')">
-<span class="plan-badge">UPGRADED PLAN</span>
-<div class="plan-mbps">50 Mbps</div>
-<div class="plan-price">₱699<sub>/mo</sub></div>
+<div class="plan-dropdown-v8-wrap">
+<select class="form-control plan-dropdown-v8" id="applicationPlanSelectV8" required>
+  <option value="">Loading available plans...</option>
+</select>
 </div>
-<div class="poster-plan-card selected" onclick="selectPlanCard(this, '100 Mbps - ₱999')">
-<span class="plan-badge">UPGRADED PLAN</span>
-<div class="plan-mbps">100 Mbps</div>
-<div class="plan-price">₱999<sub>/mo</sub></div>
-</div>
-</div>
-<input id="selectedPlan" type="hidden" value="100 Mbps - ₱999/mo"/>
+<input id="selectedPlan" type="hidden" value=""/>
 <div class="form-group">
 <label>Kumpletong Address *</label>
 <textarea class="form-control" id="regAddress" placeholder="House No., Street, Barangay, Antipolo" required="" rows="2"></textarea>
@@ -4760,6 +4917,8 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="tickets">🎫 TICKETS</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="payments">💳 GCASH PAYMENTS</button>
 <button type="button" class="admin-tab-btn-v1" id="adminMikrotikTabBtnV1" data-admin-tab="mikrotik">🌐 PPPOE / MIKROTIK</button>
+<button type="button" class="admin-tab-btn-v1" data-admin-tab="plans">⚙️ PLAN MANAGEMENT</button>
+
 </div>
 <div class="admin-panel-v1 active" id="adminPanelSubscribersV1">
 <div class="admin-stat-grid-v1">
@@ -4912,6 +5071,55 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     </table>
   </div>
   <div class="admin-ticket-msg-v1" id="adminPaymentMsgV1"></div>
+</div>
+
+
+<div class="admin-panel-v1" id="adminPanelPlansV8">
+  <div class="plan-management-head-v8">
+    <div>
+      <div class="plan-management-title-v8">⚙️ PLAN MANAGEMENT</div>
+      <div class="plan-management-sub-v8">Add, edit, enable or disable ISP plans and monthly amounts.</div>
+    </div>
+    <button type="button" class="plan-add-btn-v8" id="planAddBtnV8">＋ ADD NEW PLAN</button>
+  </div>
+
+  <div class="plan-editor-v8" id="planEditorV8" hidden>
+    <input type="hidden" id="planIdV8">
+    <div class="plan-field-v8">
+      <label>PLAN NAME</label>
+      <input id="planNameV8" type="text" placeholder="Example: Premium">
+    </div>
+    <div class="plan-field-v8">
+      <label>SPEED</label>
+      <input id="planSpeedV8" type="text" placeholder="Example: 150 Mbps">
+    </div>
+    <div class="plan-field-v8">
+      <label>MONTHLY AMOUNT</label>
+      <input id="planAmountV8" type="number" min="0" step="0.01" placeholder="1299">
+    </div>
+    <div class="plan-editor-actions-v8">
+      <button type="button" id="planCancelV8">CANCEL</button>
+      <button type="button" id="planSaveV8">💾 SAVE PLAN</button>
+    </div>
+    <div class="plan-msg-v8" id="planMsgV8"></div>
+  </div>
+
+  <div class="plan-table-wrap-v8">
+    <table class="plan-table-v8">
+      <thead>
+        <tr>
+          <th>PLAN</th>
+          <th>SPEED</th>
+          <th>MONTHLY AMOUNT</th>
+          <th>STATUS</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody id="planBodyV8">
+        <tr><td colspan="5" class="plan-empty-v8">Click PLAN MANAGEMENT to load plans.</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="admin-msg-v1" id="adminDashMsgV1"></div>
@@ -5466,8 +5674,10 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminPanelSubscribersV1')?.classList.toggle('active',tab==='subscribers');
     document.getElementById('adminPanelTicketsV1')?.classList.toggle('active',tab==='tickets');
     document.getElementById('adminPanelPaymentsV1')?.classList.toggle('active',tab==='payments');
+    document.getElementById('adminPanelPlansV8')?.classList.toggle('active',tab==='plans');
     if(tab==='tickets')loadAdminTicketsV1();
     if(tab==='payments')loadAdminPaymentsV1();
+    if(tab==='plans')loadPlansV8();
   }
 
   document.addEventListener('DOMContentLoaded',function(){
@@ -6568,6 +6778,229 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initAdminToolsV7);
   else initAdminToolsV7();
+})();
+</script>
+
+
+<script>
+(function(){
+  function planTokenV8(){return sessionStorage.getItem('winkonek_admin_token_v2')||'';}
+  function planUrlV8(){
+    return (typeof ADMIN_URL_DASH_V1!=='undefined'
+      ? ADMIN_URL_DASH_V1
+      : "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec");
+  }
+  function escPlanV8(v){
+    return String(v==null?'':v).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function planMoneyV8(v){
+    return '₱'+Number(v||0).toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+  function planMsgV8(text,error){
+    var el=document.getElementById('planMsgV8');
+    if(el){el.textContent=text||'';el.style.color=error?'#e56570':'#3ccb83';}
+  }
+  function clearPlanEditorV8(){
+    document.getElementById('planIdV8').value='';
+    document.getElementById('planNameV8').value='';
+    document.getElementById('planSpeedV8').value='';
+    document.getElementById('planAmountV8').value='';
+    planMsgV8('');
+    document.getElementById('planEditorV8').hidden=true;
+  }
+  function openNewPlanV8(){
+    clearPlanEditorV8();
+    document.getElementById('planEditorV8').hidden=false;
+    setTimeout(function(){document.getElementById('planNameV8').focus();},20);
+  }
+  function editPlanV8(plan){
+    document.getElementById('planIdV8').value=plan.planId||'';
+    document.getElementById('planNameV8').value=plan.planName||'';
+    document.getElementById('planSpeedV8').value=plan.speed||'';
+    document.getElementById('planAmountV8').value=Number(plan.amount||0);
+    planMsgV8('');
+    document.getElementById('planEditorV8').hidden=false;
+    setTimeout(function(){document.getElementById('planNameV8').focus();},20);
+  }
+  async function loadPlansV8(){
+    var body=document.getElementById('planBodyV8'); if(!body)return;
+    body.innerHTML='<tr><td colspan="5" class="plan-empty-v8">Loading plans...</td></tr>';
+    try{
+      var r=await fetch(planUrlV8()+'?action=adminPlans&key='+encodeURIComponent(planTokenV8())+'&refresh='+Date.now(),{cache:'no-store'});
+      var d=await r.json();
+      if(!d||d.success!==true){body.innerHTML='<tr><td colspan="5" class="plan-empty-v8">'+escPlanV8((d&&d.error)||'Unable to load plans.')+'</td></tr>';return;}
+      if(!d.plans||!d.plans.length){body.innerHTML='<tr><td colspan="5" class="plan-empty-v8">No plans yet. Click ADD NEW PLAN.</td></tr>';return;}
+      body.innerHTML=d.plans.map(function(p){
+        var active=String(p.status||'ACTIVE').toUpperCase()==='ACTIVE';
+        return '<tr>'+
+          '<td><span class="plan-name-v8">'+escPlanV8(p.planName)+'</span></td>'+
+          '<td>'+escPlanV8(p.speed)+'</td>'+
+          '<td><span class="plan-amount-v8">'+planMoneyV8(p.amount)+'</span></td>'+
+          '<td><span class="plan-status-v8 '+(active?'plan-status-active-v8':'plan-status-inactive-v8')+'">'+(active?'ACTIVE':'INACTIVE')+'</span></td>'+
+          '<td><div class="plan-actions-v8">'+
+            '<button type="button" class="plan-action-v8 plan-action-edit-v8" data-edit-plan-v8="'+escPlanV8(p.planId)+'">✏️ EDIT</button>'+
+            '<button type="button" class="plan-action-v8 plan-action-toggle-v8" data-toggle-plan-v8="'+escPlanV8(p.planId)+'">'+(active?'DISABLE':'ENABLE')+'</button>'+
+          '</div></td>'+
+        '</tr>';
+      }).join('');
+      window._plansV8=d.plans;
+    }catch(e){
+      console.error('Plans V8:',e);
+      body.innerHTML='<tr><td colspan="5" class="plan-empty-v8">Hindi maka-connect sa Plans server.</td></tr>';
+    }
+  }
+  async function savePlanV8(){
+    var id=document.getElementById('planIdV8').value.trim();
+    var name=document.getElementById('planNameV8').value.trim();
+    var speed=document.getElementById('planSpeedV8').value.trim();
+    var amount=document.getElementById('planAmountV8').value;
+    if(!name||!speed||amount===''){planMsgV8('Complete Plan Name, Speed and Monthly Amount.',true);return;}
+    var btn=document.getElementById('planSaveV8');btn.disabled=true;btn.textContent='SAVING...';
+    planMsgV8('Saving plan...',false);
+    try{
+      var r=await fetch(planUrlV8(),{
+        method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({action:'adminSavePlan',key:planTokenV8(),plan:{planId:id,planName:name,speed:speed,amount:Number(amount)}})
+      });
+      var d=await r.json();
+      if(!d||d.success!==true){planMsgV8((d&&d.error)||'Unable to save plan.',true);return;}
+      planMsgV8(d.message||'Plan saved.',false);
+      await loadPlansV8();
+      setTimeout(clearPlanEditorV8,450);
+    }catch(e){console.error(e);planMsgV8('Hindi maka-connect sa Plans server.',true);}
+    finally{btn.disabled=false;btn.textContent='💾 SAVE PLAN';}
+  }
+  async function togglePlanV8(id){
+    if(!id)return;
+    if(!confirm('Change this plan status?'))return;
+    try{
+      var r=await fetch(planUrlV8(),{
+        method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({action:'adminTogglePlan',key:planTokenV8(),planId:id})
+      });
+      var d=await r.json();
+      if(!d||d.success!==true){alert((d&&d.error)||'Unable to change plan status.');return;}
+      await loadPlansV8();
+    }catch(e){console.error(e);alert('Hindi maka-connect sa Plans server.');}
+  }
+  function initPlansV8(){
+    document.getElementById('planAddBtnV8')?.addEventListener('click',openNewPlanV8);
+    document.getElementById('planCancelV8')?.addEventListener('click',clearPlanEditorV8);
+    document.getElementById('planSaveV8')?.addEventListener('click',savePlanV8);
+    document.getElementById('planBodyV8')?.addEventListener('click',function(e){
+      var edit=e.target.closest('[data-edit-plan-v8]');
+      if(edit){
+        var id=edit.getAttribute('data-edit-plan-v8');
+        var plan=(window._plansV8||[]).find(function(x){return x.planId===id;});
+        if(plan)editPlanV8(plan);
+        return;
+      }
+      var toggle=e.target.closest('[data-toggle-plan-v8]');
+      if(toggle)togglePlanV8(toggle.getAttribute('data-toggle-plan-v8'));
+    });
+  }
+  window.loadPlansV8=loadPlansV8;
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initPlansV8);
+  else initPlansV8();
+})();
+</script>
+
+
+<script>
+(function(){
+  const PUBLIC_PLANS_URL_V8 = "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec";
+
+  function formatPlanAmountV8(amount){
+    return "₱" + Number(amount || 0).toLocaleString("en-PH",{
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    });
+  }
+
+  function setSelectedPlanV8(plan){
+    var selected=document.getElementById("selectedPlan");
+    if(!selected)return;
+    selected.value =
+      String(plan.speed || plan.planName || "") +
+      " - " + formatPlanAmountV8(plan.amount) + "/mo";
+  }
+
+  async function loadApplicationPlansV8(){
+    var select=document.getElementById("applicationPlanSelectV8");
+    if(!select)return;
+
+    select.innerHTML='<option value="">Loading available plans...</option>';
+    select.disabled=true;
+
+    try{
+      var response=await fetch(
+        PUBLIC_PLANS_URL_V8+"?action=publicPlans&refresh="+Date.now(),
+        {cache:"no-store"}
+      );
+      var data=await response.json();
+
+      if(!data || data.success!==true){
+        throw new Error((data && data.error)||"Unable to load plans.");
+      }
+
+      var plans=(data.plans||[]).filter(function(p){
+        return String(p.status||"ACTIVE").toUpperCase()==="ACTIVE";
+      });
+
+      select.innerHTML="";
+
+      if(!plans.length){
+        select.innerHTML='<option value="">No active plan available</option>';
+        document.getElementById("selectedPlan").value="";
+        select.disabled=true;
+        return;
+      }
+
+      var first=document.createElement("option");
+      first.value="";
+      first.textContent="-- Piliin ang Internet Plan --";
+      select.appendChild(first);
+
+      plans.forEach(function(plan){
+        var option=document.createElement("option");
+        option.value=String(plan.planId||"");
+        option.textContent=
+          String(plan.speed||plan.planName||"Internet Plan")+
+          " — "+formatPlanAmountV8(plan.amount)+"/mo";
+        select.appendChild(option);
+      });
+
+      select.disabled=false;
+
+      select.onchange=function(){
+        var id=select.value;
+        var plan=plans.find(function(p){
+          return String(p.planId)===String(id);
+        });
+        if(plan)setSelectedPlanV8(plan);
+        else document.getElementById("selectedPlan").value="";
+      };
+
+      // Keep the user on the explicit "Piliin" option until a plan is chosen.
+      document.getElementById("selectedPlan").value="";
+
+    }catch(error){
+      console.error("Dynamic plan dropdown V8:",error);
+      select.innerHTML='<option value="">Unable to load plans — refresh page</option>';
+      select.disabled=true;
+      document.getElementById("selectedPlan").value="";
+    }
+  }
+
+  window.loadApplicationPlansV8=loadApplicationPlansV8;
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",loadApplicationPlansV8);
+  }else{
+    loadApplicationPlansV8();
+  }
 })();
 </script>
 

@@ -1606,88 +1606,59 @@ body.mikrotik-open-v1{overflow:hidden !important;}
 </style>
 <style>
 
-/* ADMIN DASHBOARD MAXIMIZED — HTML ONLY */
-@media (min-width: 761px){
-  .admin-dash-overlay-v1{
-    padding:0 !important;
-    align-items:stretch !important;
-  }
-  .admin-dash-card-v1{
-    width:100% !important;
-    max-width:none !important;
-    min-height:100vh !important;
-    height:100vh !important;
-    margin:0 !important;
-    border-radius:0 !important;
-    border-left:0 !important;
-    border-right:0 !important;
-    border-top:0 !important;
-    border-bottom:0 !important;
-    padding:18px 22px !important;
-  }
-  .admin-dash-head-v1{
-    position:sticky !important;
-    top:0 !important;
-    z-index:20 !important;
-    background:#07142d !important;
-  }
-  .admin-panel-v1{
-    width:100% !important;
-  }
-  .admin-subscriber-list-v1,
-  .admin-payment-table-wrap-v1,
-  .admin-ticket-table-wrap-v1{
-    width:100% !important;
-  }
-  .admin-subscriber-table-v1,
-  .admin-payment-table-v1,
-  .admin-ticket-table-v1{
-    width:100% !important;
-  }
+/* Subscriber List Edit — isolated addition */
+.subscriber-list-edit-cell-v1{white-space:nowrap}
+.subscriber-list-edit-btn-v1,
+.subscriber-list-save-btn-v1,
+.subscriber-list-cancel-btn-v1{
+  border:0;border-radius:7px;padding:7px 9px;font-size:.62rem;font-weight:900;
+  cursor:pointer;white-space:nowrap
 }
-
-@media (max-width:760px){
-  .admin-dash-card-v1{
-    width:100% !important;
-    max-width:none !important;
-    min-height:100vh !important;
-    border-radius:0 !important;
-  }
+.subscriber-list-edit-btn-v1{background:rgba(0,229,255,.12);color:var(--accent-cyan)}
+.subscriber-list-save-btn-v1{background:#28c76f;color:#07130d}
+.subscriber-list-cancel-btn-v1{background:rgba(255,255,255,.08);color:#fff}
+.subscriber-list-edit-input-v1{
+  width:100%;min-width:110px;box-sizing:border-box;padding:7px 8px;
+  border:1px solid rgba(0,229,255,.3);border-radius:7px;
+  background:rgba(0,0,0,.2);color:#fff;font-size:.68rem
 }
+.subscriber-list-edit-actions-v1{display:flex;gap:5px}
 
 </style>
 <style>
 
-/* ADMIN SINGLE-VIEW MODE — HTML ONLY */
-body.admin-dashboard-open-v1{
+/* FINAL ADMIN FULL VIEW + MESSENGER OFF */
+body.admin-full-view-v1{
   overflow:hidden !important;
   height:100vh !important;
 }
-body.admin-dashboard-open-v1 > *{
-  /* Keep the front page from scrolling behind the dashboard. */
-}
-#adminDashV1{
+body.admin-full-view-v1 #adminDashV1{
+  position:fixed !important;
+  inset:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  z-index:999999 !important;
   overflow:hidden !important;
 }
-#adminDashV1 .admin-dash-card-v1{
+body.admin-full-view-v1 #adminDashV1 .admin-dash-card-v1{
+  width:100vw !important;
+  max-width:none !important;
   height:100vh !important;
   min-height:100vh !important;
+  margin:0 !important;
+  border-radius:0 !important;
+  box-sizing:border-box !important;
   overflow-y:auto !important;
   overflow-x:hidden !important;
-  -webkit-overflow-scrolling:touch;
 }
-
-</style>
-<style>
-
-/* HIDE FLOATING MESSENGER WHILE ADMIN DASHBOARD IS OPEN — HTML ONLY */
-body.admin-dashboard-open-v1 #messengerFloatV1,
-body.admin-dashboard-open-v1 .messenger-float-v1,
-body.admin-dashboard-open-v1 .floating-messenger-v1,
-body.admin-dashboard-open-v1 [id*="messengerFloat"],
-body.admin-dashboard-open-v1 [class*="messenger-float"]{
+body.admin-full-view-v1 .floating-messenger{
   display:none !important;
   visibility:hidden !important;
+  opacity:0 !important;
   pointer-events:none !important;
 }
 
@@ -3424,7 +3395,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
       if(typeof openAdminLoginV36==='function') openAdminLoginV36();
       return;
     }
-    document.getElementById('adminDashV1').style.display='block'; document.body.classList.add('admin-dashboard-open-v1');
+    document.getElementById('adminDashV1').style.display='block';
     loadAdminStatsV1();
     loadAdminSubscribersListV1();
   };
@@ -3954,12 +3925,12 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminTicketRefreshV1')?.addEventListener('click',loadAdminTicketsV1);
     document.getElementById('adminTicketSearchV1')?.addEventListener('input',filterAdminTicketsV1);
     document.getElementById('adminDashCloseV1')?.addEventListener('click',function(){
-      document.getElementById('adminDashV1').style.display='none'; document.body.classList.remove('admin-dashboard-open-v1');
+      document.getElementById('adminDashV1').style.display='none';
     });
 
     document.getElementById('adminLogoutV1')?.addEventListener('click',function(){
       sessionStorage.removeItem('winkonek_admin_token_v2');
-      document.getElementById('adminDashV1').style.display='none'; document.body.classList.remove('admin-dashboard-open-v1');
+      document.getElementById('adminDashV1').style.display='none';
       if(typeof closeAdminLoginV36 === 'function') closeAdminLoginV36();
       if(typeof showToast === 'function'){
         showToast('Admin logged out successfully.', 'success');
@@ -3984,16 +3955,6 @@ async function loadAdminSubscribersListV1(){
         var messenger = document.querySelector('.floating-messenger');
         if (!messenger) return;
 
-        var admin = document.getElementById('adminDashV1');
-        var adminOpen = admin && getComputedStyle(admin).display !== 'none' && !admin.hidden;
-
-        if (adminOpen) {
-            messenger.style.setProperty('display', 'none', 'important');
-            messenger.style.setProperty('visibility', 'hidden', 'important');
-            messenger.style.setProperty('pointer-events', 'none', 'important');
-            return;
-        }
-
         // Detach it from any transformed/scrolling parent.
         if (messenger.parentElement !== document.body) {
             document.body.appendChild(messenger);
@@ -4006,8 +3967,6 @@ async function loadAdminSubscribersListV1(){
         messenger.style.setProperty('top', 'auto', 'important');
         messenger.style.setProperty('z-index', '2147483647', 'important');
         messenger.style.setProperty('display', 'flex', 'important');
-        messenger.style.setProperty('visibility', 'visible', 'important');
-        messenger.style.setProperty('pointer-events', 'auto', 'important');
     }
 
     if (document.readyState === 'loading') {
@@ -4017,9 +3976,6 @@ async function loadAdminSubscribersListV1(){
     }
 
     window.addEventListener('load', forceFloatingMessenger);
-
-    // Re-check when Admin Dashboard opens/closes.
-    setInterval(forceFloatingMessenger, 300);
 })();
 </script>
 
@@ -4252,6 +4208,207 @@ function refreshMikrotikDemoV1(){
   };
 
   document.addEventListener('DOMContentLoaded',loadPppoePreviewEditsV1);
+})();
+</script>
+
+
+<script>
+(function(){
+  function esc(v){
+    return String(v==null?'':v)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  function addSubscriberEditButtonsV1(){
+    var body=document.getElementById('adminSubscriberListBodyV1');
+    if(!body)return;
+
+    body.querySelectorAll('tr').forEach(function(row){
+      if(row.querySelector('.subscriber-list-edit-cell-v1'))return;
+
+      var cells=row.querySelectorAll('td');
+      if(cells.length<5)return;
+      if(!cells[0].innerText.trim())return;
+
+      var cell=document.createElement('td');
+      cell.className='subscriber-list-edit-cell-v1';
+      cell.innerHTML='<button type="button" class="subscriber-list-edit-btn-v1">✏️ EDIT</button>';
+      cell.querySelector('button').addEventListener('click',function(){
+        editSubscriberRowV1(row);
+      });
+      row.appendChild(cell);
+    });
+  }
+
+  function editSubscriberRowV1(row){
+    var cells=row.querySelectorAll('td');
+    if(cells.length<6)return;
+
+    // Subscriber List columns are:
+    // 0 Account ID, 1 Fullname, 2 Plan, 3 Due Date, 4 Status.
+    var values=[
+      cells[1].innerText.trim(),
+      cells[2].innerText.trim(),
+      cells[3].innerText.trim(),
+      cells[4].innerText.trim()
+    ];
+
+    for(var i=0;i<4;i++){
+      cells[i+1].innerHTML=
+        '<input type="text" class="subscriber-list-edit-input-v1" value="'+esc(values[i])+'">';
+    }
+
+    cells[9].innerHTML=
+      '<div class="subscriber-list-edit-actions-v1">'+
+      '<button type="button" class="subscriber-list-save-btn-v1">💾 SAVE</button>'+
+      '<button type="button" class="subscriber-list-cancel-btn-v1">CANCEL</button>'+
+      '</div>';
+
+    cells[9].querySelector('.subscriber-list-save-btn-v1')
+      .addEventListener('click',function(){ saveSubscriberRowV1(row); });
+
+    cells[9].querySelector('.subscriber-list-cancel-btn-v1')
+      .addEventListener('click',function(){
+        if(typeof loadAdminSubscribersListV1==='function'){
+          loadAdminSubscribersListV1();
+        }
+      });
+  }
+
+  async function saveSubscriberRowV1(row){
+    var cells=row.querySelectorAll('td');
+    var inputs=row.querySelectorAll('.subscriber-list-edit-input-v1');
+    if(cells.length<6 || inputs.length<4)return;
+
+    var saveBtn=cells[9].querySelector('.subscriber-list-save-btn-v1');
+    if(saveBtn){
+      saveBtn.disabled=true;
+      saveBtn.textContent='SAVING...';
+    }
+
+    var payload={
+      action:'adminUpdateSubscriber',
+      key:sessionStorage.getItem('winkonek_admin_token_v2') || '',
+      accountId:cells[0].innerText.trim(),
+      fields:{
+        name:inputs[0].value.trim(),
+        plan:inputs[1].value.trim(),
+        dueDate:inputs[2].value.trim(),
+        status:inputs[3].value.trim()
+      }
+    };
+
+    if(!payload.key){
+      alert('Admin session expired. Please login again.');
+      if(saveBtn){
+        saveBtn.disabled=false;
+        saveBtn.textContent='💾 SAVE';
+      }
+      return;
+    }
+
+    try{
+      var r=await fetch("https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec",{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)
+      });
+      var d=await r.json();
+
+      if(!d || d.success!==true){
+        alert((d&&d.error)||'Unable to save subscriber.');
+        if(saveBtn){
+          saveBtn.disabled=false;
+          saveBtn.textContent='💾 SAVE';
+        }
+        return;
+      }
+
+      alert('✅ Subscriber saved and synced to Google Sheet.');
+
+      if(typeof loadAdminSubscribersListV1==='function'){
+        await loadAdminSubscribersListV1();
+      }
+    }catch(err){
+      console.error('Subscriber edit save error:',err);
+      alert('Hindi maka-save sa Subscribers Google Sheet.');
+      if(saveBtn){
+        saveBtn.disabled=false;
+        saveBtn.textContent='💾 SAVE';
+      }
+    }
+  }
+
+  function startSubscriberEditWatcherV1(){
+    var body=document.getElementById('adminSubscriberListBodyV1');
+    if(!body)return;
+
+    addSubscriberEditButtonsV1();
+
+    var observer=new MutationObserver(function(){
+      addSubscriberEditButtonsV1();
+    });
+    observer.observe(body,{childList:true,subtree:true});
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',startSubscriberEditWatcherV1);
+  }else{
+    startSubscriberEditWatcherV1();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  function syncAdminFullViewV1(){
+    var dash=document.getElementById('adminDashV1');
+    var messenger=document.querySelector('.floating-messenger');
+    if(!dash)return;
+
+    var visible=getComputedStyle(dash).display!=='none' && !dash.hidden;
+
+    if(visible){
+      document.body.classList.add('admin-full-view-v1');
+      if(messenger){
+        messenger.style.setProperty('display','none','important');
+        messenger.style.setProperty('visibility','hidden','important');
+        messenger.style.setProperty('opacity','0','important');
+        messenger.style.setProperty('pointer-events','none','important');
+      }
+    }else{
+      document.body.classList.remove('admin-full-view-v1');
+      if(messenger){
+        messenger.style.removeProperty('display');
+        messenger.style.removeProperty('visibility');
+        messenger.style.removeProperty('opacity');
+        messenger.style.removeProperty('pointer-events');
+      }
+    }
+  }
+
+  function initAdminFullViewV1(){
+    var dash=document.getElementById('adminDashV1');
+    if(!dash)return;
+
+    syncAdminFullViewV1();
+
+    new MutationObserver(function(){
+      syncAdminFullViewV1();
+    }).observe(dash,{attributes:true,attributeFilter:['style','hidden','class']});
+
+    // Covers code that changes display without firing an attribute mutation.
+    setInterval(syncAdminFullViewV1,500);
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initAdminFullViewV1);
+  }else{
+    initAdminFullViewV1();
+  }
 })();
 </script>
 

@@ -3286,6 +3286,126 @@ body.mikrotik-open-v1 #adminDashV1{
 }
 </style>
 
+
+<style id="ispCompanySettingsV9Style">
+#adminDashV1 .admin-panel-v1#adminPanelCompanySettingsV9{
+  padding:16px!important;
+}
+.company-settings-head-v9{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:15px 17px;
+  margin-bottom:12px;
+  border:1px solid rgba(154,174,189,.13);
+  border-radius:14px;
+  background:linear-gradient(145deg,rgba(17,31,45,.96),rgba(10,22,35,.92));
+}
+.company-settings-title-v9{
+  color:#e6eef5;
+  font-size:.82rem;
+  font-weight:900;
+  letter-spacing:.04em;
+}
+.company-settings-sub-v9{
+  margin-top:4px;
+  color:#8195a5;
+  font-size:.59rem;
+}
+.company-settings-grid-v9{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
+  padding:15px;
+  border:1px solid rgba(154,174,189,.13);
+  border-radius:14px;
+  background:#111f2d;
+}
+.company-field-v9 label{
+  display:block;
+  margin-bottom:5px;
+  color:#718797;
+  font-size:.54rem;
+  font-weight:900;
+  letter-spacing:.06em;
+}
+.company-field-v9 input{
+  width:100%;
+  box-sizing:border-box;
+  min-height:38px;
+  padding:9px 10px;
+  border:1px solid rgba(154,174,189,.15);
+  border-radius:7px;
+  background:#0c1824;
+  color:#e6eef5;
+  outline:none;
+}
+.company-field-v9 input:focus{
+  border-color:rgba(56,191,216,.45);
+}
+.company-field-v9 small{
+  display:block;
+  margin-top:4px;
+  color:#718797;
+  font-size:.5rem;
+}
+.company-field-wide-v9{
+  grid-column:1/-1;
+}
+.company-settings-actions-v9{
+  display:flex;
+  justify-content:flex-end;
+  gap:7px;
+  margin-top:12px;
+}
+.company-settings-actions-v9 button{
+  border:1px solid rgba(56,191,216,.22);
+  border-radius:7px;
+  background:#162b3b;
+  color:#cce8ef;
+  font-size:.59rem;
+  font-weight:900;
+  cursor:pointer;
+  padding:9px 12px;
+}
+.company-settings-actions-v9 button:last-child{
+  background:#173846;
+}
+.company-settings-actions-v9 button:hover{
+  background:#1a3446;
+}
+.company-settings-msg-v9{
+  min-height:18px;
+  margin-top:7px;
+  text-align:right;
+  color:#8195a5;
+  font-size:.59rem;
+  font-weight:700;
+}
+@media(max-width:760px){
+  .company-settings-grid-v9{
+    grid-template-columns:1fr;
+  }
+  .company-field-wide-v9{
+    grid-column:1;
+  }
+  .company-settings-actions-v9{
+    flex-direction:column;
+  }
+  .company-settings-actions-v9 button{
+    width:100%;
+  }
+}
+</style>
+
+
+<style id="ispBrandSyncV9Style">
+#ispPortalTitleV9{white-space:normal}
+#ispBrandLogoV9{object-fit:contain}
+#ispFooterTextV9{margin-top:4px}
+</style>
+
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
@@ -3295,10 +3415,10 @@ body.mikrotik-open-v1 #adminDashV1{
 <!-- BRANDING HEADER -->
 <div class="brand-header">
 <div class="logo-area">
-<img alt="Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/52/032252/00e5ff?text=FIBER'" src="logo.svg"/>
+<img alt="ISP Logo" class="brand-logo" id="ispBrandLogoV9" onerror="this.src='logo.svg'" src="logo.svg"/>
 <div>
-<h1 class="portal-title">WIN INTERNET <span>KONEK</span></h1>
-<p class="portal-subtitle">CUSTOMER SERVICE</p>
+<h1 class="portal-title" id="ispPortalTitleV9">WIN INTERNET KONEK</h1>
+<p class="portal-subtitle" id="ispPortalSubtitleV9">CUSTOMER SERVICE</p>
 </div>
 </div>
 <div class="status-badge">
@@ -3589,14 +3709,14 @@ body.mikrotik-open-v1 #adminDashV1{
 </div>
 <!-- FOOTER -->
 <footer class="portal-footer">
-<p>© <span id="currentYear"></span> Win Internet Konek. All Rights Reserved.</p>
-<p>Developed &amp; Managed by <span class="dev-name">Erwin R. Alincastre</span></p>
+<p id="ispFooterCopyrightV9">© <span id="currentYear"></span> Win Internet Konek. All Rights Reserved.</p>
+<p id="ispFooterTextV9">Developed &amp; Managed by <span class="dev-name">Erwin R. Alincastre</span></p>
 </footer>
 </div>
 <!-- SPRINT 13 — PAYMENT RECEIPT MODAL -->
 <div class="receipt-overlay" id="receiptOverlay">
 <div class="receipt-card">
-<div class="receipt-brand">WIN INTERNET KONEK</div>
+<div class="receipt-brand" id="ispReceiptBrandV9">WIN INTERNET KONEK</div>
 <div class="receipt-subtitle">PAYMENT RECEIPT</div>
 <hr class="receipt-divider"/>
 <div class="receipt-paid">✓ PAYMENT VERIFIED</div>
@@ -4704,7 +4824,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <!-- SPRINT 22 — PRINTABLE ACCOUNT SUMMARY -->
 <div id="accountPrintSheetV22">
 <div class="print-header-v22">
-<h1>WIN INTERNET KONEK</h1>
+<h1 id="ispPrintBrandV9">WIN INTERNET KONEK</h1>
 <p>Subscriber Account Summary</p>
 </div>
 <div class="print-section-v22">
@@ -4737,7 +4857,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 </div>
 <div id="paymentPrintSheetV26">
 <div class="payment-print-header-v26">
-<h1>WIN INTERNET KONEK</h1>
+<h1 id="ispPaymentPrintBrandV9">WIN INTERNET KONEK</h1>
 <p>Subscriber Payment History</p>
 </div>
 <div class="payment-print-account-v26">
@@ -4918,6 +5038,8 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="payments">💳 GCASH PAYMENTS</button>
 <button type="button" class="admin-tab-btn-v1" id="adminMikrotikTabBtnV1" data-admin-tab="mikrotik">🌐 PPPOE / MIKROTIK</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="plans">⚙️ PLAN MANAGEMENT</button>
+<button type="button" class="admin-tab-btn-v1" data-admin-tab="company-settings">🏢 ISP SETTINGS</button>
+
 
 </div>
 <div class="admin-panel-v1 active" id="adminPanelSubscribersV1">
@@ -5120,6 +5242,70 @@ document.getElementById('resName').innerText = data.name || 'N/A';
       </tbody>
     </table>
   </div>
+</div>
+
+
+<div class="admin-panel-v1" id="adminPanelCompanySettingsV9">
+  <div class="company-settings-head-v9">
+    <div>
+      <div class="company-settings-title-v9">🏢 ISP COMPANY SETTINGS</div>
+      <div class="company-settings-sub-v9">Customize the ISP identity and contact details used by the system.</div>
+    </div>
+  </div>
+
+  <div class="company-settings-grid-v9">
+    <div class="company-field-v9 company-field-wide-v9">
+      <label>ISP / COMPANY NAME</label>
+      <input id="ispCompanyNameV9" type="text" placeholder="Example: Win Internet Konek">
+    </div>
+
+    <div class="company-field-v9 company-field-wide-v9">
+      <label>LOGO URL</label>
+      <input id="ispLogoUrlV9" type="url" placeholder="https://example.com/logo.png">
+      <small>Optional. We will use this later for branding.</small>
+    </div>
+
+    <div class="company-field-v9 company-field-wide-v9">
+      <label>ADDRESS</label>
+      <input id="ispAddressV9" type="text" placeholder="ISP office / service address">
+    </div>
+
+    <div class="company-field-v9">
+      <label>CONTACT NUMBER</label>
+      <input id="ispContactV9" type="text" placeholder="09XXXXXXXXX">
+    </div>
+
+    <div class="company-field-v9">
+      <label>EMAIL</label>
+      <input id="ispEmailV9" type="email" placeholder="support@example.com">
+    </div>
+
+    <div class="company-field-v9">
+      <label>GCASH NUMBER</label>
+      <input id="ispGcashNumberV9" type="text" placeholder="09XXXXXXXXX">
+    </div>
+
+    <div class="company-field-v9">
+      <label>GCASH ACCOUNT NAME</label>
+      <input id="ispGcashNameV9" type="text" placeholder="Account name">
+    </div>
+
+    <div class="company-field-v9 company-field-wide-v9">
+      <label>FACEBOOK / MESSENGER LINK</label>
+      <input id="ispMessengerV9" type="url" placeholder="https://m.me/yourpage">
+    </div>
+
+    <div class="company-field-v9 company-field-wide-v9">
+      <label>FOOTER TEXT</label>
+      <input id="ispFooterV9" type="text" placeholder="Your ISP - Billing System">
+    </div>
+  </div>
+
+  <div class="company-settings-actions-v9">
+    <button type="button" id="ispSettingsReloadV9">↻ RELOAD</button>
+    <button type="button" id="ispSettingsSaveV9">💾 SAVE SETTINGS</button>
+  </div>
+  <div class="company-settings-msg-v9" id="ispSettingsMsgV9"></div>
 </div>
 
 <div class="admin-msg-v1" id="adminDashMsgV1"></div>
@@ -5675,9 +5861,11 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminPanelTicketsV1')?.classList.toggle('active',tab==='tickets');
     document.getElementById('adminPanelPaymentsV1')?.classList.toggle('active',tab==='payments');
     document.getElementById('adminPanelPlansV8')?.classList.toggle('active',tab==='plans');
+    document.getElementById('adminPanelCompanySettingsV9')?.classList.toggle('active',tab==='company-settings');
     if(tab==='tickets')loadAdminTicketsV1();
     if(tab==='payments')loadAdminPaymentsV1();
     if(tab==='plans')loadPlansV8();
+    if(tab==='company-settings')loadISPCompanySettingsV9();
   }
 
   document.addEventListener('DOMContentLoaded',function(){
@@ -7000,6 +7188,244 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     document.addEventListener("DOMContentLoaded",loadApplicationPlansV8);
   }else{
     loadApplicationPlansV8();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  const COMPANY_SETTINGS_URL_V9 =
+    "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec";
+
+  function companyTokenV9(){
+    return sessionStorage.getItem('winkonek_admin_token_v2') || '';
+  }
+
+  function companyMsgV9(text,error){
+    var el=document.getElementById('ispSettingsMsgV9');
+    if(!el)return;
+    el.textContent=text||'';
+    el.style.color=error?'#e56570':'#3ccb83';
+  }
+
+  function setCompanySettingsFormV9(s){
+    s=s||{};
+    document.getElementById('ispCompanyNameV9').value=s.companyName||'';
+    document.getElementById('ispLogoUrlV9').value=s.logoUrl||'';
+    document.getElementById('ispAddressV9').value=s.address||'';
+    document.getElementById('ispContactV9').value=s.contactNumber||'';
+    document.getElementById('ispEmailV9').value=s.email||'';
+    document.getElementById('ispGcashNumberV9').value=s.gcashNumber||'';
+    document.getElementById('ispGcashNameV9').value=s.gcashAccountName||'';
+    document.getElementById('ispMessengerV9').value=s.facebookMessenger||'';
+    document.getElementById('ispFooterV9').value=s.footerText||'';
+  }
+
+  async function loadISPCompanySettingsV9(){
+    companyMsgV9('Loading settings...',false);
+    try{
+      var r=await fetch(
+        COMPANY_SETTINGS_URL_V9+
+        '?action=publicCompanySettings&refresh='+Date.now(),
+        {cache:'no-store'}
+      );
+      var d=await r.json();
+
+      if(!d||d.success!==true){
+        throw new Error((d&&d.error)||'Unable to load settings.');
+      }
+
+      setCompanySettingsFormV9(d.settings||{});
+      companyMsgV9('Settings loaded.',false);
+    }catch(e){
+      console.error('ISP Company Settings V9:',e);
+      companyMsgV9('Hindi maka-connect sa ISP Settings.',true);
+    }
+  }
+
+  async function saveISPCompanySettingsV9(){
+    var settings={
+      companyName:document.getElementById('ispCompanyNameV9').value.trim(),
+      logoUrl:document.getElementById('ispLogoUrlV9').value.trim(),
+      address:document.getElementById('ispAddressV9').value.trim(),
+      contactNumber:document.getElementById('ispContactV9').value.trim(),
+      email:document.getElementById('ispEmailV9').value.trim(),
+      gcashNumber:document.getElementById('ispGcashNumberV9').value.trim(),
+      gcashAccountName:document.getElementById('ispGcashNameV9').value.trim(),
+      facebookMessenger:document.getElementById('ispMessengerV9').value.trim(),
+      footerText:document.getElementById('ispFooterV9').value.trim()
+    };
+
+    if(!settings.companyName){
+      companyMsgV9('ISP / Company Name is required.',true);
+      return;
+    }
+
+    var btn=document.getElementById('ispSettingsSaveV9');
+    btn.disabled=true;
+    btn.textContent='SAVING...';
+    companyMsgV9('Saving settings...',false);
+
+    try{
+      var r=await fetch(COMPANY_SETTINGS_URL_V9,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({
+          action:'adminCompanySettings',
+          key:companyTokenV9(),
+          settings:settings
+        })
+      });
+
+      var d=await r.json();
+
+      if(!d||d.success!==true){
+        companyMsgV9((d&&d.error)||'Unable to save settings.',true);
+        return;
+      }
+
+      setCompanySettingsFormV9(d.settings||settings);
+      companyMsgV9('ISP Company Settings saved successfully.',false);
+    }catch(e){
+      console.error('Save ISP Settings V9:',e);
+      companyMsgV9('Hindi maka-connect sa ISP Settings server.',true);
+    }finally{
+      btn.disabled=false;
+      btn.textContent='💾 SAVE SETTINGS';
+    }
+  }
+
+  function initISPCompanySettingsV9(){
+    var save=document.getElementById('ispSettingsSaveV9');
+    var reload=document.getElementById('ispSettingsReloadV9');
+
+    if(save && !save.dataset.v9bound){
+      save.dataset.v9bound='1';
+      save.addEventListener('click',saveISPCompanySettingsV9);
+    }
+
+    if(reload && !reload.dataset.v9bound){
+      reload.dataset.v9bound='1';
+      reload.addEventListener('click',loadISPCompanySettingsV9);
+    }
+  }
+
+  window.loadISPCompanySettingsV9=loadISPCompanySettingsV9;
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initISPCompanySettingsV9);
+  }else{
+    initISPCompanySettingsV9();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  const ISP_PUBLIC_SETTINGS_URL_V9 =
+    "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec";
+
+  function textBrandV9(value, fallback){
+    var v=String(value==null?'':value).trim();
+    return v || fallback;
+  }
+
+  function applyISPBrandingV9(settings){
+    settings=settings||{};
+    var company=textBrandV9(settings.companyName,'Win Internet Konek');
+    var address=textBrandV9(settings.address,'');
+    var contact=textBrandV9(settings.contactNumber,'');
+    var email=textBrandV9(settings.email,'');
+    var footer=textBrandV9(settings.footerText,'');
+    var logo=textBrandV9(settings.logoUrl,'');
+
+    var title=document.getElementById('ispPortalTitleV9');
+    if(title) title.textContent=company;
+
+    var subtitle=document.getElementById('ispPortalSubtitleV9');
+    if(subtitle){
+      var support=[];
+      if(contact)support.push(contact);
+      if(email)support.push(email);
+      subtitle.textContent=support.length ? support.join(' • ') : 'CUSTOMER SERVICE';
+    }
+
+    var img=document.getElementById('ispBrandLogoV9');
+    if(img && logo) img.src=logo;
+
+    var footerCopy=document.getElementById('ispFooterCopyrightV9');
+    if(footerCopy){
+      footerCopy.innerHTML='© <span id="currentYear"></span> '+
+        escapeBrandV9(company)+' . All Rights Reserved.';
+      var y=document.getElementById('currentYear');
+      if(y)y.textContent=new Date().getFullYear();
+    }
+
+    var footerText=document.getElementById('ispFooterTextV9');
+    if(footerText && footer){
+      footerText.textContent=footer;
+    }
+
+    var receipt=document.getElementById('ispReceiptBrandV9');
+    if(receipt)receipt.textContent=company.toUpperCase();
+
+    var print=document.getElementById('ispPrintBrandV9');
+    if(print)print.textContent=company.toUpperCase();
+
+    var payPrint=document.getElementById('ispPaymentPrintBrandV9');
+    if(payPrint)payPrint.textContent=company.toUpperCase();
+
+    var adminSub=document.querySelector('#adminDashV1 .admin-dash-sub-v1');
+    if(adminSub){
+      adminSub.textContent='Subscriber management • '+company;
+    }
+
+    // Keep these available to later branding features without exposing
+    // or changing any existing billing logic.
+    window.ISP_COMPANY_SETTINGS_V9={
+      companyName:company,
+      logoUrl:logo,
+      address:address,
+      contactNumber:contact,
+      email:email,
+      gcashNumber:textBrandV9(settings.gcashNumber,''),
+      gcashAccountName:textBrandV9(settings.gcashAccountName,''),
+      facebookMessenger:textBrandV9(settings.facebookMessenger,''),
+      footerText:footer
+    };
+  }
+
+  function escapeBrandV9(value){
+    return String(value==null?'':value).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  async function loadISPBrandingV9(){
+    try{
+      var r=await fetch(
+        ISP_PUBLIC_SETTINGS_URL_V9+
+        '?action=publicCompanySettings&refresh='+Date.now(),
+        {cache:'no-store'}
+      );
+      var d=await r.json();
+      if(d && d.success===true){
+        applyISPBrandingV9(d.settings||{});
+      }
+    }catch(e){
+      console.warn('ISP branding sync unavailable:',e);
+    }
+  }
+
+  window.loadISPBrandingV9=loadISPBrandingV9;
+  window.applyISPBrandingV9=applyISPBrandingV9;
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',loadISPBrandingV9);
+  }else{
+    loadISPBrandingV9();
   }
 })();
 </script>

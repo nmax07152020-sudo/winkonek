@@ -1524,6 +1524,27 @@ body.mikrotik-open-v1{overflow:hidden !important;}
 <!-- SPRINT 35 — PWA META -->
 <style>
 
+/* ADMIN TICKETS TAB */
+.admin-tab-nav-v1{display:flex;gap:7px;margin-top:12px;padding:6px;border-radius:12px;background:rgba(1,14,40,.72);border:1px solid rgba(255,255,255,.08);overflow-x:auto}
+.admin-tab-btn-v1{flex:1;min-width:110px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:var(--text-muted);padding:10px 11px;border-radius:9px;font-size:.68rem;font-weight:900;cursor:pointer;white-space:nowrap}
+.admin-tab-btn-v1.active{color:#fff;background:var(--primary-blue);border-color:var(--accent-cyan)}
+.admin-panel-v1{display:none;margin-top:12px}.admin-panel-v1.active{display:block}
+.admin-ticket-toolbar-v1{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.admin-ticket-search-v1{flex:1;min-width:0;padding:10px 12px;border-radius:9px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045);color:inherit;outline:none}
+.admin-ticket-refresh-v1{border:1px solid rgba(0,229,255,.25);background:rgba(0,229,255,.08);color:var(--accent-cyan);font-weight:900;padding:10px 12px;border-radius:9px;cursor:pointer}
+.admin-ticket-table-wrap-v1{width:100%;overflow-x:auto;border:1px solid rgba(255,255,255,.07);border-radius:12px}
+.admin-ticket-table-v1{width:100%;min-width:900px;border-collapse:collapse}
+.admin-ticket-table-v1 th{padding:10px 9px;text-align:left;font-size:.61rem;color:#8498ba;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}
+.admin-ticket-table-v1 td{padding:10px 9px;font-size:.68rem;color:#d9e5fa;border-bottom:1px solid rgba(255,255,255,.055);vertical-align:top}
+.admin-ticket-details-v1{white-space:normal;min-width:240px;max-width:360px;line-height:1.35;overflow-wrap:anywhere}
+.admin-ticket-status-v1{display:inline-flex;align-items:center;padding:5px 8px;border-radius:12px;font-size:.60rem;font-weight:900;white-space:nowrap}
+.admin-ticket-status-v1.open{color:#ffcc00;background:rgba(255,204,0,.12);border:1px solid rgba(255,204,0,.28)}
+.admin-ticket-status-v1.pending{color:#00cfe8;background:rgba(0,207,232,.10);border:1px solid rgba(0,207,232,.28)}
+.admin-ticket-status-v1.resolved,.admin-ticket-status-v1.closed{color:#28c76f;background:rgba(40,199,111,.10);border:1px solid rgba(40,199,111,.28)}
+.admin-ticket-empty-v1{padding:22px;text-align:center;color:var(--text-muted);font-size:.72rem}
+.admin-ticket-msg-v1{margin-top:8px;text-align:center;color:var(--text-muted);font-size:.65rem}
+@media(max-width:700px){.admin-ticket-toolbar-v1{flex-direction:column;align-items:stretch}.admin-ticket-refresh-v1{width:100%}}
+
 /* ADMIN STATUS DROPDOWN — visibility fix only */
 #admStatusV1 {
     background: #07142d !important;
@@ -1544,6 +1565,43 @@ body.mikrotik-open-v1{overflow:hidden !important;}
     box-shadow: 0 0 10px rgba(0,229,255,.25) !important;
     outline: none !important;
 }
+
+
+.admin-ticket-status-select-v4{min-width:132px;padding:7px 9px;border-radius:8px;border:1px solid rgba(0,229,255,.30);background:#07142d;color:#fff;font-size:.65rem;font-weight:800;cursor:pointer}.admin-ticket-status-select-v4:disabled{opacity:.6;cursor:wait}.admin-ticket-saving-v4{display:block;min-height:12px;margin-top:3px;font-size:.55rem;font-weight:800;color:var(--text-muted)}
+
+/* ADMIN GCASH PAYMENTS TAB */
+.admin-payment-toolbar-v1{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.admin-payment-refresh-v1{padding:10px 13px;border:1px solid rgba(0,229,255,.25);border-radius:9px;background:rgba(255,255,255,.05);color:#fff;font-weight:900;cursor:pointer}
+.admin-payment-table-wrap-v1{width:100%;overflow:auto;border:1px solid rgba(255,255,255,.08);border-radius:12px}
+.admin-payment-table-v1{width:100%;border-collapse:collapse;min-width:680px;font-size:.72rem}
+.admin-payment-table-v1 th,.admin-payment-table-v1 td{padding:10px 9px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left;white-space:nowrap}
+.admin-payment-table-v1 th{color:var(--accent-cyan);font-size:.62rem;letter-spacing:.05em;background:rgba(1,14,40,.72)}
+.admin-payment-status-v1{font-weight:900}
+.admin-payment-action-v1{display:flex;gap:6px}
+.admin-payment-action-v1 button{border:0;border-radius:7px;padding:7px 9px;font-size:.62rem;font-weight:900;cursor:pointer}
+.admin-payment-verify-v1{background:#28c76f;color:#07130d}
+.admin-payment-reject-v1{background:#ea5455;color:#fff}
+.admin-payment-empty-v1{text-align:center!important;color:var(--text-muted)}
+
+
+/* ADMIN SUBSCRIBER LIST */
+.admin-subscriber-list-v1{margin-top:12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(1,14,40,.35);overflow:hidden}
+.admin-subscriber-list-head-v1{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.admin-subscriber-list-title-v1{font-weight:900;color:var(--accent-cyan);font-size:.72rem}
+.admin-subscriber-list-count-v1{font-size:.62rem;color:var(--text-muted)}
+.admin-subscriber-table-wrap-v1{width:100%;overflow:auto}
+.admin-subscriber-table-v1{width:100%;border-collapse:collapse;min-width:650px;font-size:.70rem}
+.admin-subscriber-table-v1 th,.admin-subscriber-table-v1 td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left;white-space:nowrap}
+.admin-subscriber-table-v1 th{color:var(--accent-cyan);font-size:.59rem;background:rgba(1,14,40,.72);letter-spacing:.04em}
+.admin-subscriber-empty-v1{text-align:center!important;color:var(--text-muted)}
+.admin-subscriber-status-v1{font-weight:900}
+
+
+.admin-subscriber-list-v1 .admin-payment-verify-v1{border:0;border-radius:7px;padding:7px 9px;background:#28c76f;color:#07130d;font-size:.62rem;font-weight:900;cursor:pointer}
+
+
+.admin-subscriber-payment-actions-v1{display:flex;gap:5px;align-items:center}
+.admin-subscriber-list-v1 .admin-payment-reject-v1{border:0;border-radius:7px;padding:7px 9px;background:#ea5455;color:#fff;font-size:.62rem;font-weight:900;cursor:pointer}
 
 </style>
 </head>
@@ -1939,7 +1997,7 @@ body.mikrotik-open-v1{overflow:hidden !important;}
 <script>
     document.getElementById('currentYear').innerText = new Date().getFullYear();
 
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzlS3NR9slOlJwsy_pNghVfARNHt8T-U5d7pY9z8w60W0R6IhKQfFpmLpYBtyxGwkcnLw/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec";
     let pendingAction = null;
 
     function switchTab(tabId, element) {
@@ -3112,6 +3170,12 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <button class="admin-dash-close-v1" id="adminDashCloseV1" type="button">CLOSE</button>
 </div>
 </div>
+<div class="admin-tab-nav-v1">
+<button type="button" class="admin-tab-btn-v1 active" data-admin-tab="subscribers">👥 SUBSCRIBERS</button>
+<button type="button" class="admin-tab-btn-v1" data-admin-tab="tickets">🎫 TICKETS</button>
+<button type="button" class="admin-tab-btn-v1" data-admin-tab="payments">💳 GCASH PAYMENTS</button>
+</div>
+<div class="admin-panel-v1 active" id="adminPanelSubscribersV1">
 <div class="admin-stat-grid-v1">
 <div class="admin-stat-v1"><small>Total Subscribers</small><strong id="admTotalV1">—</strong></div>
 <div class="admin-stat-v1"><small>Active</small><strong id="admActiveV1">—</strong></div>
@@ -3123,6 +3187,33 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <input id="adminSubscriberQueryV1" placeholder="Search Account ID, name, or contact number" type="text"/>
 <button class="admin-btn-v1" id="adminSubscriberSearchV1" type="button">🔎 SEARCH</button>
 </div>
+<div class="admin-subscriber-list-v1">
+  <div class="admin-subscriber-list-head-v1">
+    <div class="admin-subscriber-list-title-v1">👥 SUBSCRIBER LIST</div>
+    <div class="admin-subscriber-list-count-v1" id="adminSubscriberListCountV1">Loading...</div>
+  </div>
+  <div class="admin-subscriber-table-wrap-v1">
+    <table class="admin-subscriber-table-v1">
+      <thead>
+        <tr>
+          <th>ACCOUNT ID</th>
+          <th>FULLNAME</th>
+          <th>SELECTED PLAN</th>
+          <th>DUE DATE</th>
+          <th>STATUS</th>
+          <th>GCASH REF</th>
+          <th>AMOUNT</th>
+          <th>PAYMENT STATUS</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody id="adminSubscriberListBodyV1">
+        <tr><td colspan="9" class="admin-subscriber-empty-v1">Loading subscribers...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <div class="admin-editor-v1" id="adminEditorV1">
 <div style="font-weight:900;color:var(--accent-cyan);margin-bottom:10px">
             EDIT SUBSCRIBER — <span id="adminEditingIdV1"></span>
@@ -3180,6 +3271,44 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 </div>
 <div class="admin-msg-v1" id="adminEditorMsgV1"></div>
 </div>
+</div>
+<div class="admin-panel-v1" id="adminPanelTicketsV1">
+<div class="admin-ticket-toolbar-v1">
+<input id="adminTicketSearchV1" class="admin-ticket-search-v1" type="text" placeholder="Search name, contact, issue, details, or status">
+<button type="button" class="admin-ticket-refresh-v1" id="adminTicketRefreshV1">↻ REFRESH TICKETS</button>
+</div>
+<div class="admin-ticket-table-wrap-v1">
+<table class="admin-ticket-table-v1">
+<thead><tr><th>Ticket ID</th><th>Timestamp</th><th>Name</th><th>Contact</th><th>Issue Type</th><th>Details</th><th>Status</th><th>Resolved / Closed Date</th></tr></thead>
+<tbody id="adminTicketBodyV1"><tr><td colspan="8" class="admin-ticket-empty-v1">Click REFRESH TICKETS to load.</td></tr></tbody>
+</table>
+</div>
+<div class="admin-ticket-msg-v1" id="adminTicketMsgV1"></div>
+</div>
+
+<div class="admin-panel-v1" id="adminPanelPaymentsV1">
+  <div class="admin-payment-toolbar-v1">
+    <button type="button" class="admin-payment-refresh-v1" id="adminPaymentRefreshV1">↻ REFRESH GCASH PAYMENTS</button>
+  </div>
+  <div class="admin-payment-table-wrap-v1">
+    <table class="admin-payment-table-v1">
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>GCASH REFERENCE</th>
+          <th>AMOUNT</th>
+          <th>STATUS</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody id="adminPaymentBodyV1">
+        <tr><td colspan="5" class="admin-payment-empty-v1">Click REFRESH GCASH PAYMENTS to load.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="admin-ticket-msg-v1" id="adminPaymentMsgV1"></div>
+</div>
+
 <div class="admin-msg-v1" id="adminDashMsgV1"></div>
 </div>
 </div>
@@ -3209,7 +3338,124 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     }
     document.getElementById('adminDashV1').style.display='block';
     loadAdminStatsV1();
+    loadAdminSubscribersListV1();
   };
+
+
+  let adminSubscribersListCacheV1=[];
+
+  function escapeSubscriberHtmlV1(v){
+    return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  }
+
+  function renderAdminSubscribersListV1(rows){
+    const body=document.getElementById('adminSubscriberListBodyV1');
+    const count=document.getElementById('adminSubscriberListCountV1');
+    if(!body)return;
+
+    if(count)count.textContent=rows.length+' subscriber(s)';
+
+    if(!rows.length){
+      body.innerHTML='<tr><td colspan="9" class="admin-subscriber-empty-v1">No subscribers found.</td></tr>';
+      return;
+    }
+
+    body.innerHTML=rows.map(function(s){
+      const ps=String(s.paymentStatus||'').toUpperCase().trim();
+      const hasPending=s.paymentRow && ps!=='VERIFIED' && ps!=='APPROVED' && ps!=='PAID' && ps!=='REJECTED';
+      const action=hasPending
+        ? '<div class="admin-subscriber-payment-actions-v1">'+
+          '<button type="button" class="admin-payment-verify-v1" onclick="processSubscriberPaymentV1('+Number(s.paymentRow)+',\'VERIFY\')">✓ VERIFY</button>'+
+          '<button type="button" class="admin-payment-reject-v1" onclick="processSubscriberPaymentV1('+Number(s.paymentRow)+',\'REJECT\')">✕ REJECT</button>'+
+          '</div>'
+        : (s.paymentRow ? '—' : '');
+
+      return '<tr>'+
+        '<td><strong>'+escapeSubscriberHtmlV1(s.accountId)+'</strong></td>'+
+        '<td>'+escapeSubscriberHtmlV1(s.fullname)+'</td>'+
+        '<td>'+escapeSubscriberHtmlV1(s.selectedPlan)+'</td>'+
+        '<td>'+escapeSubscriberHtmlV1(s.dueDate)+'</td>'+
+        '<td class="admin-subscriber-status-v1">'+escapeSubscriberHtmlV1(s.status)+'</td>'+
+        '<td>'+escapeSubscriberHtmlV1(s.paymentReference||'—')+'</td>'+
+        '<td>'+escapeSubscriberHtmlV1(s.paymentAmount||'—')+'</td>'+
+        '<td>'+escapeSubscriberHtmlV1(s.paymentStatus||'—')+'</td>'+
+        '<td>'+action+'</td>'+
+      '</tr>';
+    }).join('');
+  }
+
+
+    window.processSubscriberPaymentV1 = async function(paymentRow,decision){
+    if(!paymentRow)return;
+    const action=String(decision||'').toUpperCase().trim();
+    if(action!=='VERIFY' && action!=='REJECT')return;
+
+    if(!confirm(action==='VERIFY'
+      ? 'Verify this GCash payment?'
+      : 'Reject this GCash payment?')) return;
+
+    try{
+      const payload={
+        action:'adminPaymentAction',
+        key:adminTokenV1(),
+        paymentRow:Number(paymentRow),
+        decision:action
+      };
+
+      const r=await fetch(ADMIN_URL_DASH_V1,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)
+      });
+      const d=await r.json();
+
+      if(!d||d.success!==true){
+        alert((d&&d.error)||('Payment '+action.toLowerCase()+' failed.'));
+        return;
+      }
+
+      await loadAdminSubscribersListV1();
+      if(typeof loadAdminStatsV1==='function')loadAdminStatsV1();
+      if(typeof loadAdminPaymentsV1==='function')loadAdminPaymentsV1();
+
+      if(typeof searchAdminSubscriberV1==='function'){
+        const q=document.getElementById('adminSubscriberQueryV1');
+        if(q && q.value.trim()) await searchAdminSubscriberV1();
+      }
+
+      alert(action==='VERIFY'
+        ? '✅ GCash payment verified successfully.'
+        : '✅ GCash payment rejected successfully.');
+    }catch(e){
+      console.error('Subscriber payment action error:',e);
+      alert('Hindi maka-process ng GCash payment.');
+    }
+  }
+
+async function loadAdminSubscribersListV1(){
+    const body=document.getElementById('adminSubscriberListBodyV1');
+    if(body)body.innerHTML='<tr><td colspan="5" class="admin-subscriber-empty-v1">Loading subscribers...</td></tr>';
+
+    try{
+      const u=ADMIN_URL_DASH_V1+
+        '?action=adminSubscribers&key='+encodeURIComponent(adminTokenV1())+
+        '&refresh='+Date.now();
+      const r=await fetch(u,{cache:'no-store'});
+      const d=await r.json();
+
+      if(!d || d.success!==true){
+        if(body)body.innerHTML='<tr><td colspan="5" class="admin-subscriber-empty-v1">Unable to load subscribers.</td></tr>';
+        return;
+      }
+
+      adminSubscribersListCacheV1=Array.isArray(d.subscribers)?d.subscribers:[];
+      renderAdminSubscribersListV1(adminSubscribersListCacheV1);
+    }catch(e){
+      console.error('Admin subscriber list error:',e);
+      if(body)body.innerHTML='<tr><td colspan="5" class="admin-subscriber-empty-v1">Hindi maka-connect sa Subscribers server.</td></tr>';
+    }
+  }
 
   async function loadAdminStatsV1(){
     dashMsgV1('Loading dashboard...',false);
@@ -3351,6 +3597,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
       editorMsgV1(decision==='VERIFY'?'✅ Payment verified. Subscriber set to PAID and due date updated.':'Payment rejected.',false);
       await searchAdminSubscriberV1();
       loadAdminStatsV1();
+      loadAdminSubscribersListV1();
     }catch(e){
       console.error(e);
       editorMsgV1('Hindi maka-process ng GCash payment.',true);
@@ -3392,7 +3639,232 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     }
   }
 
+
+  let adminTicketsCacheV1=[];
+  function escapeTicketHtmlV1(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+  function ticketClassV1(s){s=String(s||'OPEN').toLowerCase().trim();return s==='pending'?'pending':(s==='resolved'?'resolved':(s==='closed'?'closed':'open'));}
+  function ticketMsgV1(t,e){const x=document.getElementById('adminTicketMsgV1');if(x){x.textContent=t||'';x.style.color=e?'#ea5455':'var(--text-muted)';}}
+  function escapeTicketAttrV4(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function renderTicketsV1(rows){
+    const b=document.getElementById('adminTicketBodyV1');if(!b)return;
+    if(!rows.length){b.innerHTML='<tr><td colspan="8" class="admin-ticket-empty-v1">No tickets found.</td></tr>';return;}
+    b.innerHTML=rows.map(t=>{
+      const id=String(t.ticketId||'—');
+      const st=['OPEN','IN PROGRESS','RESOLVED','CLOSED'].includes(String(t.status||'').toUpperCase())?String(t.status||'OPEN').toUpperCase():'OPEN';
+      return `<tr data-ticket-id="${escapeTicketAttrV4(id)}"><td><strong>${escapeTicketHtmlV1(id)}</strong></td><td>${escapeTicketHtmlV1(t.timestamp||'—')}</td><td><strong>${escapeTicketHtmlV1(t.name||'—')}</strong></td><td>${escapeTicketHtmlV1(t.contact||'—')}</td><td>${escapeTicketHtmlV1(t.issueType||t.issue||'—')}</td><td class="admin-ticket-details-v1">${escapeTicketHtmlV1(t.details||'—')}</td><td><select class="admin-ticket-status-select-v4" data-ticket-id="${escapeTicketAttrV4(id)}" data-old-status="${st}" onchange="saveTicketStatusV4(this)"><option value="OPEN" ${st==='OPEN'?'selected':''}>OPEN</option><option value="IN PROGRESS" ${st==='IN PROGRESS'?'selected':''}>IN PROGRESS</option><option value="RESOLVED" ${st==='RESOLVED'?'selected':''}>RESOLVED</option><option value="CLOSED" ${st==='CLOSED'?'selected':''}>CLOSED</option></select><span class="admin-ticket-saving-v4"></span></td><td>${escapeTicketHtmlV1(t.resolvedDate||'—')}</td></tr>`;
+    }).join('');
+  }
+  async function loadAdminTicketsV1(){
+    const b=document.getElementById('adminTicketBodyV1');if(b)b.innerHTML='<tr><td colspan="8" class="admin-ticket-empty-v1">Loading tickets...</td></tr>';
+    ticketMsgV1('Loading Google Sheet tickets...',false);
+    try{
+      const u=ADMIN_URL_DASH_V1+'?action=adminTickets&key='+encodeURIComponent(adminTokenV1())+'&refresh='+Date.now();
+      const r=await fetch(u);const d=await r.json();
+      if(!d||!d.success){ticketMsgV1((d&&d.error)||'Admin tickets unavailable.',true);renderTicketsV1([]);return;}
+      adminTicketsCacheV1=Array.isArray(d.tickets)?d.tickets:[];renderTicketsV1(adminTicketsCacheV1);ticketMsgV1(adminTicketsCacheV1.length+' ticket(s) loaded.',false);
+    }catch(e){console.error(e);ticketMsgV1('Hindi maka-connect sa Ticket server.',true);renderTicketsV1([]);}
+  }
+  window.saveTicketStatusV4 = async function(select){
+    if(!select)return;
+
+    const id=String(select.dataset.ticketId||'').trim();
+    const status=String(select.value||'OPEN').trim().toUpperCase();
+    const old=String(select.dataset.oldStatus||'OPEN').trim().toUpperCase();
+
+    if(!id){
+      select.value=old;
+      ticketMsgV1('Missing Ticket ID.',true);
+      return;
+    }
+
+    select.disabled=true;
+    ticketMsgV1('Saving '+id+' → '+status+'...',false);
+
+    const u=ADMIN_URL_DASH_V1+
+      '?action=adminTicketStatusById'+
+      '&key='+encodeURIComponent(adminTokenV1())+
+      '&ticketId='+encodeURIComponent(id)+
+      '&status='+encodeURIComponent(status)+
+      '&_='+Date.now();
+
+    try{
+      const r=await fetch(u,{method:'GET',cache:'no-store'});
+      const d=await r.json();
+
+      if(!d || !d.success){
+        select.value=old;
+        ticketMsgV1((d&&d.error)||('Hindi nag-sync ang '+id+' sa Google Sheet.'),true);
+        return;
+      }
+
+      if(String(d.ticketId||'').trim().toUpperCase()!==id ||
+         String(d.status||'').trim().toUpperCase()!==status){
+        select.value=old;
+        ticketMsgV1('Hindi tugma ang server response para sa '+id+'.',true);
+        return;
+      }
+
+      select.dataset.oldStatus=status;
+      select.value=status;
+
+      await loadAdminTicketsV1();
+
+      const found=adminTicketsCacheV1.find(
+        t=>String(t.ticketId||'').trim().toUpperCase()===id.toUpperCase()
+      );
+
+      if(String(found?.status||'').trim().toUpperCase()===status){
+        ticketMsgV1('✅ '+id+' synced: '+status,false);
+      }else{
+        ticketMsgV1('Status saved, pero hindi na-refresh ang ticket list.',true);
+      }
+    }catch(e){
+      console.error('Ticket status sync error:',e);
+      select.value=old;
+      ticketMsgV1('Hindi maka-connect sa Ticket status server.',true);
+    }finally{
+      select.disabled=false;
+    }
+  }
+
+  function filterAdminTicketsV1(){
+    const q=String(document.getElementById('adminTicketSearchV1')?.value||'').toLowerCase().trim();
+    renderTicketsV1(!q?adminTicketsCacheV1:adminTicketsCacheV1.filter(t=>[t.ticketId,t.timestamp,t.name,t.contact,t.issueType,t.issue,t.details,t.status,t.resolvedDate].some(v=>String(v||'').toLowerCase().includes(q))));
+  }
+
+  let adminPaymentsCacheV1=[];
+
+  function paymentMsgV1(text,error){
+    const el=document.getElementById('adminPaymentMsgV1');
+    if(el){el.textContent=text||'';el.style.color=error?'#ea5455':'var(--text-muted)';}
+  }
+
+  function escapePaymentHtmlV1(v){
+    return String(v==null?'':v)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+      .replace(/'/g,'&#039;');
+  }
+
+  function paymentStatusClassV1(status){
+    const s=String(status||'PENDING').toUpperCase().trim();
+    if(s==='VERIFIED'||s==='APPROVED'||s==='PAID') return 'resolved';
+    if(s==='REJECTED') return 'closed';
+    return 'open';
+  }
+
+  function renderAdminPaymentsV1(rows){
+    const body=document.getElementById('adminPaymentBodyV1');
+    if(!body)return;
+
+    if(!rows.length){
+      body.innerHTML='<tr><td colspan="5" class="admin-payment-empty-v1">No GCash payments found.</td></tr>';
+      return;
+    }
+
+    body.innerHTML=rows.map(p=>{
+      const status=String(p.status||'Pending').toUpperCase();
+      const pending=!(status==='VERIFIED'||status==='APPROVED'||status==='PAID'||status==='REJECTED');
+      const actions=pending
+        ? `<div class="admin-payment-action-v1">
+             <button class="admin-payment-verify-v1" type="button" onclick="processAdminPaymentFromTabV1(${Number(p.row)},'VERIFY')">✓ VERIFY</button>
+             <button class="admin-payment-reject-v1" type="button" onclick="processAdminPaymentFromTabV1(${Number(p.row)},'REJECT')">✕ REJECT</button>
+           </div>`
+        : '<span style="color:var(--text-muted)">—</span>';
+
+      return `<tr>
+        <td><strong>${escapePaymentHtmlV1(p.name)}</strong></td>
+        <td>${escapePaymentHtmlV1(p.reference)}</td>
+        <td>${escapePaymentHtmlV1(p.amount)}</td>
+        <td class="admin-payment-status-v1">${escapePaymentHtmlV1(status)}</td>
+        <td>${actions}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  async function loadAdminPaymentsV1(){
+    const body=document.getElementById('adminPaymentBodyV1');
+    if(body)body.innerHTML='<tr><td colspan="5" class="admin-payment-empty-v1">Loading GCash payments...</td></tr>';
+    paymentMsgV1('Loading GCash payments from Google Sheet...',false);
+
+    try{
+      const u=ADMIN_URL_DASH_V1+
+        '?action=adminPayments&key='+encodeURIComponent(adminTokenV1())+
+        '&refresh='+Date.now();
+      const r=await fetch(u,{cache:'no-store'});
+      const d=await r.json();
+
+      if(!d||d.success!==true){
+        paymentMsgV1((d&&d.error)||'GCash payments unavailable.',true);
+        renderAdminPaymentsV1([]);
+        return;
+      }
+
+      adminPaymentsCacheV1=Array.isArray(d.payments)?d.payments:[];
+      renderAdminPaymentsV1(adminPaymentsCacheV1);
+      paymentMsgV1(adminPaymentsCacheV1.length+' payment(s) loaded.',false);
+    }catch(e){
+      console.error(e);
+      paymentMsgV1('Hindi maka-connect sa GCash payment server.',true);
+      renderAdminPaymentsV1([]);
+    }
+  }
+
+  async function processAdminPaymentFromTabV1(paymentRow,decision){
+    const action=String(decision||'').toUpperCase();
+    if(!paymentRow || (action!=='VERIFY' && action!=='REJECT'))return;
+
+    paymentMsgV1(action==='VERIFY'?'Verifying GCash payment...':'Rejecting GCash payment...',false);
+
+    try{
+      const payload={
+        action:'adminPaymentAction',
+        key:adminTokenV1(),
+        paymentRow:Number(paymentRow),
+        decision:action
+      };
+
+      const r=await fetch(ADMIN_URL_DASH_V1,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)
+      });
+      const d=await r.json();
+
+      if(!d||d.success!==true){
+        paymentMsgV1((d&&d.error)||'Payment action failed.',true);
+        return;
+      }
+
+      paymentMsgV1(
+        action==='VERIFY'
+          ? '✅ Payment verified and subscriber updated.'
+          : '✅ Payment rejected.',
+        false
+      );
+
+      await loadAdminPaymentsV1();
+      loadAdminStatsV1();
+    }catch(e){
+      console.error(e);
+      paymentMsgV1('Hindi maka-process ng GCash payment.',true);
+    }
+  }
+
+  function switchAdminPanelV1(tab){
+    document.querySelectorAll('.admin-tab-btn-v1').forEach(b=>b.classList.toggle('active',b.dataset.adminTab===tab));
+    document.getElementById('adminPanelSubscribersV1')?.classList.toggle('active',tab==='subscribers');
+    document.getElementById('adminPanelTicketsV1')?.classList.toggle('active',tab==='tickets');
+    document.getElementById('adminPanelPaymentsV1')?.classList.toggle('active',tab==='payments');
+    if(tab==='tickets')loadAdminTicketsV1();
+    if(tab==='payments')loadAdminPaymentsV1();
+  }
+
   document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.admin-tab-btn-v1').forEach(function(btn){btn.addEventListener('click',function(){switchAdminPanelV1(btn.dataset.adminTab);});});
+    document.getElementById('adminPaymentRefreshV1')?.addEventListener('click',loadAdminPaymentsV1);
+    document.getElementById('adminTicketRefreshV1')?.addEventListener('click',loadAdminTicketsV1);
+    document.getElementById('adminTicketSearchV1')?.addEventListener('input',filterAdminTicketsV1);
     document.getElementById('adminDashCloseV1')?.addEventListener('click',function(){
       document.getElementById('adminDashV1').style.display='none';
     });
@@ -3406,6 +3878,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
       }
     });
     document.getElementById('adminSubscriberSearchV1')?.addEventListener('click',searchAdminSubscriberV1);
+    document.getElementById('adminSubscriberSearchV1')?.addEventListener('click',loadAdminSubscribersListV1);
     document.getElementById('adminSaveV1')?.addEventListener('click',saveAdminSubscriberV1);
     document.getElementById('adminRefreshV1')?.addEventListener('click',clearEditorV1);
     document.getElementById('admVerifyPaymentV1')?.addEventListener('click',function(){processAdminPaymentV1('VERIFY');});

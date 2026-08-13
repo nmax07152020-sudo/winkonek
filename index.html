@@ -1520,6 +1520,9 @@ body.mikrotik-open-v1{overflow:hidden !important;}
   padding-bottom:2px;
 }
 
+
+.plan-total-card-v1{min-width:150px}
+
 </style>
 <!-- SPRINT 35 — PWA META -->
 <style>
@@ -1663,6 +1666,1462 @@ body.admin-full-view-v1 .floating-messenger{
 }
 
 </style>
+
+<style>
+.admin-due-alert-legend-v1{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:6px 0 0;font-size:.62rem;font-weight:900}
+.due-alert-active-v1{color:#35d07f}
+.due-alert-soon-v1{color:#ffc857}
+.due-alert-overdue-v1{color:#ff5c6c}
+.due-alert-suspended-v1{color:#a7a7b3}
+.admin-due-management-v1{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 10px;padding:9px 10px;border:1px solid rgba(0,229,255,.12);border-radius:9px;background:rgba(255,255,255,.025)}
+.admin-due-management-v1 span{font-size:.68rem;font-weight:900;color:var(--accent-cyan);margin-right:auto}
+.admin-due-btn-v1{border:0;border-radius:7px;padding:7px 9px;font-size:.62rem;font-weight:900;cursor:pointer;background:rgba(0,229,255,.12);color:var(--accent-cyan)}
+</style>
+
+
+<style>
+/* =========================================================
+   WIN KONEK ADMIN DASHBOARD — DESIGN & ANIMATION V1
+   Visual-only layer. Existing functionality preserved.
+   ========================================================= */
+
+/* Dashboard entrance */
+#adminDashV1{
+  animation: wkAdminFadeIn .45s ease-out both;
+}
+@keyframes wkAdminFadeIn{
+  from{opacity:0;transform:scale(.985)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* Header polish */
+#adminDashV1 .admin-dash-head-v1{
+  position:relative;
+}
+#adminDashV1 .admin-dash-head-v1::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-1px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,229,255,.5),transparent);
+  animation:wkScanLine 3s ease-in-out infinite;
+}
+@keyframes wkScanLine{
+  0%,100%{opacity:.25;transform:scaleX(.35)}
+  50%{opacity:1;transform:scaleX(1)}
+}
+
+/* Stat cards */
+#adminDashV1 .admin-stat-v1{
+  position:relative;
+  overflow:hidden;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+  animation:wkCardIn .45s ease-out both;
+}
+#adminDashV1 .admin-stat-v1:nth-child(1){animation-delay:.04s}
+#adminDashV1 .admin-stat-v1:nth-child(2){animation-delay:.08s}
+#adminDashV1 .admin-stat-v1:nth-child(3){animation-delay:.12s}
+#adminDashV1 .admin-stat-v1:nth-child(4){animation-delay:.16s}
+#adminDashV1 .admin-stat-v1:nth-child(5){animation-delay:.20s}
+#adminDashV1 .admin-stat-v1:nth-child(6){animation-delay:.24s}
+#adminDashV1 .admin-stat-v1:nth-child(7){animation-delay:.28s}
+@keyframes wkCardIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+#adminDashV1 .admin-stat-v1::before{
+  content:"";
+  position:absolute;
+  top:0;left:-80%;
+  width:55%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);
+  transform:skewX(-18deg);
+  animation:wkCardShine 5.5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes wkCardShine{
+  0%,55%,100%{left:-80%}
+  70%{left:130%}
+}
+#adminDashV1 .admin-stat-v1:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(0,229,255,.10);
+}
+
+/* Main tabs */
+#adminDashV1 .admin-tab-btn-v1{
+  position:relative;
+  transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+}
+#adminDashV1 .admin-tab-btn-v1:hover{
+  transform:translateY(-1px);
+}
+#adminDashV1 .admin-tab-btn-v1.active{
+  box-shadow:0 0 18px rgba(0,229,255,.12);
+}
+#adminDashV1 .admin-tab-btn-v1.active::after{
+  content:"";
+  position:absolute;
+  left:18%;right:18%;bottom:0;
+  height:2px;
+  border-radius:2px;
+  background:currentColor;
+  animation:wkTabGlow .35s ease-out both;
+}
+@keyframes wkTabGlow{
+  from{opacity:0;transform:scaleX(.3)}
+  to{opacity:1;transform:scaleX(1)}
+}
+
+/* Search */
+#adminDashV1 .admin-search-v1 input{
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+#adminDashV1 .admin-search-v1 input:focus{
+  transform:translateY(-1px);
+  box-shadow:0 0 0 3px rgba(0,229,255,.07),0 8px 24px rgba(0,0,0,.18);
+}
+
+/* Buttons */
+#adminDashV1 button{
+  transition:transform .16s ease,filter .16s ease,box-shadow .16s ease;
+}
+#adminDashV1 button:hover{
+  filter:brightness(1.08);
+}
+#adminDashV1 button:active{
+  transform:scale(.97);
+}
+
+/* Subscriber table */
+#adminDashV1 .admin-subscriber-table-v1 tbody tr{
+  transition:background .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+#adminDashV1 .admin-subscriber-table-v1 tbody tr:hover{
+  background:rgba(0,229,255,.035);
+}
+
+/* Status emphasis */
+#adminDashV1 .admin-subscriber-status-v1{
+  transition:filter .2s ease,transform .2s ease;
+}
+#adminDashV1 .admin-subscriber-table-v1 tbody tr:hover .admin-subscriber-status-v1{
+  transform:translateX(2px);
+}
+
+/* Editor panel */
+#adminDashV1 .admin-editor-v1{
+  animation:wkEditorIn .28s ease-out both;
+}
+@keyframes wkEditorIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Loading / messages */
+#adminDashV1 [id*="MsgV1"]{
+  transition:opacity .2s ease;
+}
+
+/* Mobile: keep animations light */
+@media(max-width:760px){
+  #adminDashV1 .admin-stat-v1:hover{
+    transform:none;
+    box-shadow:none;
+  }
+  #adminDashV1 .admin-stat-v1::before{
+    animation:none;
+  }
+}
+
+/* Accessibility / reduced motion */
+@media(prefers-reduced-motion:reduce){
+  #adminDashV1,
+  #adminDashV1 *,
+  #adminDashV1 *::before,
+  #adminDashV1 *::after{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   WIN KONEK — PREMIUM / PROFESSIONAL ADMIN V1
+   Visual-only CSS layer. No backend/functionality changes.
+   ========================================================= */
+#adminDashV1{
+  --premium-bg:#07111f;
+  --premium-panel:rgba(12,24,40,.82);
+  --premium-panel-2:rgba(17,32,51,.78);
+  --premium-border:rgba(148,180,210,.13);
+  --premium-text:#edf6ff;
+  --premium-muted:#8fa6bd;
+  --premium-cyan:#28d7ff;
+  --premium-green:#42e39a;
+  --premium-yellow:#ffd166;
+  --premium-red:#ff667a;
+  --premium-shadow:0 24px 70px rgba(0,0,0,.35);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(40,215,255,.08),transparent 28%),
+    radial-gradient(circle at 92% 12%,rgba(66,227,154,.055),transparent 24%),
+    linear-gradient(145deg,#050d18,#091728 55%,#06101c);
+  color:var(--premium-text);
+}
+
+/* Header */
+#adminDashV1 .admin-dash-head-v1{
+  padding:20px 22px !important;
+  background:linear-gradient(180deg,rgba(14,30,48,.94),rgba(8,19,32,.84));
+  border-bottom:1px solid var(--premium-border);
+  backdrop-filter:blur(18px);
+}
+#adminDashV1 .admin-dash-title-v1{
+  letter-spacing:.04em;
+  font-size:1.08rem !important;
+  text-shadow:0 0 24px rgba(40,215,255,.18);
+}
+#adminDashV1 .admin-dash-sub-v1{
+  color:var(--premium-muted) !important;
+}
+
+/* Top navigation */
+#adminDashV1 .admin-tab-nav-v1{
+  padding:8px !important;
+  gap:7px !important;
+  background:rgba(5,14,25,.72);
+  border-bottom:1px solid var(--premium-border);
+}
+#adminDashV1 .admin-tab-btn-v1{
+  border:1px solid transparent !important;
+  border-radius:10px !important;
+  color:#9bb0c4 !important;
+  background:transparent !important;
+  font-weight:800 !important;
+}
+#adminDashV1 .admin-tab-btn-v1:hover{
+  background:rgba(255,255,255,.045) !important;
+  color:#eaf7ff !important;
+}
+#adminDashV1 .admin-tab-btn-v1.active{
+  color:#eaffff !important;
+  border-color:rgba(40,215,255,.18) !important;
+  background:linear-gradient(135deg,rgba(40,215,255,.12),rgba(40,215,255,.035)) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 8px 22px rgba(0,0,0,.18) !important;
+}
+
+/* Stats — premium glass cards */
+#adminDashV1 .admin-stat-grid-v1{
+  gap:12px !important;
+  padding:16px 0 !important;
+}
+#adminDashV1 .admin-stat-v1{
+  min-height:88px;
+  padding:15px 16px !important;
+  border:1px solid var(--premium-border) !important;
+  border-radius:15px !important;
+  background:
+    linear-gradient(145deg,rgba(22,40,60,.86),rgba(9,20,34,.82)) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 12px 30px rgba(0,0,0,.18) !important;
+  backdrop-filter:blur(14px);
+}
+#adminDashV1 .admin-stat-v1:hover{
+  border-color:rgba(40,215,255,.25) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 18px 38px rgba(0,0,0,.25),0 0 28px rgba(40,215,255,.05) !important;
+}
+#adminDashV1 .admin-stat-v1 small{
+  color:#8da5ba !important;
+  font-weight:800 !important;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+#adminDashV1 .admin-stat-v1 strong{
+  color:#f2f8ff !important;
+  font-size:1.45rem !important;
+  letter-spacing:-.025em;
+}
+
+/* Special metric emphasis */
+#adminDashV1 #admGcashTotalV1{
+  color:var(--premium-green) !important;
+  text-shadow:0 0 20px rgba(66,227,154,.14);
+}
+#adminDashV1 #admDueSoonV1,
+#adminDashV1 #adminPlan50CountV1,
+#adminDashV1 #adminPlan100CountV1{
+  color:var(--premium-yellow) !important;
+}
+#adminDashV1 #admOverdueV1{
+  color:var(--premium-red) !important;
+}
+
+/* Search bar */
+#adminDashV1 .admin-search-v1{
+  margin:4px 0 14px !important;
+  padding:10px !important;
+  border:1px solid var(--premium-border);
+  border-radius:14px;
+  background:rgba(8,20,34,.66);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+#adminDashV1 .admin-search-v1 input{
+  border:1px solid rgba(148,180,210,.14) !important;
+  background:rgba(2,10,18,.58) !important;
+  color:#eef8ff !important;
+  border-radius:10px !important;
+}
+#adminDashV1 .admin-search-v1 input::placeholder{
+  color:#657d93 !important;
+}
+
+/* Main sections */
+#adminDashV1 .admin-subscriber-list-v1,
+#adminDashV1 .admin-editor-v1{
+  border:1px solid var(--premium-border) !important;
+  border-radius:16px !important;
+  background:linear-gradient(145deg,rgba(14,29,47,.84),rgba(7,17,29,.84)) !important;
+  box-shadow:var(--premium-shadow) !important;
+  overflow:hidden;
+}
+#adminDashV1 .admin-subscriber-list-head-v1{
+  padding:15px 17px !important;
+  background:rgba(255,255,255,.018);
+  border-bottom:1px solid var(--premium-border);
+}
+#adminDashV1 .admin-subscriber-list-title-v1{
+  color:#edf7ff !important;
+  font-weight:900 !important;
+  letter-spacing:.025em;
+}
+#adminDashV1 .admin-subscriber-list-count-v1{
+  color:var(--premium-cyan) !important;
+}
+
+/* Table */
+#adminDashV1 .admin-subscriber-table-v1 thead th{
+  background:rgba(5,14,25,.92) !important;
+  color:#7893aa !important;
+  border-bottom:1px solid var(--premium-border) !important;
+  font-size:.62rem !important;
+  letter-spacing:.055em;
+}
+#adminDashV1 .admin-subscriber-table-v1 tbody td{
+  border-bottom:1px solid rgba(148,180,210,.07) !important;
+  color:#d9e7f3 !important;
+}
+#adminDashV1 .admin-subscriber-table-v1 tbody tr:hover{
+  background:rgba(40,215,255,.035) !important;
+}
+
+/* Buttons */
+#adminDashV1 .admin-btn-v1,
+#adminDashV1 .admin-tab-btn-v1,
+#adminDashV1 .admin-top-actions-v1 button{
+  border-radius:9px !important;
+}
+#adminDashV1 button{
+  font-weight:850;
+}
+#adminDashV1 button:hover{
+  filter:brightness(1.1);
+}
+
+/* Alert badges */
+#adminDashV1 .due-alert-soon-v1{
+  color:var(--premium-yellow) !important;
+}
+#adminDashV1 .due-alert-overdue-v1{
+  color:var(--premium-red) !important;
+}
+#adminDashV1 .due-alert-active-v1{
+  color:var(--premium-green) !important;
+}
+
+/* Editor */
+#adminDashV1 .admin-editor-v1{
+  padding:18px !important;
+  margin-top:14px !important;
+}
+#adminDashV1 .admin-field-wrap-v1 label{
+  color:#8fa6bd !important;
+}
+#adminDashV1 .admin-editor-v1 input,
+#adminDashV1 .admin-editor-v1 select,
+#adminDashV1 .admin-editor-v1 textarea{
+  border:1px solid rgba(148,180,210,.14) !important;
+  background:rgba(2,10,18,.58) !important;
+  color:#eef8ff !important;
+  border-radius:9px !important;
+}
+
+/* GCash / ticket panels inherit premium glass treatment */
+#adminDashV1 .admin-panel-v1{
+  animation:premiumPanelIn .24s ease-out both;
+}
+@keyframes premiumPanelIn{
+  from{opacity:.5;transform:translateY(4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Scrollbar */
+#adminDashV1 *{
+  scrollbar-width:thin;
+  scrollbar-color:rgba(90,130,160,.42) transparent;
+}
+#adminDashV1 *::-webkit-scrollbar{width:7px;height:7px}
+#adminDashV1 *::-webkit-scrollbar-track{background:transparent}
+#adminDashV1 *::-webkit-scrollbar-thumb{
+  background:rgba(90,130,160,.42);
+  border-radius:20px;
+}
+
+/* Mobile */
+@media(max-width:760px){
+  #adminDashV1 .admin-dash-head-v1{padding:15px !important}
+  #adminDashV1 .admin-stat-grid-v1{gap:8px !important}
+  #adminDashV1 .admin-stat-v1{
+    min-height:76px;
+    padding:12px !important;
+    border-radius:12px !important;
+  }
+  #adminDashV1 .admin-stat-v1 strong{font-size:1.15rem !important}
+  #adminDashV1 .admin-stat-v1:hover{
+    transform:none !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   WIN KONEK — ISP BILLING OPERATIONS UI V2
+   Visual-only layer. Existing logic/backend untouched.
+   ========================================================= */
+#adminDashV1{
+  --isp-bg:#071019;
+  --isp-surface:#0b1622;
+  --isp-surface2:#0e1d2b;
+  --isp-line:rgba(154,185,211,.12);
+  --isp-text:#edf5fb;
+  --isp-muted:#8197aa;
+  --isp-accent:#16c7e8;
+  --isp-success:#28d17c;
+  --isp-warning:#f5bd45;
+  --isp-danger:#f05c6d;
+  --isp-blue:#5797ff;
+  background:
+    radial-gradient(circle at 15% -10%,rgba(22,199,232,.09),transparent 25%),
+    linear-gradient(180deg,#071019 0%,#08131f 100%);
+  color:var(--isp-text);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+/* Operations header */
+#adminDashV1 .admin-dash-head-v1{
+  background:#091522 !important;
+  border-bottom:1px solid var(--isp-line) !important;
+  padding:18px 22px !important;
+}
+#adminDashV1 .admin-dash-title-v1{
+  font-size:1.02rem !important;
+  font-weight:900 !important;
+  letter-spacing:.08em !important;
+  text-transform:uppercase;
+}
+#adminDashV1 .admin-dash-sub-v1{
+  font-size:.68rem !important;
+  color:var(--isp-muted) !important;
+  letter-spacing:.03em;
+}
+
+/* ISP navigation */
+#adminDashV1 .admin-tab-nav-v1{
+  background:#08131f !important;
+  border-bottom:1px solid var(--isp-line) !important;
+  padding:0 14px !important;
+}
+#adminDashV1 .admin-tab-btn-v1{
+  min-height:43px;
+  border-radius:0 !important;
+  border:0 !important;
+  border-bottom:2px solid transparent !important;
+  background:transparent !important;
+  color:#8095a8 !important;
+  font-size:.68rem !important;
+  font-weight:900 !important;
+  letter-spacing:.04em;
+}
+#adminDashV1 .admin-tab-btn-v1.active{
+  color:#e9fbff !important;
+  border-bottom-color:var(--isp-accent) !important;
+  background:linear-gradient(180deg,rgba(22,199,232,.08),transparent) !important;
+  box-shadow:none !important;
+}
+
+/* Billing KPI strip */
+#adminDashV1 .admin-stat-grid-v1{
+  gap:1px !important;
+  padding:14px 0 !important;
+  background:var(--isp-line);
+  border:1px solid var(--isp-line);
+  border-radius:8px;
+  overflow:hidden;
+}
+#adminDashV1 .admin-stat-v1{
+  min-height:78px;
+  padding:13px 15px !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:#0b1724 !important;
+  box-shadow:none !important;
+  position:relative;
+}
+#adminDashV1 .admin-stat-v1::after{
+  content:"";
+  position:absolute;
+  left:0;top:16px;bottom:16px;
+  width:2px;
+  background:rgba(22,199,232,.18);
+}
+#adminDashV1 .admin-stat-v1 small{
+  display:block;
+  color:#7890a4 !important;
+  font-size:.59rem !important;
+  font-weight:900 !important;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+#adminDashV1 .admin-stat-v1 strong{
+  display:block;
+  margin-top:7px;
+  color:#f1f7fb !important;
+  font-size:1.28rem !important;
+  font-weight:900 !important;
+}
+#adminDashV1 #admActiveV1{color:var(--isp-success) !important}
+#adminDashV1 #admDueSoonV1{color:var(--isp-warning) !important}
+#adminDashV1 #admOverdueV1{color:var(--isp-danger) !important}
+#adminDashV1 #admGcashTotalV1{color:var(--isp-success) !important}
+#adminDashV1 #adminPlan50CountV1,
+#adminDashV1 #adminPlan100CountV1{color:var(--isp-blue) !important}
+
+/* Search = operations toolbar */
+#adminDashV1 .admin-search-v1{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0 0 12px !important;
+  padding:9px !important;
+  border:1px solid var(--isp-line) !important;
+  border-radius:8px !important;
+  background:#0a1622 !important;
+}
+#adminDashV1 .admin-search-v1 input{
+  min-height:38px;
+  border:1px solid rgba(154,185,211,.13) !important;
+  border-radius:6px !important;
+  background:#06101a !important;
+  color:#eaf5fb !important;
+  font-size:.72rem !important;
+}
+#adminDashV1 .admin-search-v1 input:focus{
+  border-color:rgba(22,199,232,.5) !important;
+  box-shadow:0 0 0 2px rgba(22,199,232,.07) !important;
+}
+
+/* Subscriber operations panel */
+#adminDashV1 .admin-subscriber-list-v1,
+#adminDashV1 .admin-editor-v1{
+  border:1px solid var(--isp-line) !important;
+  border-radius:8px !important;
+  background:#0a1622 !important;
+  box-shadow:none !important;
+}
+#adminDashV1 .admin-subscriber-list-head-v1{
+  padding:12px 14px !important;
+  background:#0d1b29 !important;
+  border-bottom:1px solid var(--isp-line) !important;
+}
+#adminDashV1 .admin-subscriber-list-title-v1{
+  font-size:.72rem !important;
+  font-weight:900 !important;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+#adminDashV1 .admin-subscriber-list-count-v1{
+  color:var(--isp-accent) !important;
+  font-size:.65rem !important;
+  font-weight:900 !important;
+}
+
+/* Billing table */
+#adminDashV1 .admin-subscriber-table-v1{
+  border-collapse:separate !important;
+  border-spacing:0 !important;
+}
+#adminDashV1 .admin-subscriber-table-v1 thead th{
+  padding:10px 9px !important;
+  background:#07111b !important;
+  color:#6f879b !important;
+  border-bottom:1px solid var(--isp-line) !important;
+  font-size:.56rem !important;
+  font-weight:900 !important;
+  letter-spacing:.07em;
+  white-space:nowrap;
+}
+#adminDashV1 .admin-subscriber-table-v1 tbody td{
+  padding:10px 9px !important;
+  border-bottom:1px solid rgba(154,185,211,.055) !important;
+  color:#d9e7ef !important;
+  font-size:.66rem !important;
+}
+#adminDashV1 .admin-subscriber-table-v1 tbody tr{
+  transition:background .15s ease;
+}
+#adminDashV1 .admin-subscriber-table-v1 tbody tr:hover{
+  background:rgba(22,199,232,.035) !important;
+}
+
+/* Payment/status language */
+#adminDashV1 .due-alert-active-v1{color:var(--isp-success) !important}
+#adminDashV1 .due-alert-soon-v1{color:var(--isp-warning) !important}
+#adminDashV1 .due-alert-overdue-v1{color:var(--isp-danger) !important}
+#adminDashV1 .due-alert-suspended-v1{color:#8a99a6 !important}
+
+/* Admin controls */
+#adminDashV1 button{
+  border-radius:6px !important;
+  font-weight:900 !important;
+  letter-spacing:.02em;
+}
+#adminDashV1 .admin-btn-v1{
+  background:#0e2635 !important;
+  border:1px solid rgba(22,199,232,.22) !important;
+  color:#cceff6 !important;
+}
+#adminDashV1 .admin-btn-v1:hover{
+  background:#123247 !important;
+  border-color:rgba(22,199,232,.42) !important;
+}
+#adminDashV1 .admin-logout-top-v1,
+#adminDashV1 .admin-dash-close-v1{
+  border:1px solid rgba(154,185,211,.12) !important;
+  background:#0b1825 !important;
+  color:#a9bac7 !important;
+}
+
+/* Due-date management strip */
+#adminDashV1 .admin-due-management-v1{
+  border:1px solid var(--isp-line) !important;
+  border-radius:7px !important;
+  background:#091622 !important;
+}
+#adminDashV1 .admin-due-btn-v1{
+  background:#0d2634 !important;
+  border:1px solid rgba(22,199,232,.2) !important;
+  color:#bdeaf2 !important;
+}
+
+/* Edit form */
+#adminDashV1 .admin-editor-v1 input,
+#adminDashV1 .admin-editor-v1 select,
+#adminDashV1 .admin-editor-v1 textarea{
+  border:1px solid rgba(154,185,211,.13) !important;
+  border-radius:6px !important;
+  background:#06101a !important;
+  color:#edf6fb !important;
+}
+#adminDashV1 .admin-editor-v1 input:focus,
+#adminDashV1 .admin-editor-v1 select:focus,
+#adminDashV1 .admin-editor-v1 textarea:focus{
+  border-color:rgba(22,199,232,.45) !important;
+  box-shadow:0 0 0 2px rgba(22,199,232,.06) !important;
+}
+
+/* Professional micro-animation */
+#adminDashV1 .admin-stat-v1,
+#adminDashV1 .admin-subscriber-list-v1,
+#adminDashV1 .admin-editor-v1{
+  animation:ispPanelIn .25s ease-out both;
+}
+@keyframes ispPanelIn{
+  from{opacity:.82;transform:translateY(3px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Mobile */
+@media(max-width:760px){
+  #adminDashV1 .admin-tab-nav-v1{overflow-x:auto}
+  #adminDashV1 .admin-stat-grid-v1{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  #adminDashV1 .admin-search-v1{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  #adminDashV1 .admin-search-v1 button{
+    width:100%;
+  }
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  #adminDashV1 *,
+  #adminDashV1 *::before,
+  #adminDashV1 *::after{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+</style>
+
+
+<style>
+/* PPPoE / MikroTik must sit above the full-screen Admin Dashboard */
+#mikrotikTabV1{
+  z-index:1000001 !important;
+  position:fixed !important;
+  inset:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  display:none;
+  overflow:auto !important;
+  box-sizing:border-box !important;
+}
+body.mikrotik-open-v1 #mikrotikTabV1{
+  display:block !important;
+}
+body.mikrotik-open-v1 #adminDashV1{
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+</style>
+
+
+<style>
+/* =========================================================
+   ISP BILLING PRO V3 — PPPoE / MikroTik matches admin tabs
+   Full-screen operations view; visual-only.
+   ========================================================= */
+#mikrotikTabV1{
+  position:fixed !important;
+  inset:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  z-index:1000001 !important;
+  overflow:auto !important;
+  background:#071019 !important;
+  color:#edf5fb !important;
+  box-sizing:border-box !important;
+  padding:0 !important;
+}
+#mikrotikTabV1 .mikrotik-admin-card-v1{
+  width:100vw !important;
+  min-height:100vh !important;
+  max-width:none !important;
+  margin:0 !important;
+  border-radius:0 !important;
+  background:#071019 !important;
+  box-shadow:none !important;
+  border:0 !important;
+  box-sizing:border-box !important;
+}
+#mikrotikTabV1 .admin-dash-head-v1{
+  background:#091522 !important;
+  border-bottom:1px solid rgba(154,185,211,.12) !important;
+  padding:18px 22px !important;
+}
+#mikrotikTabV1 .admin-dash-title-v1{
+  font-size:1.02rem !important;
+  font-weight:900 !important;
+  letter-spacing:.08em !important;
+}
+#mikrotikTabV1 .admin-dash-sub-v1{
+  color:#8197aa !important;
+  font-size:.68rem !important;
+}
+#mikrotikTabV1 .mikrotik-preview-banner-v1{
+  margin:14px 16px 0 !important;
+  padding:11px 14px !important;
+  border:1px solid rgba(154,185,211,.12) !important;
+  border-radius:8px !important;
+  background:#0b1825 !important;
+}
+#mikrotikTabV1 .mikrotik-stat-grid-v1{
+  margin:14px 16px !important;
+  gap:1px !important;
+  padding:0 !important;
+  background:rgba(154,185,211,.12);
+  border:1px solid rgba(154,185,211,.12);
+  border-radius:8px;
+  overflow:hidden;
+}
+#mikrotikTabV1 .mikrotik-stat-grid-v1 .admin-stat-v1{
+  min-height:78px;
+  border:0 !important;
+  border-radius:0 !important;
+  background:#0b1724 !important;
+  box-shadow:none !important;
+}
+#mikrotikTabV1 .mikrotik-table-card-v1{
+  margin:0 16px 16px !important;
+  padding:14px !important;
+  border:1px solid rgba(154,185,211,.12) !important;
+  border-radius:8px !important;
+  background:#0a1622 !important;
+  box-shadow:none !important;
+}
+#mikrotikTabV1 .mikrotik-table-head-v1{
+  padding-bottom:10px !important;
+  border-bottom:1px solid rgba(154,185,211,.08);
+}
+#mikrotikTabV1 .mikrotik-table-head-v1 strong{
+  font-size:.72rem !important;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+#mikrotikTabV1 .mikrotik-table-search-v1 input{
+  min-height:38px;
+  border:1px solid rgba(154,185,211,.13) !important;
+  border-radius:6px !important;
+  background:#06101a !important;
+  color:#edf5fb !important;
+}
+#mikrotikTabV1 .mikrotik-table-v1 th{
+  padding:10px 9px !important;
+  background:#07111b !important;
+  color:#6f879b !important;
+  border-bottom:1px solid rgba(154,185,211,.12) !important;
+  font-size:.56rem !important;
+  letter-spacing:.07em;
+}
+#mikrotikTabV1 .mikrotik-table-v1 td{
+  padding:10px 9px !important;
+  border-bottom:1px solid rgba(154,185,211,.055) !important;
+  color:#d9e7ef !important;
+}
+#mikrotikTabV1 .mikrotik-table-v1 tbody tr:hover{
+  background:rgba(22,199,232,.035) !important;
+}
+#mikrotikTabV1 button{
+  border-radius:6px !important;
+  font-weight:900 !important;
+}
+@media(max-width:760px){
+  #mikrotikTabV1 .admin-dash-head-v1{padding:15px !important}
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  #mikrotikTabV1 .mikrotik-table-card-v1{margin-left:9px !important;margin-right:9px !important}
+}
+</style>
+
+
+<style>
+/* Small live Philippine date/time under Logout + Close */
+#adminDashV1 .admin-header-clock-v7{
+  margin-top:5px;
+  text-align:right;
+  line-height:1.15;
+  color:#8197aa;
+  font-size:.57rem;
+  font-weight:800;
+  letter-spacing:.025em;
+  white-space:nowrap;
+}
+#adminDashV1 .admin-header-clock-v7 #adminHeaderTimeV7{
+  color:#b9d9e6;
+  font-size:.62rem;
+  font-variant-numeric:tabular-nums;
+}
+#adminDashV1 .admin-header-clock-v7 #adminHeaderDateV7{
+  margin-top:2px;
+  color:#6f879b;
+}
+@media(max-width:760px){
+  #adminDashV1 .admin-header-clock-v7{
+    text-align:left;
+    margin-top:4px;
+  }
+}
+</style>
+
+
+<style>
+/* Change Password — compact professional ISP admin control */
+#adminDashV1 .admin-change-password-btn-v1{
+  border:1px solid rgba(56,191,216,.20) !important;
+  background:#162b3b !important;
+  color:#cce8ef !important;
+  border-radius:6px !important;
+  padding:7px 9px !important;
+  font-size:.60rem !important;
+  font-weight:900 !important;
+  cursor:pointer;
+}
+#adminDashV1 .admin-change-password-btn-v1:hover{
+  background:#1a3446 !important;
+  border-color:rgba(56,191,216,.38) !important;
+}
+.admin-password-modal-v1{
+  position:fixed;
+  inset:0;
+  z-index:2000000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(3,10,17,.72);
+  backdrop-filter:blur(7px);
+}
+.admin-password-modal-v1[hidden]{display:none !important}
+.admin-password-card-v1{
+  width:min(410px,100%);
+  padding:20px;
+  border:1px solid rgba(154,174,189,.16);
+  border-radius:13px;
+  background:#111f2d;
+  color:#e6eef5;
+  box-shadow:0 24px 70px rgba(0,0,0,.42);
+}
+.admin-password-title-v1{
+  font-size:.82rem;
+  font-weight:900;
+  letter-spacing:.04em;
+}
+.admin-password-sub-v1{
+  margin:5px 0 15px;
+  color:#8195a5;
+  font-size:.63rem;
+  line-height:1.45;
+}
+.admin-password-card-v1 label{
+  display:block;
+  margin:10px 0 5px;
+  color:#718797;
+  font-size:.56rem;
+  font-weight:900;
+  letter-spacing:.06em;
+}
+.admin-password-card-v1 input{
+  width:100%;
+  box-sizing:border-box;
+  min-height:39px;
+  padding:9px 10px;
+  border:1px solid rgba(154,174,189,.15);
+  border-radius:7px;
+  background:#0c1824;
+  color:#e6eef5;
+  outline:none;
+}
+.admin-password-card-v1 input:focus{
+  border-color:rgba(56,191,216,.45);
+  box-shadow:0 0 0 2px rgba(56,191,216,.055);
+}
+.admin-password-msg-v1{
+  min-height:18px;
+  margin-top:9px;
+  font-size:.62rem;
+  color:#9aaebd;
+}
+.admin-password-actions-v1{
+  display:flex;
+  gap:8px;
+  margin-top:8px;
+}
+.admin-password-actions-v1 button{
+  flex:1;
+  min-height:38px;
+  border-radius:7px;
+  border:1px solid rgba(154,174,189,.14);
+  background:#162b3b;
+  color:#cce8ef;
+  font-size:.61rem;
+  font-weight:900;
+  cursor:pointer;
+}
+.admin-password-actions-v1 button:last-child{
+  background:#173846;
+  border-color:rgba(56,191,216,.28);
+}
+@media(max-width:760px){
+  #adminDashV1 .admin-change-password-btn-v1{font-size:.55rem !important}
+}
+</style>
+
+
+<style id="adminAccountMenuV2Style">
+/* Professional Admin account dropdown */
+#adminDashV1 .admin-account-menu-v2{
+  position:relative;
+  display:inline-block;
+  z-index:120;
+}
+#adminDashV1 .admin-account-trigger-v2{
+  min-height:34px;
+  padding:7px 10px !important;
+  border:1px solid rgba(154,174,189,.16) !important;
+  border-radius:7px !important;
+  background:#162738 !important;
+  color:#d9e8ef !important;
+  font-size:.60rem !important;
+  font-weight:900 !important;
+  letter-spacing:.03em;
+  cursor:pointer;
+}
+#adminDashV1 .admin-account-trigger-v2:hover{
+  background:#1a3041 !important;
+  border-color:rgba(56,191,216,.34) !important;
+}
+#adminDashV1 .admin-account-chevron-v2{
+  margin-left:5px;
+  color:#8195a5;
+  font-size:.8rem;
+}
+#adminDashV1 .admin-account-dropdown-v2{
+  position:absolute;
+  right:0;
+  top:calc(100% + 6px);
+  width:175px;
+  padding:5px;
+  border:1px solid rgba(154,174,189,.16);
+  border-radius:9px;
+  background:#111f2d;
+  box-shadow:0 14px 35px rgba(0,0,0,.35);
+  backdrop-filter:blur(12px);
+}
+#adminDashV1 .admin-account-dropdown-v2[hidden]{
+  display:none !important;
+}
+#adminDashV1 .admin-account-dropdown-v2 button{
+  display:block;
+  width:100%;
+  padding:9px 10px !important;
+  border:0 !important;
+  border-radius:6px !important;
+  background:transparent !important;
+  color:#cbdce5 !important;
+  text-align:left;
+  font-size:.60rem !important;
+  font-weight:850 !important;
+  cursor:pointer;
+}
+#adminDashV1 .admin-account-dropdown-v2 button:hover{
+  background:#162b3b !important;
+  color:#eefaff !important;
+}
+#adminDashV1 .admin-account-dropdown-v2 button:last-child:hover{
+  background:rgba(229,101,112,.10) !important;
+  color:#f39aa3 !important;
+}
+@media(max-width:760px){
+  #adminDashV1 .admin-account-dropdown-v2{
+    right:auto;
+    left:0;
+  }
+}
+</style>
+
+
+<style id="adminAccountMenuV2Fix2">
+/* Fix header account menu collision:
+   PPPoE is already available in the main tab bar, so the duplicate
+   header PPPoE button is removed. Keep the account menu above all header items. */
+#adminDashV1 .admin-dash-head-v1,
+#adminDashV1 .admin-top-actions-v1{
+  overflow:visible !important;
+}
+#adminDashV1 .admin-top-actions-v1{
+  position:relative !important;
+  z-index:500 !important;
+}
+#adminDashV1 .admin-account-menu-v2{
+  position:relative !important;
+  z-index:1000 !important;
+}
+#adminDashV1 .admin-account-dropdown-v2{
+  z-index:2000 !important;
+  pointer-events:auto !important;
+}
+</style>
+
+
+<style id="adminAccountMenuV3PositionFix">
+/* Header order: clock first, Admin menu last.
+   This keeps the dropdown away from the PPPoE navigation tab. */
+#adminDashV1 .admin-top-actions-v1{
+  display:flex !important;
+  align-items:flex-start !important;
+  justify-content:flex-end !important;
+  gap:10px !important;
+  overflow:visible !important;
+  position:relative !important;
+  z-index:10000 !important;
+}
+#adminDashV1 .admin-header-clock-v7{
+  order:1 !important;
+  margin-top:2px !important;
+  text-align:right !important;
+}
+#adminDashV1 .admin-account-menu-v2{
+  order:2 !important;
+  position:relative !important;
+  z-index:30000 !important;
+}
+#adminDashV1 .admin-account-dropdown-v2{
+  top:calc(100% + 6px) !important;
+  right:0 !important;
+  left:auto !important;
+  z-index:40000 !important;
+  pointer-events:auto !important;
+}
+#adminDashV1 .admin-account-trigger-v2{
+  position:relative !important;
+  z-index:40001 !important;
+}
+#adminDashV1 .admin-tab-nav-v1{
+  position:relative !important;
+  z-index:100 !important;
+}
+
+/* Give the account menu a clean hit area so Logout is always clickable. */
+#adminDashV1 .admin-account-dropdown-v2 button{
+  position:relative !important;
+  z-index:40002 !important;
+  pointer-events:auto !important;
+}
+
+/* Mobile: keep clock left and Admin menu right without overlap. */
+@media(max-width:760px){
+  #adminDashV1 .admin-top-actions-v1{
+    gap:7px !important;
+  }
+  #adminDashV1 .admin-header-clock-v7{
+    order:1 !important;
+    text-align:left !important;
+  }
+  #adminDashV1 .admin-account-menu-v2{
+    order:2 !important;
+  }
+}
+</style>
+
+
+<style id="adminAccountPanelV4Style">
+/* V4 — account controls stay inside the header; no dropdown over navigation */
+#adminDashV1 .admin-top-actions-v1{
+  position:relative !important;
+  z-index:5000 !important;
+  overflow:visible !important;
+}
+#adminDashV1 .admin-account-panel-v4{
+  position:relative !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  z-index:9000 !important;
+}
+#adminDashV1 .admin-account-trigger-v4{
+  min-height:34px !important;
+  padding:7px 10px !important;
+  border:1px solid rgba(154,174,189,.16) !important;
+  border-radius:7px !important;
+  background:#162738 !important;
+  color:#d9e8ef !important;
+  font-size:.60rem !important;
+  font-weight:900 !important;
+  cursor:pointer !important;
+}
+#adminDashV1 .admin-account-trigger-v4:hover{
+  background:#1a3041 !important;
+  border-color:rgba(56,191,216,.34) !important;
+}
+#adminDashV1 .admin-account-box-v4{
+  position:absolute !important;
+  right:0 !important;
+  bottom:calc(100% + 7px) !important;
+  width:180px !important;
+  padding:7px !important;
+  border:1px solid rgba(154,174,189,.17) !important;
+  border-radius:9px !important;
+  background:#111f2d !important;
+  box-shadow:0 14px 35px rgba(0,0,0,.38) !important;
+  z-index:10000 !important;
+}
+#adminDashV1 .admin-account-box-v4[hidden]{
+  display:none !important;
+}
+#adminDashV1 .admin-account-box-title-v4{
+  padding:6px 8px 8px !important;
+  color:#718797 !important;
+  font-size:.54rem !important;
+  font-weight:900 !important;
+  letter-spacing:.07em !important;
+  border-bottom:1px solid rgba(154,174,189,.09) !important;
+  margin-bottom:4px !important;
+}
+#adminDashV1 .admin-account-box-v4 button{
+  display:block !important;
+  width:100% !important;
+  min-height:34px !important;
+  padding:8px 9px !important;
+  border:0 !important;
+  border-radius:6px !important;
+  background:transparent !important;
+  color:#cbdce5 !important;
+  text-align:left !important;
+  font-size:.59rem !important;
+  font-weight:850 !important;
+  cursor:pointer !important;
+}
+#adminDashV1 .admin-account-box-v4 button:hover{
+  background:#162b3b !important;
+  color:#eefaff !important;
+}
+#adminDashV1 .admin-account-box-v4 button:last-child:hover{
+  background:rgba(229,101,112,.10) !important;
+  color:#f39aa3 !important;
+}
+#adminDashV1 .admin-tab-nav-v1{
+  position:relative !important;
+  z-index:100 !important;
+}
+@media(max-width:760px){
+  #adminDashV1 .admin-account-box-v4{
+    right:0 !important;
+    bottom:calc(100% + 7px) !important;
+    width:170px !important;
+  }
+}
+</style>
+
+
+<style id="adminAccountPanelV5CleanStyle">
+#adminDashV1 .admin-dash-head-v1{position:relative!important;overflow:visible!important;z-index:5000!important}
+#adminDashV1 .admin-top-actions-v1{position:relative!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:9px!important;overflow:visible!important;z-index:6000!important}
+#adminDashV1 .admin-account-panel-v4{position:relative!important;display:inline-flex!important;align-items:center!important;z-index:7000!important}
+#adminDashV1 .admin-account-trigger-v4{min-height:34px!important;padding:7px 11px!important;border:1px solid rgba(154,174,189,.16)!important;border-radius:7px!important;background:#162738!important;color:#d9e8ef!important;font-size:.60rem!important;font-weight:900!important;cursor:pointer!important;white-space:nowrap!important}
+#adminDashV1 .admin-account-box-v4{position:absolute!important;right:calc(100% + 7px)!important;left:auto!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important;width:190px!important;padding:7px!important;border:1px solid rgba(154,174,189,.17)!important;border-radius:9px!important;background:#111f2d!important;box-shadow:0 14px 35px rgba(0,0,0,.38)!important;z-index:10000!important}
+#adminDashV1 .admin-account-box-v4[hidden]{display:none!important}
+#adminDashV1 .admin-account-box-title-v4{padding:6px 8px 8px!important;color:#718797!important;font-size:.54rem!important;font-weight:900!important;letter-spacing:.07em!important;border-bottom:1px solid rgba(154,174,189,.09)!important;margin-bottom:4px!important}
+#adminDashV1 .admin-account-box-v4 button{display:block!important;width:100%!important;min-height:34px!important;padding:8px 9px!important;border:0!important;border-radius:6px!important;background:transparent!important;color:#cbdce5!important;text-align:left!important;font-size:.59rem!important;font-weight:850!important;cursor:pointer!important}
+#adminDashV1 .admin-account-box-v4 button:hover{background:#162b3b!important;color:#eefaff!important}
+#adminDashV1 .admin-account-box-v4 button:last-child:hover{background:rgba(229,101,112,.10)!important;color:#f39aa3!important}
+#adminDashV1 .admin-tab-nav-v1{position:relative!important;z-index:100!important}
+@media(max-width:760px){#adminDashV1 .admin-top-actions-v1{gap:6px!important}#adminDashV1 .admin-account-box-v4{right:calc(100% + 5px)!important;width:165px!important}}
+</style>
+
+
+<style id="adminAccountPanelV6InlineStyle">
+/* V6 — no floating dropdown. Account actions appear inline beside ADMIN. */
+#adminDashV1 .admin-dash-head-v1,
+#adminDashV1 .admin-top-actions-v1{
+  overflow:visible !important;
+}
+#adminDashV1 .admin-top-actions-v1{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:8px !important;
+  position:relative !important;
+  z-index:50000 !important;
+}
+#adminDashV1 .admin-account-panel-v4{
+  position:relative !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  z-index:60000 !important;
+}
+#adminDashV1 .admin-account-trigger-v4{
+  position:relative !important;
+  z-index:60002 !important;
+}
+#adminDashV1 .admin-account-box-v4{
+  position:static !important;
+  transform:none !important;
+  width:auto !important;
+  padding:3px !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:4px !important;
+  border:1px solid rgba(154,174,189,.16) !important;
+  border-radius:7px !important;
+  background:#111f2d !important;
+  box-shadow:none !important;
+  z-index:60001 !important;
+}
+#adminDashV1 .admin-account-box-v4[hidden]{
+  display:none !important;
+}
+#adminDashV1 .admin-account-box-title-v4{
+  display:none !important;
+}
+#adminDashV1 .admin-account-box-v4 button{
+  width:auto !important;
+  min-width:0 !important;
+  min-height:31px !important;
+  padding:7px 9px !important;
+  white-space:nowrap !important;
+  border:0 !important;
+  border-radius:5px !important;
+  background:#162b3b !important;
+  color:#cbdce5 !important;
+  text-align:center !important;
+  font-size:.56rem !important;
+  font-weight:900 !important;
+  cursor:pointer !important;
+}
+#adminDashV1 .admin-account-box-v4 button:hover{
+  background:#1a3446 !important;
+  color:#eefaff !important;
+}
+#adminDashV1 .admin-account-box-v4 button:last-child:hover{
+  background:rgba(229,101,112,.12) !important;
+  color:#f39aa3 !important;
+}
+@media(max-width:760px){
+  #adminDashV1 .admin-top-actions-v1{
+    gap:5px !important;
+  }
+  #adminDashV1 .admin-account-panel-v4{
+    flex-wrap:wrap !important;
+    justify-content:flex-end !important;
+  }
+  #adminDashV1 .admin-account-box-v4{
+    position:absolute !important;
+    right:0 !important;
+    top:calc(100% + 5px) !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    width:165px !important;
+    box-shadow:0 12px 30px rgba(0,0,0,.35) !important;
+  }
+  #adminDashV1 .admin-account-box-v4 button{
+    width:100% !important;
+  }
+}
+</style>
+
+
+<style id="adminToolsV7Style">
+#adminDashV1 .admin-account-box-v4{
+  max-width:min(420px,calc(100vw - 24px)) !important;
+  flex-wrap:wrap !important;
+}
+#adminDashV1 .admin-account-box-v4 button{
+  flex:0 0 auto !important;
+}
+.admin-tool-modal-v7{
+  position:fixed;
+  inset:0;
+  z-index:2500000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(3,10,17,.72);
+  backdrop-filter:blur(7px);
+}
+.admin-tool-modal-v7[hidden]{display:none!important}
+.admin-tool-card-v7{
+  width:min(680px,100%);
+  max-height:min(78vh,720px);
+  overflow:hidden;
+  border:1px solid rgba(154,174,189,.16);
+  border-radius:13px;
+  background:#111f2d;
+  color:#e6eef5;
+  box-shadow:0 24px 70px rgba(0,0,0,.42);
+}
+.admin-system-card-v7{width:min(500px,100%)}
+.admin-tool-head-v7{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:15px 17px;
+  border-bottom:1px solid rgba(154,174,189,.11);
+  background:#0d1825;
+}
+.admin-tool-title-v7{
+  font-size:.76rem;
+  font-weight:900;
+  letter-spacing:.04em;
+}
+.admin-tool-sub-v7{
+  margin-top:3px;
+  color:#8195a5;
+  font-size:.58rem;
+}
+.admin-tool-close-v7{
+  width:31px;
+  height:31px;
+  border:1px solid rgba(154,174,189,.14);
+  border-radius:6px;
+  background:#162738;
+  color:#cbdce5;
+  cursor:pointer;
+}
+.admin-activity-body-v7{
+  max-height:58vh;
+  overflow:auto;
+  padding:8px;
+}
+.admin-activity-row-v7{
+  display:grid;
+  grid-template-columns:145px 145px 1fr;
+  gap:9px;
+  padding:10px;
+  border-bottom:1px solid rgba(154,174,189,.07);
+  font-size:.58rem;
+}
+.admin-activity-time-v7{color:#718797}
+.admin-activity-action-v7{color:#38bfd8;font-weight:900}
+.admin-activity-detail-v7{color:#d3e0e8}
+.admin-empty-v7{padding:24px;text-align:center;color:#8195a5;font-size:.62rem}
+.admin-system-body-v7{padding:14px}
+.admin-system-grid-v7{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.admin-system-item-v7{
+  padding:12px;
+  border:1px solid rgba(154,174,189,.10);
+  border-radius:8px;
+  background:#0c1824;
+}
+.admin-system-label-v7{
+  color:#718797;
+  font-size:.52rem;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.admin-system-value-v7{
+  margin-top:4px;
+  color:#e6eef5;
+  font-size:.65rem;
+  font-weight:900;
+}
+.admin-system-ok-v7{color:#3ccb83}
+.admin-system-warn-v7{color:#e7b84b}
+@media(max-width:760px){
+  #adminDashV1 .admin-account-box-v4{
+    position:absolute !important;
+    right:0 !important;
+    top:calc(100% + 5px) !important;
+    max-width:190px !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+  }
+  #adminDashV1 .admin-account-box-v4 button{width:100%!important}
+  .admin-activity-row-v7{grid-template-columns:1fr;gap:4px}
+  .admin-system-grid-v7{grid-template-columns:1fr}
+}
+</style>
+
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
@@ -3215,6 +4674,57 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     });
 })();
 </script>
+
+<div class="admin-password-modal-v1" id="adminPasswordModalV1" hidden>
+  <div class="admin-password-card-v1">
+    <div class="admin-password-title-v1">🔐 CHANGE ADMIN PASSWORD</div>
+    <div class="admin-password-sub-v1">Change the password used for Admin Dashboard login.</div>
+
+    <label>CURRENT PASSWORD</label>
+    <input id="adminCurrentPasswordV1" type="password" autocomplete="current-password" placeholder="Enter current password">
+
+    <label>NEW PASSWORD</label>
+    <input id="adminNewPasswordV1" type="password" autocomplete="new-password" placeholder="Minimum 8 characters">
+
+    <label>CONFIRM NEW PASSWORD</label>
+    <input id="adminConfirmPasswordV1" type="password" autocomplete="new-password" placeholder="Repeat new password">
+
+    <div id="adminPasswordMsgV1" class="admin-password-msg-v1"></div>
+
+    <div class="admin-password-actions-v1">
+      <button type="button" id="adminPasswordCancelV1">CANCEL</button>
+      <button type="button" id="adminPasswordSaveV1">SAVE PASSWORD</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="admin-tool-modal-v7" id="adminActivityModalV7" hidden>
+  <div class="admin-tool-card-v7">
+    <div class="admin-tool-head-v7">
+      <div>
+        <div class="admin-tool-title-v7">📋 ACTIVITY LOG</div>
+        <div class="admin-tool-sub-v7">Recent administrator actions</div>
+      </div>
+      <button type="button" class="admin-tool-close-v7" data-close-tool-v7="adminActivityModalV7">✕</button>
+    </div>
+    <div id="adminActivityBodyV7" class="admin-activity-body-v7">Loading...</div>
+  </div>
+</div>
+
+<div class="admin-tool-modal-v7" id="adminSystemModalV7" hidden>
+  <div class="admin-tool-card-v7 admin-system-card-v7">
+    <div class="admin-tool-head-v7">
+      <div>
+        <div class="admin-tool-title-v7">🟢 SYSTEM STATUS</div>
+        <div class="admin-tool-sub-v7">Connection and required sheets</div>
+      </div>
+      <button type="button" class="admin-tool-close-v7" data-close-tool-v7="adminSystemModalV7">✕</button>
+    </div>
+    <div id="adminSystemBodyV7" class="admin-system-body-v7">Checking...</div>
+  </div>
+</div>
+
 <div class="admin-dash-overlay-v1" id="adminDashV1">
 <div class="admin-dash-card-v1">
 <div class="admin-dash-head-v1">
@@ -3223,16 +4733,33 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <div class="admin-dash-sub-v1">Subscriber management</div>
 </div>
 <div class="admin-top-actions-v1">
-<button class="mikrotik-tab-btn-v1" type="button" onclick="openMikrotikTabV1()">🌐 PPPoE / MikroTik</button>
 
-<button class="admin-logout-top-v1" id="adminLogoutV1" type="button">↪ LOGOUT</button>
-<button class="admin-dash-close-v1" id="adminDashCloseV1" type="button">CLOSE</button>
+
+<div class="admin-account-panel-v4" id="adminAccountPanelV4">
+  <button type="button" class="admin-account-trigger-v4" id="adminAccountTriggerV4">
+    👤 ADMIN
+  </button>
+  <div class="admin-account-box-v4" id="adminAccountBoxV4" hidden>
+    <div class="admin-account-box-title-v4">ADMIN ACCOUNT</div>
+    <button type="button" id="adminRefreshDataV7">🔄 REFRESH DATA</button>
+    <button type="button" id="adminActivityLogV7">📋 ACTIVITY LOG</button>
+    <button type="button" id="adminSystemStatusV7">🟢 SYSTEM STATUS</button>
+    <button type="button" id="adminChangePasswordBtnV1">🔐 CHANGE PASSWORD</button>
+    <button type="button" id="adminLogoutV1">↪ LOGOUT</button>
+  </div>
+</div>
+
+<div class="admin-header-clock-v7" id="adminHeaderClockV7">
+  <div id="adminHeaderTimeV7">--:--:--</div>
+  <div id="adminHeaderDateV7">---</div>
+</div>
 </div>
 </div>
 <div class="admin-tab-nav-v1">
 <button type="button" class="admin-tab-btn-v1 active" data-admin-tab="subscribers">👥 SUBSCRIBERS</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="tickets">🎫 TICKETS</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="payments">💳 GCASH PAYMENTS</button>
+<button type="button" class="admin-tab-btn-v1" id="adminMikrotikTabBtnV1" data-admin-tab="mikrotik">🌐 PPPOE / MIKROTIK</button>
 </div>
 <div class="admin-panel-v1 active" id="adminPanelSubscribersV1">
 <div class="admin-stat-grid-v1">
@@ -3241,6 +4768,11 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <div class="admin-stat-v1"><small>Due Soon</small><strong id="admDueSoonV1">—</strong></div>
 <div class="admin-stat-v1"><small>Overdue</small><strong id="admOverdueV1">—</strong></div>
 <div class="admin-stat-v1"><small>GCash Collected This Month</small><strong id="admGcashTotalV1">₱0.00</strong></div>
+<div class="admin-stat-v1"><small>50 Mbps Clients</small><strong id="adminPlan50CountV1">0</strong></div>
+<div class="admin-stat-v1"><small>100 Mbps Clients</small><strong id="adminPlan100CountV1">0</strong></div>
+
+
+
 </div>
 <div class="admin-search-v1">
 <input id="adminSubscriberQueryV1" placeholder="Search Account ID, name, or contact number" type="text"/>
@@ -3249,6 +4781,13 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <div class="admin-subscriber-list-v1">
   <div class="admin-subscriber-list-head-v1">
     <div class="admin-subscriber-list-title-v1">👥 SUBSCRIBER LIST</div>
+<div class="admin-due-alert-legend-v1">
+  <span class="due-alert-active-v1">● ACTIVE</span>
+  <span class="due-alert-soon-v1">● DUE SOON</span>
+  <span class="due-alert-overdue-v1">● OVERDUE</span>
+  <span class="due-alert-suspended-v1">● SUSPENDED</span>
+</div>
+
     <div class="admin-subscriber-list-count-v1" id="adminSubscriberListCountV1">Loading...</div>
   </div>
   <div class="admin-subscriber-table-wrap-v1">
@@ -3277,6 +4816,13 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <div style="font-weight:900;color:var(--accent-cyan);margin-bottom:10px">
             EDIT SUBSCRIBER — <span id="adminEditingIdV1"></span>
 </div>
+
+<div class="admin-due-management-v1">
+  <span>📅 Due Date Management</span>
+  <button type="button" class="admin-due-btn-v1" id="adminDuePlus30V1">+30 DAYS</button>
+  <button type="button" class="admin-due-btn-v1" id="adminDueToday30V1">TODAY +30</button>
+</div>
+
 <div class="admin-form-grid-v1">
 <div class="admin-field-wrap-v1">
 <label>NAME</label><input id="admNameV1"/>
@@ -3530,6 +5076,11 @@ async function loadAdminSubscribersListV1(){
       document.getElementById('admActiveV1').textContent=d.subscribers.active;
       document.getElementById('admDueSoonV1').textContent=d.subscribers.dueSoon;
       document.getElementById('admOverdueV1').textContent=d.subscribers.overdue;
+
+      const plan50El = document.getElementById('adminPlan50CountV1');
+      const plan100El = document.getElementById('adminPlan100CountV1');
+      if(plan50El) plan50El.textContent = String(Number(d.plan50Count || 0));
+      if(plan100El) plan100El.textContent = String(Number(d.plan100Count || 0));
 
       const monthlyGcash = Number(
         d.payments && d.payments.verifiedThisMonthTotal != null
@@ -3924,10 +5475,6 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminPaymentRefreshV1')?.addEventListener('click',loadAdminPaymentsV1);
     document.getElementById('adminTicketRefreshV1')?.addEventListener('click',loadAdminTicketsV1);
     document.getElementById('adminTicketSearchV1')?.addEventListener('input',filterAdminTicketsV1);
-    document.getElementById('adminDashCloseV1')?.addEventListener('click',function(){
-      document.getElementById('adminDashV1').style.display='none';
-    });
-
     document.getElementById('adminLogoutV1')?.addEventListener('click',function(){
       sessionStorage.removeItem('winkonek_admin_token_v2');
       document.getElementById('adminDashV1').style.display='none';
@@ -3990,7 +5537,11 @@ async function loadAdminSubscribersListV1(){
         <div class="admin-dash-sub-v1">Network management</div>
       </div>
       <div class="admin-top-actions-v1">
-        <button class="admin-dash-close-v1" type="button" onclick="closeMikrotikTabV1()">← BACK TO DASHBOARD</button>
+        <div class="pppoe-admin-nav-v5">
+  <button type="button" onclick="navigateFromMikrotikV5('subscribers')">👥 SUBSCRIBERS</button>
+  <button type="button" onclick="navigateFromMikrotikV5('tickets')">🎫 TICKETS</button>
+  <button type="button" onclick="navigateFromMikrotikV5('payments')">💳 GCASH PAYMENTS</button>
+</div>
       </div>
     </div>
 
@@ -4412,5 +5963,773 @@ function refreshMikrotikDemoV1(){
 })();
 </script>
 
+
+
+
+<script>
+(function(){
+  function formatDateV1(d){
+    var y=d.getFullYear();
+    var m=String(d.getMonth()+1).padStart(2,'0');
+    var day=String(d.getDate()).padStart(2,'0');
+    return y+'-'+m+'-'+day;
+  }
+
+  function findDueInputV1(){
+    return document.getElementById('adminDueDateEditV1') ||
+           document.querySelector('#adminEditorV1 input[name="dueDate"]') ||
+           document.querySelector('#adminEditorV1 input[type="date"]');
+  }
+
+  function addDaysV1(base,days){
+    var d=new Date(base);
+    d.setHours(12,0,0,0);
+    d.setDate(d.getDate()+days);
+    return d;
+  }
+
+  function initDueDateManagementV1(){
+    var plus=document.getElementById('adminDuePlus30V1');
+    var today=document.getElementById('adminDueToday30V1');
+    if(!plus || !today)return;
+
+    plus.addEventListener('click',function(){
+      var input=findDueInputV1();
+      if(!input){
+        alert('Open a subscriber in EDIT mode first.');
+        return;
+      }
+      var base=input.value ? new Date(input.value+'T12:00:00') : new Date();
+      if(isNaN(base.getTime())) base=new Date();
+      input.value=formatDateV1(addDaysV1(base,30));
+      input.dispatchEvent(new Event('input',{bubbles:true}));
+      input.dispatchEvent(new Event('change',{bubbles:true}));
+    });
+
+    today.addEventListener('click',function(){
+      var input=findDueInputV1();
+      if(!input){
+        alert('Open a subscriber in EDIT mode first.');
+        return;
+      }
+      input.value=formatDateV1(addDaysV1(new Date(),30));
+      input.dispatchEvent(new Event('input',{bubbles:true}));
+      input.dispatchEvent(new Event('change',{bubbles:true}));
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initDueDateManagementV1);
+  }else{
+    initDueDateManagementV1();
+  }
+})();
+</script>
+
+
+<style>
+/* PPPoE internal navigation — same ISP operations style */
+#mikrotikTabV1 .pppoe-admin-nav-v5{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+#mikrotikTabV1 .pppoe-admin-nav-v5 button{
+  min-height:36px;
+  padding:8px 11px;
+  border:1px solid rgba(154,185,211,.13) !important;
+  border-radius:6px !important;
+  background:#0b1825 !important;
+  color:#9db0bf !important;
+  font-size:.62rem;
+  font-weight:900;
+  cursor:pointer;
+  transition:.16s ease;
+}
+#mikrotikTabV1 .pppoe-admin-nav-v5 button:hover{
+  color:#eafaff !important;
+  background:#0e2635 !important;
+  border-color:rgba(22,199,232,.36) !important;
+  transform:translateY(-1px);
+}
+@media(max-width:760px){
+  #mikrotikTabV1 .admin-dash-head-v1{
+    align-items:flex-start !important;
+  }
+  #mikrotikTabV1 .pppoe-admin-nav-v5{
+    width:100%;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+  }
+  #mikrotikTabV1 .pppoe-admin-nav-v5 button{
+    flex:0 0 auto;
+  }
+}
+</style>
+
+<script>
+function navigateFromMikrotikV5(tab){
+  try{
+    var page=document.getElementById('mikrotikTabV1');
+    var overlay=document.getElementById('adminOverlayV3');
+    var dashboard=document.getElementById('adminDashV1');
+
+    /* Do not call closeMikrotikTabV1().
+       These buttons return to the authenticated Admin Dashboard,
+       not to the public/front page. */
+    if(page){
+      page.hidden=true;
+      page.style.display='none';
+    }
+
+    document.body.classList.remove('mikrotik-open-v1');
+
+    if(overlay){
+      overlay.style.display='flex';
+      overlay.hidden=false;
+      delete overlay.dataset.mikrotikHidden;
+    }
+
+    if(dashboard){
+      dashboard.hidden=false;
+      dashboard.style.display='block';
+      dashboard.style.visibility='visible';
+      dashboard.style.pointerEvents='auto';
+    }
+
+    if(typeof switchAdminPanelV1 === 'function'){
+      switchAdminPanelV1(tab);
+    }else{
+      var btn=document.querySelector('.admin-tab-btn-v1[data-admin-tab="'+tab+'"]');
+      if(btn)btn.click();
+    }
+
+    window.scrollTo(0,0);
+  }catch(e){
+    console.error('PPPoE navigation error:',e);
+  }
+}
+</script>
+
+
+<script>
+(function(){
+  function updateAdminHeaderClockV7(){
+    var t=document.getElementById('adminHeaderTimeV7');
+    var d=document.getElementById('adminHeaderDateV7');
+    if(!t || !d)return;
+
+    var now=new Date();
+    var time=new Intl.DateTimeFormat('en-PH',{
+      timeZone:'Asia/Manila',
+      hour:'2-digit',
+      minute:'2-digit',
+      second:'2-digit',
+      hour12:true
+    }).format(now);
+
+    var date=new Intl.DateTimeFormat('en-PH',{
+      timeZone:'Asia/Manila',
+      weekday:'short',
+      month:'short',
+      day:'2-digit',
+      year:'numeric'
+    }).format(now);
+
+    t.textContent=time;
+    d.textContent=date;
+  }
+
+  function initAdminHeaderClockV7(){
+    updateAdminHeaderClockV7();
+    setInterval(updateAdminHeaderClockV7,1000);
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initAdminHeaderClockV7);
+  }else{
+    initAdminHeaderClockV7();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  var ADMIN_URL = "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec";
+
+  function el(id){ return document.getElementById(id); }
+
+  function passwordMsgV1(text,error){
+    var box=el('adminPasswordMsgV1');
+    if(!box)return;
+    box.textContent=text||'';
+    box.style.color=error ? '#e56570' : '#3ccb83';
+  }
+
+  function openPasswordModalV1(){
+    var modal=el('adminPasswordModalV1');
+    if(!modal)return;
+    ['adminCurrentPasswordV1','adminNewPasswordV1','adminConfirmPasswordV1'].forEach(function(id){
+      if(el(id))el(id).value='';
+    });
+    passwordMsgV1('');
+    modal.hidden=false;
+    setTimeout(function(){
+      if(el('adminCurrentPasswordV1'))el('adminCurrentPasswordV1').focus();
+    },30);
+  }
+
+  function closePasswordModalV1(){
+    var modal=el('adminPasswordModalV1');
+    if(modal)modal.hidden=true;
+  }
+
+  async function savePasswordV1(){
+    var current=el('adminCurrentPasswordV1')?.value || '';
+    var next=el('adminNewPasswordV1')?.value || '';
+    var confirm=el('adminConfirmPasswordV1')?.value || '';
+    var token=sessionStorage.getItem('winkonek_admin_token_v2') || '';
+    var save=el('adminPasswordSaveV1');
+
+    if(!token){
+      passwordMsgV1('Admin session expired. Please login again.',true);
+      return;
+    }
+    if(!current || !next || !confirm){
+      passwordMsgV1('Complete all password fields.',true);
+      return;
+    }
+    if(next.length<8){
+      passwordMsgV1('New password must be at least 8 characters.',true);
+      return;
+    }
+    if(next!==confirm){
+      passwordMsgV1('New password and confirmation do not match.',true);
+      return;
+    }
+
+    if(save){
+      save.disabled=true;
+      save.textContent='SAVING...';
+    }
+    passwordMsgV1('Updating password...',false);
+
+    try{
+      var r=await fetch(ADMIN_URL,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({
+          action:'adminChangePassword',
+          key:token,
+          currentPassword:current,
+          newPassword:next
+        })
+      });
+      var d=await r.json();
+
+      if(!d || d.success!==true){
+        passwordMsgV1((d&&d.error)||'Unable to change password.',true);
+        return;
+      }
+
+      if(d.token){
+        sessionStorage.setItem('winkonek_admin_token_v2',d.token);
+      }
+      passwordMsgV1('Password changed successfully.',false);
+
+      setTimeout(function(){
+        closePasswordModalV1();
+        if(typeof showToast==='function'){
+          showToast('Admin password changed successfully.','success');
+        }
+      },700);
+
+    }catch(e){
+      console.error('Change password:',e);
+      passwordMsgV1('Hindi maka-connect sa Admin server.',true);
+    }finally{
+      if(save){
+        save.disabled=false;
+        save.textContent='SAVE PASSWORD';
+      }
+    }
+  }
+
+  function initAdminPasswordV1(){
+    el('adminChangePasswordBtnV1')?.addEventListener('click',openPasswordModalV1);
+    el('adminPasswordCancelV1')?.addEventListener('click',closePasswordModalV1);
+    el('adminPasswordSaveV1')?.addEventListener('click',savePasswordV1);
+
+    el('adminPasswordModalV1')?.addEventListener('click',function(e){
+      if(e.target===this)closePasswordModalV1();
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initAdminPasswordV1);
+  }else{
+    initAdminPasswordV1();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  function initAdminAccountMenuV2(){
+    var trigger=document.getElementById('adminAccountTriggerV2');
+    var menu=document.getElementById('adminAccountDropdownV2');
+    if(!trigger || !menu || trigger.dataset.v2bound)return;
+    trigger.dataset.v2bound='1';
+
+    trigger.addEventListener('click',function(e){
+      e.stopPropagation();
+      menu.hidden=!menu.hidden;
+    });
+
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('#adminAccountMenuV2')){
+        menu.hidden=true;
+      }
+    });
+
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape')menu.hidden=true;
+    });
+
+    var passwordBtn=document.getElementById('adminChangePasswordBtnV1');
+    if(passwordBtn){
+      passwordBtn.addEventListener('click',function(){
+        menu.hidden=true;
+        /* Use the existing working Change Password V1 flow. */
+        var modal=document.getElementById('adminPasswordModalV1');
+        if(modal){
+          modal.hidden=false;
+          ['adminCurrentPasswordV1','adminNewPasswordV1','adminConfirmPasswordV1'].forEach(function(id){
+            var el=document.getElementById(id);
+            if(el)el.value='';
+          });
+          var msg=document.getElementById('adminPasswordMsgV1');
+          if(msg)msg.textContent='';
+          setTimeout(function(){
+            var current=document.getElementById('adminCurrentPasswordV1');
+            if(current)current.focus();
+          },30);
+        }
+      });
+    }
+
+    var logout=document.getElementById('adminLogoutV1');
+    if(logout){
+      logout.addEventListener('click',function(){
+        menu.hidden=true;
+        /* Existing logout listener remains the source of truth. */
+      });
+    }
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initAdminAccountMenuV2);
+  }else{
+    initAdminAccountMenuV2();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  function initAdminAccountPanelV4(){
+    var trigger=document.getElementById('adminAccountTriggerV4');
+    var box=document.getElementById('adminAccountBoxV4');
+    if(!trigger || !box || trigger.dataset.v4bound)return;
+    trigger.dataset.v4bound='1';
+
+    trigger.addEventListener('click',function(e){
+      e.stopPropagation();
+      box.hidden=!box.hidden;
+    });
+
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('#adminAccountPanelV4')){
+        box.hidden=true;
+      }
+    });
+
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape')box.hidden=true;
+    });
+
+    var pass=document.getElementById('adminChangePasswordBtnV1');
+    if(pass){
+      pass.addEventListener('click',function(){
+        box.hidden=true;
+        var modal=document.getElementById('adminPasswordModalV1');
+        if(modal){
+          modal.hidden=false;
+          ['adminCurrentPasswordV1','adminNewPasswordV1','adminConfirmPasswordV1'].forEach(function(id){
+            var x=document.getElementById(id);
+            if(x)x.value='';
+          });
+          var msg=document.getElementById('adminPasswordMsgV1');
+          if(msg)msg.textContent='';
+          setTimeout(function(){
+            var x=document.getElementById('adminCurrentPasswordV1');
+            if(x)x.focus();
+          },30);
+        }
+      });
+    }
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initAdminAccountPanelV4);
+  }else{
+    initAdminAccountPanelV4();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+function initAdminAccountPanelV5(){
+ var trigger=document.getElementById('adminAccountTriggerV4');
+ var box=document.getElementById('adminAccountBoxV4');
+ if(!trigger||!box||trigger.dataset.v5bound)return;
+ trigger.dataset.v5bound='1';
+ trigger.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();box.hidden=!box.hidden;});
+ document.addEventListener('click',function(e){if(!e.target.closest('#adminAccountPanelV4'))box.hidden=true;});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')box.hidden=true;});
+ var pass=document.getElementById('adminChangePasswordBtnV1');
+ if(pass){pass.addEventListener('click',function(e){e.stopPropagation();box.hidden=true;var modal=document.getElementById('adminPasswordModalV1');if(modal){modal.hidden=false;['adminCurrentPasswordV1','adminNewPasswordV1','adminConfirmPasswordV1'].forEach(function(id){var x=document.getElementById(id);if(x)x.value='';});var msg=document.getElementById('adminPasswordMsgV1');if(msg)msg.textContent='';setTimeout(function(){var x=document.getElementById('adminCurrentPasswordV1');if(x)x.focus();},30);}});}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initAdminAccountPanelV5);else initAdminAccountPanelV5();
+})();
+</script>
+
+
+<script>
+(function(){
+  function initAdminAccountPanelV6(){
+    var trigger=document.getElementById('adminAccountTriggerV4');
+    var box=document.getElementById('adminAccountBoxV4');
+    if(!trigger || !box || trigger.dataset.v6bound)return;
+    trigger.dataset.v6bound='1';
+
+    trigger.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      box.hidden=!box.hidden;
+    });
+
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('#adminAccountPanelV4')){
+        box.hidden=true;
+      }
+    });
+
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape')box.hidden=true;
+    });
+
+    var pass=document.getElementById('adminChangePasswordBtnV1');
+    if(pass){
+      pass.addEventListener('click',function(e){
+        e.stopPropagation();
+        box.hidden=true;
+      });
+    }
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initAdminAccountPanelV6);
+  }else{
+    initAdminAccountPanelV6();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  function adminV7Token(){return sessionStorage.getItem('winkonek_admin_token_v2')||'';}
+  function dashUrlV7(){return (typeof ADMIN_URL_DASH_V1!=='undefined' ? ADMIN_URL_DASH_V1 : "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec");}
+
+  function closeToolV7(id){
+    var m=document.getElementById(id); if(m)m.hidden=true;
+  }
+
+  async function refreshDataV7(){
+    var menu=document.getElementById('adminAccountBoxV4'); if(menu)menu.hidden=true;
+    try{
+      if(typeof loadAdminStatsV1==='function') await loadAdminStatsV1();
+      if(typeof loadAdminSubscribersListV1==='function') await loadAdminSubscribersListV1();
+      if(typeof loadAdminPaymentsV1==='function') await loadAdminPaymentsV1();
+      if(typeof loadAdminTicketsV1==='function') await loadAdminTicketsV1();
+      if(typeof showToast==='function') showToast('Admin data refreshed.','success');
+    }catch(e){
+      console.error('Refresh data V7:',e);
+      if(typeof showToast==='function') showToast('Some data could not be refreshed.','error');
+    }
+  }
+
+  async function loadActivityV7(){
+    var body=document.getElementById('adminActivityBodyV7');
+    if(!body)return;
+    body.innerHTML='<div class="admin-empty-v7">Loading activity...</div>';
+    try{
+      var r=await fetch(dashUrlV7()+'?action=adminActivityLog&key='+encodeURIComponent(adminV7Token())+'&refresh='+Date.now(),{cache:'no-store'});
+      var d=await r.json();
+      if(!d || d.success!==true){body.innerHTML='<div class="admin-empty-v7">'+((d&&d.error)||'Unable to load activity log.')+'</div>';return;}
+      if(!d.logs || !d.logs.length){body.innerHTML='<div class="admin-empty-v7">No admin activity recorded yet.</div>';return;}
+      body.innerHTML=d.logs.map(function(x){
+        return '<div class="admin-activity-row-v7">'+
+          '<div class="admin-activity-time-v7">'+escapeHtmlV7(x.timestamp)+'</div>'+
+          '<div class="admin-activity-action-v7">'+escapeHtmlV7(x.action)+'</div>'+
+          '<div class="admin-activity-detail-v7">'+escapeHtmlV7(x.details)+'</div>'+
+        '</div>';
+      }).join('');
+    }catch(e){
+      console.error('Activity log V7:',e);
+      body.innerHTML='<div class="admin-empty-v7">Hindi maka-connect sa Activity Log.</div>';
+    }
+  }
+
+  async function loadSystemV7(){
+    var body=document.getElementById('adminSystemBodyV7');
+    if(!body)return;
+    body.innerHTML='<div class="admin-empty-v7">Checking system...</div>';
+    try{
+      var r=await fetch(dashUrlV7()+'?action=adminSystemStatus&key='+encodeURIComponent(adminV7Token())+'&refresh='+Date.now(),{cache:'no-store'});
+      var d=await r.json();
+      if(!d || d.success!==true){body.innerHTML='<div class="admin-empty-v7">'+((d&&d.error)||'Unable to check system status.')+'</div>';return;}
+      var sheetRows=Object.keys(d.sheets||{}).map(function(name){
+        var ok=d.sheets[name];
+        return '<div class="admin-system-item-v7"><div class="admin-system-label-v7">'+escapeHtmlV7(name)+'</div><div class="admin-system-value-v7 '+(ok?'admin-system-ok-v7':'admin-system-warn-v7')+'">'+(ok?'● AVAILABLE':'● NOT FOUND')+'</div></div>';
+      }).join('');
+      body.innerHTML='<div class="admin-system-grid-v7">'+
+        '<div class="admin-system-item-v7"><div class="admin-system-label-v7">Server</div><div class="admin-system-value-v7 admin-system-ok-v7">● '+escapeHtmlV7(d.server)+'</div></div>'+
+        '<div class="admin-system-item-v7"><div class="admin-system-label-v7">Google Sheet</div><div class="admin-system-value-v7 admin-system-ok-v7">● '+escapeHtmlV7(d.googleSheet)+'</div></div>'+
+        '<div class="admin-system-item-v7"><div class="admin-system-label-v7">Activity Log</div><div class="admin-system-value-v7 '+(d.activityLog?'admin-system-ok-v7':'admin-system-warn-v7')+'">'+(d.activityLog?'● AVAILABLE':'● WILL BE CREATED')+'</div></div>'+
+        '<div class="admin-system-item-v7"><div class="admin-system-label-v7">Checked</div><div class="admin-system-value-v7">'+escapeHtmlV7(d.checkedAt||'')+'</div></div>'+
+      '</div><div style="margin-top:10px" class="admin-system-grid-v7">'+sheetRows+'</div>';
+    }catch(e){
+      console.error('System status V7:',e);
+      body.innerHTML='<div class="admin-empty-v7">Hindi maka-connect sa System Status.</div>';
+    }
+  }
+
+  function escapeHtmlV7(v){
+    return String(v==null?'':v).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function initAdminToolsV7(){
+    var refresh=document.getElementById('adminRefreshDataV7');
+    var activity=document.getElementById('adminActivityLogV7');
+    var system=document.getElementById('adminSystemStatusV7');
+
+    if(refresh && !refresh.dataset.v7bound){refresh.dataset.v7bound='1';refresh.addEventListener('click',refreshDataV7);}
+    if(activity && !activity.dataset.v7bound){
+      activity.dataset.v7bound='1';
+      activity.addEventListener('click',function(){
+        var menu=document.getElementById('adminAccountBoxV4');if(menu)menu.hidden=true;
+        var modal=document.getElementById('adminActivityModalV7');if(modal)modal.hidden=false;
+        loadActivityV7();
+      });
+    }
+    if(system && !system.dataset.v7bound){
+      system.dataset.v7bound='1';
+      system.addEventListener('click',function(){
+        var menu=document.getElementById('adminAccountBoxV4');if(menu)menu.hidden=true;
+        var modal=document.getElementById('adminSystemModalV7');if(modal)modal.hidden=false;
+        loadSystemV7();
+      });
+    }
+
+    document.querySelectorAll('[data-close-tool-v7]').forEach(function(btn){
+      if(btn.dataset.v7bound)return;
+      btn.dataset.v7bound='1';
+      btn.addEventListener('click',function(){closeToolV7(btn.getAttribute('data-close-tool-v7'));});
+    });
+
+    ['adminActivityModalV7','adminSystemModalV7'].forEach(function(id){
+      var modal=document.getElementById(id);
+      if(modal && !modal.dataset.v7bound){
+        modal.dataset.v7bound='1';
+        modal.addEventListener('click',function(e){if(e.target===modal)modal.hidden=true;});
+      }
+    });
+  }
+
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initAdminToolsV7);
+  else initAdminToolsV7();
+})();
+</script>
+
 </body>
 </html>
+<style>
+/* PPPoE / MikroTik is now a native Admin Dashboard tab */
+#adminDashV1 .mikrotik-tab-btn-v1{display:none !important;}
+/* Keep the PPPoE page full-screen and visually consistent when opened as a tab */
+body.mikrotik-open-v1 #adminDashV1{visibility:hidden !important;pointer-events:none !important;}
+#mikrotikTabV1{z-index:1000001 !important;}
+</style>
+<script>
+(function(){
+  function openMikrotikFromAdminTabV4(){
+    if(typeof openMikrotikTabV1==='function'){
+      openMikrotikTabV1();
+    }
+  }
+  function bindMikrotikAdminTabV4(){
+    var b=document.getElementById('adminMikrotikTabBtnV1');
+    if(!b || b.dataset.v4bound)return;
+    b.dataset.v4bound='1';
+    b.addEventListener('click',openMikrotikFromAdminTabV4);
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',bindMikrotikAdminTabV4);
+  }else{
+    bindMikrotikAdminTabV4();
+  }
+})();
+</script>
+
+
+<style id="winEyeComfortV10">
+/* WIN KONEK EYE-COMFORT V10 — final override layer */
+html body #adminOverlayV3 #adminDashV1{
+  background:#0b1420 !important;
+  color:#e6eef5 !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-dash-card-v1{
+  background:#0b1420 !important;
+  color:#e6eef5 !important;
+  border:1px solid rgba(154,174,189,.13) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-dash-head-v1{
+  background:#0d1825 !important;
+  color:#e6eef5 !important;
+  border-color:rgba(154,174,189,.13) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-dash-title-v1{
+  color:#e6eef5 !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-dash-sub-v1{
+  color:#8195a5 !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-tab-nav-v1{
+  background:#0b1622 !important;
+  border-color:rgba(154,174,189,.12) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-tab-btn-v1{
+  color:#8fa3b2 !important;
+  background:transparent !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-tab-btn-v1.active{
+  color:#e8f9fc !important;
+  background:#122632 !important;
+  border-bottom-color:#38bfd8 !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-stat-grid-v1{
+  background:rgba(154,174,189,.11) !important;
+  border-color:rgba(154,174,189,.11) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-stat-v1{
+  background:#111f2d !important;
+  color:#e6eef5 !important;
+  border-color:transparent !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-stat-v1 small{
+  color:#718797 !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-stat-v1 strong{
+  color:#e6eef5 !important;
+}
+html body #adminOverlayV3 #adminDashV1 #admActiveV1{color:#3ccb83 !important}
+html body #adminOverlayV3 #adminDashV1 #admDueSoonV1{color:#e7b84b !important}
+html body #adminOverlayV3 #adminDashV1 #admOverdueV1{color:#e56570 !important}
+html body #adminOverlayV3 #adminDashV1 #admGcashTotalV1{color:#3ccb83 !important}
+html body #adminOverlayV3 #adminDashV1 #adminPlan50CountV1,
+html body #adminOverlayV3 #adminDashV1 #adminPlan100CountV1{color:#4a9fe8 !important}
+
+html body #adminOverlayV3 #adminDashV1 .admin-search-v1,
+html body #adminOverlayV3 #adminDashV1 .admin-subscriber-list-v1,
+html body #adminOverlayV3 #adminDashV1 .admin-editor-v1{
+  background:#111f2d !important;
+  border-color:rgba(154,174,189,.13) !important;
+  color:#e6eef5 !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-search-v1 input,
+html body #adminOverlayV3 #adminDashV1 .admin-editor-v1 input,
+html body #adminOverlayV3 #adminDashV1 .admin-editor-v1 select,
+html body #adminOverlayV3 #adminDashV1 .admin-editor-v1 textarea{
+  background:#0c1824 !important;
+  color:#e6eef5 !important;
+  border-color:rgba(154,174,189,.15) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-subscriber-list-head-v1{
+  background:#162738 !important;
+  border-color:rgba(154,174,189,.11) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-subscriber-list-title-v1{
+  color:#e1ecf2 !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-subscriber-table-v1 thead th{
+  background:#0d1925 !important;
+  color:#718797 !important;
+  border-color:rgba(154,174,189,.11) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-subscriber-table-v1 tbody td{
+  background:#111f2d !important;
+  color:#d3e0e8 !important;
+  border-color:rgba(154,174,189,.065) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-subscriber-table-v1 tbody tr:hover td{
+  background:#142b38 !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-btn-v1{
+  background:#162b3b !important;
+  color:#cce8ef !important;
+  border-color:rgba(56,191,216,.22) !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-header-clock-v7 #adminHeaderTimeV7{
+  color:#b9d6df !important;
+}
+html body #adminOverlayV3 #adminDashV1 .admin-header-clock-v7 #adminHeaderDateV7{
+  color:#738998 !important;
+}
+
+/* PPPoE gets the same palette */
+html body #mikrotikTabV1{
+  background:#0b1420 !important;
+  color:#e6eef5 !important;
+}
+html body #mikrotikTabV1 .mikrotik-admin-card-v1{
+  background:#0b1420 !important;
+}
+html body #mikrotikTabV1 .admin-dash-head-v1{
+  background:#0d1825 !important;
+  color:#e6eef5 !important;
+  border-color:rgba(154,174,189,.13) !important;
+}
+html body #mikrotikTabV1 .mikrotik-preview-banner-v1,
+html body #mikrotikTabV1 .mikrotik-table-card-v1{
+  background:#111f2d !important;
+  color:#e6eef5 !important;
+  border-color:rgba(154,174,189,.13) !important;
+}
+html body #mikrotikTabV1 .mikrotik-stat-grid-v1{
+  background:rgba(154,174,189,.11) !important;
+}
+html body #mikrotikTabV1 .mikrotik-stat-grid-v1 .admin-stat-v1{
+  background:#111f2d !important;
+}
+</style>
+

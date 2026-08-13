@@ -1604,6 +1604,94 @@ body.mikrotik-open-v1{overflow:hidden !important;}
 .admin-subscriber-list-v1 .admin-payment-reject-v1{border:0;border-radius:7px;padding:7px 9px;background:#ea5455;color:#fff;font-size:.62rem;font-weight:900;cursor:pointer}
 
 </style>
+<style>
+
+/* ADMIN DASHBOARD MAXIMIZED — HTML ONLY */
+@media (min-width: 761px){
+  .admin-dash-overlay-v1{
+    padding:0 !important;
+    align-items:stretch !important;
+  }
+  .admin-dash-card-v1{
+    width:100% !important;
+    max-width:none !important;
+    min-height:100vh !important;
+    height:100vh !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    border-left:0 !important;
+    border-right:0 !important;
+    border-top:0 !important;
+    border-bottom:0 !important;
+    padding:18px 22px !important;
+  }
+  .admin-dash-head-v1{
+    position:sticky !important;
+    top:0 !important;
+    z-index:20 !important;
+    background:#07142d !important;
+  }
+  .admin-panel-v1{
+    width:100% !important;
+  }
+  .admin-subscriber-list-v1,
+  .admin-payment-table-wrap-v1,
+  .admin-ticket-table-wrap-v1{
+    width:100% !important;
+  }
+  .admin-subscriber-table-v1,
+  .admin-payment-table-v1,
+  .admin-ticket-table-v1{
+    width:100% !important;
+  }
+}
+
+@media (max-width:760px){
+  .admin-dash-card-v1{
+    width:100% !important;
+    max-width:none !important;
+    min-height:100vh !important;
+    border-radius:0 !important;
+  }
+}
+
+</style>
+<style>
+
+/* ADMIN SINGLE-VIEW MODE — HTML ONLY */
+body.admin-dashboard-open-v1{
+  overflow:hidden !important;
+  height:100vh !important;
+}
+body.admin-dashboard-open-v1 > *{
+  /* Keep the front page from scrolling behind the dashboard. */
+}
+#adminDashV1{
+  overflow:hidden !important;
+}
+#adminDashV1 .admin-dash-card-v1{
+  height:100vh !important;
+  min-height:100vh !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  -webkit-overflow-scrolling:touch;
+}
+
+</style>
+<style>
+
+/* HIDE FLOATING MESSENGER WHILE ADMIN DASHBOARD IS OPEN — HTML ONLY */
+body.admin-dashboard-open-v1 #messengerFloatV1,
+body.admin-dashboard-open-v1 .messenger-float-v1,
+body.admin-dashboard-open-v1 .floating-messenger-v1,
+body.admin-dashboard-open-v1 [id*="messengerFloat"],
+body.admin-dashboard-open-v1 [class*="messenger-float"]{
+  display:none !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+</style>
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
@@ -3336,7 +3424,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
       if(typeof openAdminLoginV36==='function') openAdminLoginV36();
       return;
     }
-    document.getElementById('adminDashV1').style.display='block';
+    document.getElementById('adminDashV1').style.display='block'; document.body.classList.add('admin-dashboard-open-v1');
     loadAdminStatsV1();
     loadAdminSubscribersListV1();
   };
@@ -3866,12 +3954,12 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminTicketRefreshV1')?.addEventListener('click',loadAdminTicketsV1);
     document.getElementById('adminTicketSearchV1')?.addEventListener('input',filterAdminTicketsV1);
     document.getElementById('adminDashCloseV1')?.addEventListener('click',function(){
-      document.getElementById('adminDashV1').style.display='none';
+      document.getElementById('adminDashV1').style.display='none'; document.body.classList.remove('admin-dashboard-open-v1');
     });
 
     document.getElementById('adminLogoutV1')?.addEventListener('click',function(){
       sessionStorage.removeItem('winkonek_admin_token_v2');
-      document.getElementById('adminDashV1').style.display='none';
+      document.getElementById('adminDashV1').style.display='none'; document.body.classList.remove('admin-dashboard-open-v1');
       if(typeof closeAdminLoginV36 === 'function') closeAdminLoginV36();
       if(typeof showToast === 'function'){
         showToast('Admin logged out successfully.', 'success');
@@ -3896,6 +3984,16 @@ async function loadAdminSubscribersListV1(){
         var messenger = document.querySelector('.floating-messenger');
         if (!messenger) return;
 
+        var admin = document.getElementById('adminDashV1');
+        var adminOpen = admin && getComputedStyle(admin).display !== 'none' && !admin.hidden;
+
+        if (adminOpen) {
+            messenger.style.setProperty('display', 'none', 'important');
+            messenger.style.setProperty('visibility', 'hidden', 'important');
+            messenger.style.setProperty('pointer-events', 'none', 'important');
+            return;
+        }
+
         // Detach it from any transformed/scrolling parent.
         if (messenger.parentElement !== document.body) {
             document.body.appendChild(messenger);
@@ -3908,6 +4006,8 @@ async function loadAdminSubscribersListV1(){
         messenger.style.setProperty('top', 'auto', 'important');
         messenger.style.setProperty('z-index', '2147483647', 'important');
         messenger.style.setProperty('display', 'flex', 'important');
+        messenger.style.setProperty('visibility', 'visible', 'important');
+        messenger.style.setProperty('pointer-events', 'auto', 'important');
     }
 
     if (document.readyState === 'loading') {
@@ -3917,6 +4017,9 @@ async function loadAdminSubscribersListV1(){
     }
 
     window.addEventListener('load', forceFloatingMessenger);
+
+    // Re-check when Admin Dashboard opens/closes.
+    setInterval(forceFloatingMessenger, 300);
 })();
 </script>
 

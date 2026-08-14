@@ -4553,6 +4553,88 @@ body.admin-full-view-v1 #adminDashV1 .admin-panel-v1.active{display:block!import
 #adminDashV1 .dashboard-branding-grid-v9_2{grid-template-columns:1fr!important}
 }
 </style>
+
+<style id="adminMobileHamburgerV9_2">
+/* Desktop: ZERO visual/layout change to the existing navigation. */
+.admin-mobile-menu-btn-v9_2{display:none}
+
+/* Phone/tablet: replace the wide navigation row with a compact hamburger. */
+@media (max-width:768px){
+  #adminDashV1{position:relative;overflow:visible!important}
+
+  .admin-mobile-menu-btn-v9_2{
+    display:flex!important;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    min-height:46px;
+    margin:0 0 8px;
+    padding:10px 14px;
+    border:1px solid rgba(40,215,255,.22);
+    border-radius:12px;
+    background:#102231;
+    color:#e8f7ff;
+    font-weight:900;
+    letter-spacing:.04em;
+    font-size:.78rem;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .admin-mobile-menu-icon-v9_2{
+    font-size:1.15rem;
+    line-height:1;
+  }
+
+  #adminDashV1 #adminMobileNavV9_2{
+    display:none!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 0 10px!important;
+    padding:8px!important;
+    flex-direction:column!important;
+    gap:6px!important;
+    overflow:visible!important;
+    border:1px solid rgba(40,215,255,.14);
+    border-radius:12px;
+    background:#0b1825;
+  }
+
+  #adminDashV1 #adminMobileNavV9_2.mobile-menu-open-v9_2{
+    display:flex!important;
+  }
+
+  #adminDashV1 #adminMobileNavV9_2 .admin-tab-btn-v1{
+    display:flex!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:44px!important;
+    flex:0 0 auto!important;
+    align-items:center;
+    justify-content:flex-start;
+    padding:10px 13px!important;
+    border-radius:9px;
+    white-space:normal!important;
+    text-align:left;
+    font-size:.70rem!important;
+  }
+
+  /* Keep the selected menu obvious without changing desktop styling. */
+  #adminDashV1 #adminMobileNavV9_2 .admin-tab-btn-v1.active{
+    box-shadow:inset 0 -2px 0 rgba(40,215,255,.8);
+  }
+
+  /* Keep content comfortably inside the phone viewport. */
+  #adminDashV1 .admin-panel-v1{
+    max-width:100%!important;
+    min-width:0!important;
+  }
+}
+
+@media (min-width:769px){
+  #adminMobileNavV9_2{display:flex}
+}
+</style>
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
@@ -6179,7 +6261,13 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 </div>
 </div>
 </div>
-<div class="admin-tab-nav-v1">
+
+<button type="button" id="adminMobileMenuBtnV9_2" class="admin-mobile-menu-btn-v9_2"
+        aria-expanded="false" aria-controls="adminMobileNavV9_2">
+  <span class="admin-mobile-menu-icon-v9_2">☰</span>
+  <span>MENU</span>
+</button>
+<div id="adminMobileNavV9_2" class="admin-tab-nav-v1">
 <button type="button" class="admin-tab-btn-v1 active" data-admin-tab="subscribers">👥 SUBSCRIBERS</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="tickets">🎫 TICKETS</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="payments">💳 GCASH PAYMENTS</button>
@@ -8925,7 +9013,51 @@ document.addEventListener("click",function(e){
   document.addEventListener('DOMContentLoaded',refresh);
   setTimeout(refresh,300);
 })();
-</script></body>
+</script>
+<script id="adminMobileHamburgerJSV9_2">
+(function(){
+  function initAdminMobileMenu(){
+    var btn=document.getElementById('adminMobileMenuBtnV9_2');
+    var nav=document.getElementById('adminMobileNavV9_2');
+    if(!btn||!nav)return;
+
+    function closeMenu(){
+      nav.classList.remove('mobile-menu-open-v9_2');
+      btn.setAttribute('aria-expanded','false');
+      btn.querySelector('.admin-mobile-menu-icon-v9_2').textContent='☰';
+    }
+    function toggleMenu(){
+      var open=nav.classList.toggle('mobile-menu-open-v9_2');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      btn.querySelector('.admin-mobile-menu-icon-v9_2').textContent=open?'✕':'☰';
+    }
+
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    nav.addEventListener('click',function(e){
+      var tab=e.target.closest('.admin-tab-btn-v1');
+      if(tab && window.matchMedia('(max-width: 768px)').matches){
+        setTimeout(closeMenu,80);
+      }
+    });
+
+    window.addEventListener('resize',function(){
+      if(window.innerWidth>768) closeMenu();
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initAdminMobileMenu);
+  }else{
+    initAdminMobileMenu();
+  }
+})();
+</script>
+</body>
 </html>
 <style>
 /* PPPoE / MikroTik is now a native Admin Dashboard tab */

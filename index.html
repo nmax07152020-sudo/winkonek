@@ -3491,7 +3491,1059 @@ body.mikrotik-open-v1 #adminDashV1{
 }
 </style>
 
-</head>
+
+<style id="winV92UnifiedAdminFinalLayout">
+/* =========================================================
+   V9.2 FINAL UNIFIED ISP BILLING ADMIN LAYOUT
+   Layout-only. Existing business logic / Code.gs preserved.
+   ========================================================= */
+
+/* MAIN ADMIN */
+body.admin-full-view-v1 #adminDashV1 .admin-dash-card-v1{
+  display:grid!important;
+  grid-template-columns:220px minmax(0,1fr)!important;
+  grid-template-rows:auto minmax(0,1fr)!important;
+  grid-template-areas:
+    "header header"
+    "nav content"!important;
+  gap:14px!important;
+  width:100vw!important;
+  max-width:none!important;
+  height:100vh!important;
+  min-height:100vh!important;
+  margin:0!important;
+  padding:14px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  border-radius:0!important;
+}
+body.admin-full-view-v1 #adminDashV1 .admin-dash-head-v1{
+  grid-area:header!important;
+  width:100%!important;
+  margin:0!important;
+}
+body.admin-full-view-v1 #adminDashV1 .admin-tab-nav-v1{
+  grid-area:nav!important;
+  width:220px!important;
+  min-width:220px!important;
+  height:100%!important;
+  max-height:none!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:10px!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  gap:5px!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  border-radius:14px!important;
+  background:linear-gradient(180deg,rgba(13,29,44,.98),rgba(7,20,32,.98))!important;
+  border:1px solid rgba(40,215,255,.12)!important;
+}
+body.admin-full-view-v1 #adminDashV1 .admin-tab-nav-v1::before{
+  content:"ISP BILLING MENU"!important;
+  display:block!important;
+  flex:0 0 auto!important;
+  color:#718797!important;
+  font-size:.51rem!important;
+  font-weight:900!important;
+  letter-spacing:.12em!important;
+  padding:4px 8px 9px!important;
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+body.admin-full-view-v1 #adminDashV1 .admin-tab-nav-v1 .admin-tab-btn-v1{
+  width:100%!important;
+  min-width:0!important;
+  min-height:42px!important;
+  flex:0 0 auto!important;
+  text-align:left!important;
+  justify-content:flex-start!important;
+  white-space:normal!important;
+  border-radius:9px!important;
+}
+body.admin-full-view-v1 #adminDashV1 .admin-panel-v1{
+  grid-area:content!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+  overflow:auto!important;
+}
+body.admin-full-view-v1 #adminDashV1 .admin-panel-v1:not(.active){display:none!important}
+body.admin-full-view-v1 #adminDashV1 .admin-panel-v1.active{display:block!important}
+
+/* PPPoE / MIKROTIK — same sidebar + same content width */
+#mikrotikTabV1{
+  position:fixed!important;
+  inset:0!important;
+  z-index:99999!important;
+  width:100vw!important;
+  height:100vh!important;
+  overflow:auto!important;
+  padding:0!important;
+  box-sizing:border-box!important;
+}
+#mikrotikTabV1 .mikrotik-admin-card-v1{
+  display:grid!important;
+  grid-template-columns:220px minmax(0,1fr)!important;
+  grid-template-rows:auto minmax(0,1fr)!important;
+  grid-template-areas:
+    "nav header"
+    "nav body"!important;
+  gap:14px!important;
+  width:100vw!important;
+  max-width:none!important;
+  min-height:100vh!important;
+  height:auto!important;
+  margin:0!important;
+  padding:14px!important;
+  box-sizing:border-box!important;
+  border-radius:0!important;
+  overflow:visible!important;
+}
+#mikrotikTabV1 .unified-admin-sidebar-v9_2{
+  grid-area:nav!important;
+  width:220px!important;
+  min-width:220px!important;
+  min-height:calc(100vh - 28px)!important;
+  height:100%!important;
+  box-sizing:border-box!important;
+  padding:10px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:5px!important;
+  border-radius:14px!important;
+  background:linear-gradient(180deg,rgba(13,29,44,.98),rgba(7,20,32,.98))!important;
+  border:1px solid rgba(40,215,255,.12)!important;
+}
+#mikrotikTabV1 .unified-admin-sidebar-title-v9_2{
+  flex:0 0 auto!important;
+  color:#718797!important;
+  font-size:.51rem!important;
+  font-weight:900!important;
+  letter-spacing:.12em!important;
+  padding:4px 8px 9px!important;
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+#mikrotikTabV1 .unified-admin-nav-btn-v9_2{
+  width:100%!important;
+  min-width:0!important;
+  min-height:42px!important;
+  flex:0 0 auto!important;
+  text-align:left!important;
+  border:1px solid transparent!important;
+  border-radius:9px!important;
+  background:transparent!important;
+  color:#9bb0c4!important;
+  padding:10px 11px!important;
+  font-size:.68rem!important;
+  font-weight:800!important;
+  cursor:pointer!important;
+}
+#mikrotikTabV1 .unified-admin-nav-btn-v9_2:hover{
+  background:rgba(255,255,255,.045)!important;
+  color:#eaf7ff!important;
+}
+#mikrotikTabV1 .unified-admin-nav-btn-v9_2.active{
+  color:#eaffff!important;
+  border-color:rgba(40,215,255,.18)!important;
+  background:linear-gradient(135deg,rgba(40,215,255,.12),rgba(40,215,255,.035))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 8px 22px rgba(0,0,0,.18)!important;
+}
+#mikrotikTabV1 .admin-dash-head-v1{
+  grid-area:header!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+}
+#mikrotikTabV1 .mikrotik-preview-banner-v1,
+#mikrotikTabV1 .mikrotik-stat-grid-v1,
+#mikrotikTabV1 .mikrotik-table-card-v1{
+  grid-area:body!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  box-sizing:border-box!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+#mikrotikTabV1 .mikrotik-preview-banner-v1{
+  margin-top:0!important;
+}
+#mikrotikTabV1 .mikrotik-stat-grid-v1{
+  margin-top:0!important;
+}
+#mikrotikTabV1 .mikrotik-table-card-v1{
+  margin-top:0!important;
+  overflow-x:auto!important;
+}
+#mikrotikTabV1 .mikrotik-table-v1{
+  width:100%!important;
+  min-width:850px!important;
+}
+
+/* The PPPoE content needs to stack vertically inside the right workspace.
+   Use a nested wrapper-neutral flow instead of assigning every block to one grid cell. */
+#mikrotikTabV1 .mikrotik-admin-card-v1{
+  align-items:start!important;
+}
+#mikrotikTabV1 .mikrotik-preview-banner-v1{
+  grid-column:2!important;
+  grid-row:2!important;
+}
+#mikrotikTabV1 .mikrotik-stat-grid-v1{
+  grid-column:2!important;
+  grid-row:3!important;
+}
+#mikrotikTabV1 .mikrotik-table-card-v1{
+  grid-column:2!important;
+  grid-row:4!important;
+}
+
+/* Make the PPPoE statistics actually expand. */
+#mikrotikTabV1 .mikrotik-stat-grid-v1{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:100%!important;
+}
+
+/* Desktop */
+@media(min-width:1100px){
+  body.admin-full-view-v1 #adminDashV1 .admin-dash-card-v1,
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    grid-template-columns:230px minmax(0,1fr)!important;
+  }
+  body.admin-full-view-v1 #adminDashV1 .admin-tab-nav-v1,
+  #mikrotikTabV1 .unified-admin-sidebar-v9_2{
+    width:230px!important;
+    min-width:230px!important;
+  }
+}
+
+/* Mobile: compact horizontal menu, while content stays usable. */
+@media(max-width:700px){
+  body.admin-full-view-v1 #adminDashV1 .admin-dash-card-v1,
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    display:block!important;
+    width:100%!important;
+    min-height:100vh!important;
+    height:auto!important;
+    padding:9px!important;
+    overflow:visible!important;
+  }
+  body.admin-full-view-v1 #adminDashV1 .admin-tab-nav-v1,
+  #mikrotikTabV1 .unified-admin-sidebar-v9_2{
+    width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:9px 0!important;
+    flex-direction:row!important;
+    flex-wrap:wrap!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+  }
+  body.admin-full-view-v1 #adminDashV1 .admin-tab-nav-v1 .admin-tab-btn-v1,
+  #mikrotikTabV1 .unified-admin-nav-btn-v9_2{
+    width:auto!important;
+    min-width:145px!important;
+    flex:1 1 145px!important;
+  }
+  body.admin-full-view-v1 #adminDashV1 .admin-panel-v1,
+  #mikrotikTabV1 .admin-dash-head-v1,
+  #mikrotikTabV1 .mikrotik-preview-banner-v1,
+  #mikrotikTabV1 .mikrotik-stat-grid-v1,
+  #mikrotikTabV1 .mikrotik-table-card-v1{
+    width:100%!important;
+    max-width:none!important;
+  }
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+</style>
+
+
+<style id="winPppoeClientListPositionFixV9_2">
+/* V9.2 — PPPoE CLIENT LIST POSITION FIX
+   Keep the working navigation/JS. Only adjust the PPPoE content layout. */
+
+@media(min-width:701px){
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    display:grid!important;
+    grid-template-columns:230px minmax(0,1fr)!important;
+    grid-template-rows:auto auto auto!important;
+    grid-template-areas:
+      "nav header"
+      "nav stats"
+      "nav clients"!important;
+    gap:12px 14px!important;
+    width:100vw!important;
+    max-width:none!important;
+    min-height:100vh!important;
+    box-sizing:border-box!important;
+    align-items:start!important;
+  }
+
+  #mikrotikTabV1 .unified-admin-sidebar-v9_2{
+    grid-area:nav!important;
+    width:230px!important;
+    min-width:230px!important;
+    min-height:calc(100vh - 28px)!important;
+    height:100%!important;
+  }
+
+  #mikrotikTabV1 .admin-dash-head-v1{
+    grid-area:header!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+  }
+
+  /* PPPoE summary/stats stay immediately under the header. */
+  #mikrotikTabV1 .mikrotik-preview-banner-v1{
+    grid-area:stats!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+
+  /* Client list/table is now the main content area, not underneath the whole page. */
+  #mikrotikTabV1 .mikrotik-table-card-v1{
+    grid-area:clients!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    overflow-x:auto!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-v1{
+    width:100%!important;
+    min-width:850px!important;
+  }
+}
+
+@media(max-width:700px){
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    display:block!important;
+    width:100%!important;
+    min-height:100vh!important;
+    padding:9px!important;
+  }
+  #mikrotikTabV1 .mikrotik-table-card-v1{
+    width:100%!important;
+    max-width:none!important;
+    margin-top:12px!important;
+  }
+}
+</style>
+
+
+<style id="winPppoeOnlineHeaderRestoredV9_2">
+/* Restored PPPoE Online List header — layout only. */
+#mikrotikTabV1 .mikrotik-online-list-header-v9_2{
+  grid-column:2!important;
+  width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  margin:0 0 12px!important;
+  padding:13px 15px!important;
+  border:1px solid rgba(40,215,255,.12)!important;
+  border-radius:13px!important;
+  background:linear-gradient(135deg,rgba(20,48,67,.90),rgba(10,25,38,.94))!important;
+}
+#mikrotikTabV1 .mikrotik-online-list-title-v9_2{
+  color:#00d9ee!important;
+  font-size:.86rem!important;
+  font-weight:900!important;
+  letter-spacing:.05em!important;
+}
+#mikrotikTabV1 .mikrotik-online-list-sub-v9_2{
+  color:#8199aa!important;
+  font-size:.62rem!important;
+  margin-top:3px!important;
+}
+#mikrotikTabV1 .mikrotik-online-list-status-v9_2{
+  flex:0 0 auto!important;
+  padding:6px 9px!important;
+  border-radius:20px!important;
+  background:rgba(255,200,87,.10)!important;
+  border:1px solid rgba(255,200,87,.16)!important;
+  color:#ffc857!important;
+  font-size:.52rem!important;
+  font-weight:900!important;
+  letter-spacing:.04em!important;
+}
+@media(max-width:700px){
+  #mikrotikTabV1 .mikrotik-online-list-header-v9_2{
+    grid-column:auto!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+  }
+}
+</style>
+
+
+<style id="winPppoeCompactSpacingV9_2">
+/* =========================================================
+   V9.2 PPPoE / MikroTik — COMPACT CARD SPACING
+   Layout only. Navigation and existing JS untouched.
+   ========================================================= */
+@media(min-width:701px){
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    display:grid!important;
+    grid-template-columns:230px minmax(0,1fr)!important;
+    grid-template-rows:auto auto auto auto auto!important;
+    grid-template-areas:
+      "nav header"
+      "nav preview"
+      "nav stats"
+      "nav online"
+      "nav clients"!important;
+    column-gap:12px!important;
+    row-gap:7px!important;
+    width:100vw!important;
+    max-width:none!important;
+    min-height:100vh!important;
+    height:auto!important;
+    padding:10px!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    align-items:start!important;
+  }
+
+  #mikrotikTabV1 .unified-admin-sidebar-v9_2{
+    grid-area:nav!important;
+    width:230px!important;
+    min-width:230px!important;
+    min-height:calc(100vh - 20px)!important;
+    height:100%!important;
+    padding:8px!important;
+  }
+
+  #mikrotikTabV1 .admin-dash-head-v1{
+    grid-area:header!important;
+    width:100%!important;
+    margin:0!important;
+    padding:8px 10px!important;
+    box-sizing:border-box!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-preview-banner-v1{
+    grid-area:preview!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:8px 11px!important;
+    box-sizing:border-box!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    grid-area:stats!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    gap:1px!important;
+    box-sizing:border-box!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-stat-grid-v1 .admin-stat-v1{
+    min-height:65px!important;
+    padding:10px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-online-list-header-v9_2{
+    grid-area:online!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:9px 12px!important;
+    box-sizing:border-box!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-card-v1{
+    grid-area:clients!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:11px!important;
+    box-sizing:border-box!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-head-v1{
+    margin-bottom:7px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-search-v1{
+    margin-bottom:7px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-v1 th{
+    padding:8px 8px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-v1 td{
+    padding:8px 8px!important;
+  }
+}
+
+@media(max-width:700px){
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    gap:7px!important;
+    padding:8px!important;
+  }
+  #mikrotikTabV1 .mikrotik-preview-banner-v1,
+  #mikrotikTabV1 .mikrotik-online-list-header-v9_2,
+  #mikrotikTabV1 .mikrotik-table-card-v1{
+    margin:0!important;
+  }
+}
+</style>
+
+
+<style id="winPppoeNoPreviewV9_2">
+/* V9.2 — REMOVE MIKROTIK PREVIEW MODE
+   Keep the working navigation and client list. */
+#mikrotikTabV1 .mikrotik-preview-banner-v1{
+  display:none!important;
+}
+
+/* Repack the PPPoE sections after removing Preview Mode. */
+@media(min-width:701px){
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    display:grid!important;
+    grid-template-columns:230px minmax(0,1fr)!important;
+    grid-template-rows:auto auto auto auto!important;
+    grid-template-areas:
+      "nav header"
+      "nav stats"
+      "nav online"
+      "nav clients"!important;
+    column-gap:12px!important;
+    row-gap:7px!important;
+    width:100vw!important;
+    max-width:none!important;
+    min-height:100vh!important;
+    padding:10px!important;
+    box-sizing:border-box!important;
+  }
+  #mikrotikTabV1 .admin-dash-head-v1{
+    grid-area:header!important;
+  }
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    grid-area:stats!important;
+    width:100%!important;
+    margin:0!important;
+  }
+  #mikrotikTabV1 .mikrotik-online-list-header-v9_2{
+    grid-area:online!important;
+    width:100%!important;
+    margin:0!important;
+  }
+  #mikrotikTabV1 .mikrotik-table-card-v1{
+    grid-area:clients!important;
+    width:100%!important;
+    margin:0!important;
+  }
+}
+</style>
+
+
+<style id="winPppoeThreeSectionsTightV9_2">
+/* V9.2 PPPoE / MikroTik — TIGHT 3-SECTION SPACING
+   Keep navigation and JS untouched. */
+@media(min-width:701px){
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    grid-template-columns:230px minmax(0,1fr)!important;
+    grid-template-rows:auto auto auto auto!important;
+    grid-template-areas:
+      "nav header"
+      "nav stats"
+      "nav online"
+      "nav clients"!important;
+    column-gap:10px!important;
+    row-gap:3px!important;
+    padding:8px!important;
+  }
+
+  #mikrotikTabV1 .admin-dash-head-v1{
+    grid-area:header!important;
+    margin:0!important;
+    padding:6px 9px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    grid-area:stats!important;
+    margin:0!important;
+    padding:0!important;
+    gap:4px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-online-list-header-v9_2{
+    grid-area:online!important;
+    margin:0!important;
+    padding:7px 10px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-card-v1{
+    grid-area:clients!important;
+    margin:0!important;
+    padding:9px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-head-v1{
+    margin:0 0 5px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-search-v1{
+    margin:0 0 5px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-v1 th,
+  #mikrotikTabV1 .mikrotik-table-v1 td{
+    padding-top:6px!important;
+    padding-bottom:6px!important;
+  }
+}
+</style>
+
+
+<style id="winV92PppoeImageStyleLayout">
+/* =========================================================
+   WIN V9.2 — PPPoE / MikroTik IMAGE-STYLE LAYOUT
+   Visual/layout only. Existing JS, IDs and Code.gs preserved.
+   ========================================================= */
+
+@media(min-width:701px){
+  body.mikrotik-open-v1{
+    background:#06111c!important;
+    overflow:hidden!important;
+  }
+
+  #mikrotikTabV1{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100vh!important;
+    overflow:auto!important;
+    background:
+      radial-gradient(circle at 65% 0%,rgba(0,205,255,.055),transparent 34%),
+      #06111c!important;
+    padding:0!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    display:grid!important;
+    grid-template-columns:210px minmax(0,1fr)!important;
+    grid-template-rows:auto auto auto auto!important;
+    grid-template-areas:
+      "nav head"
+      "nav stats"
+      "nav online"
+      "nav clients"!important;
+    gap:10px 12px!important;
+    width:100%!important;
+    max-width:none!important;
+    min-height:100vh!important;
+    padding:10px!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    background:transparent!important;
+    align-items:start!important;
+  }
+
+  /* LEFT SIDEBAR */
+  #mikrotikTabV1 .unified-admin-sidebar-v9_2{
+    grid-area:nav!important;
+    width:210px!important;
+    min-width:210px!important;
+    height:calc(100vh - 20px)!important;
+    min-height:0!important;
+    position:sticky!important;
+    top:0!important;
+    padding:9px!important;
+    box-sizing:border-box!important;
+    border-radius:12px!important;
+    background:linear-gradient(180deg,#071725,#06121e)!important;
+    border:1px solid rgba(90,160,200,.14)!important;
+    box-shadow:0 12px 30px rgba(0,0,0,.20)!important;
+  }
+
+  #mikrotikTabV1 .unified-admin-sidebar-title-v9_2{
+    padding:8px 9px 11px!important;
+    margin-bottom:3px!important;
+    color:#8199aa!important;
+    font-size:.52rem!important;
+    font-weight:900!important;
+    letter-spacing:.12em!important;
+    border-bottom:1px solid rgba(255,255,255,.07)!important;
+  }
+
+  #mikrotikTabV1 .unified-admin-nav-btn-v9_2{
+    min-height:38px!important;
+    padding:9px 10px!important;
+    border-radius:8px!important;
+    font-size:.65rem!important;
+    color:#a7bac8!important;
+    text-align:left!important;
+    border:1px solid transparent!important;
+    background:transparent!important;
+  }
+
+  #mikrotikTabV1 .unified-admin-nav-btn-v9_2:hover{
+    color:#f1fbff!important;
+    background:rgba(255,255,255,.045)!important;
+  }
+
+  #mikrotikTabV1 .unified-admin-nav-btn-v9_2.active{
+    color:#eaffff!important;
+    background:linear-gradient(135deg,rgba(20,190,255,.15),rgba(30,90,140,.16))!important;
+    border-color:rgba(40,210,255,.13)!important;
+    box-shadow:inset 3px 0 0 #10c9f2!important;
+  }
+
+  /* HEADER */
+  #mikrotikTabV1 .admin-dash-head-v1{
+    grid-area:head!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:7px 8px 4px!important;
+    box-sizing:border-box!important;
+    background:transparent!important;
+    border:0!important;
+  }
+
+  #mikrotikTabV1 .admin-dash-title-v1{
+    color:#08d7f4!important;
+    font-size:1.25rem!important;
+    line-height:1.1!important;
+    letter-spacing:.02em!important;
+  }
+
+  #mikrotikTabV1 .admin-dash-sub-v1{
+    color:#91a7b7!important;
+    font-size:.67rem!important;
+    margin-top:4px!important;
+  }
+
+  /* FOUR STAT CARDS — like the reference image */
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    grid-area:stats!important;
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:9px!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    box-sizing:border-box!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-stat-grid-v1 .admin-stat-v1{
+    min-height:90px!important;
+    padding:13px 14px!important;
+    border-radius:10px!important;
+    background:linear-gradient(145deg,#0b1b2b,#0a1623)!important;
+    border:1px solid rgba(90,160,200,.13)!important;
+    box-shadow:0 8px 20px rgba(0,0,0,.14)!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-stat-grid-v1 .admin-stat-v1 small{
+    color:#8fa5b5!important;
+    font-size:.55rem!important;
+    text-transform:uppercase!important;
+    letter-spacing:.05em!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-stat-grid-v1 .admin-stat-v1 strong{
+    display:block!important;
+    margin-top:9px!important;
+    color:#f0f7fb!important;
+    font-size:1.35rem!important;
+  }
+
+  /* ONLINE LIST SECTION */
+  #mikrotikTabV1 .mikrotik-online-list-header-v9_2{
+    grid-area:online!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:56px!important;
+    margin:0!important;
+    padding:10px 13px!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    border-radius:10px 10px 0 0!important;
+    background:linear-gradient(145deg,#0c2031,#0a1724)!important;
+    border:1px solid rgba(90,160,200,.14)!important;
+    border-bottom:0!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-online-list-title-v9_2{
+    color:#21e98a!important;
+    font-size:.85rem!important;
+    font-weight:900!important;
+    letter-spacing:.02em!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-online-list-sub-v9_2{
+    color:#829aaa!important;
+    font-size:.60rem!important;
+    margin-top:3px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-online-list-status-v9_2{
+    color:#16a9ff!important;
+    background:transparent!important;
+    border:0!important;
+    padding:4px 2px!important;
+    font-size:.56rem!important;
+    font-weight:900!important;
+  }
+
+  /* CLIENT LIST — immediately follows online header */
+  #mikrotikTabV1 .mikrotik-table-card-v1{
+    grid-area:clients!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:12px!important;
+    box-sizing:border-box!important;
+    border-radius:0 0 10px 10px!important;
+    background:linear-gradient(145deg,#0c2031,#0a1724)!important;
+    border:1px solid rgba(90,160,200,.14)!important;
+    border-top:1px solid rgba(90,160,200,.08)!important;
+    box-shadow:0 10px 24px rgba(0,0,0,.15)!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-head-v1{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    margin:0 0 8px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-head-v1 .admin-dash-title-v1{
+    font-size:1rem!important;
+    color:#08d7f4!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-search-v1{
+    margin:0 0 7px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-search-v1 input{
+    width:100%!important;
+    max-width:430px!important;
+    box-sizing:border-box!important;
+    padding:9px 10px!important;
+    border-radius:7px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-wrap-v1{
+    width:100%!important;
+    overflow-x:auto!important;
+    border-radius:8px!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-v1{
+    width:100%!important;
+    min-width:760px!important;
+    border-collapse:collapse!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-v1 th{
+    padding:8px 9px!important;
+    background:#0a1724!important;
+    color:#8fa7b8!important;
+    font-size:.54rem!important;
+  }
+
+  #mikrotikTabV1 .mikrotik-table-v1 td{
+    padding:8px 9px!important;
+    font-size:.66rem!important;
+    border-bottom:1px solid rgba(255,255,255,.06)!important;
+  }
+
+  #mikrotikTabV1 .pppoe-edit-field-v1{
+    width:100%!important;
+    min-width:90px!important;
+    padding:7px!important;
+    box-sizing:border-box!important;
+  }
+}
+
+/* TABLET / MOBILE */
+@media(max-width:900px) and (min-width:701px){
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    grid-template-columns:185px minmax(0,1fr)!important;
+  }
+  #mikrotikTabV1 .unified-admin-sidebar-v9_2{
+    width:185px!important;
+    min-width:185px!important;
+  }
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+
+@media(max-width:700px){
+  #mikrotikTabV1 .mikrotik-admin-card-v1{
+    display:block!important;
+    width:100%!important;
+    min-height:100vh!important;
+    padding:8px!important;
+  }
+  #mikrotikTabV1 .unified-admin-sidebar-v9_2{
+    width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    min-height:0!important;
+    position:static!important;
+    margin-bottom:8px!important;
+    flex-direction:row!important;
+    flex-wrap:wrap!important;
+  }
+  #mikrotikTabV1 .unified-admin-nav-btn-v9_2{
+    min-width:135px!important;
+    flex:1 1 135px!important;
+  }
+  #mikrotikTabV1 .mikrotik-stat-grid-v1{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    margin:8px 0!important;
+  }
+  #mikrotikTabV1 .mikrotik-online-list-header-v9_2{
+    margin-top:8px!important;
+  }
+}
+</style>
+
+<style id="winTrialDeleteRepairV9_2">
+.admin-trial-delete-v9_2{border:1px solid rgba(255,86,102,.35)!important;background:rgba(255,86,102,.08)!important;color:#ff7180!important;border-radius:7px!important;padding:6px 9px!important;font-size:10px!important;font-weight:900!important;cursor:pointer!important;white-space:nowrap!important;pointer-events:auto!important;position:relative!important;z-index:5!important}
+.admin-trial-delete-v9_2:hover{background:rgba(255,86,102,.16)!important}
+.admin-trial-actions-v9_2{display:flex!important;align-items:center!important;gap:5px!important;flex-wrap:wrap!important}
+.admin-payment-verify-v1,.admin-payment-reject-v1{pointer-events:auto!important;position:relative!important;z-index:5!important}
+</style>
+
+<style id="winSubscribersSmallRefreshV9_2">
+#adminSubscribersRefreshV9_2{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:28px!important;
+  height:28px!important;
+  padding:0!important;
+  line-height:1!important;
+  vertical-align:middle!important;
+}
+#adminSubscribersRefreshV9_2:hover{
+  background:rgba(40,215,255,.14)!important;
+  border-color:rgba(40,215,255,.45)!important;
+}
+#adminSubscribersRefreshV9_2.loading{
+  opacity:.55!important;
+  cursor:wait!important;
+}
+</style>
+
+
+<style id="winSubscribersRefreshHeaderV9_2">
+#adminSubscribersRefreshV9_2{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:26px!important;
+  height:26px!important;
+  margin-left:7px!important;
+  padding:0!important;
+  vertical-align:middle!important;
+  border:1px solid rgba(40,215,255,.28)!important;
+  background:rgba(40,215,255,.07)!important;
+  color:#65e9ff!important;
+  border-radius:7px!important;
+  font-size:14px!important;
+  line-height:1!important;
+  font-weight:900!important;
+  cursor:pointer!important;
+}
+#adminSubscribersRefreshV9_2:hover{
+  background:rgba(40,215,255,.15)!important;
+  border-color:rgba(40,215,255,.55)!important;
+}
+#adminSubscribersRefreshV9_2.loading{
+  opacity:.5!important;
+  cursor:wait!important;
+}
+</style>
+
+
+<style id="winSubscribersRefreshTightV9_2">
+#adminSubscribersRefreshV9_2{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:20px!important;
+  height:20px!important;
+  margin-left:2px!important;
+  padding:0!important;
+  vertical-align:-2px!important;
+  border:0!important;
+  background:transparent!important;
+  color:#65e9ff!important;
+  border-radius:5px!important;
+  font-size:13px!important;
+  line-height:1!important;
+  font-weight:900!important;
+  cursor:pointer!important;
+}
+#adminSubscribersRefreshV9_2:hover{
+  background:rgba(40,215,255,.12)!important;
+  color:#a4f4ff!important;
+}
+#adminSubscribersRefreshV9_2.loading{
+  opacity:.5!important;
+  cursor:wait!important;
+}
+</style>
+
+<style id="accountIdSettingsCssV9_2">
+.account-id-settings-v9_2{margin:12px 0;padding:12px;border:1px solid rgba(40,215,255,.12);border-radius:10px;background:rgba(7,20,32,.45)}
+.account-id-settings-title-v9_2{color:#65e9ff;font-weight:900;font-size:12px;margin-bottom:9px}
+.account-id-settings-grid-v9_2{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px}
+.account-id-settings-v9_2 label{display:block;color:#8199aa;font-size:9px;font-weight:900;margin-bottom:4px}
+.account-id-settings-v9_2 input,.account-id-settings-v9_2 select{width:100%;box-sizing:border-box;padding:8px;border:1px solid rgba(154,174,189,.16);border-radius:7px;background:#071019;color:#fff}
+.account-id-preview-v9_2{margin:8px 0;color:#8199aa;font-size:10px}
+.account-id-preview-v9_2 b{color:#65e9ff}
+#saveAccountIdSettingsV9_2{padding:7px 10px;border:1px solid rgba(40,215,255,.25);border-radius:7px;background:rgba(40,215,255,.08);color:#65e9ff;font-weight:900;cursor:pointer}
+#accountIdMsgV9_2{min-height:14px;margin-top:5px;font-size:10px;color:#8199aa}
+@media(max-width:700px){.account-id-settings-grid-v9_2{grid-template-columns:1fr}}
+</style></head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
 <canvas id="bgCanvas"></canvas>
@@ -5124,6 +6176,18 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <button type="button" class="admin-tab-btn-v1" id="adminMikrotikTabBtnV1" data-admin-tab="mikrotik">🌐 PPPOE / MIKROTIK</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="plans">⚙️ PLAN MANAGEMENT</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="company-settings">🏢 ISP SETTINGS</button>
+<div id="accountIdSettingsV9_2" class="account-id-settings-v9_2">
+  <div class="account-id-settings-title-v9_2">🆔 ACCOUNT ID SETTINGS</div>
+  <div class="account-id-settings-grid-v9_2">
+    <div><label>ACCOUNT ID PREFIX</label><input id="accountIdPrefixV9_2" maxlength="12" placeholder="WIK"></div>
+    <div><label>NUMBER OF DIGITS</label><select id="accountIdDigitsV9_2"><option value="4">4 — 0001</option><option value="5" selected>5 — 00001</option><option value="6">6 — 000001</option></select></div>
+    <div><label>STARTING NUMBER</label><input id="accountIdStartV9_2" type="number" min="1" value="1"></div>
+  </div>
+  <div class="account-id-preview-v9_2">Preview: <b id="accountIdPreviewV9_2">WIK-00001</b></div>
+  <button type="button" id="saveAccountIdSettingsV9_2">💾 SAVE</button>
+  <div id="accountIdMsgV9_2"></div>
+</div>
+
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="dashboard-branding">🎨 DASHBOARD BRANDING</button>
 
 
@@ -5148,7 +6212,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 </div>
 <div class="admin-subscriber-list-v1">
   <div class="admin-subscriber-list-head-v1">
-    <div class="admin-subscriber-list-title-v1">👥 SUBSCRIBER LIST</div>
+    <div class="admin-subscriber-list-title-v1">👥 SUBSCRIBER LIST</div> <button type="button" id="adminSubscribersRefreshV9_2" title="Refresh Subscribers List" aria-label="Refresh Subscribers List">↻</button>
 <div class="admin-due-alert-legend-v1">
   <span class="due-alert-active-v1">● ACTIVE</span>
   <span class="due-alert-soon-v1">● DUE SOON</span>
@@ -5505,12 +6569,14 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     body.innerHTML=rows.map(function(s){
       const ps=String(s.paymentStatus||'').toUpperCase().trim();
       const hasPending=s.paymentRow && ps!=='VERIFIED' && ps!=='APPROVED' && ps!=='PAID' && ps!=='REJECTED';
-      const action=hasPending
+      const originalAction=hasPending
         ? '<div class="admin-subscriber-payment-actions-v1">'+
           '<button type="button" class="admin-payment-verify-v1" onclick="processSubscriberPaymentV1('+Number(s.paymentRow)+',\'VERIFY\')">✓ VERIFY</button>'+
           '<button type="button" class="admin-payment-reject-v1" onclick="processSubscriberPaymentV1('+Number(s.paymentRow)+',\'REJECT\')">✕ REJECT</button>'+
           '</div>'
         : (s.paymentRow ? '—' : '');
+      const action='<div class="admin-trial-actions-v9_2">'+originalAction+
+        '<button type="button" class="admin-trial-delete-v9_2" onclick="deleteAdminSubscriberV9_2('+Number(s.row)+')">🗑 DELETE</button></div>';
 
       return '<tr>'+
         '<td><strong>'+escapeSubscriberHtmlV1(s.accountId)+'</strong></td>'+
@@ -5574,6 +6640,8 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     }
   }
 
+window.deleteAdminSubscriberV9_2=async function(row){if(!row)return;if(!confirm("Delete this subscriber from Google Sheets?\n\nThis is a permanent trial delete."))return;try{const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeleteSubscriber",key:adminTokenV1(),row:Number(row)})});const d=await r.json();if(!d||d.success!==true){alert((d&&d.error)||"Subscriber delete failed.");return;}await loadAdminSubscribersListV1();if(typeof loadAdminPaymentsV1==="function")await loadAdminPaymentsV1();if(typeof loadAdminStatsV1==="function")await loadAdminStatsV1();alert("✅ Subscriber and linked GCash data deleted.");}catch(e){console.error(e);alert("Hindi maka-delete ng subscriber.");}};
+
 async function loadAdminSubscribersListV1(){
     const body=document.getElementById('adminSubscriberListBodyV1');
     if(body)body.innerHTML='<tr><td colspan="5" class="admin-subscriber-empty-v1">Loading subscribers...</td></tr>';
@@ -5596,6 +6664,13 @@ async function loadAdminSubscribersListV1(){
       console.error('Admin subscriber list error:',e);
       if(body)body.innerHTML='<tr><td colspan="5" class="admin-subscriber-empty-v1">Hindi maka-connect sa Subscribers server.</td></tr>';
     }
+  }
+
+  // Keep the Subscribers list fresh while Admin Dashboard is open.
+  // This lets a newly submitted New Application appear without opening Google Sheets.
+  let adminSubscriberAutoRefreshTimerV1=null;
+  function startAdminSubscriberAutoRefreshV1(){
+    if(adminSubscriberAutoRefreshTimerV1)clearInterval(adminSubscriberAutoRefreshTimerV1);
   }
 
   async function loadAdminStatsV1(){
@@ -5672,6 +6747,10 @@ async function loadAdminSubscribersListV1(){
 
   async function loadAdminPaymentForNameV1(name){
     resetPaymentBoxV1();
+    const vb=document.getElementById('admVerifyPaymentV1');
+    const rb=document.getElementById('admRejectPaymentV1');
+    if(vb) { vb.style.display=''; vb.disabled=false; }
+    if(rb) { rb.style.display=''; rb.disabled=false; }
     if(!name) return;
     try{
       const u=ADMIN_URL_DASH_V1+'?action=adminPayments&key='+encodeURIComponent(adminTokenV1())+'&refresh='+Date.now();
@@ -5797,7 +6876,7 @@ async function loadAdminSubscribersListV1(){
     b.innerHTML=rows.map(t=>{
       const id=String(t.ticketId||'—');
       const st=['OPEN','IN PROGRESS','RESOLVED','CLOSED'].includes(String(t.status||'').toUpperCase())?String(t.status||'OPEN').toUpperCase():'OPEN';
-      return `<tr data-ticket-id="${escapeTicketAttrV4(id)}"><td><strong>${escapeTicketHtmlV1(id)}</strong></td><td>${escapeTicketHtmlV1(t.timestamp||'—')}</td><td><strong>${escapeTicketHtmlV1(t.name||'—')}</strong></td><td>${escapeTicketHtmlV1(t.contact||'—')}</td><td>${escapeTicketHtmlV1(t.issueType||t.issue||'—')}</td><td class="admin-ticket-details-v1">${escapeTicketHtmlV1(t.details||'—')}</td><td><select class="admin-ticket-status-select-v4" data-ticket-id="${escapeTicketAttrV4(id)}" data-old-status="${st}" onchange="saveTicketStatusV4(this)"><option value="OPEN" ${st==='OPEN'?'selected':''}>OPEN</option><option value="IN PROGRESS" ${st==='IN PROGRESS'?'selected':''}>IN PROGRESS</option><option value="RESOLVED" ${st==='RESOLVED'?'selected':''}>RESOLVED</option><option value="CLOSED" ${st==='CLOSED'?'selected':''}>CLOSED</option></select><span class="admin-ticket-saving-v4"></span></td><td>${escapeTicketHtmlV1(t.resolvedDate||'—')}</td></tr>`;
+      return `<tr data-ticket-id="${escapeTicketAttrV4(id)}"><td><strong>${escapeTicketHtmlV1(id)}</strong></td><td>${escapeTicketHtmlV1(t.timestamp||'—')}</td><td><strong>${escapeTicketHtmlV1(t.name||'—')}</strong></td><td>${escapeTicketHtmlV1(t.contact||'—')}</td><td>${escapeTicketHtmlV1(t.issueType||t.issue||'—')}</td><td class="admin-ticket-details-v1">${escapeTicketHtmlV1(t.details||'—')}</td><td><div class="admin-trial-actions-v9_2"><select class="admin-ticket-status-select-v4" data-ticket-id="${escapeTicketAttrV4(id)}" data-old-status="${st}" onchange="saveTicketStatusV4(this)"><option value="OPEN" ${st==='OPEN'?'selected':''}>OPEN</option><option value="IN PROGRESS" ${st==='IN PROGRESS'?'selected':''}>IN PROGRESS</option><option value="RESOLVED" ${st==='RESOLVED'?'selected':''}>RESOLVED</option><option value="CLOSED" ${st==='CLOSED'?'selected':''}>CLOSED</option></select><button type="button" class="admin-trial-delete-v9_2" onclick="deleteAdminTicketV9_2(${Number(t.row)})">🗑 DELETE</button><span class="admin-ticket-saving-v4"></span></div></td><td>${escapeTicketHtmlV1(t.resolvedDate||'—')}</td></tr>`;
     }).join('');
   }
   async function loadAdminTicketsV1(){
@@ -5873,6 +6952,8 @@ async function loadAdminSubscribersListV1(){
     }
   }
 
+  window.deleteAdminTicketV9_2=async function(row){if(!row)return;if(!confirm("Delete this ticket from Google Sheets?\n\nThis is a permanent trial delete."))return;try{const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeleteTicket",key:adminTokenV1(),row:Number(row)})});const d=await r.json();if(!d||d.success!==true){alert((d&&d.error)||"Ticket delete failed.");return;}await loadAdminTicketsV1();alert("✅ Ticket deleted.");}catch(e){console.error(e);alert("Hindi maka-delete ng ticket.");}};
+
   function filterAdminTicketsV1(){
     const q=String(document.getElementById('adminTicketSearchV1')?.value||'').toLowerCase().trim();
     renderTicketsV1(!q?adminTicketsCacheV1:adminTicketsCacheV1.filter(t=>[t.ticketId,t.timestamp,t.name,t.contact,t.issueType,t.issue,t.details,t.status,t.resolvedDate].some(v=>String(v||'').toLowerCase().includes(q))));
@@ -5911,12 +6992,13 @@ async function loadAdminSubscribersListV1(){
     body.innerHTML=rows.map(p=>{
       const status=String(p.status||'Pending').toUpperCase();
       const pending=!(status==='VERIFIED'||status==='APPROVED'||status==='PAID'||status==='REJECTED');
-      const actions=pending
+      const originalActions=pending
         ? `<div class="admin-payment-action-v1">
              <button class="admin-payment-verify-v1" type="button" onclick="processAdminPaymentFromTabV1(${Number(p.row)},'VERIFY')">✓ VERIFY</button>
              <button class="admin-payment-reject-v1" type="button" onclick="processAdminPaymentFromTabV1(${Number(p.row)},'REJECT')">✕ REJECT</button>
            </div>`
         : '<span style="color:var(--text-muted)">—</span>';
+      const actions='<div class="admin-trial-actions-v9_2">'+originalActions+'<button class="admin-trial-delete-v9_2" type="button" onclick="deleteAdminPaymentV9_2('+Number(p.row)+')">🗑 DELETE</button></div>';
 
       return `<tr>
         <td><strong>${escapePaymentHtmlV1(p.name)}</strong></td>
@@ -5997,6 +7079,8 @@ async function loadAdminSubscribersListV1(){
     }
   }
 
+  window.deleteAdminPaymentV9_2=async function(row){if(!row)return;if(!confirm("Delete this GCash payment from Google Sheets?\n\nThis is a permanent trial delete."))return;try{const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeletePayment",key:adminTokenV1(),row:Number(row)})});const d=await r.json();if(!d||d.success!==true){alert((d&&d.error)||"Payment delete failed.");return;}await loadAdminPaymentsV1();if(typeof loadAdminSubscribersListV1==="function")await loadAdminSubscribersListV1();alert("✅ GCash payment deleted.");}catch(e){console.error(e);alert("Hindi maka-delete ng GCash payment.");}};
+
   function switchAdminPanelV1(tab){
     document.querySelectorAll('.admin-tab-btn-v1').forEach(b=>b.classList.toggle('active',b.dataset.adminTab===tab));
     document.getElementById('adminPanelSubscribersV1')?.classList.toggle('active',tab==='subscribers');
@@ -6005,6 +7089,7 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminPanelPlansV8')?.classList.toggle('active',tab==='plans');
     document.getElementById('adminPanelCompanySettingsV9')?.classList.toggle('active',tab==='company-settings');
     document.getElementById('adminPanelDashboardBrandingV9_2')?.classList.toggle('active',tab==='dashboard-branding');
+    if(tab==='subscribers')loadAdminSubscribersListV1();
     if(tab==='tickets')loadAdminTicketsV1();
     if(tab==='payments')loadAdminPaymentsV1();
     if(tab==='plans')loadPlansV8();
@@ -6033,6 +7118,7 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminSubscriberQueryV1')?.addEventListener('keydown',function(e){
       if(e.key==='Enter') searchAdminSubscriberV1();
     });
+    startAdminSubscriberAutoRefreshV1();
   });
 })();
 </script>
@@ -6072,29 +7158,27 @@ async function loadAdminSubscribersListV1(){
 <section id="mikrotikTabV1" class="mikrotik-tab-page-v1" hidden>
   <div class="admin-dash-card-v1 mikrotik-admin-card-v1">
 
+    <aside class="unified-admin-sidebar-v9_2 mikrotik-sidebar-v9_2">
+      <div class="unified-admin-sidebar-title-v9_2">ISP BILLING MENU</div>
+      <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('subscribers')">👥 SUBSCRIBERS</button>
+      <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('tickets')">🎫 TICKETS</button>
+      <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('payments')">💳 GCASH PAYMENTS</button>
+      <button type="button" class="unified-admin-nav-btn-v9_2 active">🌐 PPPOE / MIKROTIK</button>
+      <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('plans')">⚙️ PLAN MANAGEMENT</button>
+      <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('company-settings')">🏢 ISP SETTINGS</button>
+      <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('dashboard-branding')">🎨 DASHBOARD BRANDING</button>
+    </aside>
+
     <div class="admin-dash-head-v1">
       <div>
         <div class="admin-dash-title-v1">🌐 PPPOE / MIKROTIK</div>
         <div class="admin-dash-sub-v1">Network management</div>
       </div>
       <div class="admin-top-actions-v1">
-        <div class="pppoe-admin-nav-v5">
-  <button type="button" onclick="navigateFromMikrotikV5('subscribers')">👥 SUBSCRIBERS</button>
-  <button type="button" onclick="navigateFromMikrotikV5('tickets')">🎫 TICKETS</button>
-  <button type="button" onclick="navigateFromMikrotikV5('payments')">💳 GCASH PAYMENTS</button>
-</div>
+
       </div>
     </div>
-
-    <div class="mikrotik-preview-banner-v1">
-      <div>
-        <strong>PREVIEW MODE</strong>
-        <span>MikroTik is not connected yet. This section is for layout testing only.</span>
-      </div>
-      <span class="mikrotik-status-pill-v1">NOT SYNCED</span>
-    </div>
-
-    <div class="admin-stat-grid-v1 mikrotik-stat-grid-v1">
+<div class="admin-stat-grid-v1 mikrotik-stat-grid-v1">
       <div class="admin-stat-v1">
         <small>PPPoE Clients</small>
         <strong>—</strong>
@@ -6114,6 +7198,14 @@ async function loadAdminSubscribersListV1(){
     </div>
 
     
+
+    <div class="mikrotik-online-list-header-v9_2">
+      <div>
+        <div class="mikrotik-online-list-title-v9_2">🟢 PPPOE ONLINE LIST</div>
+        <div class="mikrotik-online-list-sub-v9_2">Live subscriber connection list</div>
+      </div>
+      <div class="mikrotik-online-list-status-v9_2">PPPoE ONLINE</div>
+    </div>
 
     <div class="mikrotik-table-card-v1">
       <div class="mikrotik-table-head-v1">
@@ -6176,7 +7268,7 @@ async function loadAdminSubscribersListV1(){
       </div>
 
       <div id="mikrotikDemoEmptyV1" class="mikrotik-table-empty-v1" hidden>No PPPoE client found.</div>
-      <div class="mikrotik-preview-note-v1">Preview only — MikroTik connection will be added later.</div>
+      
     </div>
   </div>
 </section>
@@ -6616,9 +7708,7 @@ function navigateFromMikrotikV5(tab){
     var overlay=document.getElementById('adminOverlayV3');
     var dashboard=document.getElementById('adminDashV1');
 
-    /* Do not call closeMikrotikTabV1().
-       These buttons return to the authenticated Admin Dashboard,
-       not to the public/front page. */
+    /* Return to the authenticated Admin Dashboard. */
     if(page){
       page.hidden=true;
       page.style.display='none';
@@ -7363,6 +8453,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     document.getElementById('ispGcashNameV9').value=s.gcashAccountName||'';
     document.getElementById('ispMessengerV9').value=s.facebookMessenger||'';
     document.getElementById('ispFooterV9').value=s.footerText||'';
+    var ap=document.getElementById('accountIdPrefixV9_2');
+    var ad=document.getElementById('accountIdDigitsV9_2');
+    var an=document.getElementById('accountIdStartV9_2');
+    if(ap) ap.value=s.accountIdPrefix||'WIK';
+    if(ad) ad.value=String(s.accountIdDigits||'4');
+    if(an) an.value=String(s.accountIdStart||'1');
+    if(typeof window.refreshAccountIdPreviewV9_2==='function') window.refreshAccountIdPreviewV9_2();
+
   }
 
   async function loadISPCompanySettingsV9(){
@@ -7397,7 +8495,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       gcashNumber:document.getElementById('ispGcashNumberV9').value.trim(),
       gcashAccountName:document.getElementById('ispGcashNameV9').value.trim(),
       facebookMessenger:document.getElementById('ispMessengerV9').value.trim(),
-      footerText:document.getElementById('ispFooterV9').value.trim()
+      footerText:document.getElementById('ispFooterV9').value.trim(),
+      accountIdPrefix:(document.getElementById('accountIdPrefixV9_2')?.value||'WIK').trim().toUpperCase(),
+      accountIdDigits:String(document.getElementById('accountIdDigitsV9_2')?.value||'5'),
+      accountIdStart:String(document.getElementById('accountIdStartV9_2')?.value||'1')
     };
 
     if(!settings.companyName){
@@ -7747,7 +8848,63 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 
-</body>
+
+
+<script id="winSubscribersSmallRefreshScriptV9_2">
+document.addEventListener("click",function(e){
+  var b=e.target && e.target.closest ? e.target.closest("#adminSubscribersRefreshV9_2") : null;
+  if(!b)return;
+  if(typeof loadAdminSubscribersListV1!=="function"){
+    console.warn("Subscribers loader not found.");
+    return;
+  }
+  b.classList.add("loading");
+  b.textContent="↻";
+  try{
+    var result=loadAdminSubscribersListV1();
+    if(result && typeof result.finally==="function"){
+      result.finally(function(){b.classList.remove("loading");});
+    }else{
+      setTimeout(function(){b.classList.remove("loading");},1200);
+    }
+  }catch(err){
+    console.error("Subscribers refresh error:",err);
+    b.classList.remove("loading");
+  }
+});
+</script>
+
+<script id="accountIdSettingsCleanV9_2">
+(function(){
+  function refresh(){
+    var p=((document.getElementById('accountIdPrefixV9_2')?.value||'WIK').trim().toUpperCase()||'WIK').replace(/[^A-Z0-9_-]/g,'');
+    var d=Math.max(4,Math.min(6,Number(document.getElementById('accountIdDigitsV9_2')?.value||5)));
+    var n=Math.max(1,Number(document.getElementById('accountIdStartV9_2')?.value||1));
+    var out=document.getElementById('accountIdPreviewV9_2');
+    if(out) out.textContent=p+'-'+String(n).padStart(d,'0');
+  }
+  window.refreshAccountIdPreviewV9_2=refresh;
+  document.addEventListener('input',function(e){
+    if(e.target && /^(accountIdPrefix|accountIdDigits|accountIdStart)V9_2$/.test(e.target.id)) refresh();
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target || e.target.id!=='saveAccountIdSettingsV9_2') return;
+    var main=document.getElementById('ispSettingsSaveV9');
+    var msg=document.getElementById('accountIdMsgV9_2');
+    if(!main){
+      if(msg) msg.textContent='⚠️ ISP Settings SAVE button not found.';
+      return;
+    }
+    if(msg) msg.textContent='Saving with ISP Settings...';
+    main.click();
+    setTimeout(function(){
+      if(msg) msg.textContent='Account ID settings included in ISP Settings.';
+    },900);
+  });
+  document.addEventListener('DOMContentLoaded',refresh);
+  setTimeout(refresh,300);
+})();
+</script></body>
 </html>
 <style>
 /* PPPoE / MikroTik is now a native Admin Dashboard tab */

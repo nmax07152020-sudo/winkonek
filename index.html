@@ -4783,6 +4783,112 @@ body.admin-full-view-v1 #adminDashV1 .admin-panel-v1.active{display:block!import
   }
 }
 </style>
+
+<style id="winAdminMobileGlobalScrollV9_2">
+/* =========================================================
+   MOBILE ADMIN GLOBAL SCROLL
+   The ENTIRE Admin Dashboard scrolls vertically on phones.
+   Desktop behavior is untouched.
+   ========================================================= */
+@media (max-width:768px){
+
+  html{
+    height:auto!important;
+    min-height:100%!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+  }
+
+  body.admin-full-view-v1{
+    height:auto!important;
+    min-height:100%!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  body.admin-full-view-v1 #adminDashV1{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    max-width:100vw!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    margin:0!important;
+    padding:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    touch-action:pan-y!important;
+    overscroll-behavior-y:auto!important;
+  }
+
+  body.admin-full-view-v1 #adminDashV1 .admin-dash-card-v1{
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:100dvh!important;
+    margin:0!important;
+    padding:10px!important;
+    overflow:visible!important;
+    touch-action:auto!important;
+  }
+
+  body.admin-full-view-v1 #adminDashV1 .admin-dash-head-v1{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+
+  /* Every normal Admin panel participates in the same page scroll. */
+  body.admin-full-view-v1 #adminDashV1 .admin-panel-v1{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+
+  /* Subscriber table remains independently scrollable horizontally/vertically,
+     while the surrounding dashboard itself can still scroll. */
+  body.admin-full-view-v1 #adminDashV1 .admin-subscriber-table-wrap-v1{
+    max-width:100%!important;
+    max-height:55vh!important;
+    overflow-x:auto!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    touch-action:pan-x pan-y!important;
+  }
+
+  /* Other wide tables also get touch scrolling instead of clipping. */
+  body.admin-full-view-v1 #adminDashV1 .admin-payment-table-wrap-v1,
+  body.admin-full-view-v1 #adminDashV1 .admin-ticket-table-wrap-v1,
+  body.admin-full-view-v1 #adminDashV1 .admin-table-wrap-v1{
+    max-width:100%!important;
+    max-height:55vh!important;
+    overflow-x:auto!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    touch-action:pan-x pan-y!important;
+  }
+
+  /* Do not lock any normal Admin content to viewport height. */
+  body.admin-full-view-v1 #adminDashV1 [style*="height:100vh"],
+  body.admin-full-view-v1 #adminDashV1 [style*="height: 100vh"]{
+    max-height:none!important;
+  }
+}
+
+/* Modern iPhone/Android safe area */
+@media (max-width:768px){
+  body.admin-full-view-v1 #adminDashV1 .admin-dash-card-v1{
+    padding-top:max(10px, env(safe-area-inset-top))!important;
+    padding-bottom:max(14px, env(safe-area-inset-bottom))!important;
+  }
+}
+</style>
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>

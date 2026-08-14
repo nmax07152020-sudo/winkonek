@@ -4635,6 +4635,154 @@ body.admin-full-view-v1 #adminDashV1 .admin-panel-v1.active{display:block!import
   #adminMobileNavV9_2{display:flex}
 }
 </style>
+
+<style id="winMobileDashboardCompactV9_2">
+/* =========================================================
+   MOBILE DASHBOARD COMPACT + SCROLL FIX
+   Desktop remains unchanged.
+   ========================================================= */
+@media (max-width:768px){
+
+  /* Compact the KPI/stat cards so they don't consume most of the screen. */
+  #adminDashV1 .admin-stat-grid-v1{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:6px!important;
+    padding:6px!important;
+  }
+
+  #adminDashV1 .admin-stat-v1{
+    min-width:0!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:11px 10px!important;
+    border-radius:8px!important;
+  }
+
+  #adminDashV1 .admin-stat-v1 small{
+    display:block!important;
+    font-size:.58rem!important;
+    line-height:1.15!important;
+    letter-spacing:.03em!important;
+    white-space:normal!important;
+  }
+
+  #adminDashV1 .admin-stat-v1 strong{
+    display:block!important;
+    margin-top:5px!important;
+    font-size:1.45rem!important;
+    line-height:1.05!important;
+    white-space:nowrap!important;
+  }
+
+  /* Long currency value should shrink instead of widening the card. */
+  #adminDashV1 #admGcashTotalV1{
+    font-size:1.15rem!important;
+  }
+
+  /* Keep subscriber search compact. */
+  #adminDashV1 .admin-search-v1{
+    gap:7px!important;
+    padding:8px!important;
+  }
+
+  #adminDashV1 .admin-search-v1 input{
+    min-width:0!important;
+    width:100%!important;
+  }
+
+  #adminDashV1 .admin-search-v1 button{
+    width:100%!important;
+    min-height:42px!important;
+  }
+
+  /*
+   * Subscriber list gets its OWN vertical scroll.
+   * The page itself remains normally scrollable.
+   */
+  #adminDashV1 .admin-subscriber-list-v1{
+    min-width:0!important;
+    max-width:100%!important;
+    overflow:visible!important;
+  }
+
+  #adminDashV1 .admin-subscriber-table-wrap-v1{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    max-height:52vh!important;
+    min-height:220px!important;
+    overflow-x:auto!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain;
+    touch-action:pan-x pan-y!important;
+  }
+
+  #adminDashV1 .admin-subscriber-table-v1{
+    min-width:760px!important;
+  }
+
+  #adminDashV1 .admin-subscriber-list-head-v1{
+    min-width:0!important;
+    max-width:100%!important;
+    flex-wrap:wrap!important;
+    gap:7px!important;
+  }
+
+  /* Smaller subscriber header/legend on phones. */
+  #adminDashV1 .admin-subscriber-list-title-v1{
+    font-size:.75rem!important;
+  }
+
+  #adminDashV1 .admin-due-alert-legend-v1{
+    font-size:.58rem!important;
+    gap:6px!important;
+    flex-wrap:wrap!important;
+  }
+
+  #adminDashV1 .admin-subscriber-list-count-v1{
+    font-size:.65rem!important;
+    margin-left:auto!important;
+  }
+
+  /* General admin content should never force the viewport wider. */
+  #adminDashV1 .admin-panel-v1,
+  #adminDashV1 .admin-card-v1{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+}
+
+@media (max-width:480px){
+  #adminDashV1 .admin-stat-grid-v1{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:5px!important;
+    padding:5px!important;
+  }
+
+  #adminDashV1 .admin-stat-v1{
+    padding:9px 8px!important;
+  }
+
+  #adminDashV1 .admin-stat-v1 small{
+    font-size:.53rem!important;
+  }
+
+  #adminDashV1 .admin-stat-v1 strong{
+    font-size:1.25rem!important;
+  }
+
+  #adminDashV1 #admGcashTotalV1{
+    font-size:1rem!important;
+  }
+
+  #adminDashV1 .admin-subscriber-table-wrap-v1{
+    max-height:58vh!important;
+    min-height:200px!important;
+  }
+}
+</style>
 </head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>

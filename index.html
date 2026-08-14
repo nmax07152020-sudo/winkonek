@@ -4543,7 +4543,17 @@ body.admin-full-view-v1 #adminDashV1 .admin-panel-v1.active{display:block!import
 #saveAccountIdSettingsV9_2{padding:7px 10px;border:1px solid rgba(40,215,255,.25);border-radius:7px;background:rgba(40,215,255,.08);color:#65e9ff;font-weight:900;cursor:pointer}
 #accountIdMsgV9_2{min-height:14px;margin-top:5px;font-size:10px;color:#8199aa}
 @media(max-width:700px){.account-id-settings-grid-v9_2{grid-template-columns:1fr}}
-</style></head>
+</style>
+<style id="ispSettingsSectionsV9_2">
+#adminDashV1 .isp-settings-divider-v9_2{height:1px;margin:16px 0 14px;background:rgba(255,255,255,.08)}
+#adminDashV1 .isp-settings-subsection-v9_2{padding-top:2px}
+#adminDashV1 .isp-settings-subtitle-v9_2{margin-bottom:10px;color:#65e9ff;font-size:.72rem;font-weight:900;letter-spacing:.05em}
+@media(max-width:768px){
+#adminDashV1 .account-id-settings-grid-v9_2{grid-template-columns:1fr!important}
+#adminDashV1 .dashboard-branding-grid-v9_2{grid-template-columns:1fr!important}
+}
+</style>
+</head>
 <body>
 <button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
 <canvas id="bgCanvas"></canvas>
@@ -6176,19 +6186,6 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <button type="button" class="admin-tab-btn-v1" id="adminMikrotikTabBtnV1" data-admin-tab="mikrotik">🌐 PPPOE / MIKROTIK</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="plans">⚙️ PLAN MANAGEMENT</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="company-settings">🏢 ISP SETTINGS</button>
-<div id="accountIdSettingsV9_2" class="account-id-settings-v9_2">
-  <div class="account-id-settings-title-v9_2">🆔 ACCOUNT ID SETTINGS</div>
-  <div class="account-id-settings-grid-v9_2">
-    <div><label>ACCOUNT ID PREFIX</label><input id="accountIdPrefixV9_2" maxlength="12" placeholder="WIK"></div>
-    <div><label>NUMBER OF DIGITS</label><select id="accountIdDigitsV9_2"><option value="4">4 — 0001</option><option value="5" selected>5 — 00001</option><option value="6">6 — 000001</option></select></div>
-    <div><label>STARTING NUMBER</label><input id="accountIdStartV9_2" type="number" min="1" value="1"></div>
-  </div>
-  <div class="account-id-preview-v9_2">Preview: <b id="accountIdPreviewV9_2">WIK-00001</b></div>
-  <button type="button" id="saveAccountIdSettingsV9_2">💾 SAVE</button>
-  <div id="accountIdMsgV9_2"></div>
-</div>
-
-<button type="button" class="admin-tab-btn-v1" data-admin-tab="dashboard-branding">🎨 DASHBOARD BRANDING</button>
 
 
 
@@ -6452,15 +6449,28 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     </div>
   </div>
 
-  <div class="company-settings-actions-v9">
-    <button type="button" id="ispSettingsReloadV9">↻ RELOAD</button>
-    <button type="button" id="ispSettingsSaveV9">💾 SAVE SETTINGS</button>
+
+  <div class="isp-settings-divider-v9_2"></div>
+  <div class="isp-settings-subsection-v9_2">
+    <div class="isp-settings-subtitle-v9_2">🆔 ACCOUNT ID SETTINGS</div>
+<div id="accountIdSettingsV9_2" class="account-id-settings-v9_2">
+  <div class="account-id-settings-title-v9_2">🆔 ACCOUNT ID SETTINGS</div>
+  <div class="account-id-settings-grid-v9_2">
+    <div><label>ACCOUNT ID PREFIX</label><input id="accountIdPrefixV9_2" maxlength="12" placeholder="WIK"></div>
+    <div><label>NUMBER OF DIGITS</label><select id="accountIdDigitsV9_2"><option value="4">4 — 0001</option><option value="5" selected>5 — 00001</option><option value="6">6 — 000001</option></select></div>
+    <div><label>STARTING NUMBER</label><input id="accountIdStartV9_2" type="number" min="1" value="1"></div>
   </div>
-  <div class="company-settings-msg-v9" id="ispSettingsMsgV9"></div>
+  <div class="account-id-preview-v9_2">Preview: <b id="accountIdPreviewV9_2">WIK-00001</b></div>
+  <button type="button" id="saveAccountIdSettingsV9_2">💾 SAVE</button>
+  <div id="accountIdMsgV9_2"></div>
 </div>
+  </div>
 
 
-<div class="admin-panel-v1" id="adminPanelDashboardBrandingV9_2">
+  <div class="isp-settings-divider-v9_2"></div>
+  <div class="isp-settings-subsection-v9_2">
+    <div class="isp-settings-subtitle-v9_2">🎨 DASHBOARD BRANDING</div>
+
   <div class="dashboard-branding-head-v9_2">
     <div>
       <div class="dashboard-branding-title-v9_2">🎨 DASHBOARD BRANDING</div>
@@ -6512,7 +6522,18 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     <button type="button" id="dashboardBrandingSaveV9_2">💾 SAVE BRANDING</button>
   </div>
   <div class="dashboard-branding-msg-v9_2" id="dashboardBrandingMsgV9_2"></div>
+
+  </div>
+
+  <div class="company-settings-actions-v9">
+    <button type="button" id="ispSettingsReloadV9">↻ RELOAD</button>
+    <button type="button" id="ispSettingsSaveV9">💾 SAVE SETTINGS</button>
+  </div>
+  <div class="company-settings-msg-v9" id="ispSettingsMsgV9"></div>
 </div>
+
+
+
 
 <div class="admin-msg-v1" id="adminDashMsgV1"></div>
 </div>
@@ -9065,4 +9086,3 @@ html body #mikrotikTabV1 .mikrotik-stat-grid-v1 .admin-stat-v1{
   background:#111f2d !important;
 }
 </style>
-

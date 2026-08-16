@@ -5041,6 +5041,249 @@ body.admin-full-view-v1 #adminDashV1 .admin-panel-v1.active{display:block!import
 }
 #mikrotikTabV1 .mikrotik-admin-settings-menu-v9_2 .logout-v9_2{color:#ff8d99}
 </style>
+
+<style id="professionalPermanentDeleteCSSV9_3">
+#professionalDeleteModalV9_3{
+  position:fixed;inset:0;z-index:100000;display:flex;align-items:center;
+  justify-content:center;padding:18px;box-sizing:border-box
+}
+.professional-delete-backdrop-v9_3{
+  position:absolute;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(3px)
+}
+.professional-delete-dialog-v9_3{
+  position:relative;width:min(430px,100%);padding:22px;box-sizing:border-box;
+  border:1px solid rgba(255,100,120,.25);border-radius:15px;background:#07142d;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);color:#eaf8ff
+}
+.professional-delete-icon-v9_3{font-size:28px;margin-bottom:5px}
+.professional-delete-dialog-v9_3 h3{margin:0 0 9px;font-size:1.05rem;color:#fff}
+.professional-delete-body-v9_3{margin:0 0 10px;font-size:.76rem;line-height:1.5;color:#cbd9e7}
+.professional-delete-detail-v9_3{font-size:.7rem;padding:3px 0;color:#eaf8ff}
+.professional-delete-warning-v9_3{margin:12px 0 16px;color:#ff8d99;font-size:.74rem}
+.professional-delete-actions-v9_3{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.professional-delete-actions-v9_3 button{
+  min-height:38px;padding:8px 13px;border-radius:8px;font-size:.63rem;
+  font-weight:900;cursor:pointer
+}
+.professional-delete-cancel-v9_3{
+  border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.04);color:#cbd9e7
+}
+.professional-delete-confirm-v9_3{
+  border:1px solid rgba(255,90,110,.3);background:#8f2637;color:#fff
+}
+@media(max-width:480px){
+  .professional-delete-dialog-v9_3{padding:18px}
+  .professional-delete-actions-v9_3{display:grid;grid-template-columns:1fr 1fr}
+  .professional-delete-actions-v9_3 button{width:100%}
+}
+</style>
+
+<script id="adminSessionReloadPersistV9_3">
+(function(){
+  var KEY='winkonek_admin_token_v2';
+  try{
+    var current=sessionStorage.getItem(KEY)||'';
+    var saved=localStorage.getItem(KEY)||'';
+    if(!current && saved){
+      sessionStorage.setItem(KEY,saved);
+    }
+
+    // Mirror future sessionStorage token writes into localStorage so refresh
+    // keeps the authenticated admin session.
+    var originalSet=sessionStorage.setItem.bind(sessionStorage);
+    sessionStorage.setItem=function(k,v){
+      originalSet(k,v);
+      if(k===KEY && v) localStorage.setItem(KEY,v);
+    };
+
+    var originalRemove=sessionStorage.removeItem.bind(sessionStorage);
+    sessionStorage.removeItem=function(k){
+      originalRemove(k);
+      if(k===KEY) localStorage.removeItem(KEY);
+    };
+  }catch(e){
+    console.warn('Admin session persistence unavailable:',e);
+  }
+})();
+</script>
+
+<style id="subscriberDetailsV9_3">
+.admin-view-subscriber-v9_3{
+  border:0;border-radius:7px;padding:7px 9px;font-size:.62rem;font-weight:900;
+  cursor:pointer;background:rgba(0,229,255,.10);color:#65e9ff;
+}
+.admin-view-subscriber-v9_3:hover{background:rgba(0,229,255,.18)}
+#subscriberDetailsModalV9_3{
+  position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;
+  justify-content:center;padding:16px;box-sizing:border-box;
+}
+.subscriber-details-backdrop-v9_3{position:absolute;inset:0;background:rgba(0,0,0,.70);backdrop-filter:blur(3px)}
+.subscriber-details-dialog-v9_3{
+  position:relative;width:min(760px,100%);max-height:92vh;overflow:auto;
+  padding:18px;border-radius:16px;background:#07142d;color:#eaf8ff;
+  border:1px solid rgba(0,229,255,.20);box-shadow:0 24px 80px rgba(0,0,0,.55);
+}
+.subscriber-details-head-v9_3{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.subscriber-details-title-v9_3{color:#65e9ff;font-size:1rem;font-weight:900}
+.subscriber-details-subtitle-v9_3{margin-top:3px;color:#8fa8b8;font-size:.62rem}
+.subscriber-details-close-v9_3{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05);color:#cbd9e7;border-radius:8px;padding:7px 10px;cursor:pointer}
+.subscriber-details-section-v9_3{margin-top:13px}
+.subscriber-details-section-title-v9_3{font-size:.65rem;font-weight:900;color:#65e9ff;margin-bottom:7px}
+.subscriber-details-grid-v9_3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.subscriber-details-item-v9_3{padding:10px;border:1px solid rgba(255,255,255,.07);border-radius:9px;background:rgba(255,255,255,.025);min-width:0}
+.subscriber-details-item-v9_3 span{display:block;color:#8fa8b8;font-size:.52rem}
+.subscriber-details-item-v9_3 strong{display:block;margin-top:4px;font-size:.72rem;word-break:break-word}
+.subscriber-details-status-v9_3{color:#7ff0c5!important}
+@media(max-width:600px){
+  .subscriber-details-dialog-v9_3{padding:14px;max-height:94vh}
+  .subscriber-details-grid-v9_3{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){.subscriber-details-grid-v9_3{grid-template-columns:1fr}}
+</style>
+
+<style id="subscriberEditViewFixV9_4">
+.subscriber-list-edit-btn-v1,
+.admin-view-subscriber-v9_3,
+.subscriber-list-save-btn-v1,
+.subscriber-list-cancel-btn-v1{touch-action:manipulation}
+</style>
+
+<style id="subscriberDetailsLayerFixV9_5">
+#subscriberDetailsModalV9_3{
+  position:fixed !important;
+  z-index:2147483000 !important;
+}
+#subscriberDetailsModalV9_3 .subscriber-details-backdrop-v9_3{
+  z-index:2147483000 !important;
+}
+#subscriberDetailsModalV9_3 .subscriber-details-dialog-v9_3{
+  position:relative !important;
+  z-index:2147483001 !important;
+}
+</style>
+
+<style id="subscriberActionDropdownV10">
+.subscriber-action-menu-v10{position:relative;display:inline-block;min-width:82px}
+.subscriber-action-toggle-v10{
+  border:1px solid rgba(0,229,255,.22);border-radius:8px;
+  padding:7px 9px;background:rgba(0,229,255,.08);color:var(--accent-cyan);
+  font-size:.62rem;font-weight:900;cursor:pointer;white-space:nowrap
+}
+.subscriber-action-dropdown-v10{
+  position:absolute;right:0;top:calc(100% + 5px);z-index:2147482000;
+  min-width:145px;padding:5px;border:1px solid rgba(0,229,255,.18);
+  border-radius:9px;background:#07142d;box-shadow:0 14px 35px rgba(0,0,0,.45);
+  display:none
+}
+.subscriber-action-menu-v10.open .subscriber-action-dropdown-v10{display:flex;flex-direction:column;gap:3px}
+.subscriber-action-dropdown-v10 button{
+  width:100%;text-align:left;border:0;border-radius:7px;padding:8px 9px;
+  background:transparent;color:#eaf8ff;font-size:.62rem;font-weight:800;cursor:pointer
+}
+.subscriber-action-dropdown-v10 button:hover{background:rgba(255,255,255,.07)}
+.subscriber-action-dropdown-v10 .subscriber-action-delete-v10{color:#ff8792}
+.subscriber-action-dropdown-v10 .subscriber-action-save-v10{color:#62e89b}
+.subscriber-action-dropdown-v10 .subscriber-action-cancel-v10{color:#fff}
+@media(max-width:600px){
+  .subscriber-action-menu-v10{min-width:72px}
+  .subscriber-action-toggle-v10{padding:7px 8px;font-size:.58rem}
+  .subscriber-action-dropdown-v10{min-width:140px}
+}
+</style>
+
+<style id="subscriberLegacyEditHideV11">
+#adminSubscriberListBodyV1 .subscriber-list-edit-cell-v1{display:none !important}
+</style>
+
+<style id="subscriberActionFinalV11">
+#adminSubscriberListBodyV1 .subscriber-list-edit-cell-v1{display:none !important}
+</style>
+
+<style id="subscriberActionNoLegacyEditV12">
+#adminSubscriberListBodyV1 .subscriber-list-edit-cell-v1{display:none !important}
+#adminSubscriberListBodyV1 .subscriber-action-delete-v10,
+#adminSubscriberListBodyV1 .subscriber-action-edit-v10{
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:10 !important;
+}
+</style>
+
+<style id="subscriberActionLayerV12">
+.subscriber-action-menu-v10{position:relative !important;z-index:20 !important}
+.subscriber-action-dropdown-v10{z-index:2147483000 !important}
+</style>
+
+<style id="wkDeleteDialogV15CSS">
+#wkDeleteDialogV15{
+  width:min(430px,calc(100vw - 32px));
+  box-sizing:border-box;
+  padding:20px;
+  border-radius:16px;
+  background:#07142d;
+  color:#eaf8ff;
+  border:1px solid rgba(255,80,100,.40);
+  box-shadow:0 25px 90px rgba(0,0,0,.75);
+}
+#wkDeleteDialogV15::backdrop{
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(4px);
+}
+.wk-delete-title-v15{font-size:1rem;font-weight:900;color:#ff7d8b;margin-bottom:10px}
+.wk-delete-text-v15{font-size:.72rem;line-height:1.55;color:#c9d6e3}
+.wk-delete-text-v15 strong{display:block;color:#fff;margin-top:5px}
+.wk-delete-actions-v15{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.wk-delete-actions-v15 button{border:0;border-radius:8px;padding:9px 13px;font-size:.65rem;font-weight:900;cursor:pointer}
+.wk-delete-cancel-v15{background:rgba(255,255,255,.08);color:#dbe7ef}
+.wk-delete-confirm-v15{background:#c93f52;color:#fff}
+.wk-delete-confirm-v15:disabled{opacity:.6;cursor:wait}
+@media(max-width:480px){
+  #wkDeleteDialogV15{margin:auto}
+  .wk-delete-actions-v15{flex-direction:column}
+  .wk-delete-actions-v15 button{width:100%}
+}
+</style>
+
+<style id="subscriberActionOpenUpV15">
+.subscriber-action-dropdown-v10{
+  top:auto !important;
+  bottom:calc(100% + 5px) !important;
+}
+</style>
+
+<style id="subscriberActionOpenAboveV15">
+#adminSubscriberListBodyV1 .subscriber-action-dropdown-v10{
+  top:auto !important;
+  bottom:calc(100% + 5px) !important;
+  right:0 !important;
+  z-index:2147483000 !important;
+}
+</style>
+
+<style id="subscriberActionSingleOpenAndLayerV16">
+/* The currently opened subscriber row must paint above neighboring table rows. */
+#adminSubscriberListBodyV1 > tr.wk-action-current-row-v16 > td:last-child{
+  position:relative !important;
+  z-index:2147483646 !important;
+}
+#adminSubscriberListBodyV1 > tr.wk-action-current-row-v16 .subscriber-action-menu-v10{
+  position:relative !important;
+  z-index:2147483647 !important;
+}
+
+/* Keep the requested directions. */
+#adminSubscriberListBodyV1 > tr:nth-child(1) .subscriber-action-dropdown-v10,
+#adminSubscriberListBodyV1 > tr:nth-child(2) .subscriber-action-dropdown-v10{
+  top:calc(100% + 8px) !important;
+  bottom:auto !important;
+  right:0 !important;
+}
+#adminSubscriberListBodyV1 > tr:nth-child(n+3) .subscriber-action-dropdown-v10{
+  top:auto !important;
+  bottom:calc(100% + 5px) !important;
+  right:0 !important;
+}
+</style>
 </head>
 <body>
 
@@ -7101,6 +7344,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
   }
 
   function renderAdminSubscribersListV1(rows){
+    window.adminSubscribersListCacheV1 = Array.isArray(rows) ? rows : [];
     const body=document.getElementById('adminSubscriberListBodyV1');
     const count=document.getElementById('adminSubscriberListCountV1');
     if(!body)return;
@@ -7121,10 +7365,17 @@ document.getElementById('resName').innerText = data.name || 'N/A';
           '<button type="button" class="admin-payment-reject-v1" onclick="processSubscriberPaymentV1('+Number(s.paymentRow)+',\'REJECT\')">✕ REJECT</button>'+
           '</div>'
         : (s.paymentRow ? '—' : '');
-      const action='<div class="admin-trial-actions-v9_2">'+originalAction+
-        '<button type="button" class="admin-trial-delete-v9_2" onclick="deleteAdminSubscriberV9_2('+Number(s.row)+')">🗑 DELETE</button></div>';
+      const action='<div class="subscriber-action-menu-v10">'+
+        '<button type="button" class="subscriber-action-toggle-v10" aria-expanded="false">⋮ ACTION</button>'+
+        '<div class="subscriber-action-dropdown-v10">'+
+          '<button type="button" class="subscriber-action-view-v10" data-subscriber-index-v9_3="'+String(rows.indexOf(s))+'" onclick="openSubscriberDetailsV9_3(this)">👁 VIEW</button>'+
+          '<button type="button" class="subscriber-action-edit-v10" onclick="window.wkEditDirectV14(this)">✏️ EDIT</button>'+
+          originalAction+
+          '<button type="button" class="subscriber-action-delete-v10" onclick="window.__wkDeleteDirectV13(this)">🗑 DELETE</button>'+
+        '</div>'+
+      '</div>';
 
-      return '<tr>'+
+      return '<tr data-subscriber-row="'+Number(s.row)+'">'+
         '<td><strong>'+escapeSubscriberHtmlV1(s.accountId)+'</strong></td>'+
         '<td>'+escapeSubscriberHtmlV1(s.fullname)+'</td>'+
         '<td>'+escapeSubscriberHtmlV1(s.selectedPlan)+'</td>'+
@@ -7186,7 +7437,21 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     }
   }
 
-window.deleteAdminSubscriberV9_2=async function(row){if(!row)return;if(!confirm("Delete this subscriber from Google Sheets?\n\nThis is a permanent trial delete."))return;try{const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeleteSubscriber",key:adminTokenV1(),row:Number(row)})});const d=await r.json();if(!d||d.success!==true){alert((d&&d.error)||"Subscriber delete failed.");return;}await loadAdminSubscribersListV1();if(typeof loadAdminPaymentsV1==="function")await loadAdminPaymentsV1();if(typeof loadAdminStatsV1==="function")await loadAdminStatsV1();alert("✅ Subscriber and linked GCash data deleted.");}catch(e){console.error(e);alert("Hindi maka-delete ng subscriber.");}};
+window.deleteAdminSubscriberV9_2=async function(row){
+    if(row && row.nodeType===1) row=Number(row.getAttribute('data-subscriber-row')||0);
+    row=Number(row||0);
+    if(!row)return;
+    if(!confirm("Delete this subscriber from Google Sheets?\n\nThis is a permanent delete."))return;
+    try{
+      const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeleteSubscriber",key:adminTokenV1(),row:row})});
+      const d=await r.json();
+      if(!d||d.success!==true){alert((d&&d.error)||"Subscriber delete failed.");return;}
+      await loadAdminSubscribersListV1();
+      if(typeof loadAdminPaymentsV1==="function")await loadAdminPaymentsV1();
+      if(typeof loadAdminStatsV1==="function")await loadAdminStatsV1();
+      alert("✅ Subscriber and linked GCash data deleted.");
+    }catch(e){console.error(e);alert("Hindi maka-delete ng subscriber.");}
+  };
 
 async function loadAdminSubscribersListV1(){
     const body=document.getElementById('adminSubscriberListBodyV1');
@@ -7522,7 +7787,7 @@ async function loadAdminSubscribersListV1(){
     }
   }
 
-  window.deleteAdminTicketV9_2=async function(row){if(!row)return;if(!confirm("Delete this ticket from Google Sheets?\n\nThis is a permanent trial delete."))return;try{const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeleteTicket",key:adminTokenV1(),row:Number(row)})});const d=await r.json();if(!d||d.success!==true){alert((d&&d.error)||"Ticket delete failed.");return;}await loadAdminTicketsV1();alert("✅ Ticket deleted.");}catch(e){console.error(e);alert("Hindi maka-delete ng ticket.");}};
+  window.deleteAdminTicketV9_2=async function(row){if(!row)return;if(!confirm("Delete this ticket from Google Sheets?\n\nThis is a permanent delete."))return;try{const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeleteTicket",key:adminTokenV1(),row:Number(row)})});const d=await r.json();if(!d||d.success!==true){alert((d&&d.error)||"Ticket delete failed.");return;}await loadAdminTicketsV1();alert("✅ Ticket deleted.");}catch(e){console.error(e);alert("Hindi maka-delete ng ticket.");}};
 
   function filterAdminTicketsV1(){
     const q=String(document.getElementById('adminTicketSearchV1')?.value||'').toLowerCase().trim();
@@ -7649,7 +7914,7 @@ async function loadAdminSubscribersListV1(){
     }
   }
 
-  window.deleteAdminPaymentV9_2=async function(row){if(!row)return;if(!confirm("Delete this GCash payment from Google Sheets?\n\nThis is a permanent trial delete."))return;try{const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeletePayment",key:adminTokenV1(),row:Number(row)})});const d=await r.json();if(!d||d.success!==true){alert((d&&d.error)||"Payment delete failed.");return;}await loadAdminPaymentsV1();if(typeof loadAdminSubscribersListV1==="function")await loadAdminSubscribersListV1();alert("✅ GCash payment deleted.");}catch(e){console.error(e);alert("Hindi maka-delete ng GCash payment.");}};
+  window.deleteAdminPaymentV9_2=async function(row){if(!row)return;if(!confirm("Delete this GCash payment from Google Sheets?\n\nThis is a permanent delete."))return;try{const r=await fetch(ADMIN_URL_DASH_V1,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"adminDeletePayment",key:adminTokenV1(),row:Number(row)})});const d=await r.json();if(!d||d.success!==true){alert((d&&d.error)||"Payment delete failed.");return;}await loadAdminPaymentsV1();if(typeof loadAdminSubscribersListV1==="function")await loadAdminSubscribersListV1();alert("✅ GCash payment deleted.");}catch(e){console.error(e);alert("Hindi maka-delete ng GCash payment.");}};
 
   function switchAdminPanelV1(tab){
     document.querySelectorAll('.admin-tab-btn-v1').forEach(b=>b.classList.toggle('active',b.dataset.adminTab===tab));
@@ -7991,77 +8256,95 @@ function refreshMikrotikDemoV1(){
       .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
       .replace(/'/g,'&#39;');
   }
+  function rebuildSubscriberActionsV10(row, showEditState){
+    var cells=row.querySelectorAll('td');
+    var actionCell=cells[8];
+    if(!actionCell)return;
+    var menu=actionCell.querySelector('.subscriber-action-dropdown-v10');
+    if(!menu)return;
 
-  function addSubscriberEditButtonsV1(){
-    var body=document.getElementById('adminSubscriberListBodyV1');
-    if(!body)return;
+    var rn=Number(row.getAttribute('data-subscriber-row')||0);
+    if(showEditState){
+      menu.innerHTML=
+        '<button type="button" class="subscriber-action-save-v10" onclick="window.wkSaveSubscriberV11(this)">💾 SAVE</button>'+
+        '<button type="button" class="subscriber-action-cancel-v10" onclick="window.wkCancelSubscriberV11(this)">CANCEL</button>';
+      return;
+    }
 
-    body.querySelectorAll('tr').forEach(function(row){
-      if(row.querySelector('.subscriber-list-edit-cell-v1'))return;
-
-      var cells=row.querySelectorAll('td');
-      if(cells.length<5)return;
-      if(!cells[0].innerText.trim())return;
-
-      var cell=document.createElement('td');
-      cell.className='subscriber-list-edit-cell-v1';
-      cell.innerHTML='<button type="button" class="subscriber-list-edit-btn-v1">✏️ EDIT</button>';
-      cell.querySelector('button').addEventListener('click',function(){
-        editSubscriberRowV1(row);
-      });
-      row.appendChild(cell);
-    });
+    menu.innerHTML=
+      '<button type="button" class="subscriber-action-view-v10" data-subscriber-index-v9_3="'+
+        String(Array.isArray(window.adminSubscribersListCacheV1)
+          ? window.adminSubscribersListCacheV1.findIndex(function(s){return Number(s.row)===rn;}) : -1)+
+        '" onclick="openSubscriberDetailsV9_3(this)">👁 VIEW</button>'+
+      '<button type="button" class="subscriber-action-edit-v10" onclick="window.wkEditDirectV14(this)">✏️ EDIT</button>'+
+      '<button type="button" class="subscriber-action-delete-v10" onclick="window.__wkDeleteDirectV13(this)">🗑 DELETE</button>';
   }
+
+  window.wkEditSubscriberV11=function(btn){
+    var row=btn && btn.closest ? btn.closest('tr') : null;
+    if(!row)return;
+    editSubscriberRowV1(row);
+  };
+
+  window.wkCancelSubscriberV11=function(btn){
+    var row=btn && btn.closest ? btn.closest('tr') : null;
+    if(!row)return;
+    cancelSubscriberEditV10(row);
+  };
+
+  window.wkSaveSubscriberV11=function(btn){
+    var row=btn && btn.closest ? btn.closest('tr') : null;
+    if(!row)return;
+    saveSubscriberRowV10(row);
+  };
+
+  window.wkDeleteSubscriberV11=function(btn){
+    var row=btn && btn.closest ? btn.closest('tr') : null;
+    var rn=row ? Number(row.getAttribute('data-subscriber-row')||0) : 0;
+    if(rn)deleteAdminSubscriberV9_2(rn);
+  };
 
   function editSubscriberRowV1(row){
     var cells=row.querySelectorAll('td');
-    if(cells.length<6)return;
+    if(cells.length<9)return;
 
-    // Subscriber List columns are:
-    // 0 Account ID, 1 Fullname, 2 Plan, 3 Due Date, 4 Status.
     var values=[
       cells[1].innerText.trim(),
       cells[2].innerText.trim(),
       cells[3].innerText.trim(),
       cells[4].innerText.trim()
     ];
+    row.dataset.subscriberOriginalValuesV10=JSON.stringify(values);
 
     for(var i=0;i<4;i++){
       cells[i+1].innerHTML=
         '<input type="text" class="subscriber-list-edit-input-v1" value="'+esc(values[i])+'">';
     }
-
-    cells[9].innerHTML=
-      '<div class="subscriber-list-edit-actions-v1">'+
-      '<button type="button" class="subscriber-list-save-btn-v1">💾 SAVE</button>'+
-      '<button type="button" class="subscriber-list-cancel-btn-v1">CANCEL</button>'+
-      '</div>';
-
-    cells[9].querySelector('.subscriber-list-save-btn-v1')
-      .addEventListener('click',function(){ saveSubscriberRowV1(row); });
-
-    cells[9].querySelector('.subscriber-list-cancel-btn-v1')
-      .addEventListener('click',function(){
-        if(typeof loadAdminSubscribersListV1==='function'){
-          loadAdminSubscribersListV1();
-        }
-      });
+    rebuildSubscriberActionsV10(row,true);
   }
 
-  async function saveSubscriberRowV1(row){
+  function cancelSubscriberEditV10(row){
+    var cells=row.querySelectorAll('td');
+    var original=[];
+    try{original=JSON.parse(row.dataset.subscriberOriginalValuesV10||'[]');}catch(e){}
+    if(original.length===4){
+      for(var i=0;i<4;i++)cells[i+1].textContent=original[i];
+    }
+    delete row.dataset.subscriberOriginalValuesV10;
+    rebuildSubscriberActionsV10(row,false);
+  }
+
+  async function saveSubscriberRowV10(row){
     var cells=row.querySelectorAll('td');
     var inputs=row.querySelectorAll('.subscriber-list-edit-input-v1');
-    if(cells.length<6 || inputs.length<4)return;
+    if(cells.length<9 || inputs.length<4)return;
 
-    var saveBtn=cells[9].querySelector('.subscriber-list-save-btn-v1');
-    if(saveBtn){
-      saveBtn.disabled=true;
-      saveBtn.textContent='SAVING...';
-    }
+    var saveBtn=cells[8].querySelector('.subscriber-action-save-v10');
+    if(saveBtn){saveBtn.disabled=true;saveBtn.textContent='SAVING...';}
 
     var payload={
       action:'adminUpdateSubscriber',
-      key:sessionStorage.getItem('winkonek_admin_token_v2') || '',
+      key:(typeof adminTokenV1==='function' ? adminTokenV1() : (sessionStorage.getItem('winkonek_admin_token_v2') || '')),
       accountId:cells[0].innerText.trim(),
       fields:{
         name:inputs[0].value.trim(),
@@ -8073,45 +8356,43 @@ function refreshMikrotikDemoV1(){
 
     if(!payload.key){
       alert('Admin session expired. Please login again.');
-      if(saveBtn){
-        saveBtn.disabled=false;
-        saveBtn.textContent='💾 SAVE';
-      }
+      if(saveBtn){saveBtn.disabled=false;saveBtn.textContent='💾 SAVE';}
       return;
     }
 
     try{
-      var r=await fetch("https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec",{
+      var r=await fetch('https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec',{
         method:'POST',
         headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify(payload)
       });
       var d=await r.json();
-
       if(!d || d.success!==true){
         alert((d&&d.error)||'Unable to save subscriber.');
-        if(saveBtn){
-          saveBtn.disabled=false;
-          saveBtn.textContent='💾 SAVE';
-        }
+        if(saveBtn){saveBtn.disabled=false;saveBtn.textContent='💾 SAVE';}
         return;
       }
 
-      alert('✅ Subscriber saved and synced to Google Sheet.');
+      var values=[
+        inputs[0].value.trim(),inputs[1].value.trim(),
+        inputs[2].value.trim(),inputs[3].value.trim()
+      ];
+      for(var i=0;i<4;i++)cells[i+1].textContent=values[i];
 
-      if(typeof loadAdminSubscribersListV1==='function'){
-        await loadAdminSubscribersListV1();
-      }
+      delete row.dataset.subscriberOriginalValuesV10;
+      rebuildSubscriberActionsV10(row,false);
+      alert('✅ Subscriber saved and synced to Google Sheet.');
     }catch(err){
       console.error('Subscriber edit save error:',err);
       alert('Hindi maka-save sa Subscribers Google Sheet.');
-      if(saveBtn){
-        saveBtn.disabled=false;
-        saveBtn.textContent='💾 SAVE';
-      }
+      if(saveBtn){saveBtn.disabled=false;saveBtn.textContent='💾 SAVE';}
     }
   }
 
+  function startSubscriberEditWatcherV1(){}
+(){
+    // Disabled: no standalone EDIT button outside the Action dropdown.
+  }
   function startSubscriberEditWatcherV1(){
     var body=document.getElementById('adminSubscriberListBodyV1');
     if(!body)return;
@@ -9700,6 +9981,749 @@ function triggerMikrotikAdminActionV9_2(id){
       if(btn)btn.setAttribute('aria-expanded','false');
     }
   });
+})();
+</script>
+
+<script id="professionalPermanentDeleteNoticeV9_3">
+(function(){
+  function esc(v){
+    return String(v==null?'':v).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  window.showProfessionalDeleteNoticeV9_3=function(type,details){
+    details=details||{};
+    var cfg={
+      subscriber:{
+        title:'Delete Subscriber?',
+        body:'This is a permanent delete.'
+      },
+      ticket:{
+        title:'Delete Ticket?',
+        body:'This is a permanent delete.'
+      },
+      payment:{
+        title:'Delete GCash Payment?',
+        body:'This is a permanent delete.'
+      }
+    }[type]||{
+      title:'Delete Record?',
+      body:'This is a permanent delete.'
+    };
+
+    var old=document.getElementById('professionalDeleteModalV9_3');
+    if(old)old.remove();
+
+    var modal=document.createElement('div');
+    modal.id='professionalDeleteModalV9_3';
+    modal.innerHTML=
+      '<div class="professional-delete-backdrop-v9_3"></div>'+
+      '<div class="professional-delete-dialog-v9_3" role="dialog" aria-modal="true">'+
+        '<div class="professional-delete-icon-v9_3">⚠️</div>'+
+        '<h3>'+cfg.title+'</h3>'+
+        '<p class="professional-delete-body-v9_3">'+cfg.body+'</p>'+
+        (details.name?'<div class="professional-delete-detail-v9_3"><b>Subscriber:</b> '+esc(details.name)+'</div>':'')+
+        (details.accountId?'<div class="professional-delete-detail-v9_3"><b>Account ID:</b> '+esc(details.accountId)+'</div>':'')+
+        '<p class="professional-delete-warning-v9_3"><b>This action cannot be undone.</b></p>'+
+        '<div class="professional-delete-actions-v9_3">'+
+          '<button type="button" class="professional-delete-cancel-v9_3">CANCEL</button>'+
+          '<button type="button" class="professional-delete-confirm-v9_3">PERMANENTLY DELETE</button>'+
+        '</div>'+
+      '</div>';
+
+    document.body.appendChild(modal);
+
+    return new Promise(function(resolve){
+      function close(){modal.remove();}
+      modal.querySelector('.professional-delete-backdrop-v9_3').onclick=function(){close();resolve(false);};
+      modal.querySelector('.professional-delete-cancel-v9_3').onclick=function(){close();resolve(false);};
+      modal.querySelector('.professional-delete-confirm-v9_3').onclick=function(){close();resolve(true);};
+    });
+  };
+})();
+</script>
+
+<script id="professionalDeleteInterceptV9_3">
+(function(){
+  function typeFor(btn){
+    var s=((btn.textContent||'')+' '+(btn.getAttribute('aria-label')||'')+' '+(btn.className||'')+' '+(btn.id||'')).toLowerCase();
+    if(!/(delete|remove|trash)/.test(s))return null;
+    if(/ticket/.test(s))return 'ticket';
+    if(/gcash|payment/.test(s))return 'payment';
+    if(/subscriber|client|account/.test(s))return 'subscriber';
+    return null;
+  }
+
+  document.addEventListener('click',async function(e){
+    var btn=e.target.closest('button,[role="button"]');
+    if(!btn || btn.dataset.profDeleteBypassV9_3==='1')return;
+
+    // Subscriber ACTION dropdown has its own direct delete confirmation.
+    // Do not let the legacy capture-phase interceptor create a hidden modal.
+    if(btn.closest('.subscriber-action-dropdown-v10'))return;
+
+    var type=typeFor(btn);
+    if(!type)return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    var ok=await window.showProfessionalDeleteNoticeV9_3(type,{
+      name:btn.dataset.subscriberName||'',
+      accountId:btn.dataset.accountId||''
+    });
+    if(!ok)return;
+
+    btn.dataset.profDeleteBypassV9_3='1';
+    btn.click();
+    setTimeout(function(){delete btn.dataset.profDeleteBypassV9_3;},0);
+  },true);
+})();
+</script>
+
+<script id="adminSessionReloadRestoreV9_3">
+document.addEventListener('DOMContentLoaded',function(){
+  try{
+    var key='winkonek_admin_token_v2';
+    if(!sessionStorage.getItem(key)){
+      var saved=localStorage.getItem(key);
+      if(saved)sessionStorage.setItem(key,saved);
+    }
+  }catch(e){}
+});
+</script>
+
+<script id="adminDashboardReloadRestoreV9_4">
+(function(){
+  function restoreAdminDashboardV9_4(){
+    try{
+      var key='winkonek_admin_token_v2';
+      var token=sessionStorage.getItem(key)||localStorage.getItem(key)||'';
+      if(!token)return;
+
+      // Keep the token available to the existing dashboard code.
+      if(!sessionStorage.getItem(key))sessionStorage.setItem(key,token);
+
+      // Re-open the existing Admin Dashboard after a browser refresh.
+      if(typeof window.openAdminDashboardV1==='function'){
+        window.openAdminDashboardV1();
+      }else{
+        setTimeout(restoreAdminDashboardV9_4,150);
+      }
+    }catch(e){
+      console.warn('Admin dashboard reload restore:',e);
+    }
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){
+      setTimeout(restoreAdminDashboardV9_4,80);
+    });
+  }else{
+    setTimeout(restoreAdminDashboardV9_4,80);
+  }
+})();
+</script>
+
+<script id="subscriberDetailsJSV9_3">
+(function(){
+  function esc(v){
+    return String(v==null||v===''?'—':v).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function money(v){
+    if(v==null||v==='')return '—';
+    var n=Number(String(v).replace(/[^0-9.-]/g,''));
+    return Number.isFinite(n)?'₱'+n.toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2}):esc(v);
+  }
+  function findRow(button){
+    var list=Array.isArray(window.adminSubscribersListCacheV1)
+      ? window.adminSubscribersListCacheV1 : [];
+    var idx=button ? Number(button.getAttribute('data-subscriber-index-v9_3')) : -1;
+    if(Number.isInteger(idx) && idx>=0 && idx<list.length)return list[idx];
+    return null;
+  }
+  window.openSubscriberDetailsV9_3=function(button){
+    var tr=button && button.closest ? button.closest('tr') : null;
+    if(!tr){
+      alert('Subscriber details could not be opened. Please refresh the Subscribers List.');
+      return;
+    }
+
+    var cells=tr.querySelectorAll('td');
+    if(!cells || cells.length<8){
+      alert('Subscriber details could not be read from this subscriber row.');
+      return;
+    }
+
+    function cell(i){ return (cells[i] ? cells[i].innerText : '').trim() || '—'; }
+    function esc(v){
+      return String(v==null?'—':v).replace(/[&<>"']/g,function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+      });
+    }
+    function item(label,value,cls){
+      return '<div class="subscriber-details-item-v9_3"><span>'+esc(label)+'</span><strong class="'+(cls||'')+'">'+esc(value)+'</strong></div>';
+    }
+
+    var old=document.getElementById('subscriberDetailsModalV9_3');
+    if(old)old.remove();
+
+    var modal=document.createElement('div');
+    modal.id='subscriberDetailsModalV9_3';
+    modal.innerHTML=
+      '<div class="subscriber-details-backdrop-v9_3"></div>'+
+      '<div class="subscriber-details-dialog-v9_3" role="dialog" aria-modal="true">'+
+        '<div class="subscriber-details-head-v9_3">'+
+          '<div>'+
+            '<div class="subscriber-details-title-v9_3">👤 SUBSCRIBER ACCOUNT DETAILS</div>'+
+            '<div class="subscriber-details-subtitle-v9_3">Current subscriber information</div>'+
+          '</div>'+
+          '<button type="button" class="subscriber-details-close-v9_3">✕ CLOSE</button>'+
+        '</div>'+
+        '<div class="subscriber-details-section-v9_3">'+
+          '<div class="subscriber-details-section-title-v9_3">ACCOUNT OVERVIEW</div>'+
+          '<div class="subscriber-details-grid-v9_3">'+
+            item('ACCOUNT ID',cell(0))+
+            item('FULL NAME',cell(1))+
+            item('PLAN',cell(2))+
+            item('DUE DATE',cell(3))+
+            item('STATUS',cell(4),'subscriber-details-status-v9_3')+
+          '</div>'+
+        '</div>'+
+        '<div class="subscriber-details-section-v9_3">'+
+          '<div class="subscriber-details-section-title-v9_3">PAYMENT INFORMATION</div>'+
+          '<div class="subscriber-details-grid-v9_3">'+
+            item('GCASH REFERENCE',cell(5))+
+            item('AMOUNT',cell(6))+
+            item('PAYMENT STATUS',cell(7))+
+          '</div>'+
+        '</div>'+
+      '</div>';
+
+    document.body.appendChild(modal);
+
+    var close=function(){ modal.remove(); };
+    modal.querySelector('.subscriber-details-close-v9_3').onclick=close;
+    modal.querySelector('.subscriber-details-backdrop-v9_3').onclick=close;
+  };
+})();
+</script>
+
+<script id="subscriberActionDropdownJSV10">
+(function(){
+  function bindSubscriberActionDropdownsV10(){
+    document.querySelectorAll('#adminSubscriberListBodyV1 .subscriber-action-menu-v10').forEach(function(menu){
+      if(menu.dataset.boundV10==='1')return;
+      menu.dataset.boundV10='1';
+      var toggle=menu.querySelector('.subscriber-action-toggle-v10');
+      if(!toggle)return;
+      toggle.addEventListener('click',function(e){
+        e.preventDefault();e.stopPropagation();
+        document.querySelectorAll('.subscriber-action-menu-v10.open').forEach(function(m){
+          if(m!==menu)m.classList.remove('open');
+        });
+        var open=menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded',open?'true':'false');
+      });
+    });
+  }
+
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.subscriber-action-menu-v10')){
+      document.querySelectorAll('.subscriber-action-menu-v10.open').forEach(function(m){
+        m.classList.remove('open');
+        var t=m.querySelector('.subscriber-action-toggle-v10');
+        if(t)t.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+
+  var body=document.getElementById('adminSubscriberListBodyV1');
+  if(body)new MutationObserver(bindSubscriberActionDropdownsV10).observe(body,{childList:true,subtree:true});
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindSubscriberActionDropdownsV10);
+  else bindSubscriberActionDropdownsV10();
+})();
+</script>
+
+<style id="subscriberActionFinalRepairV13">
+#adminSubscriberListBodyV1 .subscriber-action-dropdown-v10 button{
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:999999 !important;
+}
+</style>
+<script id="subscriberActionFinalRepairV13JS">
+(function(){
+  function esc(v){
+    return String(v==null?'':v)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  window.__wkEditDirectV13=function(btn){
+    var row=btn.closest('tr');
+    if(!row)return false;
+    var cells=row.querySelectorAll('td');
+    if(cells.length<9)return false;
+
+    var original=[];
+    for(var i=1;i<=4;i++)original.push(cells[i].textContent.trim());
+    row.dataset.wkOriginalV13=JSON.stringify(original);
+
+    for(var i=1;i<=4;i++){
+      cells[i].innerHTML='<input type="text" class="subscriber-list-edit-input-v13" value="'+esc(original[i-1])+'">';
+    }
+
+    var menu=cells[8].querySelector('.subscriber-action-dropdown-v10');
+    if(menu){
+      menu.innerHTML=
+        '<button type="button" class="subscriber-action-save-v13">💾 SAVE</button>'+
+        '<button type="button" class="subscriber-action-cancel-v13">CANCEL</button>';
+
+      menu.querySelector('.subscriber-action-save-v13').onclick=function(e){
+        e.preventDefault();e.stopPropagation();
+        window.__wkSaveDirectV13(row);
+        return false;
+      };
+      menu.querySelector('.subscriber-action-cancel-v13').onclick=function(e){
+        e.preventDefault();e.stopPropagation();
+        window.__wkCancelDirectV13(row);
+        return false;
+      };
+    }
+    return false;
+  };
+
+  window.__wkCancelDirectV13=function(row){
+    var cells=row.querySelectorAll('td'), original=[];
+    try{original=JSON.parse(row.dataset.wkOriginalV13||'[]');}catch(e){}
+    if(original.length===4){
+      for(var i=1;i<=4;i++)cells[i].textContent=original[i-1];
+    }
+    delete row.dataset.wkOriginalV13;
+    restoreActions(row);
+  };
+
+  window.__wkSaveDirectV13=async function(row){
+    var cells=row.querySelectorAll('td');
+    var inputs=row.querySelectorAll('.subscriber-list-edit-input-v13');
+    if(cells.length<9 || inputs.length<4)return;
+
+    var btn=cells[8].querySelector('.subscriber-action-save-v13');
+    if(btn){btn.disabled=true;btn.textContent='SAVING...';}
+
+    var token=typeof adminTokenV1==='function' ? adminTokenV1() : (sessionStorage.getItem('winkonek_admin_token_v2')||'');
+    if(!token){
+      alert('Admin session expired. Please login again.');
+      return;
+    }
+
+    var payload={
+      action:'adminUpdateSubscriber',
+      key:token,
+      accountId:cells[0].textContent.trim(),
+      fields:{
+        name:inputs[0].value.trim(),
+        plan:inputs[1].value.trim(),
+        dueDate:inputs[2].value.trim(),
+        status:inputs[3].value.trim()
+      }
+    };
+
+    try{
+      var r=await fetch(ADMIN_URL_DASH_V1,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)
+      });
+      var d=await r.json();
+      if(!d || d.success!==true){
+        alert((d&&d.error)||'Unable to save subscriber.');
+        if(btn){btn.disabled=false;btn.textContent='💾 SAVE';}
+        return;
+      }
+
+      for(var i=1;i<=4;i++)cells[i].textContent=inputs[i-1].value.trim();
+      delete row.dataset.wkOriginalV13;
+      restoreActions(row);
+      alert('✅ Subscriber saved and synced to Google Sheet.');
+    }catch(e){
+      console.error(e);
+      alert('Hindi maka-save sa Subscribers Google Sheet.');
+      if(btn){btn.disabled=false;btn.textContent='💾 SAVE';}
+    }
+  };
+
+  window.__wkDeleteDirectV13=async function(btn){
+    var row=btn && btn.closest ? btn.closest('tr') : null;
+    var rowNumber=row ? Number(row.getAttribute('data-subscriber-row')||0) : 0;
+    if(!rowNumber)return false;
+
+    var old=document.getElementById('wkDeleteDialogV15');
+    if(old)old.remove();
+
+    var dlg=document.createElement('dialog');
+    dlg.id='wkDeleteDialogV15';
+    dlg.className='wk-delete-dialog-v15';
+    dlg.innerHTML=
+      '<div class="wk-delete-title-v15">⚠️ PERMANENT DELETE</div>'+
+      '<div class="wk-delete-text-v15">This will permanently remove this subscriber and their record from Google Sheets.<br><strong>This action cannot be undone.</strong></div>'+
+      '<div class="wk-delete-actions-v15">'+
+        '<button type="button" class="wk-delete-cancel-v15">CANCEL</button>'+
+        '<button type="button" class="wk-delete-confirm-v15">DELETE</button>'+
+      '</div>';
+
+    document.body.appendChild(dlg);
+
+    var cleanup=function(){
+      if(dlg.open)dlg.close();
+      dlg.remove();
+    };
+
+    dlg.querySelector('.wk-delete-cancel-v15').onclick=cleanup;
+    dlg.querySelector('.wk-delete-confirm-v15').onclick=async function(){
+      var confirmBtn=this;
+      confirmBtn.disabled=true;
+      confirmBtn.textContent='DELETING...';
+
+      try{
+        var token=typeof adminTokenV1==='function'
+          ? adminTokenV1()
+          : (sessionStorage.getItem('winkonek_admin_token_v2')||'');
+
+        var r=await fetch(window.__WK_ADMIN_URL_V13,{
+          method:'POST',
+          headers:{'Content-Type':'text/plain;charset=utf-8'},
+          body:JSON.stringify({
+            action:'adminDeleteSubscriber',
+            key:token,
+            row:rowNumber
+          })
+        });
+        var d=await r.json();
+
+        if(!d || d.success!==true){
+          alert((d&&d.error)||'Subscriber delete failed.');
+          confirmBtn.disabled=false;
+          confirmBtn.textContent='DELETE';
+          return;
+        }
+
+        cleanup();
+        if(row && row.parentNode)row.remove();
+
+        if(typeof loadAdminStatsV1==='function')loadAdminStatsV1();
+        if(typeof loadAdminPaymentsV1==='function')loadAdminPaymentsV1();
+
+        alert('✅ Subscriber deleted permanently.');
+      }catch(e){
+        console.error('Subscriber delete error:',e);
+        alert('Hindi maka-delete ng subscriber.');
+        confirmBtn.disabled=false;
+        confirmBtn.textContent='DELETE';
+      }
+    };
+
+    dlg.addEventListener('cancel',cleanup,{once:true});
+
+    // Native dialog top-layer: this is the key fix for the logout/reveal issue.
+    if(typeof dlg.showModal==='function'){
+      dlg.showModal();
+    }else{
+      // Very old-browser fallback: move it to the document root.
+      document.documentElement.appendChild(dlg);
+      dlg.setAttribute('open','');
+    }
+    return false;
+  };
+
+  function restoreActions(row){
+    var cells=row.querySelectorAll('td');
+    if(cells.length<9)return;
+    var menu=cells[8].querySelector('.subscriber-action-dropdown-v10');
+    if(!menu)return;
+
+    menu.innerHTML=
+      '<button type="button" class="subscriber-action-view-v13">👁 VIEW</button>'+
+      '<button type="button" class="subscriber-action-edit-v13">✏️ EDIT</button>'+
+      '<button type="button" class="subscriber-action-delete-v13">🗑 DELETE</button>';
+
+    menu.querySelector('.subscriber-action-view-v13').onclick=function(e){
+      e.preventDefault();e.stopPropagation();
+      openSubscriberDetailsV9_3(this);return false;
+    };
+    menu.querySelector('.subscriber-action-edit-v13').onclick=function(e){
+      e.preventDefault();e.stopPropagation();
+      window.__wkEditDirectV13(this);return false;
+    };
+    menu.querySelector('.subscriber-action-delete-v13').onclick=function(e){
+      e.preventDefault();e.stopPropagation();
+      window.__wkDeleteDirectV13(this);return false;
+    };
+  }
+
+  function repairRows(){
+    document.querySelectorAll('#adminSubscriberListBodyV1 tr[data-subscriber-row]').forEach(function(row){
+      var cells=row.querySelectorAll('td');
+      if(cells.length<9)return;
+      var menu=cells[8].querySelector('.subscriber-action-dropdown-v10');
+      if(!menu)return;
+
+      var edit=menu.querySelector('.subscriber-action-edit-v10,.subscriber-action-edit-v13');
+      var del=menu.querySelector('.subscriber-action-delete-v10,.subscriber-action-delete-v13');
+      var view=menu.querySelector('.subscriber-action-view-v10,.subscriber-action-view-v13');
+
+      if(edit && !edit.dataset.v13){
+        edit.dataset.v13='1';
+        edit.onclick=function(e){
+          e.preventDefault();e.stopPropagation();
+          window.__wkEditDirectV13(this);return false;
+        };
+      }
+      if(del && !del.dataset.v13){
+        del.dataset.v13='1';
+        del.onclick=function(e){
+          e.preventDefault();e.stopPropagation();
+          window.__wkDeleteDirectV13(this);return false;
+        };
+      }
+      if(view && !view.dataset.v13){
+        view.dataset.v13='1';
+        view.onclick=function(e){
+          e.preventDefault();e.stopPropagation();
+          openSubscriberDetailsV9_3(this);return false;
+        };
+      }
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',repairRows);
+  }else{repairRows();}
+
+  var body=document.getElementById('adminSubscriberListBodyV1');
+  if(body)new MutationObserver(function(){setTimeout(repairRows,0);}).observe(body,{childList:true,subtree:true});
+})();
+</script>
+
+<script id="subscriberDeleteModalCleanupV16">
+(function(){
+  function cleanupDeleteModalsV16(){
+    ['professionalDeleteModalV9_3','wkDeleteDialogV15','wkDeleteConfirmV14'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el)el.remove();
+    });
+  }
+
+  // If the existing logout control is clicked, remove any pending delete
+  // notice before the dashboard is hidden.
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('button,a,[role="button"]');
+    if(!b)return;
+    var text=(b.textContent||'').trim().toLowerCase();
+    var id=(b.id||'').toLowerCase();
+    var cls=(b.className||'').toString().toLowerCase();
+    if(/logout|sign out|log out/.test(text+' '+id+' '+cls)){
+      cleanupDeleteModalsV16();
+    }
+  },true);
+
+  window.cleanupSubscriberDeleteModalsV16=cleanupDeleteModalsV16;
+})();
+</script>
+
+<script id="wkAdminUrlGlobalV13">
+window.__WK_ADMIN_URL_V13 = window.__WK_ADMIN_URL_V13 || 'https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec';
+</script>
+
+<script id="subscriberEditSaveDirectV14">
+(function(){
+  window.wkEditDirectV14=function(btn){
+    var row=btn&&btn.closest?btn.closest('tr'):null;
+    if(!row)return;
+    var cells=row.querySelectorAll('td');
+    if(cells.length<9)return;
+
+    var original=[];
+    for(var i=1;i<=4;i++)original.push(cells[i].textContent.trim());
+    row.dataset.wkOriginalV14=JSON.stringify(original);
+
+    for(var i=1;i<=4;i++){
+      cells[i].innerHTML='<input type="text" class="subscriber-list-edit-input-v14" value="'+
+        String(original[i-1]).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">';
+    }
+
+    var menu=cells[8].querySelector('.subscriber-action-dropdown-v10');
+    if(!menu)return;
+    menu.innerHTML=
+      '<button type="button" class="subscriber-action-save-v14">💾 SAVE</button>'+
+      '<button type="button" class="subscriber-action-cancel-v14">CANCEL</button>';
+
+    menu.querySelector('.subscriber-action-save-v14').onclick=function(){
+      window.wkSaveDirectV14(row);
+    };
+    menu.querySelector('.subscriber-action-cancel-v14').onclick=function(){
+      window.wkCancelDirectV14(row);
+    };
+  };
+
+  window.wkCancelDirectV14=function(row){
+    var cells=row.querySelectorAll('td'), original=[];
+    try{original=JSON.parse(row.dataset.wkOriginalV14||'[]');}catch(e){}
+    if(original.length===4){
+      for(var i=1;i<=4;i++)cells[i].textContent=original[i-1];
+    }
+    delete row.dataset.wkOriginalV14;
+    restore(row);
+  };
+
+  window.wkSaveDirectV14=async function(row){
+    var cells=row.querySelectorAll('td');
+    var inputs=row.querySelectorAll('.subscriber-list-edit-input-v14');
+    if(cells.length<9||inputs.length<4)return;
+
+    var btn=cells[8].querySelector('.subscriber-action-save-v14');
+    if(btn){btn.disabled=true;btn.textContent='SAVING...';}
+
+    var key=(typeof adminTokenV1==='function') ? adminTokenV1() :
+      (sessionStorage.getItem('winkonek_admin_token_v2')||'');
+    if(!key){
+      alert('Admin session expired. Please login again.');
+      return;
+    }
+
+    var payload={
+      action:'adminUpdateSubscriber',
+      key:key,
+      accountId:(function(){
+        var rn=Number(row.getAttribute('data-subscriber-row')||0);
+        var list=window.adminSubscribersListCacheV1;
+        if(Array.isArray(list)){
+          var item=list.find(function(s){return Number(s.row)===rn;});
+          if(item && item.accountId)return String(item.accountId).trim();
+        }
+        return cells[0].textContent.trim();
+      })(),
+      fields:{
+        name:inputs[0].value.trim(),
+        plan:inputs[1].value.trim(),
+        dueDate:inputs[2].value.trim(),
+        status:inputs[3].value.trim()
+      }
+    };
+
+    try{
+      var r=await fetch('https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec?save='+Date.now(),{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        cache:'no-store',
+        body:JSON.stringify(payload)
+      });
+      var d=await r.json();
+
+      if(!d||d.success!==true){
+        alert((d&&d.error)||'Unable to save subscriber.');
+        if(btn){btn.disabled=false;btn.textContent='💾 SAVE';}
+        return;
+      }
+
+      for(var i=1;i<=4;i++)cells[i].textContent=inputs[i-1].value.trim();
+      delete row.dataset.wkOriginalV14;
+      restore(row);
+
+      // Refresh from Google Sheet after the server confirms the update.
+      // This prevents the dashboard from showing a local-only edit.
+      if(typeof loadAdminSubscribersListV1==='function'){
+        try{ await loadAdminSubscribersListV1(); }catch(refreshErr){ console.warn(refreshErr); }
+      }
+      alert('✅ Subscriber saved and synced to Google Sheet.');
+    }catch(e){
+      console.error('Subscriber save V14:',e);
+      alert('Hindi maka-save sa Subscribers Google Sheet.');
+      if(btn){btn.disabled=false;btn.textContent='💾 SAVE';}
+    }
+  };
+
+  function restore(row){
+    var cells=row.querySelectorAll('td');
+    var menu=cells[8]&&cells[8].querySelector('.subscriber-action-dropdown-v10');
+    if(!menu)return;
+    menu.innerHTML=
+      '<button type="button" class="subscriber-action-view-v14">👁 VIEW</button>'+
+      '<button type="button" class="subscriber-action-edit-v14">✏️ EDIT</button>'+
+      '<button type="button" class="subscriber-action-delete-v14">🗑 DELETE</button>';
+    menu.querySelector('.subscriber-action-view-v14').onclick=function(){openSubscriberDetailsV9_3(this);};
+    menu.querySelector('.subscriber-action-edit-v14').onclick=function(){window.wkEditDirectV14(this);};
+    menu.querySelector('.subscriber-action-delete-v14').onclick=function(){
+      if(typeof window.__wkDeleteDirectV13==='function')window.__wkDeleteDirectV13(this);
+    };
+  }
+
+  function bind(){
+    document.querySelectorAll('#adminSubscriberListBodyV1 tr[data-subscriber-row]').forEach(function(row){
+      var menu=row.querySelector('.subscriber-action-dropdown-v10');
+      if(!menu)return;
+      var edit=menu.querySelector('.subscriber-action-edit-v10,.subscriber-action-edit-v14');
+      if(edit && !edit.dataset.v14){
+        edit.dataset.v14='1';
+        edit.onclick=function(e){e.preventDefault();e.stopPropagation();window.wkEditDirectV14(this);};
+      }
+    });
+  }
+  var body=document.getElementById('adminSubscriberListBodyV1');
+  if(body)new MutationObserver(function(){setTimeout(bind,0);}).observe(body,{childList:true,subtree:true});
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);else bind();
+})();
+</script>
+
+<script id="subscriberActionSingleOpenAndLayerV16JS">
+(function(){
+  function clearRow(row){
+    if(!row)return;
+    row.classList.remove('wk-action-current-row-v16');
+    var menu=row.querySelector('.subscriber-action-menu-v10');
+    if(menu)menu.classList.remove('wk-action-current-row-v16');
+  }
+
+  document.addEventListener('click',function(e){
+    var toggle=e.target.closest && e.target.closest('.subscriber-action-toggle-v10');
+    if(!toggle)return;
+
+    /* Let the original index2 handler toggle the clicked menu first. */
+    setTimeout(function(){
+      var body=document.getElementById('adminSubscriberListBodyV1');
+      if(!body)return;
+
+      var clickedRow=toggle.closest('tr');
+      var clickedMenu=clickedRow && clickedRow.querySelector('.subscriber-action-menu-v10');
+
+      /* PROFESSIONAL DROPDOWN BEHAVIOR:
+         only one Action menu can remain open at a time.
+         This prevents Row 1/2/3/4 menus from covering each other. */
+      body.querySelectorAll('.subscriber-action-menu-v10.open').forEach(function(menu){
+        if(menu!==clickedMenu){
+          menu.classList.remove('open');
+          var t=menu.querySelector('.subscriber-action-toggle-v10');
+          if(t)t.setAttribute('aria-expanded','false');
+          clearRow(menu.closest('tr'));
+        }
+      });
+
+      body.querySelectorAll('tr.wk-action-current-row-v16').forEach(function(row){
+        if(row!==clickedRow)clearRow(row);
+      });
+
+      if(clickedMenu && clickedMenu.classList.contains('open') && clickedRow){
+        clickedRow.classList.add('wk-action-current-row-v16');
+        clickedMenu.classList.add('wk-action-current-row-v16');
+      }else if(clickedRow){
+        clearRow(clickedRow);
+      }
+    },0);
+  },false);
 })();
 </script>
 </body>

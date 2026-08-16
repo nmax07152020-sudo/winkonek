@@ -4889,9 +4889,161 @@ body.admin-full-view-v1 #adminDashV1 .admin-panel-v1.active{display:block!import
   }
 }
 </style>
+<style id="adminDynamicRecentPlansV9_2">
+#adminDashV1 .admin-dynamic-plan-stats-v9_2{display:contents}
+#adminDashV1 .admin-dynamic-plan-card-v9_2 small{line-height:1.2}
+@media(max-width:768px){#adminDashV1 .admin-dynamic-plan-card-v9_2 small{font-size:.52rem!important}}
+</style>
+<style id="adminAllPlansSingleCardV9_2">
+#adminDashV1 .admin-dynamic-plan-card-v9_2{min-width:0!important;padding:10px 12px!important}
+#adminDashV1 .admin-dynamic-plan-card-v9_2>small{display:block;margin-bottom:6px;line-height:1.15}
+#adminDashV1 .admin-dynamic-plan-list-v9_2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;min-width:0}
+#adminDashV1 .admin-plan-row-v9_2{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:5px;padding:4px 0;border-top:1px solid rgba(255,255,255,.07)}
+#adminDashV1 .admin-plan-name-v9_2{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.68rem;font-weight:800}
+#adminDashV1 .admin-plan-client-count-v9_2{font-size:.82rem;font-weight:900}
+#adminDashV1 .admin-plan-client-label-v9_2{font-size:.48rem;opacity:.7;white-space:nowrap}
+#adminDashV1 .admin-plan-empty-row-v9_2{font-size:.65rem;opacity:.7}
+@media(max-width:768px){
+#adminDashV1 .admin-dynamic-plan-list-v9_2{grid-template-columns:1fr;gap:0}
+#adminDashV1 .admin-dynamic-plan-card-v9_2{padding:8px 9px!important}
+#adminDashV1 .admin-plan-row-v9_2{min-height:27px}
+#adminDashV1 .admin-plan-name-v9_2{font-size:.62rem}
+#adminDashV1 .admin-plan-client-count-v9_2{font-size:.75rem}
+}
+</style>
+<style id="adminPlansFontPolishV9_2">
+/* Active Plans + Total Clients typography */
+#adminDashV1 #adminDynamicPlanStatsV9_2 > small{
+  color:#65e9ff!important;
+  font-weight:900!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+}
+
+#adminDashV1 .admin-plan-name-v9_2{
+  color:#eaf8ff!important;
+  font-weight:800!important;
+}
+
+#adminDashV1 .admin-plan-client-count-v9_2{
+  color:#7ff0c5!important;
+  font-weight:950!important;
+}
+
+#adminDashV1 .admin-plan-client-label-v9_2{
+  color:#8fa8b8!important;
+  font-weight:800!important;
+  letter-spacing:.04em!important;
+}
+
+/* Total Subscribers / Clients */
+#adminDashV1 #admTotalV1{
+  color:#7ff0c5!important;
+  font-weight:950!important;
+}
+#adminDashV1 #admTotalV1 + *{
+  color:#65e9ff!important;
+}
+</style>
+<style id="billOverviewV9_2">
+#adminDashV1 .bill-overview-head-v9_2{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+#adminDashV1 .bill-overview-head-v9_2 h2{margin:0;font-size:1rem}#adminDashV1 .bill-overview-head-v9_2 p{margin:4px 0;color:#8fa8b8;font-size:.65rem}
+#adminDashV1 .bill-overview-refresh-v9_2{padding:8px 11px;border:1px solid rgba(40,215,255,.22);border-radius:8px;background:rgba(40,215,255,.07);color:#65e9ff;font-weight:900}
+#adminDashV1 .bill-overview-cards-v9_2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#adminDashV1 .bill-overview-card-v9_2{padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.025)}
+#adminDashV1 .bill-overview-card-v9_2 small{display:block;color:#8fa8b8;font-size:.55rem;font-weight:900}.bill-overview-card-v9_2 strong{display:block;margin-top:6px;font-size:1.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#adminDashV1 .bill-overview-card-v9_2.expected strong{color:#65e9ff}#adminDashV1 .bill-overview-card-v9_2.collected strong{color:#7ff0c5}#adminDashV1 .bill-overview-card-v9_2.pending strong{color:#ffd36b}#adminDashV1 .bill-overview-card-v9_2.overdue strong{color:#ff7f8c}
+#adminDashV1 .bill-overview-section-v9_2{margin-top:12px;padding:12px;border:1px solid rgba(255,255,255,.07);border-radius:10px}
+#adminDashV1 .bill-overview-section-title-v9_2{margin-bottom:6px;color:#65e9ff;font-size:.65rem;font-weight:900}
+#adminDashV1 .bill-plan-breakdown-v9_2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px}
+#adminDashV1 .bill-plan-row-v9_2{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:5px;align-items:center;padding:6px 0;border-top:1px solid rgba(255,255,255,.06)}
+#adminDashV1 .bill-plan-row-v9_2 .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.66rem;color:#eaf8ff;font-weight:800}.bill-plan-row-v9_2 .amount{font-size:.7rem;color:#7ff0c5;font-weight:900}.bill-plan-row-v9_2 .count{font-size:.5rem;color:#8fa8b8;white-space:nowrap}
+#adminDashV1 .bill-month-summary-v9_2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.bill-month-summary-v9_2>div{padding:8px;background:rgba(255,255,255,.025);border-radius:7px}.bill-month-summary-v9_2 span{display:block;color:#8fa8b8;font-size:.52rem}.bill-month-summary-v9_2 b{display:block;margin-top:3px;color:#eaf8ff;font-size:.95rem}
+#adminDashV1 .bill-overview-msg-v9_2{min-height:14px;margin-top:6px;color:#8fa8b8;font-size:.58rem}
+@media(max-width:768px){#adminDashV1 .bill-overview-cards-v9_2{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}#adminDashV1 .bill-overview-card-v9_2{padding:9px}#adminDashV1 .bill-overview-card-v9_2 strong{font-size:1rem}#adminDashV1 .bill-plan-breakdown-v9_2{grid-template-columns:1fr}#adminDashV1 .bill-month-summary-v9_2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+<style id="adminNavLoginStyleV9_2">
+.admin-login-nav-btn-v9_2{font-weight:900}
+@media(max-width:768px){
+  #adminDashV1 #adminMobileNavV9_2 .admin-login-nav-btn-v9_2{
+    color:#65e9ff!important;
+  }
+}
+</style>
+
+<style id="adminAccountMoveToNavV9_2">
+/* ADMIN actions moved from upper-right into navigation dropdown */
+#adminDashV1 .admin-account-panel-v4{display:none!important}
+.admin-nav-settings-v9_2{position:relative;flex:0 0 auto}
+.admin-nav-settings-btn-v9_2{
+  border:1px solid rgba(0,229,255,.18);
+  background:rgba(255,255,255,.035);
+  color:var(--text-muted);
+  padding:10px 11px;
+  border-radius:9px;
+  font-size:.68rem;
+  font-weight:900;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.admin-nav-settings-btn-v9_2:hover,
+.admin-nav-settings-btn-v9_2.open{color:#fff;background:var(--primary-blue);border-color:var(--accent-cyan)}
+.admin-nav-settings-menu-v9_2{
+  position:absolute;
+  top:calc(100% + 6px);
+  right:0;
+  z-index:9999;
+  width:190px;
+  padding:6px;
+  border:1px solid rgba(0,229,255,.20);
+  border-radius:10px;
+  background:#07142d;
+  box-shadow:0 14px 35px rgba(0,0,0,.38);
+}
+.admin-nav-settings-menu-v9_2[hidden]{display:none!important}
+.admin-nav-settings-menu-v9_2 button{
+  width:100%;
+  display:block;
+  text-align:left;
+  border:0;
+  background:transparent;
+  color:#d9e5fa;
+  padding:9px 10px;
+  border-radius:7px;
+  font-size:.66rem;
+  font-weight:800;
+  cursor:pointer;
+}
+.admin-nav-settings-menu-v9_2 button:hover{background:rgba(0,229,255,.08);color:#65e9ff}
+.admin-nav-settings-menu-v9_2 .logout-v9_2{color:#ff8d99}
+@media(max-width:768px){
+  .admin-nav-settings-v9_2{width:100%}
+  .admin-nav-settings-btn-v9_2{width:100%}
+  .admin-nav-settings-menu-v9_2{position:static;width:100%;margin-top:5px;box-sizing:border-box}
+}
+</style>
+
+<style id="mikrotikFullNavV9_2">
+#mikrotikTabV1 .mikrotik-admin-settings-wrap-v9_2{position:relative;width:100%;margin-top:2px}
+#mikrotikTabV1 .mikrotik-admin-settings-btn-v9_2{width:100%;text-align:left}
+#mikrotikTabV1 .mikrotik-admin-settings-menu-v9_2{
+  width:100%;box-sizing:border-box;margin-top:4px;padding:4px;
+  border:1px solid rgba(0,229,255,.18);border-radius:8px;background:#07142d;
+}
+#mikrotikTabV1 .mikrotik-admin-settings-menu-v9_2[hidden]{display:none!important}
+#mikrotikTabV1 .mikrotik-admin-settings-menu-v9_2 button{
+  width:100%;display:block;text-align:left;padding:8px 10px;
+  border:0;border-radius:6px;background:transparent;color:#d9e5fa;
+  font-size:.61rem;font-weight:800;cursor:pointer;
+}
+#mikrotikTabV1 .mikrotik-admin-settings-menu-v9_2 button:hover{
+  background:rgba(0,229,255,.08);color:#65e9ff;
+}
+#mikrotikTabV1 .mikrotik-admin-settings-menu-v9_2 .logout-v9_2{color:#ff8d99}
+</style>
 </head>
 <body>
-<button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
+
 <canvas id="bgCanvas"></canvas>
 <div class="toast-container" id="toastContainer"></div>
 <div class="portal-container">
@@ -6355,6 +6507,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
             Generated from the Win Internet Konek Subscriber Portal.
         </div>
 </div>
+<button class="admin-header-btn-v3" id="adminHeaderV3" type="button">⚙️ ADMIN</button>
 <div class="admin-overlay-v3" id="adminOverlayV3">
 <div class="admin-card-v3">
 <div style="text-align:center;font-weight:900;color:var(--accent-cyan)">🔐 ADMIN ACCESS</div>
@@ -6384,7 +6537,7 @@ document.getElementById('resName').innerText = data.name || 'N/A';
     document.addEventListener("DOMContentLoaded", function(){
         const overlay = document.getElementById("adminOverlayV3");
 
-        document.getElementById("adminHeaderV3")?.addEventListener("click", function(){
+        document.getElementById("adminNavLoginV9_2")?.addEventListener("click", function(){
             overlay.style.display = "flex";
         });
 
@@ -6526,8 +6679,21 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="tickets">🎫 TICKETS</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="payments">💳 GCASH PAYMENTS</button>
 <button type="button" class="admin-tab-btn-v1" id="adminMikrotikTabBtnV1" data-admin-tab="mikrotik">🌐 PPPOE / MIKROTIK</button>
+<button type="button" class="admin-tab-btn-v1" data-admin-tab="bill-overview">🧾 BILL OVERVIEW</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="plans">⚙️ PLAN MANAGEMENT</button>
 <button type="button" class="admin-tab-btn-v1" data-admin-tab="company-settings">🏢 ISP SETTINGS</button>
+<div class="admin-nav-settings-v9_2" id="adminNavSettingsV9_2">
+  <button type="button" class="admin-nav-settings-btn-v9_2" id="adminNavSettingsBtnV9_2"
+          aria-expanded="false" aria-controls="adminNavSettingsMenuV9_2">⚙️ ADMIN / SETTINGS ▾</button>
+  <div class="admin-nav-settings-menu-v9_2" id="adminNavSettingsMenuV9_2" hidden>
+    <button type="button" data-admin-action-v9_2="refresh">🔄 REFRESH DATA</button>
+    <button type="button" data-admin-action-v9_2="activity">📋 ACTIVITY LOG</button>
+    <button type="button" data-admin-action-v9_2="system">🟢 SYSTEM STATUS</button>
+    <button type="button" data-admin-action-v9_2="password">🔐 CHANGE PASSWORD</button>
+    <button type="button" class="logout-v9_2" data-admin-action-v9_2="logout">↪ LOGOUT</button>
+  </div>
+</div>
+
 
 
 
@@ -6539,8 +6705,10 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 <div class="admin-stat-v1"><small>Due Soon</small><strong id="admDueSoonV1">—</strong></div>
 <div class="admin-stat-v1"><small>Overdue</small><strong id="admOverdueV1">—</strong></div>
 <div class="admin-stat-v1"><small>GCash Collected This Month</small><strong id="admGcashTotalV1">₱0.00</strong></div>
-<div class="admin-stat-v1"><small>50 Mbps Clients</small><strong id="adminPlan50CountV1">0</strong></div>
-<div class="admin-stat-v1"><small>100 Mbps Clients</small><strong id="adminPlan100CountV1">0</strong></div>
+<div id="adminDynamicPlanStatsV9_2" class="admin-stat-v1 admin-dynamic-plan-card-v9_2">
+  <small>ACTIVE PLANS</small>
+  <div id="adminDynamicPlanListV9_2" class="admin-dynamic-plan-list-v9_2">Loading...</div>
+</div>
 
 
 
@@ -6686,6 +6854,21 @@ document.getElementById('resName').innerText = data.name || 'N/A';
 </div>
 
 
+
+<div class="admin-panel-v1" id="adminPanelBillOverviewV9_2">
+  <div class="bill-overview-head-v9_2"><div><h2>🧾 BILL OVERVIEW</h2><p>Monthly billing summary.</p></div><button type="button" class="bill-overview-refresh-v9_2" id="billOverviewRefreshV9_2">↻ REFRESH</button></div>
+  <div class="bill-overview-cards-v9_2">
+    <div class="bill-overview-card-v9_2 expected"><small>EXPECTED MONTHLY BILLING</small><strong id="billExpectedV9_2">₱0.00</strong></div>
+    <div class="bill-overview-card-v9_2 collected"><small>COLLECTED</small><strong id="billCollectedV9_2">₱0.00</strong></div>
+    <div class="bill-overview-card-v9_2 pending"><small>PENDING PAYMENTS</small><strong id="billPendingV9_2">₱0.00</strong></div>
+    <div class="bill-overview-card-v9_2 overdue"><small>OVERDUE AMOUNT</small><strong id="billOverdueV9_2">₱0.00</strong></div>
+  </div>
+  <div class="bill-overview-section-v9_2"><div class="bill-overview-section-title-v9_2">📊 COLLECTION BY PLAN</div><div id="billPlanBreakdownV9_2" class="bill-plan-breakdown-v9_2">Loading...</div></div>
+  <div class="bill-overview-section-v9_2"><div class="bill-overview-section-title-v9_2">📅 MONTHLY SUMMARY</div><div class="bill-month-summary-v9_2">
+    <div><span>SUBSCRIBERS</span><b id="billSubscribersV9_2">0</b></div><div><span>ACTIVE</span><b id="billActiveV9_2">0</b></div><div><span>DUE SOON</span><b id="billDueSoonV9_2">0</b></div><div><span>OVERDUE</span><b id="billOverdueClientsV9_2">0</b></div>
+  </div></div>
+  <div id="billOverviewMsgV9_2" class="bill-overview-msg-v9_2"></div>
+</div>
 <div class="admin-panel-v1" id="adminPanelPlansV8">
   <div class="plan-management-head-v8">
     <div>
@@ -7036,6 +7219,33 @@ async function loadAdminSubscribersListV1(){
     if(adminSubscriberAutoRefreshTimerV1)clearInterval(adminSubscriberAutoRefreshTimerV1);
   }
 
+  function renderRecentPlanStatsV9_2(plans){
+    const box=document.getElementById('adminDynamicPlanListV9_2');
+    if(!box)return;
+    const list=Array.isArray(plans)?plans:[];
+    if(!list.length){
+      box.innerHTML='<div class="admin-plan-empty-row-v9_2">No active plans</div>';
+      return;
+    }
+    box.innerHTML=list.map(function(p){
+      const name=String(p.planName||'PLAN').trim();
+      const speed=String(p.speed||'').trim();
+      const label=(name && speed && name.toLowerCase()!==speed.toLowerCase())
+        ? name+' • '+speed : (speed||name);
+      return '<div class="admin-plan-row-v9_2">'+
+        '<span class="admin-plan-name-v9_2">'+escAdminPlanLabelV9_2(label)+'</span>'+
+        '<span class="admin-plan-client-count-v9_2">'+Number(p.clientCount||0)+'</span>'+
+        '<span class="admin-plan-client-label-v9_2">CLIENTS</span>'+
+      '</div>';
+    }).join('');
+  }
+
+  function escAdminPlanLabelV9_2(value){
+    return String(value||'').replace(/[&<>"']/g,function(ch){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
+    });
+  }
+
   async function loadAdminStatsV1(){
     dashMsgV1('Loading dashboard...',false);
     try{
@@ -7051,10 +7261,7 @@ async function loadAdminSubscribersListV1(){
       document.getElementById('admDueSoonV1').textContent=d.subscribers.dueSoon;
       document.getElementById('admOverdueV1').textContent=d.subscribers.overdue;
 
-      const plan50El = document.getElementById('adminPlan50CountV1');
-      const plan100El = document.getElementById('adminPlan100CountV1');
-      if(plan50El) plan50El.textContent = String(Number(d.plan50Count || 0));
-      if(plan100El) plan100El.textContent = String(Number(d.plan100Count || 0));
+      renderRecentPlanStatsV9_2(d.recentPlans || []);
 
       const monthlyGcash = Number(
         d.payments && d.payments.verifiedThisMonthTotal != null
@@ -7451,6 +7658,8 @@ async function loadAdminSubscribersListV1(){
     document.getElementById('adminPanelPaymentsV1')?.classList.toggle('active',tab==='payments');
     document.getElementById('adminPanelPlansV8')?.classList.toggle('active',tab==='plans');
     document.getElementById('adminPanelCompanySettingsV9')?.classList.toggle('active',tab==='company-settings');
+    document.getElementById('adminPanelBillOverviewV9_2')?.classList.toggle('active',tab==='bill-overview');
+
     document.getElementById('adminPanelDashboardBrandingV9_2')?.classList.toggle('active',tab==='dashboard-branding');
     if(tab==='subscribers')loadAdminSubscribersListV1();
     if(tab==='tickets')loadAdminTicketsV1();
@@ -7527,9 +7736,24 @@ async function loadAdminSubscribersListV1(){
       <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('tickets')">🎫 TICKETS</button>
       <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('payments')">💳 GCASH PAYMENTS</button>
       <button type="button" class="unified-admin-nav-btn-v9_2 active">🌐 PPPOE / MIKROTIK</button>
+      <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('bill-overview')">🧾 BILL OVERVIEW</button>
       <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('plans')">⚙️ PLAN MANAGEMENT</button>
       <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('company-settings')">🏢 ISP SETTINGS</button>
-      <button type="button" class="unified-admin-nav-btn-v9_2" onclick="navigateFromMikrotikV5('dashboard-branding')">🎨 DASHBOARD BRANDING</button>
+
+      <div class="mikrotik-admin-settings-wrap-v9_2">
+        <button type="button" class="unified-admin-nav-btn-v9_2 mikrotik-admin-settings-btn-v9_2"
+                id="mikrotikAdminSettingsBtnV9_2"
+                aria-expanded="false" aria-controls="mikrotikAdminSettingsMenuV9_2">
+          ⚙️ ADMIN / SETTINGS ▾
+        </button>
+        <div id="mikrotikAdminSettingsMenuV9_2" class="mikrotik-admin-settings-menu-v9_2" hidden>
+          <button type="button" onclick="triggerMikrotikAdminActionV9_2('adminRefreshDataV7')">🔄 REFRESH DATA</button>
+          <button type="button" onclick="triggerMikrotikAdminActionV9_2('adminActivityLogV7')">📋 ACTIVITY LOG</button>
+          <button type="button" onclick="triggerMikrotikAdminActionV9_2('adminSystemStatusV7')">🟢 SYSTEM STATUS</button>
+          <button type="button" onclick="triggerMikrotikAdminActionV9_2('adminChangePasswordBtnV1')">🔐 CHANGE PASSWORD</button>
+          <button type="button" class="logout-v9_2" onclick="triggerMikrotikAdminActionV9_2('adminLogoutV1')">↪ LOGOUT</button>
+        </div>
+      </div>
     </aside>
 
     <div class="admin-dash-head-v1">
@@ -8097,6 +8321,14 @@ function navigateFromMikrotikV5(tab){
     }else{
       var btn=document.querySelector('.admin-tab-btn-v1[data-admin-tab="'+tab+'"]');
       if(btn)btn.click();
+    }
+
+    /* Keep the requested navigation tab active after leaving PPPoE. */
+    var requestedBtn=document.querySelector('.admin-tab-btn-v1[data-admin-tab="'+tab+'"]');
+    if(requestedBtn){
+      document.querySelectorAll('.admin-tab-btn-v1').forEach(function(b){
+        b.classList.toggle('active', b===requestedBtn);
+      });
     }
 
     window.scrollTo(0,0);
@@ -9309,6 +9541,165 @@ document.addEventListener("click",function(e){
   }else{
     initAdminMobileMenu();
   }
+})();
+</script>
+<script id="billOverviewJSV9_2">
+(function(){
+function money(v){return '₱'+Number(v||0).toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function token(){return sessionStorage.getItem('winkonek_admin_token_v2')||''}
+function apiUrl(){
+  return (typeof ADMIN_URL_DASH_V1!=='undefined'
+    ? ADMIN_URL_DASH_V1
+    : "https://script.google.com/macros/s/AKfycbxIyGPLRyAGgtl8oeSuo4VZgnSU_imjRr4-V-ZDkemQyAw1Sq73UJ3Rd1hzkrZ0Cu7icg/exec");
+}
+function render(d){
+  d=d||{};
+  var s=d.subscribers||{}, p=d.payments||{}, plans=Array.isArray(d.recentPlans)?d.recentPlans:[];
+  var q=function(id){return document.getElementById(id)};
+  q('billExpectedV9_2').textContent=money(d.expectedMonthlyBilling);
+  q('billCollectedV9_2').textContent=money(p.verifiedThisMonthTotal);
+  q('billPendingV9_2').textContent=money(d.pendingPaymentAmount);
+  q('billOverdueV9_2').textContent=money(d.overdueAmount);
+  q('billSubscribersV9_2').textContent=Number(s.total||0);
+  q('billActiveV9_2').textContent=Number(s.active||0);
+  q('billDueSoonV9_2').textContent=Number(s.dueSoon||0);
+  q('billOverdueClientsV9_2').textContent=Number(s.overdue||0);
+
+  var box=q('billPlanBreakdownV9_2');
+  box.innerHTML=plans.length ? plans.map(function(x){
+    return '<div class="bill-plan-row-v9_2">'+
+      '<span class="name">'+esc(x.planName||x.speed||'PLAN')+'</span>'+
+      '<span class="amount">'+money(x.collectedThisMonth)+'</span>'+
+      '<span class="count">'+Number(x.clientCount||0)+' CLIENTS</span>'+
+    '</div>';
+  }).join('') : '<div class="bill-empty-v9_2">No active plans.</div>';
+}
+window.loadBillOverviewV9_2=async function(){
+  var msg=document.getElementById('billOverviewMsgV9_2');
+  if(msg)msg.textContent='Refreshing...';
+
+  var key=token();
+  if(!key){
+    if(msg)msg.textContent='Admin session expired. Please login again.';
+    return;
+  }
+
+  try{
+    var url=apiUrl()+
+      '?action=adminDashboard&key='+encodeURIComponent(key)+
+      '&refresh='+Date.now();
+
+    var r=await fetch(url,{cache:'no-store'});
+    if(!r.ok)throw new Error('Server response '+r.status);
+
+    var d=await r.json();
+    if(!d || d.success!==true){
+      if(msg)msg.textContent=(d&&d.error)||'Unable to load billing data.';
+      return;
+    }
+
+    render(d);
+    if(msg)msg.textContent='Updated '+new Date().toLocaleTimeString('en-PH');
+  }catch(err){
+    console.error('Bill Overview load error:',err);
+    if(msg)msg.textContent='Server connection failed. Please check the Apps Script deployment.';
+  }
+};
+
+document.addEventListener('click',function(e){
+  if(e.target.closest('[data-admin-tab="bill-overview"]')){
+    setTimeout(window.loadBillOverviewV9_2,100);
+  }
+  if(e.target.closest('#billOverviewRefreshV9_2')){
+    window.loadBillOverviewV9_2();
+  }
+});
+})();
+</script>
+<script id="frontAdminButtonBridgeV9_2">
+document.addEventListener("DOMContentLoaded",function(){
+  var btn=document.getElementById("adminHeaderV3");
+  var overlay=document.getElementById("adminOverlayV3");
+  if(btn && overlay){
+    btn.addEventListener("click",function(){
+      overlay.style.display="flex";
+    });
+  }
+});
+</script>
+
+<script id="adminNavSettingsBehaviorV9_2">
+(function(){
+  function closeAdminSettingsV9_2(){
+    var menu=document.getElementById("adminNavSettingsMenuV9_2");
+    var btn=document.getElementById("adminNavSettingsBtnV9_2");
+    if(menu)menu.hidden=true;
+    if(btn){btn.classList.remove("open");btn.setAttribute("aria-expanded","false");}
+  }
+  function triggerExistingV9_2(id){
+    var el=document.getElementById(id);
+    if(el)el.click();
+  }
+
+  document.addEventListener("click",function(e){
+    var btn=e.target.closest("#adminNavSettingsBtnV9_2");
+    if(btn){
+      e.preventDefault();
+      e.stopPropagation();
+      var menu=document.getElementById("adminNavSettingsMenuV9_2");
+      var open=menu ? menu.hidden : true;
+      if(menu)menu.hidden=!open;
+      btn.classList.toggle("open",open);
+      btn.setAttribute("aria-expanded",String(open));
+      return;
+    }
+
+    var action=e.target.closest("[data-admin-action-v9_2]");
+    if(action){
+      e.preventDefault();
+      e.stopPropagation();
+      var type=action.getAttribute("data-admin-action-v9_2");
+      closeAdminSettingsV9_2();
+      if(type==="refresh")triggerExistingV9_2("adminRefreshDataV7");
+      if(type==="activity")triggerExistingV9_2("adminActivityLogV7");
+      if(type==="system")triggerExistingV9_2("adminSystemStatusV7");
+      if(type==="password")triggerExistingV9_2("adminChangePasswordBtnV1");
+      if(type==="logout")triggerExistingV9_2("adminLogoutV1");
+      return;
+    }
+
+    if(!e.target.closest("#adminNavSettingsV9_2"))closeAdminSettingsV9_2();
+  });
+})();
+</script>
+
+<script id="mikrotikFullNavJSV9_2">
+function triggerMikrotikAdminActionV9_2(id){
+  var el=document.getElementById(id);
+  if(el)el.click();
+  var menu=document.getElementById('mikrotikAdminSettingsMenuV9_2');
+  var btn=document.getElementById('mikrotikAdminSettingsBtnV9_2');
+  if(menu)menu.hidden=true;
+  if(btn)btn.setAttribute('aria-expanded','false');
+}
+(function(){
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('#mikrotikAdminSettingsBtnV9_2');
+    if(btn){
+      var menu=document.getElementById('mikrotikAdminSettingsMenuV9_2');
+      if(!menu)return;
+      menu.hidden=!menu.hidden;
+      btn.setAttribute('aria-expanded',String(!menu.hidden));
+      return;
+    }
+    if(!e.target.closest('#mikrotikTabV1 .mikrotik-admin-settings-wrap-v9_2')){
+      var menu=document.getElementById('mikrotikAdminSettingsMenuV9_2');
+      var btn=document.getElementById('mikrotikAdminSettingsBtnV9_2');
+      if(menu)menu.hidden=true;
+      if(btn)btn.setAttribute('aria-expanded','false');
+    }
+  });
 })();
 </script>
 </body>
